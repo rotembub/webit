@@ -12,7 +12,11 @@
 </template>
 
 <script>
-export default {};
+export default {
+  created() {
+    this.$store.dispatch({ type: "setCurrWap" });
+  },
+};
 </script>
 
 <style>

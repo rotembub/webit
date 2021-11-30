@@ -4,25 +4,27 @@ import { storageService } from './async-storage.service'
 const KEY = 'wap_DB'
 
 export const wapService = {
-  add,
+  // add,
   query,
   remove,
   getById,
   getEmptyWap
 }
 
-
 // More ways to send query params:
 // return axios.get('api/wap/?id=1223&balance=13')
 // return axios.get('api/wap/?', {params: {id: 1223, balanse:13}})
 
-async function query(filterBy) {
+
+function query(filterBy) {
   // var queryStr = (!filterBy) ? '' : `?name=${filterBy.wapId}`
-  // return httpService.get(`wap${queryStr}`)   
+  // return httpService.get(`wap${queryStr}`)
+  return gWap;
   return storageService.query(KEY)
 }
-async function getById(id) {
+function getById(id) {
   return storageService.get(KEY, id)
+  // return wap;
 }
 
 async function save(wap) {
@@ -67,3 +69,115 @@ function getEmptyWap() {
   });
 })()
 
+
+
+var gWap = {
+  "_id": "5e28393890dd7201a06d4e44",
+  "name": "HairDresser Baluta Marketing Site",
+  "imgUrl": "http://res.cloudinary.com/webify/image/upload/v1580021948/coffe_yi0yzf.png",
+  // "isEdit" : false,
+  "createdBy": {
+    "_id": "5e26e0b718a0891d4c995527",
+    "username": "Hekro Special"
+  },
+  "usersData": {
+    "contacts": [{ "email": "user@user.com", "msg": "Please send me stuff", "at": 123 }],
+    "signups": [{ "email": "user@user.com", "at": 123 }]
+  },
+
+  "cmps": [
+    {
+      "id": "wc02",
+      "type": "wap-header",
+      "info": {
+        "title": "HairDresser Baluta",
+        "substitle": "Your Hair is !(Who you Are)",
+        "btn": { "label": "Schedule Today!", "link": "#wc03" }
+      },
+      "theme": "theme-header-happy",
+      "style": {
+        "background": "url()",
+        "font": "Fontush",
+        "color": "red",
+      }
+    },
+    {
+      "id": "wc03",
+      "type": "wap-container",
+      "info": {
+        "dir": "row",
+        "cmps": [
+          {},
+          {}
+        ]
+      },
+      "theme": "theme-container-base",
+      "style": {
+      }
+    }
+  ],
+  "isPublic": true
+}
+
+
+// {
+//   "_id": "5e28393890dd7201a06d4e44",
+//   "name": "HairDresser Baluta Marketing Site",
+//   "imgUrl": "http://res.cloudinary.com/webify/image/upload/v1580021948/coffe_yi0yzf.png",
+//   // "isEdit" : false,
+//   "createdBy": {
+//     "_id": "5e26e0b718a0891d4c995527",
+//     "username": "Hekro Special"
+//   },
+//   "usersData": {
+//     "contacts": [{ "email": "user@user.com", "msg": "Please send me stuff", "at": 123 }],
+//     "signups": [{ "email": "user@user.com", "at": 123 }]
+//   },
+
+//   "cmps": [
+//     {
+//       "id": "wc02",
+//       "type": "wap-header",
+//       "info": {
+//         "title": "HairDresser Baluta",
+//         "substitle": "Your Hair is !(Who you Are)",
+//         "btn": { "label": "Schedule Today!", "link": "#wc03" }
+//       },
+//       "theme": "theme-header-happy",
+//       "style": {
+//         "background": "url()",
+//         "font": "Fontush",
+//         "color": "red",
+//       }
+//     },
+//     {
+//       "id": "wc01",
+//       "type": "wap-map",
+//       "info": {
+//         "name": "Paris",
+//         "lat": 12.909,
+//         "lng": 23.9,
+//         "zoom": 2
+//       },
+//       "theme": "theme-map-exciting",
+//       "style": {
+//         "height": "300px",
+//       }
+//     },
+//     {
+//       "id": "wc03",
+//       "type": "wap-container",
+//       "info": {
+//         "dir": "row",
+//         "cmps": [
+//           {},
+//           {}
+//         ]
+//       },
+//       "theme": "theme-container-base",
+//       "style": {
+//       }
+//     }
+//   ],
+//   "isPublic": true
+// }
