@@ -7,12 +7,14 @@ export const storageService = {
 }
 
 function query(entityType) {
+    console.log(entityType, 'storage')
     var entities = JSON.parse(localStorage.getItem(entityType)) || []
     return Promise.resolve(entities)
 }
 
 
 function get(entityType, entityId) {
+    console.log(entityType, entityId, 'getInStorage')
     return query(entityType)
         .then(entities => entities.find(entity => entity._id === entityId))
 }
@@ -28,7 +30,7 @@ function post(entityType, newEntity) {
 function postMany(entityType, newEntities) {
     return query(entityType)
         .then(entities => {
-            newEntities = newEntities.map(entity => ({...entity, _id: _makeId()}))
+            newEntities = newEntities.map(entity => ({ ...entity, _id: _makeId() }))
             entities.push(...newEntities)
             _save(entityType, entities)
             return entities
@@ -71,4 +73,3 @@ function _makeId(length = 5) {
 }
 
 
-  
