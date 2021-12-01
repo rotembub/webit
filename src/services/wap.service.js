@@ -22,7 +22,7 @@ export const wapService = {
 
 
 
-createWaps();
+
 
 function createWaps() {
   const waps = localStorage.getItem(KEY)
@@ -41,7 +41,7 @@ async function query(filterBy) {
 }
 async function getById(id) {
   console.log(id);
-  if (!id) return getEmptyWap();
+  // if (!id) return getEmptyWap();
   try {
     console.log('i am still here')
     return await storageService.get(KEY, id);
@@ -295,3 +295,5 @@ const CMPS_DATA = [
     },
   },
 ];
+
+createWaps();

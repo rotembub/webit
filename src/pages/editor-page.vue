@@ -14,20 +14,13 @@ export default {
     cmpPicker,
   },
   data() {
-    return {
-      wapToEdit: null,
-    };
+    return {};
   },
   created() {
-    async () => {
-      try {
-        await this.$store.dispatch({ type: "setCurrWap", wapId: this.wapId });
-        console.log("done");
-        this.wapToEdit = JSON.parse(JSON.stringify(wap));
-      } catch (err) {
-        console.log(err);
-      }
-    };
+    const id = this.wapId;
+    console.log(id);
+    if (!id) this.$store.dispatch({ type: "getEmptyWap" });
+    else this.$store.dispatch({ type: "setCurrWap", wapId: id });
   },
   computed: {
     wapId() {

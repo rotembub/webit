@@ -48,7 +48,6 @@ export default new Vuex.Store({
       console.log(wapId, 'ID')
       try {
         const currWap = await wapService.getById(wapId);
-        console.log(currWap);
         commit({ type: 'setCurrWap', wap: currWap });
         console.log(currWap, 'back in the action')
         return currWap;
@@ -95,6 +94,15 @@ export default new Vuex.Store({
         commit({ type: 'removeWap', wapId })
       } catch (err) {
         console.log('store reports: failed to REMOVE wap', err);
+      }
+    },
+    async getEmptyWap({ commit }) {
+      console.log('getting a new one')
+      try {
+        const wap = await wapService.getEmptyWap()
+        commit({ type: 'setCurrWap', wap })
+      } catch (err) {
+        console.log('failed to get empty way', wap)
       }
     }
   }

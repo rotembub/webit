@@ -13,11 +13,7 @@
 </template>
 
 <script>
-export default {
-  created() {
-    this.$store.dispatch({ type: 'setCurrWap' })
-  },
-}
+export default {};
 </script>
 
 <style></style>
