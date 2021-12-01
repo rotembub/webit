@@ -47,7 +47,7 @@
 <script>
   import {Collapse, CollapseItem} from 'element-ui';
   import wapHeader from '../wap-cmps/wap-header.cmp.vue';
-  import {wapService} from '../../services/wap.service.js';
+  import {cmpService} from '../../services/cmp.service.js';
 
   export default {
     name: 'cmpPicker',
@@ -74,17 +74,9 @@
         }
       },
       loadThemes(cmpType) {
-        const allThemes = wapService.getThemesFor(cmpType);
+        const allThemes = cmpService.getThemesFor(cmpType);
         this.themes = allThemes;
         console.log(this.themes);
-      },
-      end(event) {
-        console.log('end');
-        console.log(event);
-        // console.log(this.cmps);
-      },
-      removeItem(id) {
-        console.log(id);
       },
     },
     created() {

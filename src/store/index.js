@@ -1,7 +1,8 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import { wapService } from '../services/wap.service.js';
-import { wap } from '../services/wapJSON.js';
+import { cmpService } from '../services/cmp.service.js';
+
 
 Vue.use(Vuex);
 
@@ -52,7 +53,7 @@ export default new Vuex.Store({
   async addCmp({ commit }, { id }) {
     // const type = toy._id ? 'updateToy' : 'addToy';
     try {
-      const cmp = await wapService.getCmpById(id);
+      const cmp = await cmpService.getCmpById(id);
       console.log(cmp);
       commit({ type: 'addCmp', cmp });
     } catch (err) {
@@ -64,6 +65,9 @@ export default new Vuex.Store({
   async removeCmp({ commit, state }, { id }) {
     commit({ type: 'removeCmp', id });
     try {
+      // const wapId = state.currWap._id;
+      // const wap = wapService.getById(wapId)
+
       const updatedWap = wapService.save(state.currWap);
     } catch (err) {
       console.log('store reports: failed to save wap ', err);
