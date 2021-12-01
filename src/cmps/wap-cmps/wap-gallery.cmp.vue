@@ -9,7 +9,7 @@
       v-for="(photo, idx) in cmp.info.photos"
       :key="'p' + idx"
     >
-      <img :src="photo.url" alt="" />
+      <img :src="require('@/assets/wap-imgs/' + photo.url)" alt="" />
       <h3 v-if="photo.title">{{ photo.title }}</h3>
       <p v-if="photo.txt">{{ photo.txt }}</p>
     </div>

@@ -3,7 +3,7 @@
     <h2>{{ cmp.info.title }}</h2>
     <p>{{ cmp.info.subtitle }}</p>
     <!-- <input type="email" placeholder="example@email.com" /> -->
-    <button>{{ cmp.info.btnText }}</button>
+    <button>{{ cmp.info.btnTxt }}</button>
   </section>
 </template>
 

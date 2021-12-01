@@ -17,7 +17,7 @@
     <div v-if="cmp.info.navBar">
       <a v-for="(item, idx) in cmp.info.navBar" :key="'k' + idx" href="">{{
         item
-      }} | </a>
+      }} </a>
     </div>
     <div v-if="cmp.info.contactDetails">
       <div

@@ -15,7 +15,7 @@
     </div>
     <div class="nav-bar">
       <a v-for="(item, idx) in cmp.info.navBar" :key="'k' + idx" href=""
-        >{{ item }} |
+        >{{ item }} 
       </a>
     </div>
   </section>
