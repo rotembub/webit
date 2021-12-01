@@ -1,10 +1,9 @@
 <template>
   <section class="wap-header" :class="cmp.theme">
-    <wap-editor v-if="isEditing" />
     <!-- <div v-for="(item, idx) in cmp.info" :key="'k' + idx">
       <p>{{ item }}</p> -->
     <!-- </div> -->
-    <div @click="isEditing = !isEditing" class="logo">
+    <div class="logo">
       <h2 v-if="cmp.info.logo && cmp.info.logo.type === 'txt'">
         {{ cmp.info.logo.txt }}
       </h2>
@@ -23,16 +22,10 @@
 </template>
 
 <script>
-import wapEditor from './wap-tool-bar.cmp.vue'
-
 export default {
-  components: {
-    wapEditor,
-  },
+  components: {},
   data() {
-    return {
-      isEditing: false,
-    }
+    return {}
   },
   props: ['cmp'],
   created() {

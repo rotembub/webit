@@ -1,10 +1,5 @@
 <template>
-  <section
-    @click="isEditing = !isEditing"
-    class="wap-contact"
-    :class="cmp.theme"
-  >
-    <wap-editor v-if="isEditing" />
+  <section class="wap-contact" :class="cmp.theme">
     <h2>{{ cmp.info.title }}</h2>
     <p>{{ cmp.info.subtitle }}</p>
     <!-- <input type="email" placeholder="example@email.com" /> -->
@@ -13,15 +8,10 @@
 </template>
 
 <script>
-import wapEditor from './wap-tool-bar.cmp.vue'
 export default {
-  components: {
-    wapEditor,
-  },
+  components: {},
   data() {
-    return {
-      isEditing: false,
-    }
+    return {}
   },
   props: ['cmp'],
 }
