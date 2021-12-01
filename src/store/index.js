@@ -23,9 +23,14 @@ export default new Vuex.Store({
     },
   },
   actions: {
-    setCurrWap({commit}, {wapId}) {
-      const currWap = wapService.query();
-      commit({type: 'setCurrWap', wap: currWap});
+    async setCurrWap({commit}, {wapId}) {
+      try {
+        const currWap = await wapService.query();
+        console.log(currWap);
+        commit({type: 'setCurrWap', wap: currWap});
+      } catch (err) {
+        console.log(err);
+      }
     },
     async addCmp({commit}, {id}) {
       // const type = toy._id ? 'updateToy' : 'addToy';
