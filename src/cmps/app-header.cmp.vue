@@ -1,6 +1,6 @@
 <template>
   <section class="app-header">
-    <div>
+    <div class="main-logo">
       <img src="@/assets/Logo.png" alt="" />
     </div>
     <div class="nav-bar">
