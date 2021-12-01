@@ -1,7 +1,22 @@
 <template>
   <section class="wap-header" :class="cmp.theme">
-    <div v-for="(item, idx) in cmp.info" :key="'k' + idx">
-      <p>{{ item }}</p>
+    <!-- <div v-for="(item, idx) in cmp.info" :key="'k' + idx">
+      <p>{{ item }}</p> -->
+    <!-- </div> -->
+    <div class="">
+      <h2 v-if="cmp.info.logo && cmp.info.logo.type === 'txt'">
+        {{ cmp.info.logo.txt }}
+      </h2>
+      <img
+        v-if="cmp.info.logo && cmp.info.logo.type === 'img'"
+        :src="cmp.info.logo.url"
+        alt=""
+      />
+    </div>
+    <div>
+      <a v-for="(item, idx) in cmp.info.navBar" :key="'k' + idx" href=""
+        >{{ item }} |
+      </a>
     </div>
   </section>
 </template>
