@@ -26,15 +26,26 @@ export default new Vuex.Store({
     setWaps(state, { waps }) {
       state.waps = waps;
     },
+    updateWap(state, payload) {
+      const idx = state.waps.findIndex(wap => wap._id === payload.wap._id);
+      state.waps.splice(idx, 1, payload.wap);
+    },
     removeCmp(state, { id }) {
       const idx = state.currWap.cmps.findIndex(cmp => cmp._id === id);
       state.currWap.cmps.splice(idx, 1);
+    },
+    saveWap(state, { wap }) {
+      state.waps.push(wap);
+    },
+    removeWap(state, { wapId }) {
+      const idx = state.waps.findIndex(wap => wap._id === wapId)
+      state.waps.splice(idx, 1);
     }
   },
   actions: {
     async setCurrWap({ commit }, { wapId }) {
       try {
-        const currWap = await wapService.query();
+        const currWap = await wapService.getById(wapId);
         console.log(currWap);
         commit({ type: 'setCurrWap', wap: currWap });
       } catch (err) {
@@ -50,7 +61,6 @@ export default new Vuex.Store({
       }
     },
     async addCmp({ commit }, { id }) {
-      // const type = toy._id ? 'updateToy' : 'addToy';
       try {
         const cmp = await cmpService.getCmpById(id);
         console.log(cmp);
@@ -58,18 +68,29 @@ export default new Vuex.Store({
       } catch (err) {
         console.log('Store reports: failed to add cmp', err);
       }
-      // const savedCmp = await cmpsService.save(cmp);
-      // return savedCmp;
     },
     async removeCmp({ commit, state }, { id }) {
       commit({ type: 'removeCmp', id });
       try {
-        // const wapId = state.currWap._id;
-        // const wap = wapService.getById(wapId)
-
-        const updatedWap = wapService.save(state.currWap);
+        const updatedWap = await wapService.save(state.currWap);
       } catch (err) {
-        console.log('store reports: failed to save wap ', err);
+        console.log('store reports: failed to SAVE (during removeCMP) wap ', err);
+      }
+    },
+    async saveWap({ commit }, { wap }) {
+      try {
+        const savedWap = await wapService.save(wap)
+        commit({ type: 'saveWap', wap: savedWap })
+      } catch (err) {
+        console.log('store reports: failed to SAVE wap', err);
+      }
+    },
+    async removeWap({ commit }, { wapId }) {
+      try {
+        await wapService.remove(wapId)
+        commit({ type: 'removeWap', wapId })
+      } catch (err) {
+        console.log('store reports: failed to REMOVE wap', err);
       }
     }
   }
