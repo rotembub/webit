@@ -18,75 +18,41 @@
 </template>
 
 <script>
-import { Collapse, CollapseItem } from 'element-ui'
-import wapHeader from '../wap-cmps/wap-header.cmp.vue'
-import { cmpService } from '../../services/cmp.service.js'
+  import {Collapse, CollapseItem} from 'element-ui';
+  import wapHeader from '../wap-cmps/wap-header.cmp.vue';
+  import {cmpService} from '../../services/cmp.service.js';
 
-export default {
-  name: 'cmpPicker',
-  components: {
-    wapHeader,
-    Collapse,
-    CollapseItem,
-  },
-  data() {
-    return {
-      themes: null,
-    }
-  },
-  methods: {
-    async add(cmpId) {
-      console.log(cmpId)
-      try {
-        const cmp = await this.$store.dispatch({
-          type: 'addCmp',
-          id: cmpId,
-        })
-      } catch (err) {
-        console.log(err)
-      }
+  export default {
+    name: 'cmpPicker',
+    components: {
+      wapHeader,
+      Collapse,
+      CollapseItem,
     },
-    loadThemes(cmpType) {
-      const allThemes = cmpService.getThemesFor(cmpType)
-      this.themes = allThemes
-      console.log(this.themes)
-    },
-    end(event) {
-      console.log('end')
-      console.log(event)
-      // console.log(this.cmps);
-    },
-    removeItem(id) {
-      console.log(id)
+    data() {
+      return {
+        themes: null,
+      };
     },
     methods: {
       async add(cmpId) {
-        console.log(cmpId)
+        console.log(cmpId);
         try {
           const cmp = await this.$store.dispatch({
             type: 'addCmp',
             id: cmpId,
-          })
+          });
         } catch (err) {
-          console.log(err)
+          console.log(err);
         }
       },
       loadThemes(cmpType) {
-        const allThemes = cmpService.getThemesFor(cmpType)
-        this.themes = allThemes
-        console.log(this.themes)
+        const allThemes = cmpService.getThemesFor(cmpType);
+        this.themes = allThemes;
+        console.log(this.themes);
       },
     },
-    wap() {
-      console.log(this.$store.getters.getCurrWap)
-      return this.$store.getters.getCurrWap
-    },
-    showThemes() {
-      console.log('show')
-      return this.themes
-    },
-  },
-}
+  };
 </script>
 
 <style></style>
