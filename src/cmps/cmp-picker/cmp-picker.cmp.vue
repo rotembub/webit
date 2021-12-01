@@ -51,40 +51,6 @@ export default {
       this.themes = allThemes
       console.log(this.themes)
     },
-    end(event) {
-      console.log('end')
-      console.log(event)
-      // console.log(this.cmps);
-    },
-    removeItem(id) {
-      console.log(id)
-    },
-    methods: {
-      async add(cmpId) {
-        console.log(cmpId)
-        try {
-          const cmp = await this.$store.dispatch({
-            type: 'addCmp',
-            id: cmpId,
-          })
-        } catch (err) {
-          console.log(err)
-        }
-      },
-      loadThemes(cmpType) {
-        const allThemes = cmpService.getThemesFor(cmpType)
-        this.themes = allThemes
-        console.log(this.themes)
-      },
-    },
-    wap() {
-      console.log(this.$store.getters.getCurrWap)
-      return this.$store.getters.getCurrWap
-    },
-    showThemes() {
-      console.log('show')
-      return this.themes
-    },
   },
 }
 </script>
