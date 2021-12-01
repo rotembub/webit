@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import {wapService} from '../services/wap.service.js';
+import {cmpService} from '../services/cmp.service.js';
 import {wap} from '../services/wapJSON.js';
 
 Vue.use(Vuex);
@@ -34,10 +35,11 @@ export default new Vuex.Store({
     },
     async addCmp({commit}, {id}) {
       // const type = toy._id ? 'updateToy' : 'addToy';
-      const cmp = await wapService.getCmpById(id);
+      const cmp = await cmpService.getCmpById(id);
       console.log(cmp);
       // const savedCmp = await cmpsService.save(cmp);
       commit({type: 'addCmp', cmp});
+      //need to add it to the wap in the local storage, soo it will stay in refrash
       // return savedCmp;
     },
   },

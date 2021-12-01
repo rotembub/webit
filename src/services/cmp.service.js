@@ -1,6 +1,9 @@
-const CMP_KEY = 'cmp_DB'
+import {storageService} from './async-storage.service';
+import {utilService} from './util.service';
 
-export const wapService = {
+const CMP_KEY = 'cmp_DB';
+
+export const cmpService = {
   // add,
   query,
   remove,
@@ -10,57 +13,48 @@ export const wapService = {
   getThemesFor,
 };
 
-const gThemes = {
-    'wap-header': [
-      { type: 'theme-header-happy', cmpId: 'wc02' },
-      { type: 'theme-header-good' },
-    ],
-};
-
-
 // More ways to send query params:
 // return axios.get('api/wap/?id=1223&balance=13')
 // return axios.get('api/wap/?', {params: {id: 1223, balanse:13}})
 
-async function query(filterBy,) {
+async function query(filterBy) {
   // var queryStr = (!filterBy) ? '' : `?name=${filterBy.wapId}`
   // return httpService.get(`wap${queryStr}`)
   // return JSON_TEST1;
   // return gWap;
 
-
-  return storageService.query(KEY);
+  return storageService.query(CMP_KEY);
 }
 async function getById(id) {
-  return storageService.get(KEY, id);
+  return storageService.get(CMP_KEY, id);
 
   // return wap;
 }
 
-async function getCmpById(id) { // need to update to local storage search
-  // return storageService.get(KEY, id);
-  const cmp = gWap.cmps.find((currCmp) => currCmp.id === id);
+async function getCmpById(id) {
+  // need to update to local storage search
+  // return storageService.get(CMP_KEY, id);
+  const cmp = gCmps.find((currCmp) => currCmp.id === id);
   const copyCmp = JSON.parse(JSON.stringify(cmp));
   copyCmp.id = utilService.makeId(); //change id soo it will not duplicate
   return Promise.resolve(copyCmp);
-  // return wap;
 }
 
-async function getThemesFor(cmpType) {
+function getThemesFor(cmpType) {
   const themes = gThemes[cmpType];
   return themes;
 }
 
 async function save(wap) {
   const savedWap = wap._id
-    ? storageService.put(KEY, wap)
-    : storageService.post(KEY, wap);
+    ? storageService.put(CMP_KEY, wap)
+    : storageService.post(CMP_KEY, wap);
   return savedWap;
 }
 
 async function remove(wapId) {
   // return httpService.delete(`wap/${wapId}`)
-  return storageService.delete(KEY, wapId);
+  return storageService.delete(CMP_KEY, wapId);
 }
 
 async function getEmptyWap() {
@@ -78,12 +72,12 @@ async function getEmptyWap() {
 // This IIFE async functions for Dev purposes
 // It allows testing of real time updates (such as sockets) by listening to storage events
 (async () => {
-  var waps = await storageService.query(KEY);
+  var waps = await storageService.query(CMP_KEY);
 
   // Dev Helper: Listens to when localStorage changes in OTHER browser
   window.addEventListener('storage', async () => {
     console.log('Storage updated');
-    const freshWaps = await storageService.query(KEY);
+    const freshWaps = await storageService.query(CMP_KEY);
     if (freshWaps.length === waps.length + 1) {
       console.log('Wap Added - localStorage updated from another browser');
       socketService.emit(
@@ -94,3 +88,95 @@ async function getEmptyWap() {
     waps = freshWaps;
   });
 })();
+
+//themes
+const gThemes = {
+  'wap-header': [{type: 'theme-header-happy', cmpId: 'wc02'}],
+  'wap-gallery': [{type: 'theme-gallery-happy', cmpId: 'wc1asd122'}],
+};
+
+//cmps
+const gCmps = [
+  {
+    id: 'wc02',
+    type: 'wap-header',
+    info: {
+      title: '',
+      subtitle: '',
+      logo: {type: 'txt', txt: 'Utica'},
+      navBar: ['Work', 'About', 'Our Team', 'Press', 'Contact'],
+    },
+    theme: 'theme-header-happy',
+    style: {
+      background: 'url()',
+      font: 'Fontush',
+      color: 'red',
+    },
+  },
+  {
+    id: 'wc1asd122',
+    type: 'wap-gallery',
+    info: {
+      title: 'Utica is an architecture firm based in Copenhagen, Denmark.',
+      subtitle: '',
+      photos: [{url: 'building1.jpg', title: '', txt: ''}],
+    },
+    theme: 'theme-gallery-happy',
+    style: {
+      background: 'url()',
+      font: 'Fontush',
+      color: 'red',
+    },
+  },
+  {
+    id: 'w777777351dsas2',
+    type: 'wap-text',
+    info: {
+      title: 'Recent Work...',
+      subtitle:
+        'Our practice spans from environmental retrofits of existing buildings to the complete planning and design of new neighborhoods and public spaces. While our work is aesthetically diverse, our projects are linked by a focus on enhancing human relationships through',
+    },
+    theme: 'theme-text-happy',
+    style: {
+      background: 'url()',
+      font: 'Fontush',
+      color: 'red',
+    },
+  },
+  {
+    id: 'wc7744999',
+    type: 'wap-gallery',
+    info: {
+      title: '',
+      subtitle: '',
+      photos: [
+        {url: 'proj1.jpg', title: 'Project one', txt: ''},
+        {url: 'proj2.jpg', title: 'Project two', txt: ''},
+        {url: 'proj3.jpg', title: 'Project three', txt: ''},
+        {url: 'proj4.jpg', title: 'Project four', txt: ''},
+      ],
+    },
+    theme: 'theme-gallery-happy',
+    style: {
+      background: 'url()',
+      font: 'Fontush',
+      color: 'red',
+    },
+  },
+  {
+    id: 'w525121212251dsas2',
+    type: 'wap-contact',
+    info: {
+      title: "Let's Work Together!",
+      subtitle:
+        'We’re always looking for new opportunities and are comfortable working internationally. Please get in touch and one of our project managers will contact you about beginning the proposal process.',
+      btnTxt: 'Contact Us',
+    },
+    theme: 'theme-contact-happy',
+    style: {
+      background: 'url()',
+      font: 'Fontush',
+      color: 'red',
+    },
+  },
+];
