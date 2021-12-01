@@ -20,7 +20,7 @@
 <script>
 import { Collapse, CollapseItem } from 'element-ui'
 import wapHeader from '../wap-cmps/wap-header.cmp.vue'
-import { wapService } from '../../services/wap.service.js'
+import { cmpService } from '../../services/cmp.service.js'
 
 export default {
   name: 'cmpPicker',
@@ -59,13 +59,23 @@ export default {
     removeItem(id) {
       console.log(id)
     },
-  },
-  created() {
-    //   this.$store.dispatch({type: 'loadCmps'});
-  },
-  computed: {
-    cmps() {
-      return this.$store.getters.cmps
+    methods: {
+      async add(cmpId) {
+        console.log(cmpId)
+        try {
+          const cmp = await this.$store.dispatch({
+            type: 'addCmp',
+            id: cmpId,
+          })
+        } catch (err) {
+          console.log(err)
+        }
+      },
+      loadThemes(cmpType) {
+        const allThemes = cmpService.getThemesFor(cmpType)
+        this.themes = allThemes
+        console.log(this.themes)
+      },
     },
     wap() {
       console.log(this.$store.getters.getCurrWap)
