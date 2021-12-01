@@ -4,7 +4,7 @@
       <img src="@/assets/Logo.png" alt="" />
     </div>
     <div class="nav-bar">
-      <router-link to="/">Home</router-link> |
+      <router-link to="/">Home</router-link>
       <router-link to="/template">Templates</router-link>
     </div>
     <!-- <router-link to="/editor">Editor</router-link> | -->
@@ -12,8 +12,7 @@
 </template>
 
 <script>
-export default {};
+export default {}
 </script>
 
-<style>
-</style>
+<style></style>

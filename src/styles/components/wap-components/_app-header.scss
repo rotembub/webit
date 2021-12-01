@@ -1,18 +1,30 @@
-.app-header {
+.theme-header-happy {
     height: 10vh;
     display: flex;
     justify-content: space-between;
     // background-color: cornflowerblue;
     align-items: center;
+
+    .logo{
+        display: flex;
+        margin: 0;
+        color: #4b4d4e;
+        align-items: center;
+        font-family: poppins light;
+        font-size:1.3em;
+        padding-left: 20px;
+        h2{
+            margin: 0;
+        }
+        
+    }
     .nav-bar{
 
         a{
             text-decoration: none;
             font-size: larger;
             font-family: Arial, Helvetica, sans-serif ;
-            transition: 0.3s;
-            color: #74b9ff;
-            padding:3px;
+            color: #6b6e70;
             margin-right: 20px;
         }
         a:hover{
@@ -21,13 +33,4 @@
         }
     }
   
-    div{
-        max-width: 200px;
-        display: flex;
-        align-items: center;
-        img{
-            object-fit: fill;
-        }
-    }
-    
 }

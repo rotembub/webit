@@ -1,0 +1,15 @@
+.main-img-conainer{
+    display: flex;
+    flex-direction: column;
+
+    .title{
+        font-size:1.7em;
+        padding-left: 10px;
+        font-family: poppins;
+      
+    }
+        img{
+           min-height: 90vh;
+           object-fit:contain;
+       }
+}
