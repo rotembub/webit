@@ -1,6 +1,11 @@
 <template>
   <section class="element-tool-bar">
-    <el-button type="danger" icon="el-icon-delete" circle></el-button>
+    <el-button
+      type="danger"
+      icon="el-icon-delete"
+      @click="removeCmp"
+      circle
+    ></el-button>
     <el-button type="info" icon="el-icon-message" circle></el-button>
     <el-button
       @click="openEditorModal = !openEditorModal"
@@ -13,15 +18,21 @@
 </template>
 
 <script>
-import editorModal from './wap-editor-modal.cmp.vue'
+import editorModal from "./wap-editor-modal.cmp.vue";
 export default {
+  props: ["id"],
   components: { editorModal },
   data() {
     return {
       openEditorModal: false,
-    }
+    };
   },
-}
+  methods: {
+    removeCmp() {
+      this.$store.dispatch({ type: "removeCmp", id: this.id });
+    },
+  },
+};
 </script>
 
 <style></style>

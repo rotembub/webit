@@ -1,5 +1,5 @@
-import {storageService} from './async-storage.service';
-import {utilService} from './util.service';
+import { storageService } from './async-storage.service';
+import { utilService } from './util.service';
 
 const CMP_KEY = 'cmp_DB';
 
@@ -89,16 +89,16 @@ async function getEmptyWap() {
   });
 })();
 
-//themes
+//themes 
 const gThemes = {
-  'wap-header': [{type: 'theme-header-architecture', cmpId: 'wc02'}],
+  'wap-header': [{ type: 'theme-header-architecture', cmpId: 'wc02', name: "Headers" }],
   'wap-gallery': [
-    {type: 'theme-gallery-architecture', cmpId: 'wc1asd122'},
-    {type: 'theme-gallery-architecture-v2', cmpId: 'wc7744999'},
+    { type: 'theme-gallery-architecture', cmpId: 'wc1asd122', name: "Galleries" },
+    { type: 'theme-gallery-architecture-v2', cmpId: 'wc7744999' },
   ],
-  'wap-text': [{type: 'theme-text-architecture', cmpId: 'w777777351dsas2'}],
+  'wap-text': [{ type: 'theme-text-architecture', cmpId: 'w777777351dsas2' }],
   'wap-contact': [
-    {type: 'theme-contact-architecture', cmpId: 'w525121212251dsas2'},
+    { type: 'theme-contact-architecture', cmpId: 'w525121212251dsas2' },
   ],
 };
 
@@ -110,7 +110,7 @@ const gCmps = [
     info: {
       title: '',
       subtitle: '',
-      logo: {type: 'txt', txt: 'Utica'},
+      logo: { type: 'txt', txt: 'Utica' },
       navBar: ['Work', 'About', 'Our Team', 'Press', 'Contact'],
     },
     theme: 'theme-header-architecture',
@@ -126,7 +126,7 @@ const gCmps = [
     info: {
       title: 'Utica is an architecture firm based in Copenhagen, Denmark.',
       subtitle: '',
-      photos: [{url: 'building1.jpg', title: '', txt: ''}],
+      photos: [{ url: 'building1.jpg', title: '', txt: '' }],
     },
     theme: 'theme-gallery-architecture',
     style: {
@@ -157,10 +157,10 @@ const gCmps = [
       title: '',
       subtitle: '',
       photos: [
-        {url: 'proj1.jpg', title: 'Project one', txt: ''},
-        {url: 'proj2.jpg', title: 'Project two', txt: ''},
-        {url: 'proj3.jpg', title: 'Project three', txt: ''},
-        {url: 'proj4.jpg', title: 'Project four', txt: ''},
+        { url: 'proj1.jpg', title: 'Project one', txt: '' },
+        { url: 'proj2.jpg', title: 'Project two', txt: '' },
+        { url: 'proj3.jpg', title: 'Project three', txt: '' },
+        { url: 'proj4.jpg', title: 'Project four', txt: '' },
       ],
     },
     theme: 'theme-gallery-architecture-v2',
