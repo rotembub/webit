@@ -3,6 +3,8 @@
     <!-- <component v-for="cmp in wap.cmps" :cmp="cmp" :is="cmp.type" :key="cmp.id">
     </component> -->
     <wap-dynamic v-for="cmp in wap.cmps" :key="cmp.id" :cmp="cmp">
+      <slot>
+      </slot>
     </wap-dynamic>
   </section>
 </template>
