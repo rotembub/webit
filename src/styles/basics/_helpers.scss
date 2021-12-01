@@ -8,3 +8,13 @@
 .ratio-card { @include aspect-ratio(100, 80); }
 
 .ratio-poster { @include aspect-ratio(100, 150); }
+
+
+
+.flex{
+    display: flex;
+}
+.column{
+    display: flex;
+    flex-direction: column;
+}

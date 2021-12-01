@@ -1,11 +1,11 @@
 <template>
   <section class="app-header">
-    <div>
+    <div class="main-logo">
       <img src="@/assets/Logo.png" alt="" />
     </div>
     <div class="nav-bar">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/template">Templates</router-link>|
+      <router-link to="/">Home</router-link>
+      <router-link to="/template">Templates</router-link>
       <router-link to="/editor">Editor</router-link>
     </div>
     <!-- <router-link to="/editor">Editor</router-link> | -->
@@ -13,11 +13,11 @@
 </template>
 
 <script>
-  export default {
-    created() {
-      this.$store.dispatch({type: 'setCurrWap'});
-    },
-  };
+export default {
+  created() {
+    this.$store.dispatch({ type: 'setCurrWap' })
+  },
+}
 </script>
 
 <style></style>
