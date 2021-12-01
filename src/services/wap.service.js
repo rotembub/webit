@@ -204,8 +204,6 @@ var gWap = {
 //   ],
 //   "isPublic": true
 // }
-<<<<<<< HEAD
-=======
 
 const JSON_TEST1 = {
   _id: '5e28391631467774',
@@ -217,10 +215,8 @@ const JSON_TEST1 = {
     username: 'Hekro Special',
   },
   usersData: {
-    contacts: [
-      { email: 'user@user.com', msg: 'Please send me stuff', at: 123 },
-    ],
-    signups: [{ email: 'user@user.com', at: 123 }],
+    contacts: [{email: 'user@user.com', msg: 'Please send me stuff', at: 123}],
+    signups: [{email: 'user@user.com', at: 123}],
   },
 
   cmps: [
@@ -230,7 +226,7 @@ const JSON_TEST1 = {
       info: {
         title: '',
         subtitle: '',
-        logo: { type: 'txt', txt: 'Utica' },
+        logo: {type: 'txt', txt: 'Utica'},
         navBar: ['Work', 'About', 'Our Team', 'Press', 'Contact'],
       },
       theme: 'theme-header-architecture',
@@ -246,7 +242,7 @@ const JSON_TEST1 = {
       info: {
         title: 'Utica is an architecture firm based in Copenhagen, Denmark.',
         subtitle: '',
-        photos: [{ url: 'building1.jpg', title: '', txt: '' }],
+        photos: [{url: 'building1.jpg', title: '', txt: ''}],
       },
       theme: 'theme-gallery-architecture',
       style: {
@@ -277,10 +273,10 @@ const JSON_TEST1 = {
         title: '',
         subtitle: '',
         photos: [
-          { url: 'proj1.jpg', title: 'Project one', txt: '' },
-          { url: 'proj2.jpg', title: 'Project two', txt: '' },
-          { url: 'proj3.jpg', title: 'Project three', txt: '' },
-          { url: 'proj4.jpg', title: 'Project four', txt: '' },
+          {url: 'proj1.jpg', title: 'Project one', txt: ''},
+          {url: 'proj2.jpg', title: 'Project two', txt: ''},
+          {url: 'proj3.jpg', title: 'Project three', txt: ''},
+          {url: 'proj4.jpg', title: 'Project four', txt: ''},
         ],
       },
       theme: 'theme-gallery-architecture-v2',
@@ -322,5 +318,4 @@ const JSON_TEST1 = {
     // },
   ],
   isPublic: true,
-}
->>>>>>> 6f382b604c675e87d52b9c834442f243d5484fae
+};

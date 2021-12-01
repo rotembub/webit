@@ -1,9 +1,4 @@
 <template>
-<<<<<<< HEAD
-  <section class="wap-header" :class="cmp.theme" @click="test">
-    <div v-for="(item, idx) in cmp.info" :key="'k' + idx">
-      <p>{{ item }}</p>
-=======
   <section class="wap-header" :class="cmp.theme">
     <!-- <div v-for="(item, idx) in cmp.info" :key="'k' + idx">
       <p>{{ item }}</p> -->
@@ -20,9 +15,8 @@
     </div>
     <div class="nav-bar">
       <a v-for="(item, idx) in cmp.info.navBar" :key="'k' + idx" href=""
-        >{{ item }} 
+        >{{ item }}
       </a>
->>>>>>> 6f382b604c675e87d52b9c834442f243d5484fae
     </div>
   </section>
 </template>
