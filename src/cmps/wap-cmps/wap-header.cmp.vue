@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import wapEditor from '../wap-cmps/wap-editor-cmp.vue'
+import wapEditor from './wap-tool-bar.cmp.vue'
 
 export default {
   components: {
