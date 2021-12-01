@@ -4,9 +4,12 @@
       <div
         v-if="themes"
         v-for="theme in themes"
-        @click.self.stop="add(theme.cmpId)"
         :key="theme.type"
+        @click.self.stop="add(theme.cmpId)"
       >
+        <!-- <img
+          :src="require('@/assets/cmp-picker-preview/' + theme.type + '.png')"
+        /> -->
         {{ theme.type }}
       </div>
     </el-collapse-item>
