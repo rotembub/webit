@@ -47,7 +47,7 @@ export default {
       }
     },
     loadThemes(cmpType) {
-      const allThemes = wapService.getThemesFor(cmpType)
+      const allThemes = cmpService.getThemesFor(cmpType)
       this.themes = allThemes
       console.log(this.themes)
     },
