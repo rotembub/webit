@@ -91,8 +91,15 @@ async function getEmptyWap() {
 
 //themes
 const gThemes = {
-  'wap-header': [{type: 'theme-header-happy', cmpId: 'wc02'}],
-  'wap-gallery': [{type: 'theme-gallery-happy', cmpId: 'wc1asd122'}],
+  'wap-header': [{type: 'theme-header-architecture', cmpId: 'wc02'}],
+  'wap-gallery': [
+    {type: 'theme-gallery-architecture', cmpId: 'wc1asd122'},
+    {type: 'theme-gallery-architecture-v2', cmpId: 'wc7744999'},
+  ],
+  'wap-text': [{type: 'theme-text-architecture', cmpId: 'w777777351dsas2'}],
+  'wap-contact': [
+    {type: 'theme-contact-architecture', cmpId: 'w525121212251dsas2'},
+  ],
 };
 
 //cmps
@@ -106,7 +113,7 @@ const gCmps = [
       logo: {type: 'txt', txt: 'Utica'},
       navBar: ['Work', 'About', 'Our Team', 'Press', 'Contact'],
     },
-    theme: 'theme-header-happy',
+    theme: 'theme-header-architecture',
     style: {
       background: 'url()',
       font: 'Fontush',
@@ -121,7 +128,7 @@ const gCmps = [
       subtitle: '',
       photos: [{url: 'building1.jpg', title: '', txt: ''}],
     },
-    theme: 'theme-gallery-happy',
+    theme: 'theme-gallery-architecture',
     style: {
       background: 'url()',
       font: 'Fontush',
@@ -136,7 +143,7 @@ const gCmps = [
       subtitle:
         'Our practice spans from environmental retrofits of existing buildings to the complete planning and design of new neighborhoods and public spaces. While our work is aesthetically diverse, our projects are linked by a focus on enhancing human relationships through',
     },
-    theme: 'theme-text-happy',
+    theme: 'theme-text-architecture',
     style: {
       background: 'url()',
       font: 'Fontush',
@@ -156,7 +163,7 @@ const gCmps = [
         {url: 'proj4.jpg', title: 'Project four', txt: ''},
       ],
     },
-    theme: 'theme-gallery-happy',
+    theme: 'theme-gallery-architecture-v2',
     style: {
       background: 'url()',
       font: 'Fontush',
@@ -172,7 +179,7 @@ const gCmps = [
         'We’re always looking for new opportunities and are comfortable working internationally. Please get in touch and one of our project managers will contact you about beginning the proposal process.',
       btnTxt: 'Contact Us',
     },
-    theme: 'theme-contact-happy',
+    theme: 'theme-contact-architecture',
     style: {
       background: 'url()',
       font: 'Fontush',

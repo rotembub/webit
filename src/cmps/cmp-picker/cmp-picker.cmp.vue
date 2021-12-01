@@ -1,9 +1,41 @@
 <template>
   <el-collapse class="cmp-picker-collapse">
+    <el-collapse-item title="Headers" @click.native="loadThemes('wap-header')">
+      <div
+        v-if="themes"
+        v-for="theme in themes"
+        @click.self.stop="add(theme.cmpId)"
+        :key="theme.type"
+      >
+        {{ theme.type }}
+      </div>
+    </el-collapse-item>
     <el-collapse-item
-      title="Headers"
-      @click.native="loadThemes('wap-header')"
-      name="1"
+      title="Galleries"
+      @click.native="loadThemes('wap-gallery')"
+    >
+      <div
+        v-if="themes"
+        v-for="theme in themes"
+        @click.self.stop="add(theme.cmpId)"
+        :key="theme.type"
+      >
+        {{ theme.type }}
+      </div>
+    </el-collapse-item>
+    <el-collapse-item title="Text" @click.native="loadThemes('wap-text')">
+      <div
+        v-if="themes"
+        v-for="theme in themes"
+        @click.self.stop="add(theme.cmpId)"
+        :key="theme.type"
+      >
+        {{ theme.type }}
+      </div>
+    </el-collapse-item>
+    <el-collapse-item
+      title="Contacts"
+      @click.native="loadThemes('wap-contact')"
     >
       <div
         v-if="themes"
