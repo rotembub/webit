@@ -1,8 +1,8 @@
-import { storageService } from './async-storage.service';
-import { utilService } from './util.service';
+import {storageService} from './async-storage.service';
+import {utilService} from './util.service';
 
 const KEY = 'wap_DB';
-const CMP_KEY = 'cmp_DB'
+const CMP_KEY = 'cmp_DB';
 
 export const wapService = {
   // add,
@@ -19,7 +19,9 @@ export const wapService = {
 
 async function query(filterBy) {
   try {
-    return await storageService.query(KEY) || wap_architecture;
+    const wap = await storageService.query(KEY);
+    if (!wap || !wap.length) return wap_architecture;
+    return wap;
   } catch (err) {
     console.log('couldnt find Waps', err);
   }
@@ -48,7 +50,7 @@ async function remove(wapId) {
   try {
     return await storageService.delete(KEY, wapId);
   } catch (err) {
-    console.log('failed to delete wap', err)
+    console.log('failed to delete wap', err);
   }
 }
 
@@ -62,10 +64,10 @@ async function getEmptyWap() {
       username: '',
     },
     usersData: {
-      contacts: [{ email: '', msg: '', at: null }],
-      signups: [{ email: '', at: null }],
+      contacts: [{email: '', msg: '', at: null}],
+      signups: [{email: '', at: null}],
     },
-    cmps: []
+    cmps: [],
   });
 }
 
@@ -92,8 +94,6 @@ async function getEmptyWap() {
 // *. add <select> for theme (themes are hard coded inservice.getThemesFor(wapCmp.type))    -- classes?
 //make hardcoded cmps array
 
-
-
 const wap_architecture = {
   _id: '5e28391631467774',
   name: 'TEST1',
@@ -104,8 +104,8 @@ const wap_architecture = {
     username: 'Hekro Special',
   },
   usersData: {
-    contacts: [{ email: 'user@user.com', msg: 'Please send me stuff', at: 123 }],
-    signups: [{ email: 'user@user.com', at: 123 }],
+    contacts: [{email: 'user@user.com', msg: 'Please send me stuff', at: 123}],
+    signups: [{email: 'user@user.com', at: 123}],
   },
 
   cmps: [
@@ -115,7 +115,7 @@ const wap_architecture = {
       info: {
         title: '',
         subtitle: '',
-        logo: { type: 'txt', txt: 'Utica' },
+        logo: {type: 'txt', txt: 'Utica'},
         navBar: ['Work', 'About', 'Our Team', 'Press', 'Contact'],
       },
       theme: 'theme-header-architecture',
@@ -131,7 +131,7 @@ const wap_architecture = {
       info: {
         title: 'Utica is an architecture firm based in Copenhagen, Denmark.',
         subtitle: '',
-        photos: [{ url: 'building1.jpg', title: '', txt: '' }],
+        photos: [{url: 'building1.jpg', title: '', txt: ''}],
       },
       theme: 'theme-gallery-architecture',
       style: {
@@ -162,10 +162,10 @@ const wap_architecture = {
         title: '',
         subtitle: '',
         photos: [
-          { url: 'proj1.jpg', title: 'Project one', txt: '' },
-          { url: 'proj2.jpg', title: 'Project two', txt: '' },
-          { url: 'proj3.jpg', title: 'Project three', txt: '' },
-          { url: 'proj4.jpg', title: 'Project four', txt: '' },
+          {url: 'proj1.jpg', title: 'Project one', txt: ''},
+          {url: 'proj2.jpg', title: 'Project two', txt: ''},
+          {url: 'proj3.jpg', title: 'Project three', txt: ''},
+          {url: 'proj4.jpg', title: 'Project four', txt: ''},
         ],
       },
       theme: 'theme-gallery-architecture-v2',
@@ -195,7 +195,6 @@ const wap_architecture = {
   isPublic: true,
 };
 
-
 const CMPS_DATA = [
   {
     id: 'wc02',
@@ -203,7 +202,7 @@ const CMPS_DATA = [
     info: {
       title: '',
       subtitle: '',
-      logo: { type: 'txt', txt: 'Utica' },
+      logo: {type: 'txt', txt: 'Utica'},
       navBar: ['Work', 'About', 'Our Team', 'Press', 'Contact'],
     },
     theme: 'theme-header-happy',
@@ -219,7 +218,7 @@ const CMPS_DATA = [
     info: {
       title: 'Utica is an architecture firm based in Copenhagen, Denmark.',
       subtitle: '',
-      photos: [{ url: 'building1.jpg', title: '', txt: '' }],
+      photos: [{url: 'building1.jpg', title: '', txt: ''}],
     },
     theme: 'theme-gallery-happy',
     style: {
@@ -250,10 +249,10 @@ const CMPS_DATA = [
       title: '',
       subtitle: '',
       photos: [
-        { url: 'proj1.jpg', title: 'Project one', txt: '' },
-        { url: 'proj2.jpg', title: 'Project two', txt: '' },
-        { url: 'proj3.jpg', title: 'Project three', txt: '' },
-        { url: 'proj4.jpg', title: 'Project four', txt: '' },
+        {url: 'proj1.jpg', title: 'Project one', txt: ''},
+        {url: 'proj2.jpg', title: 'Project two', txt: ''},
+        {url: 'proj3.jpg', title: 'Project three', txt: ''},
+        {url: 'proj4.jpg', title: 'Project four', txt: ''},
       ],
     },
     theme: 'theme-gallery-happy',
@@ -279,4 +278,4 @@ const CMPS_DATA = [
       color: 'red',
     },
   },
-]
+];
