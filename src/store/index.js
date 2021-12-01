@@ -32,7 +32,7 @@ export default new Vuex.Store({
       state.waps.splice(idx, 1, payload.wap);
     },
     removeCmp(state, { id }) {
-      const idx = state.currWap.cmps.findIndex(cmp => cmp._id === id);
+      const idx = state.currWap.cmps.findIndex(cmp => cmp.id === id);
       state.currWap.cmps.splice(idx, 1);
     },
     saveWap(state, { wap }) {
