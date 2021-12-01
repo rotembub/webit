@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-// import { wapService } from '../services/wap.service.js'
+import { wapService } from '../services/wap.service.js'
+
 
 Vue.use(Vuex)
 
@@ -19,7 +20,9 @@ export default new Vuex.Store({
     }
   },
   actions: {
-    setCurrWap({ commit }, { wap }) {
+    setCurrWap({ commit }, { wapId }) {
+      const currWap = wapService.query();
+      commit({ type: 'setCurrWap', wap: currWap });
     }
   },
   modules: {
