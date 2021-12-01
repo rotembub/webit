@@ -15,6 +15,7 @@
 // wap-chat
 // wap-contact-us => wapService
 // wap-navbar
+// wap-schedule
 
 // Edit Mode
 // wap-header-edit  / wap-header => prop: isEditMode
@@ -32,7 +33,7 @@
   // *. User select WapCmp from <select>
   // *. WapCmp is added at the bottom
   // *. Let the user <select> After which WapCmp it should be added
-  // *. add <select> for theme (themes are hard coded inservice.getThemesFor(wapCmp.type))
+  // *. add <select> for theme (themes are hard coded inservice.getThemesFor(wapCmp.type))    -- classes? 
   // Save button
 // Homepage
   // render 3 waps
@@ -40,8 +41,7 @@
   // reset button?
 
 // 'publish/61a64327ff6ed2cf5e14eaa8'
-// if(this.$route.match('/').includes('publish')) this.isEdit = false
-// else this.isEdit = true
+
 
 export var wap = {
 	"_id": "5e28393890dd7201a06d4e44",
