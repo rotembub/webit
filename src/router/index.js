@@ -19,7 +19,7 @@ const routes = [
     component: templatesPage
   },
   {
-    path: '/editor',
+    path: '/editor/:wapId?',
     name: 'editor',
     component: editorPage
   },

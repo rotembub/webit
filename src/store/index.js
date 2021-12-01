@@ -18,6 +18,7 @@ export default new Vuex.Store({
   },
   mutations: {
     setCurrWap(state, { wap }) {
+      console.log('hi', wap)
       state.currWap = wap;
     },
     addCmp(state, { cmp }) {
@@ -44,12 +45,15 @@ export default new Vuex.Store({
   },
   actions: {
     async setCurrWap({ commit }, { wapId }) {
+      console.log(wapId, 'ID')
       try {
         const currWap = await wapService.getById(wapId);
         console.log(currWap);
         commit({ type: 'setCurrWap', wap: currWap });
+        console.log(currWap, 'back in the action')
+        return currWap;
       } catch (err) {
-        console.log(err);
+        console.log('Ahalan', err);
       }
     },
     async loadWaps({ commit }) {
