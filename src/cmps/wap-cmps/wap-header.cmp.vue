@@ -3,7 +3,7 @@
     <!-- <div v-for="(item, idx) in cmp.info" :key="'k' + idx">
       <p>{{ item }}</p> -->
     <!-- </div> -->
-    <div class="">
+    <div class="logo">
       <h2 v-if="cmp.info.logo && cmp.info.logo.type === 'txt'">
         {{ cmp.info.logo.txt }}
       </h2>
@@ -13,7 +13,7 @@
         alt=""
       />
     </div>
-    <div>
+    <div class="nav-bar">
       <a v-for="(item, idx) in cmp.info.navBar" :key="'k' + idx" href=""
         >{{ item }} |
       </a>

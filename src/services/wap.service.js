@@ -184,112 +184,118 @@ var gWap = {
 // }
 
 const JSON_TEST1 = {
-  "_id": "5e28391631467774",
-  "name": "TEST1",
-  "imgUrl": "http://res.cloudinary.com/webify/image/upload/v1580021948/coffe_yi0yzf.png",
-  "createdBy": {
-    "_id": "5e26e0b718a0891d4c995527",
-    "username": "Hekro Special"
+  _id: '5e28391631467774',
+  name: 'TEST1',
+  imgUrl:
+    'http://res.cloudinary.com/webify/image/upload/v1580021948/coffe_yi0yzf.png',
+  createdBy: {
+    _id: '5e26e0b718a0891d4c995527',
+    username: 'Hekro Special',
   },
-  "usersData": {
-    "contacts": [{ "email": "user@user.com", "msg": "Please send me stuff", "at": 123 }],
-    "signups": [{ "email": "user@user.com", "at": 123 }]
+  usersData: {
+    contacts: [
+      { email: 'user@user.com', msg: 'Please send me stuff', at: 123 },
+    ],
+    signups: [{ email: 'user@user.com', at: 123 }],
   },
 
-  "cmps": [
+  cmps: [
     {
-      "id": "wc02",
-      "type": "wap-header",
-      "info": {
-        "title": "",
-        "substitle": "",
-        "logo": { "type": "txt", "txt": "something" },
-        "navBar": ["Menu", "Gallery", "About", "Contact"]
+      id: 'wc02',
+      type: 'wap-header',
+      info: {
+        title: '',
+        subtitle: '',
+        logo: { type: 'txt', txt: 'Utica' },
+        navBar: ['Work', 'About', 'Our Team', 'Press', 'Contact'],
       },
-      "theme": "theme-header-happy",
-      "style": {
-        "background": "url()",
-        "font": "Fontush",
-        "color": "red",
-      }
+      theme: 'theme-header-architecture',
+      style: {
+        background: 'url()',
+        font: 'Fontush',
+        color: 'red',
+      },
     },
     {
-      "id": "wc1asd122",
-      "type": "wap-gallery",
-      "info": {
-        "title": "HairDresser Baluta",
-        "substitle": "Your Hair is !(Who you Are)",
-        "photos": [{ "url": "blalba.com", "title": "i like images", "txt": "ready for melt down" }]
+      id: 'wc1asd122',
+      type: 'wap-gallery',
+      info: {
+        title: 'Utica is an architecture firm based in Copenhagen, Denmark.',
+        subtitle: '',
+        photos: [{ url: 'building1.jpg', title: '', txt: '' }],
       },
-      "theme": "theme-gallery-happy",
-      "style": {
-        "background": "url()",
-        "font": "Fontush",
-        "color": "red",
-      }
+      theme: 'theme-gallery-architecture',
+      style: {
+        background: 'url()',
+        font: 'Fontush',
+        color: 'red',
+      },
     },
     {
-      "id": "w777777351dsas2",
-      "type": "wap-text",
-      "info": {
-        "title": "The best in beauty care",
-        "substitle": "a week with our product and you would feel like a new person",
+      id: 'w777777351dsas2',
+      type: 'wap-text',
+      info: {
+        title: 'Recent Work...',
+        subtitle:
+          'Our practice spans from environmental retrofits of existing buildings to the complete planning and design of new neighborhoods and public spaces. While our work is aesthetically diverse, our projects are linked by a focus on enhancing human relationships through',
       },
-      "theme": "theme-text-happy",
-      "style": {
-        "background": "url()",
-        "font": "Fontush",
-        "color": "red",
-      }
+      theme: 'theme-text-architecture',
+      style: {
+        background: 'url()',
+        font: 'Fontush',
+        color: 'red',
+      },
     },
     {
-      "id": "wc7744999",
-      "type": "wap-gallery",
-      "info": {
-        "title": "Our recent works",
-        "substitle": "",
-        "photos": [
-          { "url": "blalba1.com", "title": "goof", "txt": "" },
-          { "url": "blalba2.com", "title": "something", "txt": "" },
-          { "url": "blalba3.com", "title": "geton with it", "txt": "" },
-          { "url": "blalba4.com", "title": "delvin", "txt": "" },
-        ]
+      id: 'wc7744999',
+      type: 'wap-gallery',
+      info: {
+        title: '',
+        subtitle: '',
+        photos: [
+          { url: 'proj1.jpg', title: 'Project one', txt: '' },
+          { url: 'proj2.jpg', title: 'Project two', txt: '' },
+          { url: 'proj3.jpg', title: 'Project three', txt: '' },
+          { url: 'proj4.jpg', title: 'Project four', txt: '' },
+        ],
       },
-      "theme": "theme-gallery-happy",
-      "style": {
-        "background": "url()",
-        "font": "Fontush",
-        "color": "red",
-      }
+      theme: 'theme-gallery-architecture-v2',
+      style: {
+        background: 'url()',
+        font: 'Fontush',
+        color: 'red',
+      },
     },
     {
-      "id": "w525121212251dsas2",
-      "type": "wap-contact",
-      "info": {
-        "title": "Contact us!",
-        "substitle": "We would lose to hear your opinion!",
+      id: 'w525121212251dsas2',
+      type: 'wap-contact',
+      info: {
+        title: "Let's Work Together!",
+        subtitle:
+          'We’re always looking for new opportunities and are comfortable working internationally. Please get in touch and one of our project managers will contact you about beginning the proposal process.',
+        btnTxt: 'Contact Us',
       },
-      "theme": "theme-contact-happy",
-      "style": {
-        "background": "url()",
-        "font": "Fontush",
-        "color": "red",
-      }
-    },
-    {
-      "id": "wc12312",
-      "type": "wap-footer",
-      "info": {
-        "logo": "url",
-        "contactDetails": ["tel: 09-29292929", "email: contactus@gmail.com"]
+      theme: 'theme-contact-architecture',
+      style: {
+        background: 'url()',
+        font: 'Fontush',
+        color: 'red',
       },
-      "theme": "theme-footer-happy",
-      "style": {
-        "background": "url()",
-        "font": "Fontush",
-        "color": "red",
-      }
     },
+    // {
+    // 	"id": "wc12312",
+    // 	"type": "wap-footer",
+    // 	"info": {
+    // 		"logo": "url",
+    // 		"contactDetails": ["tel: 09-29292929", "email: contactus@gmail.com"]
+    // 	},
+    // 	"theme": "theme-footer-happy",
+    // 	"style": {
+    // 		"background": "url()",
+    // 		"font": "Fontush",
+    // 		"color": "red",
+    // 	}
+    // },
   ],
-  "isPublic": true
+  isPublic: true,
 }

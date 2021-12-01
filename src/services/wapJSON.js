@@ -288,7 +288,7 @@ const JSON_TEST1 = {
         logo: { type: 'txt', txt: 'Utica' },
         navBar: ['Work', 'About', 'Our Team', 'Press', 'Contact'],
       },
-      theme: 'theme-header-happy',
+      theme: 'theme-header-architecture',
       style: {
         background: 'url()',
         font: 'Fontush',
@@ -303,7 +303,7 @@ const JSON_TEST1 = {
         subtitle: '',
         photos: [{ url: 'building1.jpg', title: '', txt: '' }],
       },
-      theme: 'theme-gallery-happy',
+      theme: 'theme-gallery-architecture',
       style: {
         background: 'url()',
         font: 'Fontush',
@@ -318,7 +318,7 @@ const JSON_TEST1 = {
         subtitle:
           'Our practice spans from environmental retrofits of existing buildings to the complete planning and design of new neighborhoods and public spaces. While our work is aesthetically diverse, our projects are linked by a focus on enhancing human relationships through',
       },
-      theme: 'theme-text-happy',
+      theme: 'theme-text-architecture',
       style: {
         background: 'url()',
         font: 'Fontush',
@@ -338,7 +338,7 @@ const JSON_TEST1 = {
           { url: 'proj4.jpg', title: 'Project four', txt: '' },
         ],
       },
-      theme: 'theme-gallery-happy',
+      theme: 'theme-gallery-architecture-v2',
       style: {
         background: 'url()',
         font: 'Fontush',
@@ -354,7 +354,7 @@ const JSON_TEST1 = {
           'We’re always looking for new opportunities and are comfortable working internationally. Please get in touch and one of our project managers will contact you about beginning the proposal process.',
         btnTxt: 'Contact Us',
       },
-      theme: 'theme-contact-happy',
+      theme: 'theme-contact-architecture',
       style: {
         background: 'url()',
         font: 'Fontush',
