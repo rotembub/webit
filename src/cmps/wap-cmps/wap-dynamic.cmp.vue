@@ -16,7 +16,7 @@
   import wapSignup from './wap-signup.cmp.vue';
   import wapChat from './wap-chat.cmp.vue';
   import wapContact from './wap-contact.cmp.vue';
-  import wapNavBar from './wap-nav-bar.cmp.vue';
+  // import wapNavBar from './wap-nav-bar.cmp.vue';
   import wapSchedule from './wap-schedule.cmp.vue';
   import wapText from './wap-text.cmp.vue';
   import wapCard from './wap-card.cmp.vue';
@@ -40,7 +40,7 @@
       wapSignup,
       wapChat,
       wapContact,
-      wapNavBar,
+      // wapNavBar,
       wapSchedule,
       wapText,
       wapCard,

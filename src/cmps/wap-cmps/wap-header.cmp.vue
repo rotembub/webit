@@ -65,3 +65,8 @@
 "substitle": "Your Hair is !(Who you Are)", "btn": { "label": "Schedule Today!",
 "link": "#wc03" } }, "theme": "theme-header-happy", "style": { "background":
 "url()", "font": "Fontush", "color": "red", }
+
+
+
+logo      navbar
+txt/img      As

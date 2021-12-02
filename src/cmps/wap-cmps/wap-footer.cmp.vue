@@ -39,3 +39,7 @@ export default {
 
 <style>
 </style>
+
+
+txt? nav? logo?
+ h3   a  img/txt
