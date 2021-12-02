@@ -507,7 +507,7 @@ const wap_fylo = {
         photos: [{ url: 'UPDATE IMAGE.jpg', title: 'All your files in one secure location, accessible anywhere.', txt: 'Fylo stores all your most important files in one secure location. Access them wherever you need, share and collaborate with friends family, and co-workers' }],
         buttons: ['Get Started']
       },
-      theme: 'theme-gallery-fylo1',
+      theme: 'theme-gallery-fylo-single',
       style: {
         background: 'url()',
         font: 'Fontush',
@@ -544,7 +544,7 @@ const wap_fylo = {
         link: 'See how Fylo works',
         photos: [{ url: 'UPDATE IMAGE.jpg', title: '', txt: '' }],
       },
-      theme: 'theme-gallery-fylo2',
+      theme: 'theme-gallery-fylo-single2',
       style: {
         background: 'url()',
         font: 'Fontush',

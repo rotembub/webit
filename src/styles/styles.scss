@@ -8,6 +8,7 @@
 @import 'basics/helpers';
 @import 'basics/base';
 @import 'basics/layout';
+@import 'basics/variables';
 
 // COMPONENTS
 @import 'components/main-header';
@@ -16,11 +17,11 @@
 
 // WAP COMPS
 
-@import 'components/wap-components/theme-header-architecture';
-@import 'components/wap-components/theme-contact-architecture';
-@import 'components/wap-components/theme-gallery-architecture-v2';
-@import 'components/wap-components/theme-gallery-architecture';
-@import 'components/wap-components/theme-text-architecture';
+@import 'components/wap-components//architecture/theme-header-architecture';
+@import 'components/wap-components//architecture/theme-contact-architecture';
+@import 'components/wap-components//architecture/theme-gallery-architecture-v2';
+@import 'components/wap-components//architecture/theme-gallery-architecture';
+@import 'components/wap-components//architecture/theme-text-architecture';
 
 // EDITOR
 @import 'components/wap-builder';
