@@ -7,14 +7,14 @@ export const storageService = {
 }
 
 function query(entityType) {
-    console.log(entityType, 'storage')
+    // console.log(entityType, 'storage')
     var entities = JSON.parse(localStorage.getItem(entityType)) || []
     return Promise.resolve(entities)
 }
 
 
 function get(entityType, entityId) {
-    console.log(entityType, entityId, 'getInStorage')
+    // console.log(entityType, entityId, 'getInStorage')
     return query(entityType)
         .then(entities => entities.find(entity => entity._id === entityId))
 }

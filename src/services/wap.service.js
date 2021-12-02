@@ -11,6 +11,8 @@ export const wapService = {
   save,
   getById,
   getEmptyWap,
+  removeCmp,
+  addCmp,
 }
 
 // More ways to send query params:
@@ -21,12 +23,13 @@ export const wapService = {
 
 function createWaps() {
   const waps = localStorage.getItem(KEY)
+  console.log('waps found in storage:', waps)
   if (!waps || !waps.length)
     localStorage.setItem(KEY, JSON.stringify([wap_architecture]))
 }
 
 async function query(filterBy) {
-  console.log('query in services')
+  // console.log('query in services')
   try {
     const wap = await storageService.query(KEY)
     if (!wap || !wap.length) return wap_architecture
@@ -39,11 +42,34 @@ async function getById(id) {
   console.log(id)
   // if (!id) return getEmptyWap();
   try {
-    console.log('i am still here')
-    return await storageService.get(KEY, id)
+    // console.log('i am still here')
+    const foundWap = await storageService.get(KEY, id)
+    return foundWap
+    // var copiedWap = JSON.parse(JSON.stringify(foundWap))
+    // delete copiedWap._id   // when working with mongo be sure to delete the ID entirely before send it to the DB
+    // const newWap = save(copiedWap)
+    // return newWap;
   } catch (err) {
     console.log('couldnt get wap by ID', err)
   }
+}
+
+// prototype:
+async function removeCmp(wapId, cmpId) {
+  var wap = await getById(wapId)
+  console.log('wap found:', wap)
+  console.log('removing cmp id:', cmpId)
+  const idx = wap.cmps.findIndex(cmp => cmp.id === cmpId)
+  wap.cmps.splice(idx, 1)
+  return await save(wap)
+  // return wap;
+}
+// prototype:
+async function addCmp(wapId, cmp) {
+  console.log('adding cmp with ID:', cmp.id)
+  var wap = await getById(wapId)
+  wap.cmps.push(cmp)
+  return await save(wap)
 }
 
 async function save(wap) {
@@ -66,9 +92,25 @@ async function remove(wapId) {
   }
 }
 
+// async function getEmptyWap() {
+//   return Promise.resolve({
+//     _id: utilService.makeId(),
+//     name: '',
+//     imgUrl: '',
+//     createdBy: {
+//       _id: '',
+//       username: '',
+//     },
+//     usersData: {
+//       contacts: [{ email: '', msg: '', at: null }],
+//       signups: [{ email: '', at: null }],
+//     },
+//     cmps: [],
+//   });
+// }
+
 async function getEmptyWap() {
-  return Promise.resolve({
-    _id: utilService.makeId(),
+  const newWap = {
     name: '',
     imgUrl: '',
     createdBy: {
@@ -80,7 +122,8 @@ async function getEmptyWap() {
       signups: [{ email: '', at: null }],
     },
     cmps: [],
-  })
+  }
+  return await save(newWap)
 }
 
 // This IIFE async functions for Dev purposes

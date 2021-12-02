@@ -17,7 +17,7 @@ import wapToolBar from './wap-cmps/wap-tool-bar.cmp.vue'
 export default {
   computed: {
     wap() {
-      console.log(this.$store.getters.getCurrWap)
+      // console.log(this.$store.getters.getCurrWap);
       return this.$store.getters.getCurrWap
     },
   },
