@@ -16,12 +16,20 @@
 @import 'components/templates-page';
 
 // WAP COMPS
-
+// archi
 @import 'components/wap-components//architecture/theme-header-architecture';
 @import 'components/wap-components//architecture/theme-contact-architecture';
 @import 'components/wap-components//architecture/theme-gallery-architecture-v2';
 @import 'components/wap-components//architecture/theme-gallery-architecture';
 @import 'components/wap-components//architecture/theme-text-architecture';
+//fylo
+@import 'components/wap-components/fylo/theme-footer-fylo';
+@import 'components/wap-components/fylo/theme-gallery-fylo-single2';
+@import 'components/wap-components/fylo/theme-header-fylo';
+@import 'components/wap-components/fylo/theme-review-fylo';
+@import 'components/wap-components/fylo/theme-signup-fylo';
+@import 'components/wap-components/fylo/theme-gallery-fylo-single.scss';
+@import 'components/wap-components/fylo/theme-card-fylo.scss';
 
 // EDITOR
 @import 'components/wap-builder';

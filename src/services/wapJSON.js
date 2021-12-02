@@ -466,7 +466,7 @@ const CMPS_DATA = [
 
 //////////////////////////////////////////////////////////////////////////////////////////////
 const wap_fylo = {
-  _id: '1d212dsd12',
+  _id: '999994123sd12',
   name: 'fylo',
   imgUrl:
     '',
@@ -538,7 +538,7 @@ const wap_fylo = {
       id: 'wc575752',
       type: 'wap-gallery',
       info: {
-        title: "Stay productive, wherever you are",
+        title: ["Stay productive, wherever you are"],
         subtitle: ['Never let location be an issue when accessing your files. Fylo has you covered for all of your file storage needs', 'Securely share files and folders with friends, family and colleagues for live collaboration. No email attachments required'
         ],
         // link: 'See how Fylo works',
