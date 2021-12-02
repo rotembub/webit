@@ -19,6 +19,8 @@
   import wapNavBar from './wap-nav-bar.cmp.vue';
   import wapSchedule from './wap-schedule.cmp.vue';
   import wapText from './wap-text.cmp.vue';
+  import wapCard from './wap-card.cmp.vue';
+  import wapReview from './wap-review.cmp.vue';
 
   export default {
     props: ['cmp'],
@@ -41,6 +43,8 @@
       wapNavBar,
       wapSchedule,
       wapText,
+      wapCard,
+      wapReview,
     },
   };
 </script>

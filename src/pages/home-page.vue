@@ -1,7 +1,7 @@
 <template>
-  <header class="main-header">
-    <div></div>
-  </header>
+  <div>
+    <h1>Your only minutes from your next dream site</h1>
+  </div>
 </template>
 
 <script>

@@ -9,7 +9,7 @@
     padding: 0 10%;
 
     background-color: $Dark-Blue-intro-and-email-sign-up-bg;
-    background-image: url(../images/bg-curvy-mobile.svg);
+    background-image: url(~@/assets/wap-imgs/fylo-imgs/bg-curvy-mobile.svg);
     background-repeat: no-repeat;
     background-size: 100%;
     background-position: bottom;
@@ -56,7 +56,7 @@
 
 @media only screen and (min-width : 768px) {
     .theme-gallery-fylo-single{
-        background-image: url(../images/bg-curvy-desktop.svg);
+        background-image: url(~@/assets/wap-imgs/fylo-imgs/bg-curvy-desktop.svg);
         img{
             margin-top: 10em;
         }

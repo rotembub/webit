@@ -1,8 +1,12 @@
 <template>
-  <section class="wap-gallery" :style="getCurrStyle" :class="cmp.theme">
-    <div class="gallery-title">
-      <h1 v-if="cmp.info.title">{{ cmp.info.title }}</h1>
-      <p v-if="cmp.info.subtitle">{{ cmp.info.subtitle }}</p>
+  <section class="wap-gallery" :class="cmp.theme">
+    <div class="gallery-title" v-if="cmp.info.title">
+      <h1 v-for="item in cmp.info.title" :key="'k' + item">
+        {{ item }}
+      </h1>
+      <template v-if="cmp.info.subtitle">
+        <p v-for="item in cmp.info.subtitle" :key="'k' + item">{{ item }}</p>
+      </template>
     </div>
     <div
       class="photo-card"
@@ -10,8 +14,10 @@
       :key="'p' + idx"
     >
       <img :src="require('@/assets/wap-imgs/' + photo.url)" alt="" />
+
       <h3 v-if="photo.title">{{ photo.title }}</h3>
       <p v-if="photo.txt">{{ photo.txt }}</p>
+      <a v-if="photo.link" href="">{{ photo.link }}</a>
     </div>
     <button v-if="cmp.info.button">{{ cmp.info.button }}</button>
   </section>
