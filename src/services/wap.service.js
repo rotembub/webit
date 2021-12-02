@@ -1,8 +1,8 @@
-import { storageService } from './async-storage.service';
-import { utilService } from './util.service';
+import { storageService } from './async-storage.service'
+import { utilService } from './util.service'
 
-const KEY = 'wap_DB';
-const CMP_KEY = 'cmp_DB';
+const KEY = 'wap_DB'
+const CMP_KEY = 'cmp_DB'
 
 export const wapService = {
   // add,
@@ -11,42 +11,38 @@ export const wapService = {
   save,
   getById,
   getEmptyWap,
-};
+}
 
 // More ways to send query params:
 // return axios.get('api/wap/?id=1223&balance=13')
 // return axios.get('api/wap/?', {params: {id: 1223, balanse:13}})
 
-
 // Create Test Data:
-
-
-
-
 
 function createWaps() {
   const waps = localStorage.getItem(KEY)
-  if (!waps || !waps.length) localStorage.setItem(KEY, JSON.stringify([wap_architecture]))
+  if (!waps || !waps.length)
+    localStorage.setItem(KEY, JSON.stringify([wap_architecture]))
 }
 
 async function query(filterBy) {
   console.log('query in services')
   try {
-    const wap = await storageService.query(KEY);
-    if (!wap || !wap.length) return wap_architecture;
-    return wap;
+    const wap = await storageService.query(KEY)
+    if (!wap || !wap.length) return wap_architecture
+    return wap
   } catch (err) {
-    console.log('couldnt find Waps', err);
+    console.log('couldnt find Waps', err)
   }
 }
 async function getById(id) {
-  console.log(id);
+  console.log(id)
   // if (!id) return getEmptyWap();
   try {
     console.log('i am still here')
-    return await storageService.get(KEY, id);
+    return await storageService.get(KEY, id)
   } catch (err) {
-    console.log('couldnt get wap by ID', err);
+    console.log('couldnt get wap by ID', err)
   }
 }
 
@@ -54,19 +50,19 @@ async function save(wap) {
   try {
     const savedWap = wap._id
       ? await storageService.put(KEY, wap)
-      : await storageService.post(KEY, wap);
-    return savedWap;
+      : await storageService.post(KEY, wap)
+    return savedWap
   } catch (err) {
-    console.log('failed to save wap');
+    console.log('failed to save wap')
   }
 }
 
 async function remove(wapId) {
   // return httpService.delete(`wap/${wapId}`)
   try {
-    return await storageService.delete(KEY, wapId);
+    return await storageService.delete(KEY, wapId)
   } catch (err) {
-    console.log('failed to delete wap', err);
+    console.log('failed to delete wap', err)
   }
 }
 
@@ -84,28 +80,28 @@ async function getEmptyWap() {
       signups: [{ email: '', at: null }],
     },
     cmps: [],
-  });
+  })
 }
 
 // This IIFE async functions for Dev purposes
 // It allows testing of real time updates (such as sockets) by listening to storage events
-(async () => {
-  var waps = await storageService.query(KEY);
+;(async () => {
+  var waps = await storageService.query(KEY)
 
   // Dev Helper: Listens to when localStorage changes in OTHER browser
   window.addEventListener('storage', async () => {
-    console.log('Storage updated');
-    const freshWaps = await storageService.query(KEY);
+    console.log('Storage updated')
+    const freshWaps = await storageService.query(KEY)
     if (freshWaps.length === waps.length + 1) {
-      console.log('Wap Added - localStorage updated from another browser');
+      console.log('Wap Added - localStorage updated from another browser')
       socketService.emit(
         SOCKET_EVENT_REVIEW_ADDED,
         freshWaps[freshWaps.length - 1]
-      );
+      )
     }
-    waps = freshWaps;
-  });
-})();
+    waps = freshWaps
+  })
+})()
 
 // *. add <select> for theme (themes are hard coded inservice.getThemesFor(wapCmp.type))    -- classes?
 //make hardcoded cmps array
@@ -120,7 +116,9 @@ const wap_architecture = {
     username: 'Hekro Special',
   },
   usersData: {
-    contacts: [{ email: 'user@user.com', msg: 'Please send me stuff', at: 123 }],
+    contacts: [
+      { email: 'user@user.com', msg: 'Please send me stuff', at: 123 },
+    ],
     signups: [{ email: 'user@user.com', at: 123 }],
   },
 
@@ -136,9 +134,9 @@ const wap_architecture = {
       },
       theme: 'theme-header-architecture',
       style: {
-        background: 'url()',
-        font: 'Fontush',
-        color: 'red',
+        backgroundColor: '#74b9ff',
+        font: '16px',
+        color: '#a29bfe',
       },
     },
     {
@@ -209,7 +207,7 @@ const wap_architecture = {
     },
   ],
   isPublic: true,
-};
+}
 
 const CMPS_DATA = [
   {
@@ -294,6 +292,6 @@ const CMPS_DATA = [
       color: 'red',
     },
   },
-];
+]
 
-createWaps();
+createWaps()

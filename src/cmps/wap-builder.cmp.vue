@@ -12,13 +12,13 @@
 
 <script>
 // import wapHeader from "./wap-cmps/wap-header.cmp.vue";
-import wapDynamic from "../cmps/wap-cmps/wap-dynamic.cmp.vue";
-import wapToolBar from "./wap-cmps/wap-tool-bar.cmp.vue";
+import wapDynamic from '../cmps/wap-cmps/wap-dynamic.cmp.vue'
+import wapToolBar from './wap-cmps/wap-tool-bar.cmp.vue'
 export default {
   computed: {
     wap() {
-      console.log(this.$store.getters.getCurrWap);
-      return this.$store.getters.getCurrWap;
+      console.log(this.$store.getters.getCurrWap)
+      return this.$store.getters.getCurrWap
     },
   },
   components: {
@@ -26,7 +26,7 @@ export default {
     wapToolBar,
     wapDynamic,
   },
-};
+}
 </script>
 
 <style></style>

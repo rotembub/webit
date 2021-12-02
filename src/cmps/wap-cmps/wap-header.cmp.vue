@@ -1,10 +1,11 @@
 <template>
-  <section class="wap-header" :class="cmp.theme">
+  <section :style="cmpStyle" class="wap-header" :class="cmp.theme">
     <!-- <div v-for="(item, idx) in cmp.info" :key="'k' + idx">
       <p>{{ item }}</p> -->
     <!-- </div> -->
+    <!-- :style="{ fontSize: cmpStyle.fontSize }" -->
     <div class="logo">
-      <h2 v-if="cmp.info.logo && cmp.info.logo.type === 'txt'">
+      <h2 contenteditable v-if="cmp.info.logo && cmp.info.logo.type === 'txt'">
         {{ cmp.info.logo.txt }}
       </h2>
       <img
@@ -25,11 +26,18 @@
 export default {
   components: {},
   data() {
-    return {}
+    return {
+      cmpStyle: {
+        color: this.cmp.style.color,
+        fontSize: this.cmp.style.fontSize + 'px',
+        backgroundColor: this.cmp.style.backgroundColor,
+      },
+    }
   },
   props: ['cmp'],
   created() {
     console.log('IM HERE', this.cmp)
+    console.log('IM HERE!!!', this.cmpStyle)
   },
   methods: {
     test() {

@@ -8,7 +8,7 @@
     ></el-button>
     <el-button type="info" icon="el-icon-message" circle></el-button>
     <el-button
-      @click="openEditorModal = !openEditorModal"
+      @click.stop="openEditorModal = !openEditorModal"
       type="primary"
       icon="el-icon-edit"
       circle
@@ -18,21 +18,21 @@
 </template>
 
 <script>
-import editorModal from "./wap-editor-modal.cmp.vue";
+import editorModal from './wap-editor-modal.cmp.vue'
 export default {
-  props: ["id"],
+  props: ['id'],
   components: { editorModal },
   data() {
     return {
       openEditorModal: false,
-    };
+    }
   },
   methods: {
     removeCmp() {
-      this.$store.dispatch({ type: "removeCmp", id: this.id });
+      this.$store.dispatch({ type: 'removeCmp', id: this.id })
     },
   },
-};
+}
 </script>
 
 <style></style>

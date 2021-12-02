@@ -1,7 +1,7 @@
-import { storageService } from './async-storage.service';
-import { utilService } from './util.service';
+import { storageService } from './async-storage.service'
+import { utilService } from './util.service'
 
-const CMP_KEY = 'cmp_DB';
+const CMP_KEY = 'cmp_DB'
 
 export const cmpService = {
   // add,
@@ -11,7 +11,7 @@ export const cmpService = {
   getCmpById,
   getEmptyWap,
   getThemesFor,
-};
+}
 
 // More ways to send query params:
 // return axios.get('api/wap/?id=1223&balance=13')
@@ -23,10 +23,10 @@ async function query(filterBy) {
   // return JSON_TEST1;
   // return gWap;
 
-  return storageService.query(CMP_KEY);
+  return storageService.query(CMP_KEY)
 }
 async function getById(id) {
-  return storageService.get(CMP_KEY, id);
+  return storageService.get(CMP_KEY, id)
 
   // return wap;
 }
@@ -34,27 +34,28 @@ async function getById(id) {
 async function getCmpById(id) {
   // need to update to local storage search
   // return storageService.get(CMP_KEY, id);
-  const cmp = gCmps.find((currCmp) => currCmp.id === id);
-  const copyCmp = JSON.parse(JSON.stringify(cmp));
-  copyCmp.id = utilService.makeId(); //change id soo it will not duplicate
-  return Promise.resolve(copyCmp);
+  const cmp = gCmps.find(currCmp => currCmp.id === id)
+  const copyCmp = JSON.parse(JSON.stringify(cmp))
+  copyCmp.id = utilService.makeId() //change id soo it will not duplicate
+  return Promise.resolve(copyCmp)
 }
 
 function getThemesFor(cmpType) {
-  const themes = gThemes[cmpType];
-  return themes;
+  const themes = gThemes[cmpType]
+  console.log('themes', themes)
+  return themes
 }
 
 async function save(wap) {
   const savedWap = wap._id
     ? storageService.put(CMP_KEY, wap)
-    : storageService.post(CMP_KEY, wap);
-  return savedWap;
+    : storageService.post(CMP_KEY, wap)
+  return savedWap
 }
 
 async function remove(wapId) {
   // return httpService.delete(`wap/${wapId}`)
-  return storageService.delete(CMP_KEY, wapId);
+  return storageService.delete(CMP_KEY, wapId)
 }
 
 async function getEmptyWap() {
@@ -66,41 +67,47 @@ async function getEmptyWap() {
     // createdAt: new Date(Date.now()).toLocaleString(),
     // inStock: true,
     // reviews: [],
-  });
+  })
 }
 
 // This IIFE async functions for Dev purposes
 // It allows testing of real time updates (such as sockets) by listening to storage events
-(async () => {
-  var waps = await storageService.query(CMP_KEY);
+;(async () => {
+  var waps = await storageService.query(CMP_KEY)
 
   // Dev Helper: Listens to when localStorage changes in OTHER browser
   window.addEventListener('storage', async () => {
-    console.log('Storage updated');
-    const freshWaps = await storageService.query(CMP_KEY);
+    console.log('Storage updated')
+    const freshWaps = await storageService.query(CMP_KEY)
     if (freshWaps.length === waps.length + 1) {
-      console.log('Wap Added - localStorage updated from another browser');
+      console.log('Wap Added - localStorage updated from another browser')
       socketService.emit(
         SOCKET_EVENT_REVIEW_ADDED,
         freshWaps[freshWaps.length - 1]
-      );
+      )
     }
-    waps = freshWaps;
-  });
-})();
+    waps = freshWaps
+  })
+})()
 
-//themes 
+//themes
 const gThemes = {
-  'wap-header': [{ type: 'theme-header-architecture', cmpId: 'wc02', name: "Headers" }],
+  'wap-header': [
+    { type: 'theme-header-architecture', cmpId: 'wc02', name: 'Headers' },
+  ],
   'wap-gallery': [
-    { type: 'theme-gallery-architecture', cmpId: 'wc1asd122', name: "Galleries" },
+    {
+      type: 'theme-gallery-architecture',
+      cmpId: 'wc1asd122',
+      name: 'Galleries',
+    },
     { type: 'theme-gallery-architecture-v2', cmpId: 'wc7744999' },
   ],
   'wap-text': [{ type: 'theme-text-architecture', cmpId: 'w777777351dsas2' }],
   'wap-contact': [
     { type: 'theme-contact-architecture', cmpId: 'w525121212251dsas2' },
   ],
-};
+}
 
 //cmps
 const gCmps = [
@@ -115,9 +122,9 @@ const gCmps = [
     },
     theme: 'theme-header-architecture',
     style: {
-      background: 'url()',
-      font: 'Fontush',
-      color: 'red',
+      backgroundColor: '#74b9ff',
+      fontSize: '16',
+      color: '#a29bfe',
     },
   },
   {
@@ -186,4 +193,4 @@ const gCmps = [
       color: 'red',
     },
   },
-];
+]
