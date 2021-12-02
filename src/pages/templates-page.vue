@@ -1,6 +1,6 @@
 <template>
   <section class="templates-page">
-    <h1>TEMPLATES PAGE</h1>
+    <h1>Here are some of our best</h1>
     <template-list v-if="waps" :waps="waps"></template-list>
   </section>
 </template>
