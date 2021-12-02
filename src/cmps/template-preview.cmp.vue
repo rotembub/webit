@@ -7,12 +7,11 @@
 
 <script>
 export default {
-  props: ["wap"],
+  props: ['wap'],
   created() {
-    console.log("created preview");
+    console.log('created preview')
   },
-};
+}
 </script>
 
-<style>
-</style>
+<style></style>

@@ -1,5 +1,5 @@
 <template>
-  <section :style="cmpStyle" class="wap-header" :class="cmp.theme">
+  <section :style="getCurrStyle" class="wap-header" :class="cmp.theme">
     <!-- <div v-for="(item, idx) in cmp.info" :key="'k' + idx">
       <p>{{ item }}</p> -->
     <!-- </div> -->
@@ -27,16 +27,29 @@ export default {
   components: {},
   data() {
     return {
-      cmpStyle: {
-        color: this.cmp.style.color,
-        fontSize: this.cmp.style.fontSize + 'px',
-        backgroundColor: this.cmp.style.backgroundColor,
-      },
+      cmpStyle: null,
+
+      // {
+      //   color: this.cmp.style.color,
+      //   fontSize: this.cmp.style.fontSize + 'px',
+      //   backgroundColor: this.cmp.style.backgroundColor,
+      // },
     }
   },
   props: ['cmp'],
   created() {
     // console.log('IM HERE', this.cmp)
+  },
+  computed: {
+    getCurrStyle() {
+      console.log('IM HERE', this.cmp.style)
+      const style = {
+        color: this.cmp.style.color,
+        fontSize: this.cmp.style.fontSize + 'px',
+        backgroundColor: this.cmp.style.backgroundColor,
+      }
+      return style
+    },
   },
   methods: {
     test() {
