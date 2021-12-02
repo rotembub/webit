@@ -13,6 +13,7 @@
       <h3 v-if="photo.title">{{ photo.title }}</h3>
       <p v-if="photo.txt">{{ photo.txt }}</p>
     </div>
+    <button v-if="cmp.info.button">{{ cmp.info.button }}</button>
   </section>
 </template>
 
