@@ -122,9 +122,9 @@ const gCmps = [
     },
     theme: 'theme-header-architecture',
     style: {
-      backgroundColor: '#74b9ff',
+      backgroundColor: '',
       fontSize: '16',
-      color: '#a29bfe',
+      color: '',
     },
   },
   {
