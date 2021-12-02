@@ -72,7 +72,7 @@ async function getEmptyWap() {
 
 // This IIFE async functions for Dev purposes
 // It allows testing of real time updates (such as sockets) by listening to storage events
-;(async () => {
+; (async () => {
   var waps = await storageService.query(CMP_KEY)
 
   // Dev Helper: Listens to when localStorage changes in OTHER browser
@@ -131,7 +131,7 @@ const gCmps = [
     id: 'wc1asd122',
     type: 'wap-gallery',
     info: {
-      title: 'Utica is an architecture firm based in Copenhagen, Denmark.',
+      title: ['Utica is an architecture firm based in Copenhagen, Denmark.'],
       subtitle: '',
       photos: [{ url: 'building1.jpg', title: '', txt: '' }],
     },
@@ -181,9 +181,9 @@ const gCmps = [
     id: 'w525121212251dsas2',
     type: 'wap-contact',
     info: {
-      title: "Let's Work Together!",
-      subtitle:
-        'We’re always looking for new opportunities and are comfortable working internationally. Please get in touch and one of our project managers will contact you about beginning the proposal process.',
+      title: ["Let's Work Together!"],
+      subtitle:[
+        'We’re always looking for new opportunities and are comfortable working internationally. Please get in touch and one of our project managers will contact you about beginning the proposal process.'],
       btnTxt: 'Contact Us',
     },
     theme: 'theme-contact-architecture',
