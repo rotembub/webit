@@ -88,7 +88,7 @@ export default {
   },
   methods: {
     async add(cmpId) {
-      console.log(cmpId);
+      // console.log(cmpId);
       try {
         const cmp = await this.$store.dispatch({
           type: "addCmp",
@@ -101,10 +101,10 @@ export default {
     loadThemes(cmpType) {
       const allThemes = cmpService.getThemesFor(cmpType);
       this.themes = allThemes;
-      console.log(this.themes);
+      // console.log(this.themes);
     },
     getProperTxt(type) {
-      console.log(type);
+      // console.log(type);
       const textToShow = type.substring(4);
       return textToShow.charAt(0).toUpperCase() + textToShow.slice(1);
     },

@@ -29,7 +29,7 @@ export default {
   },
   props: ['cmp'],
   created() {
-    console.log('IM HERE', this.cmp)
+    // console.log('IM HERE', this.cmp)
   },
   methods: {
     test() {

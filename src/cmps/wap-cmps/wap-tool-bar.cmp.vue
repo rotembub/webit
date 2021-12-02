@@ -29,7 +29,9 @@ export default {
   },
   methods: {
     removeCmp() {
-      this.$store.dispatch({ type: "removeCmp", id: this.id });
+      // this.$store.dispatch({ type: "removeCmp", id: this.id });
+
+      this.$store.dispatch({ type: "removeCmpFromWap", cmpId: this.id });
     },
   },
 };

@@ -18,7 +18,7 @@ export default {
   },
   created() {
     const id = this.wapId;
-    console.log(id);
+    // console.log(id);
     if (!id) this.$store.dispatch({ type: "getEmptyWap" });
     else this.$store.dispatch({ type: "setCurrWap", wapId: id });
   },

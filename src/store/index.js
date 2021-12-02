@@ -15,10 +15,13 @@ export default new Vuex.Store({
     getCurrWap(state) {
       return state.currWap;
     },
+    getWaps(state) {
+      return state.waps;
+    }
   },
   mutations: {
     setCurrWap(state, { wap }) {
-      console.log('hi', wap)
+      console.log('Store currWap:', wap)
       state.currWap = wap;
     },
     addCmp(state, { cmp }) {
@@ -26,6 +29,7 @@ export default new Vuex.Store({
     },
     setWaps(state, { waps }) {
       state.waps = waps;
+      console.log(state.waps)
     },
     updateWap(state, payload) {
       const idx = state.waps.findIndex(wap => wap._id === payload.wap._id);
@@ -41,7 +45,7 @@ export default new Vuex.Store({
     removeWap(state, { wapId }) {
       const idx = state.waps.findIndex(wap => wap._id === wapId)
       state.waps.splice(idx, 1);
-    }
+    },
   },
   actions: {
     async setCurrWap({ commit }, { wapId }) {
@@ -63,23 +67,29 @@ export default new Vuex.Store({
         console.log('Store reports failed to Load Waps');
       }
     },
-    async addCmp({ commit }, { id }) {
+    async addCmp({ commit, state }, { id }) {
       try {
         const cmp = await cmpService.getCmpById(id);
         console.log(cmp);
-        commit({ type: 'addCmp', cmp });
+        // commit({ type: 'addCmp', cmp });
+
+
+        const wapId = state.currWap._id
+        const updatedWap = await wapService.addCmp(wapId, cmp)
+        commit({ type: 'setCurrWap', wap: updatedWap });
+
       } catch (err) {
         console.log('Store reports: failed to add cmp', err);
       }
     },
-    async removeCmp({ commit, state }, { id }) {
-      commit({ type: 'removeCmp', id });
-      try {
-        const updatedWap = await wapService.save(state.currWap);
-      } catch (err) {
-        console.log('store reports: failed to SAVE (during removeCMP) wap ', err);
-      }
-    },
+    // async removeCmp({ commit, state }, { id }) {
+    //   commit({ type: 'removeCmp', id });
+    //   try {
+    //     const updatedWap = await wapService.save(state.currWap);
+    //   } catch (err) {
+    //     console.log('store reports: failed to SAVE (during removeCMP) wap ', err);
+    //   }
+    // },
     async saveWap({ commit }, { wap }) {
       try {
         const savedWap = await wapService.save(wap)
@@ -103,6 +113,15 @@ export default new Vuex.Store({
         commit({ type: 'setCurrWap', wap })
       } catch (err) {
         console.log('failed to get empty way', wap)
+      }
+    },
+    async removeCmpFromWap({ commit, state }, { cmpId }) {
+      try {
+        const wapId = state.currWap._id
+        const updatedWap = await wapService.removeCmp(wapId, cmpId)
+        commit({ type: 'setCurrWap', wap: updatedWap })
+      } catch (err) {
+        console.log('failed to remove CMP fron WAP', err)
       }
     }
   }
