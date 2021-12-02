@@ -1,5 +1,5 @@
 <template>
-  <div class="wap-editor-modal">
+  <div @click.stop="" class="wap-editor-modal">
     <template v-if="isImg">
       <span>
         Width :
@@ -26,24 +26,24 @@
     <span>
       BackgroundColor :
       <input
-        @input="updateCmp(currWap.cmps[0].style.backgroundColor)"
-        v-model="currWap.cmps[0].style.backgroundColor"
+        @input="updateCmp(currWap.cmps[currCmpIdx].style.backgroundColor)"
+        v-model="currWap.cmps[currCmpIdx].style.backgroundColor"
         type="color"
       />
     </span>
     <span>
       Text Color :
       <input
-        @input="updateCmp(currWap.cmps[0].style.color)"
-        v-model="currWap.cmps[0].style.color"
+        @input="updateCmp(currWap.cmps[currCmpIdx].style.color)"
+        v-model="currWap.cmps[currCmpIdx].style.color"
         type="color"
       />
     </span>
     <span>
       Font size :
       <input
-        @input="updateCmp(currWap.cmps[0].style.fontSize)"
-        v-model="currWap.cmps[0].style.fontSize"
+        @input="updateCmp(currWap.cmps[currCmpIdx].style.fontSize)"
+        v-model="currWap.cmps[currCmpIdx].style.fontSize"
         type="range"
       />
     </span>
@@ -51,52 +51,57 @@
 </template>
 
 <script>
-import { ColorPicker } from "element-ui";
-export default {
-  props: ["id"],
-  data() {
-    return {
-      // style{
+  import {ColorPicker} from 'element-ui';
+  export default {
+    props: ['id'],
+    data() {
+      return {
+        // style{
 
-      // }
-      // fontSize
-      // color,
-      // bgc:
+        // }
+        // fontSize
+        // color,
+        // bgc:
 
-      isText: false,
-      isImg: false,
-      currWap: null,
-    };
-  },
-  created() {
-    this.currWap = this.$store.getters.getCurrWap;
-    console.log(this.currWap, "created");
-  },
-  methods: {
-    async updateCmp(value) {
-      console.log(value, "updateCmp");
-      console.log(this.currWap, "currWap");
-      try {
-        const updatedWap = await this.$store.dispatch({
-          type: "updateWapStyle",
-          currWap: this.currWap,
-          cmpId: this.id, // WATCHOUT
-        });
-        // console.log(updatedWap);
-        // this.currWap = updatedWap;
-        // this.$emit("updated", updatedWap);
-      } catch (err) {
-        console.log(err);
-      }
+        isText: false,
+        isImg: false,
+        currWap: null,
+        currCmpIdx: null,
+      };
     },
-  },
-  computed: {
-    setWap() {
-      console.log(this.$store.getters.getCurrWap, "store wap");
-      return this.$store.getters.getCurrWap;
+    created() {
+      this.currWap = this.$store.getters.getCurrWap;
+      console.log(this.currWap, 'created');
+      this.currCmpIdx = this.currWap.cmps.findIndex(
+        (cmp) => cmp.id === this.id
+      );
     },
-  },
-};
+    methods: {
+      async updateCmp(value) {
+        console.log(this.currCmpIdx);
+        console.log(value, 'updateCmp');
+        console.log(this.currWap, 'currWap');
+        try {
+          const updatedWap = await this.$store.dispatch({
+            type: 'updateWapStyle',
+            currWap: this.currWap,
+            cmpId: this.id, // WATCHOUT
+          });
+          // console.log(updatedWap);
+          // this.currWap = updatedWap;
+          // this.$emit("updated", updatedWap);
+        } catch (err) {
+          console.log(err);
+        }
+      },
+    },
+    computed: {
+      setWap() {
+        console.log(this.$store.getters.getCurrWap, 'store wap');
+        return this.$store.getters.getCurrWap;
+      },
+    },
+  };
 </script>
 
 <style></style>

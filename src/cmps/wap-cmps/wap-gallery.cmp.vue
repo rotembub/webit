@@ -28,7 +28,21 @@
 <script>
 export default {
   props: ['cmp'],
+  computed: {
+    getCurrStyle() {
+      console.log('IM HERE Gallery', this.cmp.style)
+      console.log('color', this.cmp.style.color)
+      const style = {
+        color: this.cmp.style.color,
+        fontSize: this.cmp.style.fontSize + 'px', //fix fontSize not change
+        backgroundColor: this.cmp.style.backgroundColor,
+      }
+      return style
+    },
+  },
 }
 </script>
 
 <style></style>
+
+imgs only title? img/s

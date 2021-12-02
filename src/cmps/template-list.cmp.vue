@@ -1,12 +1,13 @@
 <template>
   <section v-if="waps" class="template-list">
-    <h2>LIST</h2>
-
+    <template-preview :wap="{_id:''}" :imgUrl="'add-new.png'"> </template-preview>
     <template-preview
-      v-for="wap in waps"
+      v-for="(wap, idx) in waps"
       :key="wap._id"
       :wap="wap"
+      :imgUrl="urls[idx]"
     ></template-preview>
+    <!-- watchout for the imgUrls these are fake i made just for show till we gonna have proper templates -->
   </section>
 </template>
 
@@ -20,6 +21,24 @@ export default {
   },
   created() {
     console.log("created list");
+  },
+  data() {
+    return {
+      urls: [
+        "1.jpg",
+        "2.jpg",
+        "3.jpg",
+        "4.png",
+        "5.jpg",
+        "6.jpg",
+        "7.png",
+        "8.png",
+        "9.jpg",
+        "10.jpg",
+        "11.png",
+        "12.png",
+      ],
+    };
   },
   computed: {
     // getWaps() {

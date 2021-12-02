@@ -4,7 +4,7 @@
       <p>{{ item }}</p> -->
     <!-- </div> -->
     <!-- :style="{ fontSize: cmpStyle.fontSize }" -->
-    <div class="logo">
+    <div :style="getCurrStyle" class="logo">
       <h2 contenteditable v-if="cmp.info.logo && cmp.info.logo.type === 'txt'">
         {{ cmp.info.logo.txt }}
       </h2>
@@ -23,40 +23,41 @@
 </template>
 
 <script>
-export default {
-  components: {},
-  data() {
-    return {
-      cmpStyle: null,
+  export default {
+    components: {},
+    data() {
+      return {
+        cmpStyle: null,
 
-      // {
-      //   color: this.cmp.style.color,
-      //   fontSize: this.cmp.style.fontSize + 'px',
-      //   backgroundColor: this.cmp.style.backgroundColor,
-      // },
-    }
-  },
-  props: ['cmp'],
-  created() {
-    // console.log('IM HERE', this.cmp)
-  },
-  computed: {
-    getCurrStyle() {
-      console.log('IM HERE', this.cmp.style)
-      const style = {
-        color: this.cmp.style.color,
-        fontSize: this.cmp.style.fontSize + 'px',
-        backgroundColor: this.cmp.style.backgroundColor,
-      }
-      return style
+        // {
+        //   color: this.cmp.style.color,
+        //   fontSize: this.cmp.style.fontSize + 'px',
+        //   backgroundColor: this.cmp.style.backgroundColor,
+        // },
+      };
     },
-  },
-  methods: {
-    test() {
-      console.log('try')
+    props: ['cmp'],
+    created() {
+      // console.log('IM HERE', this.cmp)
     },
-  },
-}
+    computed: {
+      getCurrStyle() {
+        console.log('IM HERE', this.cmp.style);
+        console.log('color', this.cmp.style.color);
+        const style = {
+          color: this.cmp.style.color,
+          fontSize: this.cmp.style.fontSize + 'px',
+          backgroundColor: this.cmp.style.backgroundColor,
+        };
+        return style;
+      },
+    },
+    methods: {
+      test() {
+        console.log('try');
+      },
+    },
+  };
 </script>
 
 <style></style>
@@ -64,3 +65,8 @@ export default {
 "substitle": "Your Hair is !(Who you Are)", "btn": { "label": "Schedule Today!",
 "link": "#wc03" } }, "theme": "theme-header-happy", "style": { "background":
 "url()", "font": "Fontush", "color": "red", }
+
+
+
+logo      navbar
+txt/img      As

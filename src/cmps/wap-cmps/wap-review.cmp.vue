@@ -36,3 +36,6 @@ export default {
 
 <style>
 </style>
+
+
+txt / user { avatar / name / title}
