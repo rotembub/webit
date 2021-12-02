@@ -3,6 +3,7 @@
     align-items: center;
     justify-content: center;
     gap: 2em;
+    color: $White;
 
     grid-template-columns: repeat(auto-fit, minmax(100px, 360px));
     

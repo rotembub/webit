@@ -10,7 +10,7 @@
       </h2>
       <img
         v-if="cmp.info.logo && cmp.info.logo.type === 'img'"
-        :src="cmp.info.logo.url"
+        :src="require('@/assets/wap-imgs/' + cmp.info.logo.url)"
         alt=""
       />
     </div>

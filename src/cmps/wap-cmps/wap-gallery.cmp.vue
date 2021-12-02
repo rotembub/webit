@@ -15,19 +15,20 @@
     >
       <img :src="require('@/assets/wap-imgs/' + photo.url)" alt="" />
 
-      <h3 v-if="photo.title">{{ photo.title }}</h3>
-      <p v-if="photo.txt">{{ photo.txt }}</p>
-      <a v-if="photo.link" href="">{{ photo.link }}</a>
+      <div class="card-text">
+        <h1 v-if="photo.title">{{ photo.title }}</h1>
+        <p v-if="photo.txt">{{ photo.txt }}</p>
+        <a v-if="photo.link" href="">{{ photo.link }}</a>
+        <button v-if="cmp.info.button">{{ cmp.info.button }}</button>
+      </div>
     </div>
-    <button v-if="cmp.info.button">{{ cmp.info.button }}</button>
   </section>
 </template>
 
 <script>
 export default {
-  props: ["cmp"],
-};
+  props: ['cmp'],
+}
 </script>
 
-<style>
-</style>
+<style></style>

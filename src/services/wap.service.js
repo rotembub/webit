@@ -365,6 +365,7 @@ const wap_fylo = {
     ],
     signups: [{ email: 'user@user.com', at: 123 }],
   },
+  theme:'fylo-main',
 
   cmps: [
     {

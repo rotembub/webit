@@ -3,7 +3,7 @@
     flex-direction: column;
     align-items: center;
     gap: 2em;
-
+    color: $White;
     width: 100%;
     margin: 0 auto;
     padding: 0 10%;
@@ -20,21 +20,19 @@
     }
 }
 
-.fylo-text{
+.photo-card{
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 1.5em;
-
     max-width: 700px;
-
-    
     text-align: center;
 
     h1{
         font-family: 'Raleway', sans-serif;
         font-weight: 700;
         line-height: 1.5em;
+        font-size:1.5em;
     }
     button{
         padding: 1em 5em;

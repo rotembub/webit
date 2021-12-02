@@ -6,10 +6,9 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    background-color: #1c2431;
     width: 100%;
     max-width: 1400px;
-
-
     padding: 2em;
     margin: 0 auto;
 
@@ -17,7 +16,7 @@
         width: 6em;
     }
 
-    // ul{
+    .nav-bar{
         list-style: none;
         display: flex;
         gap: 1em;
@@ -33,7 +32,7 @@
                 opacity: 1;
             }
         }
-    // }
+    }
 }
 
 
