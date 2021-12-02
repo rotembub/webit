@@ -18,27 +18,27 @@
 </template>
 
 <script>
-import editorModal from "./wap-editor-modal.cmp.vue";
-export default {
-  props: ["id"],
-  components: { editorModal },
-  data() {
-    return {
-      openEditorModal: false,
-    };
-  },
-  methods: {
-    removeCmp() {
-      // this.$store.dispatch({ type: "removeCmp", id: this.id });
+  import editorModal from './wap-editor-modal.cmp.vue';
+  export default {
+    props: ['id'],
+    components: {editorModal},
+    data() {
+      return {
+        openEditorModal: false,
+      };
+    },
+    methods: {
+      removeCmp() {
+        // this.$store.dispatch({ type: "removeCmp", id: this.id });
 
-      this.$store.dispatch({ type: "removeCmpFromWap", cmpId: this.id });
+        this.$store.dispatch({type: 'removeCmpFromWap', cmpId: this.id});
+      },
+      updateStyle(updatedWap) {
+        console.log('sec emit');
+        this.$emit('updated', updatedWap);
+      },
     },
-    updateStyle(updatedWap) {
-      console.log("sec emit");
-      this.$emit("updated", updatedWap);
-    },
-  },
-};
+  };
 </script>
 
 <style></style>

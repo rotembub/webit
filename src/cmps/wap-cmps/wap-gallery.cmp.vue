@@ -1,5 +1,5 @@
 <template>
-  <section class="wap-gallery" :class="cmp.theme">
+  <section class="wap-gallery" :style="getCurrStyle" :class="cmp.theme">
     <div class="gallery-title">
       <h1 v-if="cmp.info.title">{{ cmp.info.title }}</h1>
       <p v-if="cmp.info.subtitle">{{ cmp.info.subtitle }}</p>
@@ -18,10 +18,21 @@
 </template>
 
 <script>
-export default {
-  props: ["cmp"],
-};
+  export default {
+    props: ['cmp'],
+    computed: {
+      getCurrStyle() {
+        console.log('IM HERE Gallery', this.cmp.style);
+        console.log('color', this.cmp.style.color);
+        const style = {
+          color: this.cmp.style.color,
+          fontSize: this.cmp.style.fontSize + 'px', //fix fontSize not change
+          backgroundColor: this.cmp.style.backgroundColor,
+        };
+        return style;
+      },
+    },
+  };
 </script>
 
-<style>
-</style>
+<style></style>
