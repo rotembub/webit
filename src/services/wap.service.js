@@ -13,6 +13,7 @@ export const wapService = {
   getEmptyWap,
   removeCmp,
   addCmp,
+  updateCmp,
 }
 
 // More ways to send query params:
@@ -52,6 +53,15 @@ async function getById(id) {
   } catch (err) {
     console.log('couldnt get wap by ID', err)
   }
+}
+
+async function updateCmp(wapId, newCmp) {
+  console.log('here at Update CMP', wapId, newCmp)
+  var wap = await getById(wapId);
+  const idx = wap.cmps.findIndex(cmp => cmp.id === newCmp.id)
+  wap.cmps.splice(idx, 1, newCmp)
+  console.log(wap)
+  return await save(wap)
 }
 
 // prototype:
@@ -128,7 +138,7 @@ async function getEmptyWap() {
 
 // This IIFE async functions for Dev purposes
 // It allows testing of real time updates (such as sockets) by listening to storage events
-;(async () => {
+; (async () => {
   var waps = await storageService.query(KEY)
 
   // Dev Helper: Listens to when localStorage changes in OTHER browser
