@@ -1,16 +1,16 @@
 <template>
   <section class="wap-review" :class="cmp.theme">
+    <!-- <img
+      v-if="cmp.info.quotesImg"
+      :src="require('@/assets/wap-imgs/' + cmp.info.quotesImg)"
+      alt=""
+      class="bg-quote"
+    /> -->
     <div
       v-for="review in cmp.info.reviews"
       :key="review.name"
       class="review-card"
     >
-      <img
-        v-if="cmp.info.quotesImg"
-        :src="require('@/assets/wap-imgs/' + cmp.info.quotesImg)"
-        alt=""
-        class="bg-quote"
-      />
       <p>
         {{ review.txt }}
       </p>
