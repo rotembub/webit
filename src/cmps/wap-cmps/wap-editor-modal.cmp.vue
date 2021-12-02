@@ -51,42 +51,52 @@
 </template>
 
 <script>
-  export default {
-    data() {
-      return {
-        isText: false,
-        isImg: false,
-        currWap: null,
-      };
+import { ColorPicker } from "element-ui";
+export default {
+  props: ["id"],
+  data() {
+    return {
+      // style{
+
+      // }
+      // fontSize
+      // color,
+      // bgc:
+
+      isText: false,
+      isImg: false,
+      currWap: null,
+    };
+  },
+  created() {
+    this.currWap = this.$store.getters.getCurrWap;
+    console.log(this.currWap, "created");
+  },
+  methods: {
+    async updateCmp(value) {
+      console.log(value, "updateCmp");
+      console.log(this.currWap, "currWap");
+      try {
+        const updatedWap = await this.$store.dispatch({
+          type: "updateWapStyle",
+          currWap: this.currWap,
+          cmpId: this.id, // WATCHOUT
+        });
+        // console.log(updatedWap);
+        // this.currWap = updatedWap;
+        // this.$emit("updated", updatedWap);
+      } catch (err) {
+        console.log(err);
+      }
     },
-    created() {
-      this.currWap = this.$store.getters.getCurrWap;
-      console.log(this.currWap, 'created');
+  },
+  computed: {
+    setWap() {
+      console.log(this.$store.getters.getCurrWap, "store wap");
+      return this.$store.getters.getCurrWap;
     },
-    methods: {
-      async updateCmp(value) {
-        console.log(value, 'updateCmp');
-        console.log(this.currWap, 'currWap');
-        try {
-          const updatedWap = await this.$store.dispatch({
-            type: 'updateWapStyle',
-            currWap: this.currWap,
-          });
-          console.log(updatedWap);
-          this.currWap = updatedWap;
-          this.$emit('updated', updatedWap);
-        } catch (err) {
-          console.log(err);
-        }
-      },
-    },
-    computed: {
-      setWap() {
-        console.log(this.$store.getters.getCurrWap, 'store wap');
-        return this.$store.getters.getCurrWap;
-      },
-    },
-  };
+  },
+};
 </script>
 
 <style></style>
