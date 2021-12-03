@@ -22,9 +22,6 @@ export const wapService = {
 
 // Create Test Data:
 
-
-
-
 function createWaps() {
   const waps = localStorage.getItem(KEY)
   console.log('waps found in storage:', waps)
@@ -60,7 +57,7 @@ async function getById(id) {
 
 async function updateCmp(wapId, newCmp) {
   console.log('here at Update CMP', wapId, newCmp)
-  var wap = await getById(wapId);
+  var wap = await getById(wapId)
   const idx = wap.cmps.findIndex(cmp => cmp.id === newCmp.id)
   wap.cmps.splice(idx, 1, newCmp)
   console.log(wap)
@@ -141,7 +138,7 @@ async function getEmptyWap() {
 
 // This IIFE async functions for Dev purposes
 // It allows testing of real time updates (such as sockets) by listening to storage events
-; (async () => {
+;(async () => {
   var waps = await storageService.query(KEY)
 
   // Dev Helper: Listens to when localStorage changes in OTHER browser
@@ -353,8 +350,7 @@ const CMPS_DATA = [
 const wap_fylo = {
   // _id: '999994123sd12',
   name: 'fylo',
-  imgUrl:
-    '',
+  imgUrl: '',
   createdBy: {
     _id: '',
     username: '',
@@ -365,7 +361,7 @@ const wap_fylo = {
     ],
     signups: [{ email: 'user@user.com', at: 123 }],
   },
-  theme:'fylo-main',
+  theme: 'fylo-main',
 
   cmps: [
     {
@@ -390,8 +386,15 @@ const wap_fylo = {
       info: {
         title: '',
         subtitle: '',
-        photos: [{ url: 'fylo-imgs/illustration-intro.png', title: 'All your files in one secure location, accessible anywhere.', txt: 'Fylo stores all your most important files in one secure location. Access them wherever you need, share and collaborate with friends family, and co-workers' }],
-        buttons: ['Get Started']
+        photos: [
+          {
+            url: 'fylo-imgs/illustration-intro.png',
+            title:
+              'All your files in one secure location, accessible anywhere.',
+            txt: 'Fylo stores all your most important files in one secure location. Access them wherever you need, share and collaborate with friends family, and co-workers',
+          },
+        ],
+        button: 'Get Started',
       },
       theme: 'theme-gallery-fylo-single',
       style: {
@@ -407,10 +410,26 @@ const wap_fylo = {
         title: '',
         subtitle: '',
         cards: [
-          { url: 'fylo-imgs/icon-access-anywhere.svg', title: 'Access your files, anywhere', txt: ' The ability to use a smartphone, tablet, or computer to access your account means your files follow you everywhere' },
-          { url: 'fylo-imgs/icon-security.svg', title: 'Security you can trust', txt: ' 2-factor authentication and user-controlled encryption are just a couple of the security features we allow to help secure your files' },
-          { url: 'fylo-imgs/icon-collaboration.svg', title: 'Real-time collaboration', txt: ' Securely share files and folders with friends, family and colleagues for live collaboration. No email attachments required' },
-          { url: 'fylo-imgs/icon-any-file.svg', title: 'Store any type of file', txt: 'Whether you\'re sharing holidays photos or work documents, Fylo has you covered allowing for all file types to be securely stored and shared' },
+          {
+            url: 'fylo-imgs/icon-access-anywhere.svg',
+            title: 'Access your files, anywhere',
+            txt: ' The ability to use a smartphone, tablet, or computer to access your account means your files follow you everywhere',
+          },
+          {
+            url: 'fylo-imgs/icon-security.svg',
+            title: 'Security you can trust',
+            txt: ' 2-factor authentication and user-controlled encryption are just a couple of the security features we allow to help secure your files',
+          },
+          {
+            url: 'fylo-imgs/icon-collaboration.svg',
+            title: 'Real-time collaboration',
+            txt: ' Securely share files and folders with friends, family and colleagues for live collaboration. No email attachments required',
+          },
+          {
+            url: 'fylo-imgs/icon-any-file.svg',
+            title: 'Store any type of file',
+            txt: "Whether you're sharing holidays photos or work documents, Fylo has you covered allowing for all file types to be securely stored and shared",
+          },
         ],
       },
       theme: 'theme-card-fylo',
@@ -424,11 +443,20 @@ const wap_fylo = {
       id: 'wc575752',
       type: 'wap-gallery',
       info: {
-        title: ["Stay productive, wherever you are"],
-        subtitle: ['Never let location be an issue when accessing your files. Fylo has you covered for all of your file storage needs', 'Securely share files and folders with friends, family and colleagues for live collaboration. No email attachments required'
+        title: ['Stay productive, wherever you are'],
+        subtitle: [
+          'Never let location be an issue when accessing your files. Fylo has you covered for all of your file storage needs',
+          'Securely share files and folders with friends, family and colleagues for live collaboration. No email attachments required',
         ],
         // link: 'See how Fylo works',
-        photos: [{ url: 'fylo-imgs/illustration-stay-productive.png', link: 'See how Fylo works', title: '', txt: '' }],
+        photos: [
+          {
+            url: 'fylo-imgs/illustration-stay-productive.png',
+            link: 'See how Fylo works',
+            title: '',
+            txt: '',
+          },
+        ],
       },
       theme: 'theme-gallery-fylo-single2',
       style: {
@@ -442,7 +470,26 @@ const wap_fylo = {
       type: 'wap-review',
       info: {
         quotesImg: 'fylo-imgs/bg-quotes.png',
-        reviews: [{ txt: "Fylo has improved our team productivity by an order of magnitude. Since making the switch our team has become a well-oiled collaboration machine.", name: 'Satish Patel', title: 'Founder & CEO, Huddle', avatar: "fylo-imgs/profile-1.jpg" }, { txt: "Fylo has improved our team productivity by an order of magnitude. Since making the switch our team has become a well-oiled collaboration machine.", name: 'Bruce McKenzie', title: 'Founder & CEO, Huddle', avatar: "fylo-imgs/profile-2.jpg" }, { txt: "Fylo has improved our team productivity by an order of magnitude. Since making the switch our team has become a well-oiled collaboration machine.", name: 'Iva Boyd', title: 'Founder & CEO, Huddle', avatar: "fylo-imgs/profile-3.jpg" }]
+        reviews: [
+          {
+            txt: 'Fylo has improved our team productivity by an order of magnitude. Since making the switch our team has become a well-oiled collaboration machine.',
+            name: 'Satish Patel',
+            title: 'Founder & CEO, Huddle',
+            avatar: 'fylo-imgs/profile-1.jpg',
+          },
+          {
+            txt: 'Fylo has improved our team productivity by an order of magnitude. Since making the switch our team has become a well-oiled collaboration machine.',
+            name: 'Bruce McKenzie',
+            title: 'Founder & CEO, Huddle',
+            avatar: 'fylo-imgs/profile-2.jpg',
+          },
+          {
+            txt: 'Fylo has improved our team productivity by an order of magnitude. Since making the switch our team has become a well-oiled collaboration machine.',
+            name: 'Iva Boyd',
+            title: 'Founder & CEO, Huddle',
+            avatar: 'fylo-imgs/profile-3.jpg',
+          },
+        ],
       },
       theme: 'theme-review-fylo',
       style: {
@@ -456,7 +503,8 @@ const wap_fylo = {
       type: 'wap-signup',
       info: {
         title: 'Get Early Access Today',
-        subtitle: 'It only takes a minute to sign up and our free starter tier is extremely generous. If you have any questions, our support team would be happy to help you',
+        subtitle:
+          'It only takes a minute to sign up and our free starter tier is extremely generous. If you have any questions, our support team would be happy to help you',
         inputTxt: 'Get Started For Free!',
       },
       theme: 'theme-signup-fylo',
@@ -465,10 +513,10 @@ const wap_fylo = {
         font: 'Fontush',
         color: 'red',
       },
-    }
-  ]
+    },
+  ],
 }
 
-storageService.post(KEY, wap_fylo);
+storageService.post(KEY, wap_fylo)
 
 createWaps()

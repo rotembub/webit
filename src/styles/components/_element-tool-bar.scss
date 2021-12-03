@@ -1,9 +1,26 @@
 .element-tool-bar{
     display: flex;
     position: absolute;
+    gap: 3px;
     justify-content: flex-start;
-    align-items: center;
     margin-bottom: 70px;
     z-index: 400;
+    .tool-element{
+        box-shadow: 0 1px 3px 1px rgb(0 0 0 / 24%);
+        width: 27px;
+        height: 27px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: .9rem;
+        cursor: pointer;
+        background-color: #f7f1e3;
+        border: none;
+    
+    img{
+        opacity: 0.7
+    }
+    }
        
     }
