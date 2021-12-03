@@ -13,9 +13,7 @@
           }} -->
           <li @click="add(theme.cmpId)">
             <img
-              :src="
-                require('@/assets/cmp-picker-preview/theme-header-architecture.png')
-              "
+              :src="require(`@/assets/cmp-picker-preview/` + theme.imgPath)"
             />
           </li>
         </ul>
@@ -80,67 +78,67 @@
 </template>
 
 <script>
-import { Collapse, CollapseItem } from 'element-ui'
-import wapHeader from '../wap-cmps/wap-header.cmp.vue'
-import { cmpService } from '../../services/cmp.service.js'
+  import {Collapse, CollapseItem} from 'element-ui';
+  import wapHeader from '../wap-cmps/wap-header.cmp.vue';
+  import {cmpService} from '../../services/cmp.service.js';
 
-export default {
-  name: 'cmpPicker',
-  components: {
-    wapHeader,
-    Collapse,
-    CollapseItem,
-  },
-  data() {
-    return {
-      themes: null,
-      types: [
-        'wap-header',
-        'wap-gallery',
-        'wap-text',
-        'wap-contact',
-        'wap-card',
-        'wap-review',
-        'wap-signup',
-      ],
-      wapToPublish: null,
-    }
-  },
-  methods: {
-    publishWap() {
-      this.wapToPublish = this.$store.getters.getCurrWap
-      this.$store.dispatch({
-        type: 'publishWap',
-        wapToPublish: this.wapToPublish,
-      })
-      console.log('ID', this.wapToPublish._id)
-      this.$router.push(`/publish/${this.wapToPublish._id}`)
-      // console.log('wapToPublish', wapToPublish)
+  export default {
+    name: 'cmpPicker',
+    components: {
+      wapHeader,
+      Collapse,
+      CollapseItem,
     },
-    async add(cmpId) {
-      // console.log(cmpId);
-      try {
-        const cmp = await this.$store.dispatch({
-          type: 'addCmp',
-          id: cmpId,
-        })
-      } catch (err) {
-        console.log(err)
-      }
+    data() {
+      return {
+        themes: null,
+        types: [
+          'wap-header',
+          'wap-gallery',
+          'wap-text',
+          'wap-contact',
+          'wap-card',
+          'wap-review',
+          'wap-signup',
+        ],
+        wapToPublish: null,
+      };
     },
-    loadThemes(cmpType) {
-      const allThemes = cmpService.getThemesFor(cmpType)
-      this.themes = allThemes
-      // console.log(this.themes);
+    methods: {
+      publishWap() {
+        this.wapToPublish = this.$store.getters.getCurrWap;
+        this.$store.dispatch({
+          type: 'publishWap',
+          wapToPublish: this.wapToPublish,
+        });
+        console.log('ID', this.wapToPublish._id);
+        this.$router.push(`/publish/${this.wapToPublish._id}`);
+        // console.log('wapToPublish', wapToPublish)
+      },
+      async add(cmpId) {
+        // console.log(cmpId);
+        try {
+          const cmp = await this.$store.dispatch({
+            type: 'addCmp',
+            id: cmpId,
+          });
+        } catch (err) {
+          console.log(err);
+        }
+      },
+      loadThemes(cmpType) {
+        const allThemes = cmpService.getThemesFor(cmpType);
+        this.themes = allThemes;
+        // console.log(this.themes);
+      },
+      getProperTxt(type) {
+        // console.log(type);
+        const textToShow = type.substring(4);
+        return textToShow.charAt(0).toUpperCase() + textToShow.slice(1);
+      },
     },
-    getProperTxt(type) {
-      // console.log(type);
-      const textToShow = type.substring(4)
-      return textToShow.charAt(0).toUpperCase() + textToShow.slice(1)
-    },
-  },
-  computed: {},
-}
+    computed: {},
+  };
 </script>
 
 <style></style>

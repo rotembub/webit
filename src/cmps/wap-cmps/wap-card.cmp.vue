@@ -13,8 +13,10 @@ PROTOTYPE REFACTOR
           {{ item.txt }}
         </p>
       </template>
-      <template v-if="cmp.info.button">
-        <button>{{ cmp.info.button }}</button>
+      <template v-if="cmp.info.buttons">
+        <button v-for="button in cmp.info.buttons" :key="button.id">
+          {{ button.txt }}
+        </button>
       </template>
     </div>
     <template v-if="cmp.info.imgUrl">
@@ -25,18 +27,18 @@ PROTOTYPE REFACTOR
 
 <script>
 export default {
-  props: ['cmp'],
+  props: ["cmp"],
   computed: {
     getCurrStyle() {
       const style = {
         color: this.cmp.style.color,
-        fontSize: this.cmp.style.fontSize + 'px',
+        fontSize: this.cmp.style.fontSize + "px",
         backgroundColor: this.cmp.style.backgroundColor,
-      }
-      return style
+      };
+      return style;
     },
   },
-}
+};
 </script>
 
 <style></style>
