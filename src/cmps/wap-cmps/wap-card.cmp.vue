@@ -22,3 +22,30 @@ export default {
 
 img?   txt?  title?
 <img>  <p>     <h1>
+
+
+
+PROTOTYPE REFACTOR
+<template>
+  <section class="wap-card" :class="cmp.theme">
+    <template v-if="cmp.info.title">
+        <h1  v-for="item in cmp.info.title" :key="'k' + item"> {{ item }}</h1>
+    </template>
+    <template v-if="cmp.info.subtitle">
+        <p v-for="item in cmp.info.subtitle" :key="'k' + item">{{ item }}</p>
+    </template>
+    <template v-if="cmp.info.imgUrl">
+        <img :src="require('@/assets/wap-imgs/' + cmp.info.imgUrl)" alt="" />
+    </template>
+    </section>
+</template>
+
+<script>
+export default {
+  props: ["cmp"],
+}
+</script>
+
+<style>
+
+</style>

@@ -27,7 +27,7 @@ export const wapService = {
 
 function createWaps() {
   const waps = localStorage.getItem(KEY)
-  console.log('waps found in storage:', waps)
+  // console.log('waps found in storage:', waps)
   if (!waps || !waps.length)
     localStorage.setItem(KEY, JSON.stringify([wap_architecture]))
 }
@@ -365,6 +365,7 @@ const wap_fylo = {
     ],
     signups: [{ email: 'user@user.com', at: 123 }],
   },
+  theme:'fylo-main',
 
   cmps: [
     {
@@ -468,6 +469,6 @@ const wap_fylo = {
   ]
 }
 
-storageService.post(KEY, wap_fylo);
+storageService.post(KEY, wap_fylo); // WATCHOUT
 
 createWaps()

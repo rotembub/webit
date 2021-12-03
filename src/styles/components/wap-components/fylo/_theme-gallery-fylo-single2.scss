@@ -1,8 +1,9 @@
 .theme-gallery-fylo-single2{
     display: flex;
-    flex-direction: column;
+    flex-direction: row-reverse;
     align-items: center;
     gap: 4em;
+    color: $White;
 
     width: 80%;
     margin: 6em auto;
@@ -14,7 +15,7 @@
     }
 }
 
-.text-fylo-two{
+.card-text{
     display: flex;
     flex-direction: column;
     align-items: flex-start;
