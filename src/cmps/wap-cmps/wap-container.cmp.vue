@@ -19,17 +19,4 @@ export default {
 };
 </script>
 
-
-		{
-			"id": "wc03",
-			"type": "wap-container",
-			"info": {
-				"dir": "row",
-				"cmps": [
-					{},
-					{}
-				]
-			},
-			"theme": "theme-container-base",
-			"style": {
-			}
+knows how to get other CMPs and render them 1 by 1 with a unique class supplied to it

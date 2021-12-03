@@ -19,7 +19,7 @@
         item
       }} </a>
     </div>
-    <div v-if="cmp.info.contactDetails">
+    <div v-if="cmp.info.contactDetails"> <!-- might change this to cmp.info.txt later to avoid complications -->
       <div
         v-for="(detail, idx) in cmp.info.contactDetails"
         :key="'k' + idx"
