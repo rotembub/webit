@@ -16,57 +16,56 @@
     </div>
     <div class="nav-bar">
       <a v-for="(item, idx) in cmp.info.navBar" :key="'k' + idx" href=""
-        >{{ item }}
+        >{{ item.txt }}
       </a>
     </div>
   </section>
 </template>
 
 <script>
-  export default {
-    components: {},
-    data() {
-      return {
-        cmpStyle: null,
+export default {
+  components: {},
+  data() {
+    return {
+      cmpStyle: null,
 
-        // {
-        //   color: this.cmp.style.color,
-        //   fontSize: this.cmp.style.fontSize + 'px',
-        //   backgroundColor: this.cmp.style.backgroundColor,
-        // },
+      // {
+      //   color: this.cmp.style.color,
+      //   fontSize: this.cmp.style.fontSize + 'px',
+      //   backgroundColor: this.cmp.style.backgroundColor,
+      // },
+    };
+  },
+  props: ["cmp"],
+  created() {
+    // console.log('IM HERE', this.cmp)
+  },
+  computed: {
+    getCurrStyle() {
+      console.log("IM HERE", this.cmp.style);
+      console.log("color", this.cmp.style.color);
+      const style = {
+        color: this.cmp.style.color,
+        fontSize: this.cmp.style.fontSize + "px",
+        backgroundColor: this.cmp.style.backgroundColor,
       };
+      
+      return style;
     },
-    props: ['cmp'],
-    created() {
-      // console.log('IM HERE', this.cmp)
+  },
+  methods: {
+    test() {
+      console.log("try");
     },
-    computed: {
-      getCurrStyle() {
-        console.log('IM HERE', this.cmp.style);
-        console.log('color', this.cmp.style.color);
-        const style = {
-          color: this.cmp.style.color,
-          fontSize: this.cmp.style.fontSize + 'px',
-          backgroundColor: this.cmp.style.backgroundColor,
-        };
-        return style;
-      },
-    },
-    methods: {
-      test() {
-        console.log('try');
-      },
-    },
-  };
+  },
+};
 </script>
 
 <style></style>
-{ "id": "wc02", "type": "wap-header", "info": { "title": "HairDresser Baluta",
-"substitle": "Your Hair is !(Who you Are)", "btn": { "label": "Schedule Today!",
-"link": "#wc03" } }, "theme": "theme-header-happy", "style": { "background":
-"url()", "font": "Fontush", "color": "red", }
+navBar: [{id: 123, txt: "Work", style:{color:'',fontSize:''}}, {id:444 ,txt:'About',style:{color:'',fontSize:''}}, {id:333, txt:'Our Team',style:{color:'',fontSize:''}}, {id:4412, txt:'Press',style:{color:'',fontSize:''}},{id:44944,txt: 'Contact',style:{color:'',fontSize:''}}]
 
-
-
+style:{backgroundColor: '' ,color:'',fontSize:''}
+style:{color:'',fontSize:''}
 logo      navbar
 txt/img      As
+
