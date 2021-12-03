@@ -75,48 +75,56 @@
 </template>
 
 <script>
-import { Collapse, CollapseItem } from 'element-ui'
-import wapHeader from '../wap-cmps/wap-header.cmp.vue'
-import { cmpService } from '../../services/cmp.service.js'
+  import {Collapse, CollapseItem} from 'element-ui';
+  import wapHeader from '../wap-cmps/wap-header.cmp.vue';
+  import {cmpService} from '../../services/cmp.service.js';
 
-export default {
-  name: 'cmpPicker',
-  components: {
-    wapHeader,
-    Collapse,
-    CollapseItem,
-  },
-  data() {
-    return {
-      themes: null,
-      types: ['wap-header', 'wap-gallery', 'wap-text', 'wap-contact'],
-    }
-  },
-  methods: {
-    async add(cmpId) {
-      // console.log(cmpId);
-      try {
-        const cmp = await this.$store.dispatch({
-          type: 'addCmp',
-          id: cmpId,
-        })
-      } catch (err) {
-        console.log(err)
-      }
+  export default {
+    name: 'cmpPicker',
+    components: {
+      wapHeader,
+      Collapse,
+      CollapseItem,
     },
-    loadThemes(cmpType) {
-      const allThemes = cmpService.getThemesFor(cmpType)
-      this.themes = allThemes
-      // console.log(this.themes);
+    data() {
+      return {
+        themes: null,
+        types: [
+          'wap-header',
+          'wap-gallery',
+          'wap-text',
+          'wap-contact',
+          'wap-card',
+          'wap-review',
+          'wap-signup',
+        ],
+      };
     },
-    getProperTxt(type) {
-      // console.log(type);
-      const textToShow = type.substring(4)
-      return textToShow.charAt(0).toUpperCase() + textToShow.slice(1)
+    methods: {
+      async add(cmpId) {
+        // console.log(cmpId);
+        try {
+          const cmp = await this.$store.dispatch({
+            type: 'addCmp',
+            id: cmpId,
+          });
+        } catch (err) {
+          console.log(err);
+        }
+      },
+      loadThemes(cmpType) {
+        const allThemes = cmpService.getThemesFor(cmpType);
+        this.themes = allThemes;
+        // console.log(this.themes);
+      },
+      getProperTxt(type) {
+        // console.log(type);
+        const textToShow = type.substring(4);
+        return textToShow.charAt(0).toUpperCase() + textToShow.slice(1);
+      },
     },
-  },
-  computed: {},
-}
+    computed: {},
+  };
 </script>
 
 <style></style>
