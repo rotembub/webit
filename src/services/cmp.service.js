@@ -84,6 +84,7 @@ const gCmps = [
   {
     id: 'wc223f02',
     type: 'wap-header',
+    screenshotImg: 'fylo-examples/fylo-cards.png',
     info: {
       title: '',
       subtitle: '',
@@ -100,6 +101,7 @@ const gCmps = [
   {
     id: 'wc1asd122',
     type: 'wap-card',
+    screenshotImg: 'fylo-examples/fylo-cards.png', // change to archi card
     info: {
       title: ['Utica is an architecture firm based in Copenhagen, Denmark.'],
       subtitle: '',
@@ -115,6 +117,7 @@ const gCmps = [
   {
     id: 'w777777351dsas2',
     type: 'wap-text',
+    screenshotImg: 'fylo-examples/fylo-cards.png', // change to arch text
     info: {
       title: ['Recent Work...'],
       subtitle: [
@@ -131,6 +134,7 @@ const gCmps = [
   {
     id: 'wc7744999',
     type: 'wap-gallery',
+    screenshotImg: 'fylo-examples/fylo-cards.png', //change to archit gallery
     info: {
       title: '',
       subtitle: '',
@@ -151,6 +155,7 @@ const gCmps = [
   {
     id: 'w525121212251dsas2',
     type: 'wap-contact',
+    screenshotImg: 'fylo-examples/fylo-contact.png', //change to archt contact
     info: {
       title: "Let's Work Together!",
       subtitle:
@@ -167,6 +172,7 @@ const gCmps = [
   {
     id: '353544d22',
     type: 'wap-header',
+    screenshotImg: 'fylo-examples/fylo-header.png',
     info: {
       title: '',
       subtitle: '',
@@ -183,6 +189,7 @@ const gCmps = [
   {
     id: 'wc1asd342122',
     type: 'wap-card',
+    screenshotImg: 'fylo-examples/fylo-cards.png',
     info: {
       title: ['All your files in one secure location'],
       subtitle: [
@@ -201,6 +208,7 @@ const gCmps = [
   {
     id: 'wc2552299',
     type: 'wap-gallery',
+    screenshotImg: 'fylo-examples/fylo-cards.png', //change to gallery
     info: {
       title: '',
       subtitle: '',
@@ -237,6 +245,7 @@ const gCmps = [
   {
     id: 'wc575752',
     type: 'wap-card',
+    screenshotImg: 'fylo-examples/fylo-cards.png',
     info: {
       title: ['Stay productive, wherever you are'],
       subtitle: [
@@ -256,6 +265,7 @@ const gCmps = [
   {
     id: '6336T333',
     type: 'wap-review',
+    screenshotImg: 'fylo-examples/fylo-cards.png', // change to reviews
     info: {
       quotesImg: 'fylo-imgs/bg-quotes.png',
       reviews: [
@@ -289,6 +299,7 @@ const gCmps = [
   {
     id: '1231F13FF131F3F3',
     type: 'wap-signup',
+    screenshotImg: 'fylo-examples/fylo-sign-up.png',
     info: {
       title: 'Get Early Access Today',
       subtitle:
@@ -307,8 +318,16 @@ const gCmps = [
 
 // //auto create gThemes from the gCmps array
 const gThemes = gCmps.reduce((acc, cmp) => {
-  if (!acc[cmp.type]) acc[cmp.type] = [{type: cmp.theme, cmpId: cmp.id}];
-  else acc[cmp.type].push({type: cmp.theme, cmpId: cmp.id});
+  if (!acc[cmp.type])
+    acc[cmp.type] = [
+      {type: cmp.theme, cmpId: cmp.id, imgPath: cmp.screenshotImg},
+    ];
+  else
+    acc[cmp.type].push({
+      type: cmp.theme,
+      cmpId: cmp.id,
+      imgPath: cmp.screenshotImg,
+    });
   return acc;
 }, {});
 
