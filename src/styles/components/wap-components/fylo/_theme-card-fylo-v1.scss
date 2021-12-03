@@ -1,6 +1,6 @@
 .theme-card-fylo-v1{
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse;
     align-items: center;
     gap: 2em;
     color: $White;
@@ -20,7 +20,7 @@
     }
 }
 
-.photo-details{
+.text-block{
     display: flex;
     flex-direction: column;
     align-items: center;
