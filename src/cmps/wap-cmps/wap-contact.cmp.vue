@@ -1,15 +1,21 @@
 <template>
   <section class="wap-contact" :style="getCurrStyle" :class="cmp.theme">
-    <h2 v-if="cmp.info.title">{{ cmp.info.title.txt }}</h2>
-    <p v-if="cmp.info.subtitle">{{ cmp.info.subtitle.txt }}</p>
-    <button v-if="cmp.info.btnTxt">{{ cmp.info.btnTxt.txt }}</button>
+    <basic-h2 v-if="cmp.info.title" :details="cmp.info.title"></basic-h2>
+    <!-- <h2 v-if="cmp.info.title">{{ cmp.info.title.txt }}</h2> -->
+    <basic-paragraph v-if="cmp.info.subtitle" :details="cmp.info.subtitle"></basic-paragraph>
+    <!-- <p v-if="cmp.info.subtitle">{{ cmp.info.subtitle.txt }}</p> -->
+    <basic-btn v-if="cmp.info.btnTxt" :details="cmp.info.btnTxt"></basic-btn>
+    <!-- <button v-if="cmp.info.btnTxt">{{ cmp.info.btnTxt.txt }}</button> -->
   </section>
 </template>
 
 <script>
+import basicH2 from "./basic-cmps/basic-h2-cmp.vue";
+import basicParagraph from './basic-cmps/basic-paragraph.cmp.vue'
+import basicBtn from './basic-cmps/basic-btn-cmp.vue'
 export default {
   props: ["cmp"],
-  components: {},
+  components: { basicH2,basicParagraph,basicBtn },
   data() {
     return {};
   },

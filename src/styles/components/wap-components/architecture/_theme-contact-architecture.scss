@@ -11,7 +11,7 @@
            font-weight: bold;
            font-family: poppins;
        } 
-       button{
+       button:not(.element-tool-bar .tool-element){
            cursor: pointer;
            padding: 10px;
            border: 1px solid rgba(0, 0, 0, 0);

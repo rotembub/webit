@@ -5,35 +5,51 @@
       :key="review.name"
       class="review-card"
     >
-      <p>{{ review.txt }}</p>
+      <basic-paragraph :details="review"></basic-paragraph>
+      <!-- <p>{{ review.txt }}</p> -->
       <div class="customer">
-        <img
+        <basic-img :details="{url: review.avatar ,id:review.id}"></basic-img>
+        <!-- <img
           :src="require('@/assets/wap-imgs/' + review.avatar)"
           alt="avatar"
-        />
-        <h5>
+        /> -->
+        <basic-paragraph :details="{txt: review.name, id:review.id}">
+            <slot>
+              <basic-span :details="{txt:review.title, id:review.id}"></basic-span>
+            </slot>
+        </basic-paragraph>
+        <!-- <p>
           {{ review.name }} <br />
           <span>{{ review.title }}</span>
-        </h5>
+        </p> -->
       </div>
     </div>
   </section>
 </template>
 
 <script>
-  export default {
-    props: ['cmp'],
-    computed: {
-      getCurrStyle() {
-        const style = {
-          color: this.cmp.style.color,
-          fontSize: this.cmp.style.fontSize + 'px',
-          backgroundColor: this.cmp.style.backgroundColor,
-        };
-        return style;
-      },
+import basicParagraph from './basic-cmps/basic-paragraph.cmp.vue'
+import basicImg from './basic-cmps/basic-img-cmp.vue'
+import basicSpan from './basic-cmps/basic-span-cmp.vue'
+
+export default {
+  props: ["cmp"],
+  components:{
+    basicParagraph,
+    basicImg,
+    basicSpan
+  },
+  computed: {
+    getCurrStyle() {
+      const style = {
+        color: this.cmp.style.color,
+        fontSize: this.cmp.style.fontSize + "px",
+        backgroundColor: this.cmp.style.backgroundColor,
+      };
+      return style;
     },
-  };
+  },
+};
 </script>
 
 <style></style>

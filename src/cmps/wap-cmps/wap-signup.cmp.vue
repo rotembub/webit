@@ -1,10 +1,12 @@
 <template>
   <section class="wap-signup" :style="getCurrStyle" :class="cmp.theme">
-    <h3 v-if="cmp.info.title">{{ cmp.info.title.txt }}</h3>
-    <p v-if="cmp.info.subtitle">{{ cmp.info.subtitle.txt }}</p>
-    <!-- <input type="text" placeholder="Your full name"> -->
+    <basic-h3 v-if="cmp.info.title" :details="cmp.info.title"></basic-h3>
+    <!-- <h3 v-if="cmp.info.title">{{ cmp.info.title.txt }}</h3> -->
+    <basic-paragraph v-if="cmp.info.subtitle" :details="cmp.info.subtitle"></basic-paragraph>
+    <!-- <p v-if="cmp.info.subtitle">{{ cmp.info.subtitle.txt }}</p> -->
     <form class="sign-up-form">
-      <input type="email" placeholder="email@example.com" class="email" />
+      <basic-input :details="{class:'email'}"></basic-input>
+      <!-- <input type="email" placeholder="email@example.com" class="email" /> -->
       <div class="mail-error hidden">Please enter a valid email address</div>
       <input
         type="submit"
@@ -12,13 +14,22 @@
         class="email-submit-btn"
       />
     </form>
-    <button v-if="cmp.info.btnTxt">{{ cmp.info.btnTxt.txt }}</button>
+    <basic-btn v-if="cmp.info.btnTxt" :details="cmp.info.btnTxt"></basic-btn>
+    <!-- <button v-if="cmp.info.btnTxt">{{ cmp.info.btnTxt.txt }}</button> -->
   </section>
 </template>
 
 <script>
+import basicH3 from './basic-cmps/basic-h3-cmp.vue'
+import basicParagraph from './basic-cmps/basic-paragraph.cmp.vue'
+import basicBtn from './basic-cmps/basic-btn-cmp.vue'
+import basicInput from './basic-cmps/basic-input-cmp.vue'
+
 export default {
   props: ["cmp"],
+  components:{
+    basicH3,basicParagraph,basicBtn,basicInput
+  },
    computed: {
       getCurrStyle() {
         const style = {

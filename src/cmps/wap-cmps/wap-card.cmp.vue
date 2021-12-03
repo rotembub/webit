@@ -4,30 +4,44 @@ PROTOTYPE REFACTOR
   <section class="wap-card" :style="getCurrStyle" :class="cmp.theme">
     <div class="text-block">
       <template v-if="cmp.info.title">
-        <h1 v-for="item in cmp.info.title" :key="'k' + item.id">
+        <basic-h1 v-for="item in cmp.info.title" :key="item.id" :details="item"></basic-h1>
+        <!-- <h1 v-for="item in cmp.info.title" :key="'k' + item.id">
           {{ item.txt }}
-        </h1>
+        </h1> -->
       </template>
       <template v-if="cmp.info.subtitle">
-        <p v-for="item in cmp.info.subtitle" :key="'k' + item.id">
+        <basic-paragraph v-for="item in cmp.info.subtitle" :key="item.id" :details="item"></basic-paragraph>
+        <!-- <p v-for="item in cmp.info.subtitle" :key="'k' + item.id">
           {{ item.txt }}
-        </p>
+        </p> -->
       </template>
       <template v-if="cmp.info.buttons">
-        <button v-for="button in cmp.info.buttons" :key="button.id">
+        <basic-btn v-for="item in cmp.info.buttons" :key="item.id" :details="item"></basic-btn>
+        <!-- <button v-for="button in cmp.info.buttons" :key="button.id">
           {{ button.txt }}
-        </button>
+        </button> -->
       </template>
     </div>
     <template v-if="cmp.info.imgUrl">
-      <img :src="require('@/assets/wap-imgs/' + cmp.info.imgUrl)" alt="" />
+      <basic-img :details="{url: cmp.info.imgUrl}"></basic-img>
+      <!-- <img :src="require('@/assets/wap-imgs/' + cmp.info.imgUrl)" alt="" /> -->
     </template>
   </section>
 </template>
 
 <script>
+import basicImg from './basic-cmps/basic-img-cmp.vue'
+import basicH1 from "./basic-cmps/basic-h1-cmp.vue";
+import basicParagraph from "./basic-cmps/basic-paragraph.cmp.vue";
+import basicBtn from "./basic-cmps/basic-btn-cmp.vue";
 export default {
   props: ["cmp"],
+  components: {
+    basicH1,
+    basicParagraph,
+    basicBtn,
+    basicImg
+  },
   computed: {
     getCurrStyle() {
       const style = {
