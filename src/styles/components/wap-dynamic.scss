@@ -1,6 +1,6 @@
-.wap-dynamic{
-        border:dotted 2px rgba(0, 0, 0, 0);
-}
+
 .wap-dynamic:hover{
-        border:dashed 2px black;
+        
+        outline:dashed 2px rgb(0, 204, 255) ;
+        z-index: 2;
 }
