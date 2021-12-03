@@ -15,14 +15,18 @@
       />
     </div>
     <div class="nav-bar">
-      <a v-for="(item, idx) in cmp.info.navBar" :key="'k' + idx" href=""
-        >{{ item.txt }}
+      <a
+        v-for="(item, idx) in cmp.info.navBar"
+        :key="'k' + idx"
+        href=""
+        >{{ item.txt }} 
       </a>
     </div>
   </section>
 </template>
 
 <script>
+import wapToolBar from "./wap-tool-bar.cmp.vue";
 export default {
   components: {},
   data() {
@@ -40,6 +44,9 @@ export default {
   created() {
     // console.log('IM HERE', this.cmp)
   },
+  components: {
+    wapToolBar,
+  },
   computed: {
     getCurrStyle() {
       console.log("IM HERE", this.cmp.style);
@@ -49,7 +56,7 @@ export default {
         fontSize: this.cmp.style.fontSize + "px",
         backgroundColor: this.cmp.style.backgroundColor,
       };
-      
+
       return style;
     },
   },
