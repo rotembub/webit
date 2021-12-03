@@ -1,4 +1,3 @@
-
 <template>
   <section class="wap-review" :class="cmp.theme">
     <div

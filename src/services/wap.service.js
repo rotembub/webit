@@ -27,7 +27,7 @@ function createWaps() {
 
   storageService.postMany(KEY, [wap_architecture, wap_fylo])
   // storageService.post(KEY, wap_architecture)
-  console.log('waps found in storage:', waps)
+  // console.log('waps found in storage:', waps)
   // if (!waps || !waps.length)
   //   localStorage.setItem(KEY, JSON.stringify([wap_architecture]))
 }
@@ -141,29 +141,26 @@ async function getEmptyWap() {
 
 // This IIFE async functions for Dev purposes
 // It allows testing of real time updates (such as sockets) by listening to storage events
-; (async () => {
-  var waps = await storageService.query(KEY)
+// ; (async () => {
+//   var waps = await storageService.query(KEY)
 
-  // Dev Helper: Listens to when localStorage changes in OTHER browser
-  window.addEventListener('storage', async () => {
-    console.log('Storage updated')
-    const freshWaps = await storageService.query(KEY)
-    if (freshWaps.length === waps.length + 1) {
-      console.log('Wap Added - localStorage updated from another browser')
-      socketService.emit(
-        SOCKET_EVENT_REVIEW_ADDED,
-        freshWaps[freshWaps.length - 1]
-      )
-    }
-    waps = freshWaps
-  })
-})()
+//   // Dev Helper: Listens to when localStorage changes in OTHER browser
+//   window.addEventListener('storage', async () => {
+//     console.log('Storage updated')
+//     const freshWaps = await storageService.query(KEY)
+//     if (freshWaps.length === waps.length + 1) {
+//       console.log('Wap Added - localStorage updated from another browser')
+//       socketService.emit(
+//         SOCKET_EVENT_REVIEW_ADDED,
+//         freshWaps[freshWaps.length - 1]
+//       )
+//     }
+//     waps = freshWaps
+//   })
+// })()
 
 // *. add <select> for theme (themes are hard coded inservice.getThemesFor(wapCmp.type))    -- classes?
 //make hardcoded cmps array
-
-
-
 
 const wap_architecture = {
   // _id: 'aaaaa12',
@@ -267,13 +264,10 @@ const wap_architecture = {
   isPublic: true,
 }
 
-
-
 const wap_fylo = {
   // _id: '999994123sd12',
   name: 'fylo',
-  imgUrl:
-    '',
+  imgUrl: '',
   createdBy: {
     _id: '',
     username: '',
@@ -389,8 +383,8 @@ const wap_fylo = {
         font: 'Fontush',
         color: 'red',
       },
-    }
-  ]
+    },
+  ],
 }
 
 storageService.post('wap_DB', wap_fylo)

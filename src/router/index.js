@@ -3,7 +3,7 @@ import VueRouter from 'vue-router'
 import homePage from '../pages/home-page.vue'
 import editorPage from '../pages/editor-page.vue'
 import templatesPage from '../pages/templates-page.vue'
-import wapPublishPage from '../pages/wap-publish-page.vue'
+import wapPublish from '../pages/publish-wap-page.vue'
 
 Vue.use(VueRouter)
 
@@ -11,29 +11,29 @@ const routes = [
   {
     path: '/',
     name: 'Home',
-    component: homePage
+    component: homePage,
   },
   {
     path: '/template',
     name: 'templates',
-    component: templatesPage
+    component: templatesPage,
   },
   {
     path: '/editor/:wapId?',
     name: 'editor',
-    component: editorPage
+    component: editorPage,
   },
   {
     path: '/publish/:wapId',
     name: 'publish',
-    component: wapPublishPage
-  }
+    component: wapPublish,
+  },
 ]
 
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
-  routes
+  routes,
 })
 
 export default router

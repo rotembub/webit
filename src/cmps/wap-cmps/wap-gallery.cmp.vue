@@ -1,7 +1,7 @@
 
 
 <template>
-  <section class="wap-gallery" :class="cmp.theme">
+  <section class="wap-gallery" :style="getCurrStyle" :class="cmp.theme">
     <template v-if="cmp.info.title">
       <h1 v-for="item in cmp.info.title" :key="'k' + item">{{ item.txt }}</h1>
     </template>
@@ -24,9 +24,19 @@
 </template>
 
 <script>
-export default {
-  props: ["cmp"],
-};
+  export default {
+    props: ['cmp'],
+    computed: {
+      getCurrStyle() {
+        const style = {
+          color: this.cmp.style.color, // text color not change only in theme-gallery-fylo
+          fontSize: this.cmp.style.fontSize + 'px',
+          backgroundColor: this.cmp.style.backgroundColor,
+        };
+        return style;
+      },
+    },
+  };
 </script>
 
 <style>

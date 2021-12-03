@@ -19,6 +19,16 @@
 <script>
 export default {
   props: ["cmp"],
+   computed: {
+      getCurrStyle() {
+        const style = {
+          color: this.cmp.style.color,
+          fontSize: this.cmp.style.fontSize + 'px',
+          backgroundColor: this.cmp.style.backgroundColor,
+        };
+        return style;
+      },
+    },
 };
 </script>
 
