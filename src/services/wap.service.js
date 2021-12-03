@@ -190,9 +190,9 @@ const wap_architecture = {
       },
       theme: 'theme-header-architecture',
       style: {
-        backgroundColor: '#74b9ff',
+        backgroundColor: '',
         fontSize: '16px',
-        color: '#a29bfe',
+        color: '',
       },
     },
     {
@@ -205,9 +205,9 @@ const wap_architecture = {
       },
       theme: 'theme-card-architecture',
       style: {
-        backgroundColor: '#74b9ff',
+        backgroundColor: '',
         fontSize: '16px',
-        color: '#a29bfe',
+        color: '',
       },
     },
     {
@@ -222,7 +222,7 @@ const wap_architecture = {
       style: {
         background: 'url()',
         font: 'Fontush',
-        color: 'red',
+        color: '',
       },
     },
     {
@@ -242,7 +242,7 @@ const wap_architecture = {
       style: {
         background: 'url()',
         font: 'Fontush',
-        color: 'red',
+        color: '',
       },
     },
     {
@@ -257,7 +257,7 @@ const wap_architecture = {
       style: {
         background: 'url()',
         font: 'Fontush',
-        color: 'red',
+        color: '',
       },
     },
   ],
