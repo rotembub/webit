@@ -21,6 +21,11 @@
         </ul>
       </template>
     </el-collapse-item>
+    <div class="wap-publish">
+      <el-button @click="publishWap" type="primary"
+        ><span>Publish</span><i class="el-icon-upload el-icon-right"></i
+      ></el-button>
+    </div>
   </el-collapse>
   <!-- <el-collapse-item title="Headers" @click.native="loadThemes('wap-header')">
       <div
@@ -75,56 +80,61 @@
 </template>
 
 <script>
-  import {Collapse, CollapseItem} from 'element-ui';
-  import wapHeader from '../wap-cmps/wap-header.cmp.vue';
-  import {cmpService} from '../../services/cmp.service.js';
+import { Collapse, CollapseItem } from 'element-ui'
+import wapHeader from '../wap-cmps/wap-header.cmp.vue'
+import { cmpService } from '../../services/cmp.service.js'
 
-  export default {
-    name: 'cmpPicker',
-    components: {
-      wapHeader,
-      Collapse,
-      CollapseItem,
+export default {
+  name: 'cmpPicker',
+  components: {
+    wapHeader,
+    Collapse,
+    CollapseItem,
+  },
+  data() {
+    return {
+      themes: null,
+      types: [
+        'wap-header',
+        'wap-gallery',
+        'wap-text',
+        'wap-contact',
+        'wap-card',
+        'wap-review',
+        'wap-signup',
+      ],
+    }
+  },
+  methods: {
+    publishWap() {
+      const wapToPublish = this.$store.getters.getCurrWap
+
+      console.log('wapToPublish', wapToPublish)
     },
-    data() {
-      return {
-        themes: null,
-        types: [
-          'wap-header',
-          'wap-gallery',
-          'wap-text',
-          'wap-contact',
-          'wap-card',
-          'wap-review',
-          'wap-signup',
-        ],
-      };
+    async add(cmpId) {
+      // console.log(cmpId);
+      try {
+        const cmp = await this.$store.dispatch({
+          type: 'addCmp',
+          id: cmpId,
+        })
+      } catch (err) {
+        console.log(err)
+      }
     },
-    methods: {
-      async add(cmpId) {
-        // console.log(cmpId);
-        try {
-          const cmp = await this.$store.dispatch({
-            type: 'addCmp',
-            id: cmpId,
-          });
-        } catch (err) {
-          console.log(err);
-        }
-      },
-      loadThemes(cmpType) {
-        const allThemes = cmpService.getThemesFor(cmpType);
-        this.themes = allThemes;
-        // console.log(this.themes);
-      },
-      getProperTxt(type) {
-        // console.log(type);
-        const textToShow = type.substring(4);
-        return textToShow.charAt(0).toUpperCase() + textToShow.slice(1);
-      },
+    loadThemes(cmpType) {
+      const allThemes = cmpService.getThemesFor(cmpType)
+      this.themes = allThemes
+      // console.log(this.themes);
     },
-    computed: {},
-  };
+    getProperTxt(type) {
+      // console.log(type);
+      const textToShow = type.substring(4)
+      return textToShow.charAt(0).toUpperCase() + textToShow.slice(1)
+    },
+  },
+  computed: {},
+}
 </script>
 
 <style></style>

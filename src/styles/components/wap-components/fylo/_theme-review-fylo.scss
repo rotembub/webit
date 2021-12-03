@@ -4,12 +4,11 @@
     justify-content: center;
     gap: 2em;
     color: $White;
-
+    background-color: #181f2a;
     grid-template-columns: repeat(auto-fit, minmax(100px, 360px));
     
-    width: 80%;
+    width: 100%;
     max-width: 1140px;
-    margin: 10em auto 5em auto;
 }
 
 .review-card{
