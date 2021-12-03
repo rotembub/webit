@@ -1,8 +1,8 @@
 <template>
   <section class="wap-contact" :style="getCurrStyle" :class="cmp.theme">
-    <h2 v-if="cmp.info.title">{{ cmp.info.title }}</h2>
-    <p v-if="cmp.info.subtitle">{{ cmp.info.subtitle }}</p>
-    <button v-if="cmp.info.btnTxt">{{ cmp.info.btnTxt }}</button>
+    <h2 v-if="cmp.info.title">{{ cmp.info.title.txt }}</h2>
+    <p v-if="cmp.info.subtitle">{{ cmp.info.subtitle.txt }}</p>
+    <button v-if="cmp.info.btnTxt">{{ cmp.info.btnTxt.txt }}</button>
   </section>
 </template>
 
