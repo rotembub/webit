@@ -25,10 +25,9 @@ img?   txt?  title?
 <img>  <p>     <h1>
 -->
 
-
 PROTOTYPE REFACTOR
 <template>
-  <section class="wap-card" :class="cmp.theme">
+  <section class="wap-card" :style="getCurrStyle" :class="cmp.theme">
     <div class="text-block">
       <template v-if="cmp.info.title">
         <h1 v-for="item in cmp.info.title" :key="'k' + item">{{ item }}</h1>
@@ -44,11 +43,19 @@ PROTOTYPE REFACTOR
 </template>
 
 <script>
-export default {
-  props: ["cmp"],
-
-};
+  export default {
+    props: ['cmp'],
+    computed: {
+      getCurrStyle() {
+        const style = {
+          color: this.cmp.style.color,
+          fontSize: this.cmp.style.fontSize + 'px',
+          backgroundColor: this.cmp.style.backgroundColor,
+        };
+        return style;
+      },
+    },
+  };
 </script>
 
-<style>
-</style>
+<style></style>

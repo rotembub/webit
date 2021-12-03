@@ -141,23 +141,23 @@ async function getEmptyWap() {
 
 // This IIFE async functions for Dev purposes
 // It allows testing of real time updates (such as sockets) by listening to storage events
-;(async () => {
-  var waps = await storageService.query(KEY)
+// ; (async () => {
+//   var waps = await storageService.query(KEY)
 
-  // Dev Helper: Listens to when localStorage changes in OTHER browser
-  window.addEventListener('storage', async () => {
-    console.log('Storage updated')
-    const freshWaps = await storageService.query(KEY)
-    if (freshWaps.length === waps.length + 1) {
-      console.log('Wap Added - localStorage updated from another browser')
-      socketService.emit(
-        SOCKET_EVENT_REVIEW_ADDED,
-        freshWaps[freshWaps.length - 1]
-      )
-    }
-    waps = freshWaps
-  })
-})()
+//   // Dev Helper: Listens to when localStorage changes in OTHER browser
+//   window.addEventListener('storage', async () => {
+//     console.log('Storage updated')
+//     const freshWaps = await storageService.query(KEY)
+//     if (freshWaps.length === waps.length + 1) {
+//       console.log('Wap Added - localStorage updated from another browser')
+//       socketService.emit(
+//         SOCKET_EVENT_REVIEW_ADDED,
+//         freshWaps[freshWaps.length - 1]
+//       )
+//     }
+//     waps = freshWaps
+//   })
+// })()
 
 // *. add <select> for theme (themes are hard coded inservice.getThemesFor(wapCmp.type))    -- classes?
 //make hardcoded cmps array

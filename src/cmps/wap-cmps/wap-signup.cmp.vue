@@ -1,5 +1,5 @@
 <template>
-  <section class="wap-signup" :class="cmp.theme">
+  <section class="wap-signup" :style="getCurrStyle" :class="cmp.theme">
     <h3 v-if="cmp.info.title">{{ cmp.info.title }}</h3>
     <p v-if="cmp.info.subtitle">{{ cmp.info.subtitle }}</p>
     <!-- <input type="text" placeholder="Your full name"> -->
@@ -19,6 +19,16 @@
 <script>
 export default {
   props: ["cmp"],
+   computed: {
+      getCurrStyle() {
+        const style = {
+          color: this.cmp.style.color,
+          fontSize: this.cmp.style.fontSize + 'px',
+          backgroundColor: this.cmp.style.backgroundColor,
+        };
+        return style;
+      },
+    },
 };
 </script>
 

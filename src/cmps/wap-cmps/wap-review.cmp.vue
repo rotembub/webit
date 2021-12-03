@@ -1,4 +1,3 @@
-
 <!--
 <template>
   <section class="wap-review" :class="cmp.theme">
@@ -41,7 +40,7 @@ txt / user { avatar / name / title}
 -->
 
 <template>
-  <section class="wap-review" :class="cmp.theme">
+  <section class="wap-review" :style="getCurrStyle" :class="cmp.theme">
     <div
       v-for="review in cmp.info.reviews"
       :key="review.name"
@@ -63,10 +62,19 @@ txt / user { avatar / name / title}
 </template>
 
 <script>
-export default {
-  props: ["cmp"],
-};
+  export default {
+    props: ['cmp'],
+    computed: {
+      getCurrStyle() {
+        const style = {
+          color: this.cmp.style.color,
+          fontSize: this.cmp.style.fontSize + 'px',
+          backgroundColor: this.cmp.style.backgroundColor,
+        };
+        return style;
+      },
+    },
+  };
 </script>
 
-<style>
-</style>
+<style></style>
