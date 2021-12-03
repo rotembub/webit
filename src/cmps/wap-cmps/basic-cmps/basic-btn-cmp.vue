@@ -1,6 +1,8 @@
 <template>
   <section class="basic-btn">
-    <button @click.stop="isEdit = !isEdit">{{ details.txt }}</button>
+    <button @click.stop="isEdit = !isEdit" :style="details.style">
+      {{ details.txt }}
+    </button>
     <wap-tool-bar v-if="isEdit"></wap-tool-bar>
   </section>
 </template>
@@ -18,7 +20,12 @@ export default {
     };
   },
   computed: {},
-  methods: {},
+  methods: {
+    selected() {
+      this.isEdit = !this.isEdit;
+      this.$emit("setSelected", this.details);
+    },
+  },
 };
 </script>
 

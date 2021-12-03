@@ -11,6 +11,7 @@ export default new Vuex.Store({
     waps: [],
     wapToPublish: null,
     isFullScreen: false,
+    elementSelected: null,
   },
   getters: {
     isFullScreen(state) {
@@ -64,6 +65,9 @@ export default new Vuex.Store({
     toggleWapFullScreen(state) {
       state.isFullScreen = !state.isFullScreen
     },
+    setSelectedElement(state, { element }) {
+      state.elementSelected = element;
+    }
   },
   actions: {
     toggleWapFullScreen({ commit }) {

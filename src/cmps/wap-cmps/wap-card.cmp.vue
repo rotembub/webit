@@ -42,6 +42,11 @@ export default {
     basicBtn,
     basicImg
   },
+  methods:{
+    setSelected(element){
+
+    }
+  },
   computed: {
     getCurrStyle() {
       const style = {
