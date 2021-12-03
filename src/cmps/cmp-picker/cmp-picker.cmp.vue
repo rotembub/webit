@@ -103,13 +103,19 @@ export default {
         'wap-review',
         'wap-signup',
       ],
+      wapToPublish: null,
     }
   },
   methods: {
     publishWap() {
-      const wapToPublish = this.$store.getters.getCurrWap
-
-      console.log('wapToPublish', wapToPublish)
+      this.wapToPublish = this.$store.getters.getCurrWap
+      this.$store.dispatch({
+        type: 'publishWap',
+        wapToPublish: this.wapToPublish,
+      })
+      console.log('ID', this.wapToPublish._id)
+      this.$router.push(`/publish/${this.wapToPublish._id}`)
+      // console.log('wapToPublish', wapToPublish)
     },
     async add(cmpId) {
       // console.log(cmpId);
