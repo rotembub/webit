@@ -5,7 +5,24 @@
     padding-left: 7px;
     background-color: #e9e9e963;
     overflow: auto;
+    transition: 1s;
+
+}
+.wap-builder-fullscreen{
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height:100vh;
+    border-top: 1px solid rgba(196, 195, 195, 0.336);
+    background-color: #e9e9e963;
+    overflow: auto;
+    transition: 1s;
+}
 
 
-  
+.is-full-wap-btn{
+    position: fixed;
+    bottom: 5vh;
+    right: 3vw;
 }

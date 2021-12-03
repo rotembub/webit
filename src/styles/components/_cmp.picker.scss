@@ -1,4 +1,17 @@
 .cmp-picker{
     width:20%;
     height:90vh;
+    transition: 0.6s;
+}
+.cmp-picker-fullscreen{
+    position: fixed !important;
+    width:20%;
+    height:90vh;
+    z-index: 1;
+    background-color: #fff;
+    transform:translateX(-95%);
+    transition: 0.4s;
+}
+.cmp-picker-fullscreen:hover{
+    transform:translateX(0%)
 }

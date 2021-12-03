@@ -10,8 +10,12 @@ export default new Vuex.Store({
     currWap: null,
     waps: [],
     wapToPublish: null,
+    isFullScreen: false,
   },
   getters: {
+    isFullScreen(state) {
+      return state.isFullScreen
+    },
     getCurrWap(state) {
       return state.currWap
     },
@@ -57,8 +61,14 @@ export default new Vuex.Store({
       console.log(wapToPublish, 'IN COMMIT')
       state.wapToPublish = wapToPublish
     },
+    toggleWapFullScreen(state) {
+      state.isFullScreen = !state.isFullScreen
+    },
   },
   actions: {
+    toggleWapFullScreen({ commit }) {
+      commit({ type: 'toggleWapFullScreen' })
+    },
     publishWap({ commit }, { wapToPublish }) {
       commit({ type: 'publishWap', wapToPublish })
 

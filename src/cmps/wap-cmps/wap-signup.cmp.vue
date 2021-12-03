@@ -1,5 +1,5 @@
 <template>
-  <section class="wap-signup" :class="cmp.theme">
+  <section class="wap-signup" :style="getCurrStyle" :class="cmp.theme">
     <h3 v-if="cmp.info.title">{{ cmp.info.title.txt }}</h3>
     <p v-if="cmp.info.subtitle">{{ cmp.info.subtitle.txt }}</p>
     <!-- <input type="text" placeholder="Your full name"> -->
