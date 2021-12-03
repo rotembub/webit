@@ -295,8 +295,8 @@ const wap_fylo = {
       theme: 'theme-header-fylo',
       style: {
         background: 'url()',
-        font: 'Fontush',
-        color: 'red',
+        font: '',
+        color: '',
       },
     },
     {
@@ -308,13 +308,13 @@ const wap_fylo = {
           'Fylo stores all your most important files in one secure location. Access them wherever you need, share and collaborate with friends family, and co-workers',
         ],
         imgUrl: 'fylo-imgs/illustration-intro.png',
-        buttons: ['Get Started'],
+        button: 'Get Started',
       },
       theme: 'theme-card-fylo-v1',
       style: {
         background: 'url()',
-        font: 'Fontush',
-        color: 'red',
+        font: '',
+        color: '',
       },
     },
     {
@@ -349,8 +349,8 @@ const wap_fylo = {
       theme: 'theme-gallery-fylo',
       style: {
         background: 'url()',
-        font: 'Fontush',
-        color: 'red',
+        font: '',
+        color: '',
       },
     },
     {
@@ -368,8 +368,8 @@ const wap_fylo = {
       theme: 'theme-card-fylo-v2',
       style: {
         background: 'url()',
-        font: 'Fontush',
-        color: 'red',
+        font: '',
+        color: '',
       },
     },
     {
@@ -401,8 +401,8 @@ const wap_fylo = {
       theme: 'theme-review-fylo',
       style: {
         background: 'url()',
-        font: 'Fontush',
-        color: 'red',
+        font: '',
+        color: '',
       },
     },
     {
@@ -418,8 +418,8 @@ const wap_fylo = {
       theme: 'theme-signup-fylo',
       style: {
         background: 'url()',
-        font: 'Fontush',
-        color: 'red',
+        font: '',
+        color: '',
       },
     },
   ],

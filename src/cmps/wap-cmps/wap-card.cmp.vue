@@ -35,6 +35,9 @@ PROTOTYPE REFACTOR
       <template v-if="cmp.info.subtitle">
         <p v-for="item in cmp.info.subtitle" :key="'k' + item">{{ item }}</p>
       </template>
+      <template v-if="cmp.info.button">
+        <button>{{ cmp.info.button }}</button>
+      </template>
     </div>
     <template v-if="cmp.info.imgUrl">
       <img :src="require('@/assets/wap-imgs/' + cmp.info.imgUrl)" alt="" />
@@ -43,19 +46,19 @@ PROTOTYPE REFACTOR
 </template>
 
 <script>
-  export default {
-    props: ['cmp'],
-    computed: {
-      getCurrStyle() {
-        const style = {
-          color: this.cmp.style.color,
-          fontSize: this.cmp.style.fontSize + 'px',
-          backgroundColor: this.cmp.style.backgroundColor,
-        };
-        return style;
-      },
+export default {
+  props: ['cmp'],
+  computed: {
+    getCurrStyle() {
+      const style = {
+        color: this.cmp.style.color,
+        fontSize: this.cmp.style.fontSize + 'px',
+        backgroundColor: this.cmp.style.backgroundColor,
+      }
+      return style
     },
-  };
+  },
+}
 </script>
 
 <style></style>
