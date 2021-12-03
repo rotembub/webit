@@ -1,6 +1,6 @@
-.theme-gallery-fylo-single2{
+.theme-card-fylo-v2{
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction: column;
     align-items: center;
     gap: 4em;
     color: $White;
@@ -10,18 +10,20 @@
     max-width:1240px ;
     
 
-    .illutration-fylo-two{
+    img{
         width: 100%;
+        // transform: scale(0.8);
+        // max-height: 400px;
     }
 }
 
-.card-text{
+.text-block{
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 1.5em;
 
-    h2{
+    h1{
         font-family: 'Raleway', sans-serif;
         font-weight: 700;
         font-size: 1.1rem;
@@ -48,11 +50,11 @@
 }
 
 @media only screen and (min-width : 768px) {
-    .fylo-two{
+    .theme-card-fylo-v2{
         display: flex;
-        flex-direction: row;
+        flex-direction: row-reverse;
         gap: 4em;
-        .illutration-fylo-two{
+        .img{
             width: 50%;
         }
     }

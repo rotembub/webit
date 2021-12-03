@@ -1,11 +1,7 @@
+
+<!--
 <template>
   <section class="wap-review" :class="cmp.theme">
-    <!-- <img
-      v-if="cmp.info.quotesImg"
-      :src="require('@/assets/wap-imgs/' + cmp.info.quotesImg)"
-      alt=""
-      class="bg-quote"
-    /> -->
     <div
       v-for="review in cmp.info.reviews"
       :key="review.name"
@@ -42,10 +38,16 @@ txt / user { avatar / name / title}
 
 <txt>
 
+-->
+
 <template>
   <section class="wap-review" :class="cmp.theme">
-    <div v-for="review in cmp.info.reviews" :key="review.name" class="review-card">
-      <p> {{ review.txt }} </p>
+    <div
+      v-for="review in cmp.info.reviews"
+      :key="review.name"
+      class="review-card"
+    >
+      <p>{{ review.txt }}</p>
       <div class="customer">
         <img
           :src="require('@/assets/wap-imgs/' + review.avatar)"
@@ -63,9 +65,8 @@ txt / user { avatar / name / title}
 <script>
 export default {
   props: ["cmp"],
-}
+};
 </script>
 
 <style>
-
 </style>

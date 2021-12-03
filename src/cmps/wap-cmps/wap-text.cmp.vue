@@ -1,3 +1,5 @@
+
+<!--
 <template>
   <section class="wap-text" :style="getCurrStyle" :class="cmp.theme">
     <h1>{{ cmp.info.title }}</h1>
@@ -32,6 +34,7 @@
 
 title? subtitle? txt?
 <wtf>
+-->
 
 <template>
   <section class="wap-text" :style="getCurrStyle" :class="cmp.theme">
@@ -39,7 +42,8 @@ title? subtitle? txt?
       <h1 v-for="item in cmp.info.title" :key="'k' + item">{{ item }}</h1>
     </template>
     <template v-if="cmp.info.subtitle">
-      <h3 v-for="item in cmp.info.subtitle" :key="'k' + item">{{ item }}</h3> <!--Currently in h3 cause p is used by txt might change later -->
+      <h3 v-for="item in cmp.info.subtitle" :key="'k' + item">{{ item }}</h3>
+      <!--Currently in h3 cause p is used by txt might change later -->
     </template>
     <template v-if="cmp.info.txt">
       <p v-for="item in cmp.info.txt" :key="'k' + item">{{ item }}</p>
