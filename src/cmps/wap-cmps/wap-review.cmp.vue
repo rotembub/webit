@@ -7,7 +7,7 @@
     >
       <basic-paragraph
         :details="{
-          data: { txt: review.txt, style: { fontSize: '', color: '' } },
+          data: {txt: review.txt, style: {fontSize: '', color: ''}},
         }"
       ></basic-paragraph>
 
@@ -17,7 +17,7 @@
             data: {
               url: review.avatar,
               id: review.id,
-              style: { fontSize: '', color: '' },
+              style: {fontSize: '', color: ''},
             },
           }"
         ></basic-img>
@@ -26,7 +26,7 @@
             data: {
               txt: review.name,
               id: review.id,
-              style: { fontSize: '', color: '' },
+              style: {fontSize: '', color: ''},
             },
           }"
         >
@@ -36,7 +36,7 @@
                 data: {
                   txt: review.title,
                   id: review.id,
-                  style: { fontSize: '', color: '' },
+                  style: {fontSize: '', color: ''},
                 },
               }"
             ></basic-span>
@@ -48,28 +48,34 @@
 </template>
 
 <script>
-import basicParagraph from "./basic-cmps/basic-paragraph.cmp.vue";
-import basicImg from "./basic-cmps/basic-img-cmp.vue";
-import basicSpan from "./basic-cmps/basic-span-cmp.vue";
+  import basicParagraph from './basic-cmps/basic-paragraph.cmp.vue';
+  import basicImg from './basic-cmps/basic-img-cmp.vue';
+  import basicSpan from './basic-cmps/basic-span-cmp.vue';
 
-export default {
-  props: ["cmp"],
-  components: {
-    basicParagraph,
-    basicImg,
-    basicSpan,
-  },
-  computed: {
-    getCurrStyle() {
-      const style = {
-        color: this.cmp.style.color,
-        fontSize: this.cmp.style.fontSize + "px",
-        backgroundColor: this.cmp.style.backgroundColor,
-      };
-      return style;
+  export default {
+    props: ['cmp'],
+    components: {
+      basicParagraph,
+      basicImg,
+      basicSpan,
     },
-  },
-};
+    computed: {
+      getCurrStyle() {
+        const style = {
+          color: this.cmp.style.color,
+          fontSize: this.cmp.style.fontSize + 'px',
+          backgroundColor: this.cmp.style.backgroundColor,
+          //new size style
+          height: this.cmp.style.height + 'px',
+          paddingTop: this.cmp.style.paddingTop + 'px',
+          paddingBottom: this.cmp.style.paddingBottom + 'px',
+          paddingLeft: this.cmp.style.paddingLeft + 'px',
+          paddingRight: this.cmp.style.paddingRight + 'px',
+        };
+        return style;
+      },
+    },
+  };
 </script>
 
 <style></style>
