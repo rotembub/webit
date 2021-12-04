@@ -17,7 +17,7 @@
     color: $White;
 
 
-    img{
+    img:not(.element-tool-bar .tool-element img){
         margin-bottom: 2em;
         object-fit: contain;
          width: 30%;

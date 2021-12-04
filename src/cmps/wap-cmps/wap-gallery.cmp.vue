@@ -3,10 +3,10 @@
 <template>
   <section class="wap-gallery" :style="getCurrStyle" :class="cmp.theme">
     <template v-if="cmp.info.title">
-      <h1 v-for="item in cmp.info.title" :key="'k' + item">{{ item.txt }}</h1>
+      <basic-h1 v-for="item in cmp.info.title" :key="item.id" :details="item"></basic-h1>
     </template>
     <template v-if="cmp.info.subtitle">
-      <p v-for="item in cmp.info.subtitle" :key="'k' + item">{{ item.txt }}</p>
+      <basic-paragraph v-for="item in cmp.info.subtitle" :key="item.id" :details="item"></basic-paragraph>
     </template>
     <template v-if="cmp.info.imgs">
       <div
@@ -14,18 +14,28 @@
         v-for="(img, idx) in cmp.info.imgs"
         :key="'k' + idx"
       >
-        <img :src="require('@/assets/wap-imgs/' + img.url)" alt="" />
-        <h3 v-if="img.title">{{ img.title.txt }}</h3>
-        <!--See if we keep it or remove it -->
-        <p v-if="img.txt">{{ img.txt.txt }}</p>
+        <basic-img :details="img"></basic-img>
+        <basic-h3 v-if="img.title" :details="img.title"></basic-h3>
+        <basic-paragraph v-if="img.txt" :details="img.txt"></basic-paragraph>
       </div>
     </template>
   </section>
 </template>
 
 <script>
+  import basicH1 from './basic-cmps/basic-h1-cmp.vue'
+  import basicParagraph from './basic-cmps/basic-paragraph.cmp.vue'
+  import basicImg from './basic-cmps/basic-img-cmp.vue'
+  import basicH3 from './basic-cmps/basic-h3-cmp.vue'
+
   export default {
     props: ['cmp'],
+    components:{
+      basicParagraph,
+      basicH1,
+      basicImg,
+      basicH3
+    },
     computed: {
       getCurrStyle() {
         const style = {

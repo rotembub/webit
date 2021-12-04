@@ -3,26 +3,35 @@
 <template>
   <section class="wap-text" :style="getCurrStyle" :class="cmp.theme">
     <template v-if="cmp.info.title">
-      <h1 v-for="item in cmp.info.title" :key="'k' + item.id">
+      <basic-h1 v-for="item in cmp.info.title" :key="item.id" :details="item"></basic-h1>
+      <!-- <h1 v-for="item in cmp.info.title" :key="'k' + item.id">
         {{ item.txt }}
-      </h1>
+      </h1> -->
     </template>
     <template v-if="cmp.info.subtitle">
-      <h3 v-for="item in cmp.info.subtitle" :key="'k' + item.id">
+      <basic-h3 v-for="item in cmp.info.subtitle" :key="item.id" :details="item"></basic-h3>
+      <!-- <h3 v-for="item in cmp.info.subtitle" :key="'k' + item.id">
         {{ item.txt }}
-      </h3>
+      </h3> -->
       <!--Currently in h3 cause p is used by txt might change later -->
     </template>
     <template v-if="cmp.info.txt">
-      <p v-for="item in cmp.info.txt" :key="'k' + item.id">{{ item.txt }}</p>
+      <basic-paragraph v-for="item in cmp.info.txt" :key="item.id" :details="item"></basic-paragraph>
+      <!-- <p v-for="item in cmp.info.txt" :key="'k' + item.id">{{ item.txt }}</p> -->
     </template>
   </section>
 </template>
 
 <script>
+import basicH1 from './basic-cmps/basic-h1-cmp.vue'
+import basicH3 from './basic-cmps/basic-h3-cmp.vue'
+import basicParagraph from './basic-cmps/basic-paragraph.cmp.vue'
+
+
 export default {
   props: ["cmp"],
-  components: {},
+  components: {basicParagraph,
+  basicH3,basicH1},
   data() {
     return {};
   },

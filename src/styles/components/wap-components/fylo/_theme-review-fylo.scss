@@ -33,8 +33,8 @@
     gap: 1em;
 
 
-    img{
-        width: 2.3em;
+    img:not(.element-tool-bar .tool-element img){
+        // width: 2.3em;
         border-radius: 55rem;
     }
     h5{

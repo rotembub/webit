@@ -1,34 +1,26 @@
 <template>
   <section :style="getCurrStyle" class="wap-header" :class="cmp.theme">
-    <!-- <div v-for="(item, idx) in cmp.info" :key="'k' + idx">
-      <p>{{ item }}</p> -->
-    <!-- </div> -->
-    <!-- :style="{ fontSize: cmpStyle.fontSize }" -->
     <div :style="getCurrStyle" class="logo">
-      <h2 contenteditable v-if="cmp.info.logo && cmp.info.logo.type === 'txt'">
-        {{ cmp.info.logo.txt }}
-      </h2>
-      <img
-        v-if="cmp.info.logo && cmp.info.logo.type === 'img'"
-        :src="require('@/assets/wap-imgs/' + cmp.info.logo.url)"
-        alt=""
-      />
+      <basic-h2 v-if="cmp.info.logo && cmp.info.logo.type === 'txt'" :details="cmp.info.logo"></basic-h2>
+      <basic-img v-if="cmp.info.logo && cmp.info.logo.type === 'img'" :details="cmp.info.logo"></basic-img>
     </div>
     <div class="nav-bar">
-      <a
-        v-for="(item, idx) in cmp.info.navBar"
-        :key="'k' + idx"
-        href=""
-        >{{ item.txt }} 
-      </a>
+      <basic-anchor v-for="item in cmp.info.navBar" :key="item.details" :details="item"></basic-anchor>
     </div>
   </section>
 </template>
 
 <script>
-import wapToolBar from "./wap-tool-bar.cmp.vue";
+import basicH2 from "./basic-cmps/basic-h2-cmp.vue";
+import basicImg from "./basic-cmps/basic-img-cmp.vue";
+import basicAnchor from "./basic-cmps/basic-anchor-cmp.vue";
+
 export default {
-  components: {},
+  components: {
+    basicImg,
+    basicH2,
+    basicAnchor,
+  },
   data() {
     return {
       cmpStyle: null,
@@ -43,9 +35,6 @@ export default {
   props: ["cmp"],
   created() {
     // console.log('IM HERE', this.cmp)
-  },
-  components: {
-    wapToolBar,
   },
   computed: {
     getCurrStyle() {
