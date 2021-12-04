@@ -4,6 +4,49 @@ import { utilService } from './util.service'
 // const imgCMP = {
 //     imgs: [{id: style url} , urls]
 // }
+const imgCMP = {
+    imgs: [{ id: 123, url: '123.com', style: { stuff: '......' } }]
+}
+
+const reviewCMP = {
+    review: [{
+        id: utilService.makeId(4),
+        txt: [{ id: utilService.makeId(4), txt: 'Fylo has improved our team productivity by an order of magnitude. Since making the switch our team has become a well-oiled collaboration machine.', style: { background: 'url()', color: '', backgroundColor: '', fontSize: '', paddingRight: '', paddingTop: '', paddingBottom: '', paddingLeft: '', lineHeight: '', fontFamily: '', fontStyle: '' } }],
+        name: [{ id: utilService.makeId(4), txt: 'Satish Patel', style: { background: 'url()', color: '', backgroundColor: '', fontSize: '', paddingRight: '', paddingTop: '', paddingBottom: '', paddingLeft: '', lineHeight: '', fontFamily: '', fontStyle: '' } }],
+        title: [{ id: utilService.makeId(4), txt: 'Founder & CEO, Huddle', style: { background: 'url()', color: '', backgroundColor: '', fontSize: '', paddingRight: '', paddingTop: '', paddingBottom: '', paddingLeft: '', lineHeight: '', fontFamily: '', fontStyle: '' } }],
+        avatar: [{ id: utilService.makeId(4), url: 'fylo-imgs/profile-1.jpg', style: { background: 'url()', color: '', backgroundColor: '', fontSize: '', paddingRight: '', paddingTop: '', paddingBottom: '', paddingLeft: '', lineHeight: '', fontFamily: '', fontStyle: '' } }],
+    }]
+}
+
+
+const card = {
+
+}
+
+const contact = {
+
+}
+
+// const gallery  = container  
+
+const header = {
+
+}
+
+const signUp = {
+
+}
+const social = {
+
+}
+
+const text = {
+
+}
+
+
+
+
 
 
 
@@ -45,7 +88,7 @@ const wap_architecture = {
                         fontStyle: '',
                     },
                 },
-                navBar: [
+                navBar: [ // havnt figured our what to do here yet...
                     {
                         id: utilService.makeId(6),
                         txt: 'Work',
@@ -172,7 +215,7 @@ const wap_architecture = {
                     },
                 ],
                 subtitle: '',
-                imgs: [{ id: utilService.makeId(4), url: 'building1.jpg' }],
+                imgs: [{ id: utilService.makeId(4), url: 'building1.jpg', style: { background: 'url()', color: '', backgroundColor: '', fontSize: '', paddingRight: '', paddingTop: '', paddingBottom: '', paddingLeft: '', lineHeight: '', fontFamily: '', fontStyle: '' } }],
             },
             theme: 'theme-card-architecture',
             style: {
@@ -251,8 +294,6 @@ const wap_architecture = {
             id: utilService.makeId(4),
             type: 'wap-gallery',
             info: {
-                title: '',
-                subtitle: '',
                 imgs: [
                     {
                         id: utilService.makeId(6),
@@ -272,7 +313,6 @@ const wap_architecture = {
                                 fontStyle: '',
                             }
                         }],
-                        txt: '',
                     },
                     {
                         id: utilService.makeId(6),
@@ -292,7 +332,6 @@ const wap_architecture = {
                                 fontStyle: '',
                             }
                         }],
-                        txt: '',
                     },
                     {
                         id: utilService.makeId(6),
@@ -312,7 +351,6 @@ const wap_architecture = {
                                 fontStyle: '',
                             }
                         }],
-                        txt: '',
                     },
                     {
                         id: utilService.makeId(6),
@@ -332,7 +370,6 @@ const wap_architecture = {
                                 fontStyle: '',
                             }
                         }],
-                        txt: '',
                     },
                 ],
             },
@@ -467,7 +504,7 @@ const wap_fylo = {
                         fontStyle: '',
                     },
                 },
-                navBar: [
+                navBar: [ // need to figure this out quickly
                     {
                         id: utilService.makeId(6),
                         txt: 'Features',
@@ -578,7 +615,7 @@ const wap_fylo = {
                         },
                     },
                 ],
-                imgUrl: 'fylo-imgs/illustration-intro.png',
+                imgs: [{ id: utilService.makeId(4), url: 'fylo-imgs/illustration-intro.png', style: { background: 'url()', color: '', backgroundColor: '', fontSize: '', paddingRight: '', paddingTop: '', paddingBottom: '', paddingLeft: '', lineHeight: '', fontFamily: '', fontStyle: '' } }],
                 buttons: [
                     {
                         id: utilService.makeId(6),
@@ -842,7 +879,7 @@ const wap_fylo = {
                     },
                 ],
                 // link: 'See how Fylo works',
-                imgUrl: 'fylo-imgs/illustration-stay-productive.png',
+                imgs: [{ id: utilService.makeId(4), url: 'fylo-imgs/illustration-stay-productive.png', style: { background: 'url()', color: '', backgroundColor: '', fontSize: '', paddingRight: '', paddingTop: '', paddingBottom: '', paddingLeft: '', lineHeight: '', fontFamily: '', fontStyle: '' } }],
             },
             theme: 'theme-card-fylo-v2',
             style: {
@@ -853,34 +890,94 @@ const wap_fylo = {
         },
         {
             id: utilService.makeId(4),
-            type: 'wap-review',
+            type: "wap-container",
             info: {
-                quotesImg: 'fylo-imgs/bg-quotes.png', // NEED TO GET BACK HERE THIS COULD BE COMPLICATED
-                reviews: [
+                dir: "row",
+                cmps: [
                     {
                         id: utilService.makeId(4),
-                        txt: 'Fylo has improved our team productivity by an order of magnitude. Since making the switch our team has become a well-oiled collaboration machine.',
-                        name: 'Satish Patel',
-                        title: 'Founder & CEO, Huddle',
-                        avatar: 'fylo-imgs/profile-1.jpg',
+                        type: 'wap-review',
+                        info: {
+                            reviews: [{
+                                id: utilService.makeId(4),
+                                txt: [{ id: utilService.makeId(4), txt: 'Fylo has improved our team productivity by an order of magnitude. Since making the switch our team has become a well-oiled collaboration machine.', style: { background: 'url()', color: '', backgroundColor: '', fontSize: '', paddingRight: '', paddingTop: '', paddingBottom: '', paddingLeft: '', lineHeight: '', fontFamily: '', fontStyle: '' } }],
+                                name: [{ id: utilService.makeId(4), txt: 'Satish Patel', style: { background: 'url()', color: '', backgroundColor: '', fontSize: '', paddingRight: '', paddingTop: '', paddingBottom: '', paddingLeft: '', lineHeight: '', fontFamily: '', fontStyle: '' } }],
+                                title: [{ id: utilService.makeId(4), txt: 'Founder & CEO, Huddle', style: { background: 'url()', color: '', backgroundColor: '', fontSize: '', paddingRight: '', paddingTop: '', paddingBottom: '', paddingLeft: '', lineHeight: '', fontFamily: '', fontStyle: '' } }],
+                                avatar: [{ id: utilService.makeId(4), url: 'fylo-imgs/profile-1.jpg', style: { background: 'url()', color: '', backgroundColor: '', fontSize: '', paddingRight: '', paddingTop: '', paddingBottom: '', paddingLeft: '', lineHeight: '', fontFamily: '', fontStyle: '' } }],
+                            }]
+                            , theme: 'theme-review-fylo',
+                            style: {
+                                background: 'url()',
+                                color: '',
+                                backgroundColor: '',
+                                fontSize: '',
+                                paddingRight: '',
+                                paddingTop: '',
+                                paddingBottom: '',
+                                paddingLeft: '',
+                                lineHeight: '',
+                                fontFamily: '',
+                                fontStyle: '',
+                            },
+                        }
                     },
                     {
                         id: utilService.makeId(4),
-                        txt: 'Fylo has improved our team productivity by an order of magnitude. Since making the switch our team has become a well-oiled collaboration machine.',
-                        name: 'Bruce McKenzie',
-                        title: 'Founder & CEO, Huddle',
-                        avatar: 'fylo-imgs/profile-2.jpg',
+                        type: 'wap-review',
+                        info: {
+                            reviews: [{
+                                id: utilService.makeId(4),
+                                txt: [{ id: utilService.makeId(4), txt: 'Fylo has improved our team productivity by an order of magnitude. Since making the switch our team has become a well-oiled collaboration machine.', style: { background: 'url()', color: '', backgroundColor: '', fontSize: '', paddingRight: '', paddingTop: '', paddingBottom: '', paddingLeft: '', lineHeight: '', fontFamily: '', fontStyle: '' } }],
+                                name: [{ id: utilService.makeId(4), txt: 'Bruce McKenzie', style: { background: 'url()', color: '', backgroundColor: '', fontSize: '', paddingRight: '', paddingTop: '', paddingBottom: '', paddingLeft: '', lineHeight: '', fontFamily: '', fontStyle: '' } }],
+                                title: [{ id: utilService.makeId(4), txt: 'Founder & CEO, Huddle', style: { background: 'url()', color: '', backgroundColor: '', fontSize: '', paddingRight: '', paddingTop: '', paddingBottom: '', paddingLeft: '', lineHeight: '', fontFamily: '', fontStyle: '' } }],
+                                avatar: [{ id: utilService.makeId(4), url: 'fylo-imgs/profile-2.jpg', style: { background: 'url()', color: '', backgroundColor: '', fontSize: '', paddingRight: '', paddingTop: '', paddingBottom: '', paddingLeft: '', lineHeight: '', fontFamily: '', fontStyle: '' } }],
+                            }]
+                            , theme: 'theme-review-fylo',
+                            style: {
+                                background: 'url()',
+                                color: '',
+                                backgroundColor: '',
+                                fontSize: '',
+                                paddingRight: '',
+                                paddingTop: '',
+                                paddingBottom: '',
+                                paddingLeft: '',
+                                lineHeight: '',
+                                fontFamily: '',
+                                fontStyle: '',
+                            },
+                        }
                     },
                     {
                         id: utilService.makeId(4),
-                        txt: 'Fylo has improved our team productivity by an order of magnitude. Since making the switch our team has become a well-oiled collaboration machine.',
-                        name: 'Iva Boyd',
-                        title: 'Founder & CEO, Huddle',
-                        avatar: 'fylo-imgs/profile-3.jpg',
+                        type: 'wap-review',
+                        info: {
+                            reviews: [{
+                                id: utilService.makeId(4),
+                                txt: [{ id: utilService.makeId(4), txt: 'Fylo has improved our team productivity by an order of magnitude. Since making the switch our team has become a well-oiled collaboration machine.', style: { background: 'url()', color: '', backgroundColor: '', fontSize: '', paddingRight: '', paddingTop: '', paddingBottom: '', paddingLeft: '', lineHeight: '', fontFamily: '', fontStyle: '' } }],
+                                name: [{ id: utilService.makeId(4), txt: 'Iva Boyd', style: { background: 'url()', color: '', backgroundColor: '', fontSize: '', paddingRight: '', paddingTop: '', paddingBottom: '', paddingLeft: '', lineHeight: '', fontFamily: '', fontStyle: '' } }],
+                                title: [{ id: utilService.makeId(4), txt: 'Founder & CEO, Huddle', style: { background: 'url()', color: '', backgroundColor: '', fontSize: '', paddingRight: '', paddingTop: '', paddingBottom: '', paddingLeft: '', lineHeight: '', fontFamily: '', fontStyle: '' } }],
+                                avatar: [{ id: utilService.makeId(4), url: 'fylo-imgs/profile-3.jpg', style: { background: 'url()', color: '', backgroundColor: '', fontSize: '', paddingRight: '', paddingTop: '', paddingBottom: '', paddingLeft: '', lineHeight: '', fontFamily: '', fontStyle: '' } }],
+                            }]
+                            , theme: 'theme-review-fylo',
+                            style: {
+                                background: 'url()',
+                                color: '',
+                                backgroundColor: '',
+                                fontSize: '',
+                                paddingRight: '',
+                                paddingTop: '',
+                                paddingBottom: '',
+                                paddingLeft: '',
+                                lineHeight: '',
+                                fontFamily: '',
+                                fontStyle: '',
+                            },
+                        }
                     },
-                ],
+                ]
             },
-            theme: 'theme-review-fylo',
+            theme: "theme-reviews-fylo",
             style: {
                 background: 'url()',
                 color: '',
@@ -893,13 +990,13 @@ const wap_fylo = {
                 lineHeight: '',
                 fontFamily: '',
                 fontStyle: '',
-            },
+            }
         },
         {
             id: utilService.makeId(4),
             type: 'wap-signup',
             info: {
-                title: {
+                title: [{
                     id: utilService.makeId(4),
                     txt: 'Get Early Access Today',
                     style: {
@@ -915,8 +1012,8 @@ const wap_fylo = {
                         fontFamily: '',
                         fontStyle: '',
                     },
-                },
-                subtitle: {
+                }],
+                subtitle: [{
                     id: utilService.makeId(4),
                     txt: 'It only takes a minute to sign up and our free starter tier is extremely generous. If you have any questions, our support team would be happy to help you',
                     style: {
@@ -932,8 +1029,8 @@ const wap_fylo = {
                         fontFamily: '',
                         fontStyle: '',
                     },
-                },
-                inputTxt: {
+                }],
+                input: [{
                     id: utilService.makeId(4),
                     txt: 'Get Started For Free!',
                     style: {
@@ -949,8 +1046,8 @@ const wap_fylo = {
                         fontFamily: '',
                         fontStyle: '',
                     },
-                },
-                btnTxt: {
+                }],
+                buttons: [{
                     id: utilService.makeId(4),
                     txt: 'Sign Me Up!',
                     style: {
@@ -966,7 +1063,7 @@ const wap_fylo = {
                         fontFamily: '',
                         fontStyle: '',
                     },
-                },
+                }],
             },
             theme: 'theme-signup-fylo',
             style: {
@@ -985,3 +1082,160 @@ const wap_fylo = {
         },
     ],
 }
+
+
+
+const containerofreviews = {
+    id: utilService.makeId(4),
+    type: "wap-container",
+    info: {
+        dir: "row",
+        cmps: [
+            {
+                id: utilService.makeId(4),
+                type: 'wap-review',
+                info: {
+                    reviews: [{
+                        id: utilService.makeId(4),
+                        txt: [{ id: utilService.makeId(4), txt: 'Fylo has improved our team productivity by an order of magnitude. Since making the switch our team has become a well-oiled collaboration machine.', style: { background: 'url()', color: '', backgroundColor: '', fontSize: '', paddingRight: '', paddingTop: '', paddingBottom: '', paddingLeft: '', lineHeight: '', fontFamily: '', fontStyle: '' } }],
+                        name: [{ id: utilService.makeId(4), txt: 'Satish Patel', style: { background: 'url()', color: '', backgroundColor: '', fontSize: '', paddingRight: '', paddingTop: '', paddingBottom: '', paddingLeft: '', lineHeight: '', fontFamily: '', fontStyle: '' } }],
+                        title: [{ id: utilService.makeId(4), txt: 'Founder & CEO, Huddle', style: { background: 'url()', color: '', backgroundColor: '', fontSize: '', paddingRight: '', paddingTop: '', paddingBottom: '', paddingLeft: '', lineHeight: '', fontFamily: '', fontStyle: '' } }],
+                        avatar: [{ id: utilService.makeId(4), url: 'fylo-imgs/profile-1.jpg', style: { background: 'url()', color: '', backgroundColor: '', fontSize: '', paddingRight: '', paddingTop: '', paddingBottom: '', paddingLeft: '', lineHeight: '', fontFamily: '', fontStyle: '' } }],
+                    }]
+                    , theme: 'theme-review-fylo',
+                    style: {
+                        background: 'url()',
+                        color: '',
+                        backgroundColor: '',
+                        fontSize: '',
+                        paddingRight: '',
+                        paddingTop: '',
+                        paddingBottom: '',
+                        paddingLeft: '',
+                        lineHeight: '',
+                        fontFamily: '',
+                        fontStyle: '',
+                    },
+                }
+            },
+            {
+                id: utilService.makeId(4),
+                type: 'wap-review',
+                info: {
+                    reviews: [{
+                        id: utilService.makeId(4),
+                        txt: [{ id: utilService.makeId(4), txt: 'Fylo has improved our team productivity by an order of magnitude. Since making the switch our team has become a well-oiled collaboration machine.', style: { background: 'url()', color: '', backgroundColor: '', fontSize: '', paddingRight: '', paddingTop: '', paddingBottom: '', paddingLeft: '', lineHeight: '', fontFamily: '', fontStyle: '' } }],
+                        name: [{ id: utilService.makeId(4), txt: 'Bruce McKenzie', style: { background: 'url()', color: '', backgroundColor: '', fontSize: '', paddingRight: '', paddingTop: '', paddingBottom: '', paddingLeft: '', lineHeight: '', fontFamily: '', fontStyle: '' } }],
+                        title: [{ id: utilService.makeId(4), txt: 'Founder & CEO, Huddle', style: { background: 'url()', color: '', backgroundColor: '', fontSize: '', paddingRight: '', paddingTop: '', paddingBottom: '', paddingLeft: '', lineHeight: '', fontFamily: '', fontStyle: '' } }],
+                        avatar: [{ id: utilService.makeId(4), url: 'fylo-imgs/profile-2.jpg', style: { background: 'url()', color: '', backgroundColor: '', fontSize: '', paddingRight: '', paddingTop: '', paddingBottom: '', paddingLeft: '', lineHeight: '', fontFamily: '', fontStyle: '' } }],
+                    }]
+                    , theme: 'theme-review-fylo',
+                    style: {
+                        background: 'url()',
+                        color: '',
+                        backgroundColor: '',
+                        fontSize: '',
+                        paddingRight: '',
+                        paddingTop: '',
+                        paddingBottom: '',
+                        paddingLeft: '',
+                        lineHeight: '',
+                        fontFamily: '',
+                        fontStyle: '',
+                    },
+                }
+            },
+            {
+                id: utilService.makeId(4),
+                type: 'wap-review',
+                info: {
+                    reviews: [{
+                        id: utilService.makeId(4),
+                        txt: [{ id: utilService.makeId(4), txt: 'Fylo has improved our team productivity by an order of magnitude. Since making the switch our team has become a well-oiled collaboration machine.', style: { background: 'url()', color: '', backgroundColor: '', fontSize: '', paddingRight: '', paddingTop: '', paddingBottom: '', paddingLeft: '', lineHeight: '', fontFamily: '', fontStyle: '' } }],
+                        name: [{ id: utilService.makeId(4), txt: 'Iva Boyd', style: { background: 'url()', color: '', backgroundColor: '', fontSize: '', paddingRight: '', paddingTop: '', paddingBottom: '', paddingLeft: '', lineHeight: '', fontFamily: '', fontStyle: '' } }],
+                        title: [{ id: utilService.makeId(4), txt: 'Founder & CEO, Huddle', style: { background: 'url()', color: '', backgroundColor: '', fontSize: '', paddingRight: '', paddingTop: '', paddingBottom: '', paddingLeft: '', lineHeight: '', fontFamily: '', fontStyle: '' } }],
+                        avatar: [{ id: utilService.makeId(4), url: 'fylo-imgs/profile-3.jpg', style: { background: 'url()', color: '', backgroundColor: '', fontSize: '', paddingRight: '', paddingTop: '', paddingBottom: '', paddingLeft: '', lineHeight: '', fontFamily: '', fontStyle: '' } }],
+                    }]
+                    , theme: 'theme-review-fylo',
+                    style: {
+                        background: 'url()',
+                        color: '',
+                        backgroundColor: '',
+                        fontSize: '',
+                        paddingRight: '',
+                        paddingTop: '',
+                        paddingBottom: '',
+                        paddingLeft: '',
+                        lineHeight: '',
+                        fontFamily: '',
+                        fontStyle: '',
+                    },
+                }
+            },
+        ]
+    },
+    theme: "theme-container-base",
+    style: {
+        background: 'url()',
+        color: '',
+        backgroundColor: '',
+        fontSize: '',
+        paddingRight: '',
+        paddingTop: '',
+        paddingBottom: '',
+        paddingLeft: '',
+        lineHeight: '',
+        fontFamily: '',
+        fontStyle: '',
+    }
+}
+
+
+
+
+
+
+// {
+//     id: utilService.makeId(4),
+//     type: 'wap-review',
+//     info: {
+//         // quotesImg: 'fylo-imgs/bg-quotes.png', // NEED TO GET BACK HERE THIS COULD BE COMPLICATED
+//         reviews: [
+//             {
+//                 id: utilService.makeId(4),
+//                 txt: 'Fylo has improved our team productivity by an order of magnitude. Since making the switch our team has become a well-oiled collaboration machine.',
+//                 name: 'Satish Patel',
+//                 title: 'Founder & CEO, Huddle',
+//                 avatar: 'fylo-imgs/profile-1.jpg',
+//             },
+//             {
+//                 id: utilService.makeId(4),
+//                 txt: 'Fylo has improved our team productivity by an order of magnitude. Since making the switch our team has become a well-oiled collaboration machine.',
+//                 name: 'Bruce McKenzie',
+//                 title: 'Founder & CEO, Huddle',
+//                 avatar: 'fylo-imgs/profile-2.jpg',
+//             },
+//             {
+//                 id: utilService.makeId(4),
+//                 txt: 'Fylo has improved our team productivity by an order of magnitude. Since making the switch our team has become a well-oiled collaboration machine.',
+//                 name: 'Iva Boyd',
+//                 title: 'Founder & CEO, Huddle',
+//                 avatar: 'fylo-imgs/profile-3.jpg',
+//             },
+//         ],
+//     },
+//     theme: 'theme-review-fylo',
+//     style: {
+//         background: 'url()',
+//         color: '',
+//         backgroundColor: '',
+//         fontSize: '',
+//         paddingRight: '',
+//         paddingTop: '',
+//         paddingBottom: '',
+//         paddingLeft: '',
+//         lineHeight: '',
+//         fontFamily: '',
+//         fontStyle: '',
+//     },
+// },

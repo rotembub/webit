@@ -69,7 +69,7 @@ PROTOTYPE REFACTOR
           fontSize: this.cmp.style.fontSize + 'px',
           backgroundColor: this.cmp.style.backgroundColor,
           //new size style
-          //height: this.cmp.style.height + 'px', // problem range too small
+          height: this.cmp.style.height + 'px', // problem range too small
           paddingTop: this.cmp.style.paddingTop + 'px',
           paddingBottom: this.cmp.style.paddingBottom + 'px',
           paddingLeft: this.cmp.style.paddingLeft + 'px',

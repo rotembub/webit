@@ -4,6 +4,8 @@
       Height :
       <input
         type="range"
+        :max="maxSize"
+        @mousemove.stop
         @input="updateCmp"
         v-model="currWap.cmps[currCmpIdx].style.height"
       />
@@ -14,6 +16,7 @@
       <input
         type="range"
         min="30"
+        @mousemove.stop
         @input="updateCmp"
         v-model="currWap.cmps[currCmpIdx].style.paddingTop"
       />
@@ -25,6 +28,7 @@
       <input
         type="range"
         min="30"
+        @mousemove.stop
         @input="updateCmp"
         v-model="currWap.cmps[currCmpIdx].style.paddingBottom"
       />
@@ -34,6 +38,7 @@
       <input
         type="range"
         min="30"
+        @mousemove.stop
         @input="updateCmp"
         v-model="currWap.cmps[currCmpIdx].style.paddingLeft"
       />
@@ -43,6 +48,7 @@
       <input
         type="range"
         min="30"
+        @mousemove.stop
         @input="updateCmp"
         v-model="currWap.cmps[currCmpIdx].style.paddingRight"
       />
@@ -86,6 +92,7 @@
         isImg: false,
         currWap: null,
         currCmpIdx: null,
+        maxSize: '',
       };
     },
     created() {
@@ -94,6 +101,9 @@
       this.currCmpIdx = this.currWap.cmps.findIndex(
         (cmp) => cmp.id === this.id
       );
+      this.maxSize =
+        parseInt(this.currWap.cmps[this.currCmpIdx].style.height) + 50 + '';
+      console.log(this.maxSize, 'maxSize');
     },
     methods: {
       async updateCmp() {
