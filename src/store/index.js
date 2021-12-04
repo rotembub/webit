@@ -176,5 +176,15 @@ export default new Vuex.Store({
         console.log('failed to remove CMP fron WAP', err)
       }
     },
+    async removeElFromCmp({ commit, state }, { cmpId, elType, elId }) {
+      try {
+        const wapId = state.currWap._id;
+        const updatedWap = await wapService.removeEl(wapId, cmpId, elType, elId)
+        console.log(updatedWap);
+        commit({ type: 'setCurrWap', wap: updatedWap })
+      } catch (err) {
+        console.log('failed to remove element from cmp', err);
+      }
+    }
   },
 })

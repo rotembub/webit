@@ -3,20 +3,20 @@
 <template>
   <section class="wap-text" :style="getCurrStyle" :class="cmp.theme">
     <template v-if="cmp.info.title">
-      <basic-h1 v-for="item in cmp.info.title" :key="item.id" :details="item"></basic-h1>
+      <basic-h1 v-for="item in cmp.info.title" :key="item.id" :details="{ data: item, cmpId: cmp.id, elType: 'title' }"></basic-h1>
       <!-- <h1 v-for="item in cmp.info.title" :key="'k' + item.id">
         {{ item.txt }}
       </h1> -->
     </template>
     <template v-if="cmp.info.subtitle">
-      <basic-h3 v-for="item in cmp.info.subtitle" :key="item.id" :details="item"></basic-h3>
+      <basic-h3 v-for="item in cmp.info.subtitle" :key="item.id" :details="{ data: item, cmpId: cmp.id, elType: 'subtitle' }"></basic-h3>
       <!-- <h3 v-for="item in cmp.info.subtitle" :key="'k' + item.id">
         {{ item.txt }}
       </h3> -->
       <!--Currently in h3 cause p is used by txt might change later -->
     </template>
     <template v-if="cmp.info.txt">
-      <basic-paragraph v-for="item in cmp.info.txt" :key="item.id" :details="item"></basic-paragraph>
+      <basic-paragraph v-for="item in cmp.info.txt" :key="item.id" :details="{ data: item, cmpId: cmp.id, elType: 'txt' }"></basic-paragraph>
       <!-- <p v-for="item in cmp.info.txt" :key="'k' + item.id">{{ item.txt }}</p> -->
     </template>
   </section>

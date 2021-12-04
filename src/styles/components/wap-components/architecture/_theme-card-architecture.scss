@@ -12,7 +12,7 @@
     }
      
     }
-        img{
+        img:not(.element-editor-cmp img){
            min-height: 90vh;
            object-fit:contain;
        }

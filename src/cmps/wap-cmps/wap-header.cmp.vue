@@ -1,11 +1,25 @@
 <template>
   <section :style="getCurrStyle" class="wap-header" :class="cmp.theme">
     <div :style="getCurrStyle" class="logo">
-      <basic-h2 v-if="cmp.info.logo && cmp.info.logo.type === 'txt'" :details="cmp.info.logo"></basic-h2>
-      <basic-img v-if="cmp.info.logo && cmp.info.logo.type === 'img'" :details="cmp.info.logo"></basic-img>
+      <basic-h2
+        v-if="cmp.info.logo && cmp.info.logo.type === 'txt'"
+        :details="{ data: cmp.info.logo, cmpId: cmp.id, elType: 'logo' }"
+        :elType="'logo'"
+      ></basic-h2>
+      <basic-img
+        v-if="cmp.info.logo && cmp.info.logo.type === 'img'"
+        :details="{ data: cmp.info.logo, cmpId: cmp.id, elType: 'logo' }"
+        :elType="'logo'"
+      ></basic-img>
     </div>
     <div class="nav-bar">
-      <basic-anchor v-for="item in cmp.info.navBar" :key="item.details" :details="item"></basic-anchor>
+      <basic-anchor
+        @removeEl="removeEl"
+        v-for="item in cmp.info.navBar"
+        :key="item.details"
+        :details="{ data: item, cmpId: cmp.id, elType: 'navBar' }"
+        :elType="'navBar'"
+      ></basic-anchor>
     </div>
   </section>
 </template>
@@ -50,8 +64,17 @@ export default {
     },
   },
   methods: {
-    test() {
-      console.log("try");
+    setType(type) {
+      this.elType = type;
+    },
+    removeEl(elId, elType) {
+      console.log("elId and elType", elId, elType);
+      this.$store.dispatch({
+        type: "removeElFromCmp",
+        cmpId: this.cmp.id,
+        elType: "navBar",
+        elId,
+      });
     },
   },
 };

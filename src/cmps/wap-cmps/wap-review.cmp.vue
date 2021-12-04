@@ -5,39 +5,59 @@
       :key="review.name"
       class="review-card"
     >
-      <basic-paragraph :details="review"></basic-paragraph>
-      <!-- <p>{{ review.txt }}</p> -->
+      <basic-paragraph
+        :details="{
+          data: { txt: review.txt, style: { fontSize: '', color: '' } },
+        }"
+      ></basic-paragraph>
+
       <div class="customer">
-        <basic-img :details="{url: review.avatar ,id:review.id}"></basic-img>
-        <!-- <img
-          :src="require('@/assets/wap-imgs/' + review.avatar)"
-          alt="avatar"
-        /> -->
-        <basic-paragraph :details="{txt: review.name, id:review.id}">
-            <slot>
-              <basic-span :details="{txt:review.title, id:review.id}"></basic-span>
-            </slot>
+        <basic-img
+          :details="{
+            data: {
+              url: review.avatar,
+              id: review.id,
+              style: { fontSize: '', color: '' },
+            },
+          }"
+        ></basic-img>
+        <basic-paragraph
+          :details="{
+            data: {
+              txt: review.name,
+              id: review.id,
+              style: { fontSize: '', color: '' },
+            },
+          }"
+        >
+          <slot>
+            <basic-span
+              :details="{
+                data: {
+                  txt: review.title,
+                  id: review.id,
+                  style: { fontSize: '', color: '' },
+                },
+              }"
+            ></basic-span>
+          </slot>
         </basic-paragraph>
-        <!-- <p>
-          {{ review.name }} <br />
-          <span>{{ review.title }}</span>
-        </p> -->
       </div>
     </div>
   </section>
 </template>
 
 <script>
-import basicParagraph from './basic-cmps/basic-paragraph.cmp.vue'
-import basicImg from './basic-cmps/basic-img-cmp.vue'
-import basicSpan from './basic-cmps/basic-span-cmp.vue'
+import basicParagraph from "./basic-cmps/basic-paragraph.cmp.vue";
+import basicImg from "./basic-cmps/basic-img-cmp.vue";
+import basicSpan from "./basic-cmps/basic-span-cmp.vue";
 
 export default {
   props: ["cmp"],
-  components:{
+  components: {
     basicParagraph,
     basicImg,
-    basicSpan
+    basicSpan,
   },
   computed: {
     getCurrStyle() {

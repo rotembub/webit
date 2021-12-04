@@ -1,10 +1,10 @@
 <template>
   <section class="wap-contact" :style="getCurrStyle" :class="cmp.theme">
-    <basic-h2 v-if="cmp.info.title" :details="cmp.info.title"></basic-h2>
+    <basic-h2 v-if="cmp.info.title" :details="{ data: cmp.info.title, cmpId: cmp.id, elType: 'title' }"></basic-h2>
     <!-- <h2 v-if="cmp.info.title">{{ cmp.info.title.txt }}</h2> -->
-    <basic-paragraph v-if="cmp.info.subtitle" :details="cmp.info.subtitle"></basic-paragraph>
+    <basic-paragraph v-if="cmp.info.subtitle" :details="{ data: cmp.info.subtitle, cmpId: cmp.id, elType: 'title' }"></basic-paragraph>
     <!-- <p v-if="cmp.info.subtitle">{{ cmp.info.subtitle.txt }}</p> -->
-    <basic-btn v-if="cmp.info.btnTxt" :details="cmp.info.btnTxt"></basic-btn>
+    <basic-btn v-if="cmp.info.btnTxt" :details="{ data: cmp.info.btnTxt, cmpId: cmp.id, elType: 'btnTxt' }"></basic-btn>
     <!-- <button v-if="cmp.info.btnTxt">{{ cmp.info.btnTxt.txt }}</button> -->
   </section>
 </template>

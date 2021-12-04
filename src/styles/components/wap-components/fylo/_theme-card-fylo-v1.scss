@@ -14,7 +14,7 @@
     background-size: 100%;
     background-position: bottom;
 
-    img:not(.tool-element img){
+    img:not(.tool-element img ,.element-editor-cmp img){
         margin-top: 7em;
         width: 100%;
         max-width: 700px;
@@ -35,7 +35,7 @@
         line-height: 1.5em;
         font-size:1.5em;
     }
-    button:not(.element-tool-bar .tool-element .element-editor-cmp){
+    button:not(.element-tool-bar .tool-element ,.element-editor-cmp button , .basic-el-toolbar button){
         padding: 1em 5em;
         border: none;
         border-radius: 50em;

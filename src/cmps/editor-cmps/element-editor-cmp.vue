@@ -1,5 +1,5 @@
 <template>
-  <div @click.stop="" class="element-editor-cmp">
+  <div @click.stop="" class="element-editor">
     <template v-if="isImg">
       <span>
         Width :
@@ -22,27 +22,18 @@
         <input type="range" />
       </span>
     </template>
-    <!-- ////////////////////////////////// -->
-    <span>
-      <!-- BackgroundColor :
-      <input
-        @input="updateCmp()"
-        v-model="elStyle.backgroundColor"
-        type="color"
-      /> -->
-    </span>
-    <span>
+    <span @click.stop>
       Text Color :
-      <input v-model="elStyle.color" type="color" />
+      <input @drag.stop v-model="elStyle.color" type="color" />
     </span>
     <span>
       Font size :
-      <input
+      <input @mousemove.stop=""
         v-model="elStyle.fontSize"
         
         type="range"
         min="10"
-        max="30"
+        max="50"
         step="1"
       />
     </span>
@@ -81,13 +72,6 @@ export default {
     },
   },
   computed: {
-    // setFontSize(value) {
-    //   this.elStyle.fontSize = this.elStyle.fontSize + "px";
-    // },
-    // setWap() {
-    //   console.log(this.$store.getters.getCurrWap, "store wap");
-    //   return this.$store.getters.getCurrWap;
-    // },
   },
 };
 </script>

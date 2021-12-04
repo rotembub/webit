@@ -14,6 +14,7 @@ export const wapService = {
   removeCmp,
   addCmp,
   updateCmp,
+  removeEl
 }
 
 // More ways to send query params:
@@ -139,6 +140,28 @@ async function getEmptyWap() {
   return await save(newWap)
 }
 
+async function removeEl(wapId, cmpId, elType, elId) {
+
+  // if no type is sent we can delete the entire type from the cmp 
+
+  const wap = await getById(wapId);
+  const cmp = wap.cmps.find(cmp => cmp.id === cmpId);
+  console.log('cmp:', cmp)
+  if (typeof elType === 'string') {
+    if (elType === 'logo') delete cmp.info[elType]
+    else {
+      console.log('elType:',elType)
+      const idx = cmp.info[elType].findIndex(el => el.id === elId)
+      cmp.info[elType].splice(idx, 1);
+    }
+    return await save(wap)
+  } else {
+    const parent = cmp.info[elType.type].find(el => el.id === elType.parentId)
+    delete parent[elType.is]
+    return await save(wap)
+    // {type: 'imgs', parentId: img.id  , is:'url'}
+  }
+}
 // This IIFE async functions for Dev purposes
 // It allows testing of real time updates (such as sockets) by listening to storage events
 // ; (async () => {

@@ -1,11 +1,11 @@
 <template>
   <section class="wap-signup" :style="getCurrStyle" :class="cmp.theme">
-    <basic-h3 v-if="cmp.info.title" :details="cmp.info.title"></basic-h3>
+    <basic-h3 v-if="cmp.info.title" :details="{ data: cmp.info.title, cmpId: cmp.id, elType: 'title' }"></basic-h3>
     <!-- <h3 v-if="cmp.info.title">{{ cmp.info.title.txt }}</h3> -->
-    <basic-paragraph v-if="cmp.info.subtitle" :details="cmp.info.subtitle"></basic-paragraph>
+    <basic-paragraph v-if="cmp.info.subtitle" :details="{ data: cmp.info.subtitle, cmpId: cmp.id, elType: 'subtitle' }"></basic-paragraph>
     <!-- <p v-if="cmp.info.subtitle">{{ cmp.info.subtitle.txt }}</p> -->
     <form class="sign-up-form">
-      <basic-input :details="{class:'email'}"></basic-input>
+      <basic-input :details="{class:'email' ,data:{style:{color:'',fontSize:''}}}"></basic-input>
       <!-- <input type="email" placeholder="email@example.com" class="email" /> -->
       <div class="mail-error hidden">Please enter a valid email address</div>
       <input
@@ -14,7 +14,7 @@
         class="email-submit-btn"
       />
     </form>
-    <basic-btn v-if="cmp.info.btnTxt" :details="cmp.info.btnTxt"></basic-btn>
+    <basic-btn v-if="cmp.info.btnTxt" :details="{ data: cmp.info.btnTxt, cmpId: cmp.id, elType: 'btnTxt' }"></basic-btn>
     <!-- <button v-if="cmp.info.btnTxt">{{ cmp.info.btnTxt.txt }}</button> -->
   </section>
 </template>

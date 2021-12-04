@@ -4,33 +4,51 @@ PROTOTYPE REFACTOR
   <section class="wap-card" :style="getCurrStyle" :class="cmp.theme">
     <div class="text-block">
       <template v-if="cmp.info.title">
-        <basic-h1 v-for="item in cmp.info.title" :key="item.id" :details="item"></basic-h1>
+        <basic-h1
+          v-for="item in cmp.info.title"
+          :key="item.id"
+          :details="{ data: item, cmpId: cmp.id, elType: 'title' }"
+        ></basic-h1>
         <!-- <h1 v-for="item in cmp.info.title" :key="'k' + item.id">
           {{ item.txt }}
         </h1> -->
       </template>
       <template v-if="cmp.info.subtitle">
-        <basic-paragraph v-for="item in cmp.info.subtitle" :key="item.id" :details="item"></basic-paragraph>
+        <basic-paragraph
+          v-for="item in cmp.info.subtitle"
+          :key="item.id"
+          :details="{ data: item, cmpId: cmp.id, elType: 'subtitle' }"
+        ></basic-paragraph>
         <!-- <p v-for="item in cmp.info.subtitle" :key="'k' + item.id">
           {{ item.txt }}
         </p> -->
       </template>
       <template v-if="cmp.info.buttons">
-        <basic-btn v-for="item in cmp.info.buttons" :key="item.id" :details="item"></basic-btn>
+        <basic-btn
+          v-for="item in cmp.info.buttons"
+          :key="item.id"
+          :details="{ data: item, cmpId: cmp.id, elType: 'buttons' }"
+        ></basic-btn>
         <!-- <button v-for="button in cmp.info.buttons" :key="button.id">
           {{ button.txt }}
         </button> -->
       </template>
     </div>
     <template v-if="cmp.info.imgUrl">
-      <basic-img :details="{url: cmp.info.imgUrl}"></basic-img>
+      <basic-img
+        :details="{
+          data: { url: cmp.info.imgUrl },
+          cmpId: cmp.id,
+          elType: 'imgUrl',
+        }"
+      ></basic-img>
       <!-- <img :src="require('@/assets/wap-imgs/' + cmp.info.imgUrl)" alt="" /> -->
     </template>
   </section>
 </template>
 
 <script>
-import basicImg from './basic-cmps/basic-img-cmp.vue'
+import basicImg from "./basic-cmps/basic-img-cmp.vue";
 import basicH1 from "./basic-cmps/basic-h1-cmp.vue";
 import basicParagraph from "./basic-cmps/basic-paragraph.cmp.vue";
 import basicBtn from "./basic-cmps/basic-btn-cmp.vue";
@@ -40,12 +58,10 @@ export default {
     basicH1,
     basicParagraph,
     basicBtn,
-    basicImg
+    basicImg,
   },
-  methods:{
-    setSelected(element){
-
-    }
+  methods: {
+    setSelected(element) {},
   },
   computed: {
     getCurrStyle() {

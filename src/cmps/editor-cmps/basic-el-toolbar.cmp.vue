@@ -1,8 +1,8 @@
 <template>
   <section class="basic-el-toolbar">
-    <!-- <button title="Remove" class="tool-element" @click="removeCmp">
+    <button title="Remove" class="tool-element" @click.stop="removeEl">
       <img src="@/assets/element-editor/trashcan.png" />
-    </button> -->
+    </button>
     <button
       title="Font"
       class="tool-element"
@@ -17,32 +17,26 @@
       <img src="@/assets/element-editor/size.png" />
     </button>
     <element-editor v-if="openEditorModal" :elStyle="elStyle"></element-editor>
-    <!-- <editor-modal @updated="updateStyle" :id="id" v-if="openEditorModal" /> -->
   </section>
 </template>
 
 <script>
-  import elementEditor from './element-editor-cmp.vue'
-  export default {
-    props: ['id','elStyle'],
-    components: {elementEditor},
-    data() {
-      return {
-        openEditorModal: false,
-      };
-    },
-    methods: {
-      removeCmp() {
-        // this.$store.dispatch({ type: "removeCmp", id: this.id });
-
-        this.$store.dispatch({type: 'removeCmpFromWap', cmpId: this.id});
-      },
-      updateStyle(updatedWap) {
-        console.log('sec emit');
-        this.$emit('updated', updatedWap);
-      },
-    },
-  };
+import elementEditor from "./element-editor-cmp.vue";
+export default {
+  props: ["id", "elStyle"],
+  components: { elementEditor },
+  data() {
+    return {
+      openEditorModal: false,
+    };
+  },
+  methods: {
+    removeEl(){
+      console.log('emiting for removal')
+      this.$emit('removeEl')
+    }
+  },
+};
 </script>
 
 <style></style>
