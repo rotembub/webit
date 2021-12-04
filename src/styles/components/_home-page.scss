@@ -1,4 +1,5 @@
 .home-page{
+  padding-top:20vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -13,7 +14,9 @@
         font-size: 96px;
         color: rgba(14, 14, 14, 0.788);
     }
-
+>p{
+  text-align: center;
+}
 
     h1{
         font-size:70px;
@@ -36,11 +39,32 @@
 
 }
 
-.test{
-    height: 100vh;
-    margin-top: 25em;
-    background-color: rgb(184, 113, 113);
-}
+.homepage-first-card{
+    height: 70vh;
+    width: 100vw;
+    display:flex ;
+    padding: 0px 10vw;
+    background-color:#74baff91;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 17em;
+
+// >div{
+//   display:flex ;
+//   flex-direction: column;
+//   align-items: flex-start;
+// }
+    img{
+      max-width:400px;
+    }
+  }
+  .homepage-first-card-inner{
+    display:flex ;
+    justify-content: space-between;
+    width: 100%;
+    gap: 80px;
+    align-items: center;
+  }
 .slide-in-right {
 	-webkit-animation: slide-in-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 	        animation: slide-in-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
@@ -60,8 +84,8 @@
   }
   @keyframes slide-in-right {
     0% {
-      -webkit-transform: translateX(1000px);
-              transform: translateX(1000px);
+      -webkit-transform: translateX(50vw);
+              transform: translateX(50vw);
       opacity: 0;
     }
     100% {
@@ -70,6 +94,53 @@
       opacity: 1;
     }
   }
+
+.homepage-second-card{
+    height: 70vh;
+    width: 100vw;
+    display:flex ;
+    padding: 0px 10vw;
+    background-color:#ffffff;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10em;
+
+// >div{
+//   display:flex ;
+//   flex-direction: column;
+//   align-items: flex-start;
+// }
+    img{
+      max-width:400px;
+    }
+  }
+  .homepage-second-card-inner{
+    display:flex ;
+    justify-content: space-between;
+    width: 100%;
+    gap: 80px;
+    align-items: center;
+  }
+
+  
+
+ .slide-in-left {
+	        animation: slide-in-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+@keyframes slide-in-left {
+  0% {
+    -webkit-transform: translateX(-50vw);
+            transform: translateX(-50vw);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+    opacity: 1;
+  }
+}
+
 
 
 

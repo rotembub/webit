@@ -9,6 +9,9 @@ import '../src/styles/styles.scss'
 import loading from 'vuejs-loading-screen'
 
 Vue.use(ElementUI)
+import { ObserveVisibility } from 'vue-observe-visibility'
+
+Vue.directive('observe-visibility', ObserveVisibility)
 Vue.use(loading, {
   bg: '#81ecec',
   icon: 'refresh',

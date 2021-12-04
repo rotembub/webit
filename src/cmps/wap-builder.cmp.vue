@@ -4,6 +4,7 @@
     </component> -->
     <div :class="wap.theme">
       <Container
+        :auto-scroll-enabled="true"
         group-name="1"
         :get-child-payload="getChildPayload1"
         @drop="onDrop('items1', $event)"
@@ -28,71 +29,71 @@
 </template>
 
 <script>
-  import {Container, Draggable} from 'vue-smooth-dnd';
-  // import wapHeader from "./wap-cmps/wap-header.cmp.vue";
-  import wapDynamic from '../cmps/wap-cmps/wap-dynamic.cmp.vue';
-  // import wapToolBar from './wap-cmps/wap-tool-bar.cmp.vue'
-  import cmpsToolBar from '../cmps/editor-cmps/cmps-tool-bar.cmp.vue';
-  export default {
-    data() {
-      return {};
+import { Container, Draggable } from 'vue-smooth-dnd'
+// import wapHeader from "./wap-cmps/wap-header.cmp.vue";
+import wapDynamic from '../cmps/wap-cmps/wap-dynamic.cmp.vue'
+// import wapToolBar from './wap-cmps/wap-tool-bar.cmp.vue'
+import cmpsToolBar from '../cmps/editor-cmps/cmps-tool-bar.cmp.vue'
+export default {
+  data() {
+    return {}
+  },
+  methods: {
+    getChildPayload1(index) {
+      return this.wap.cmps[index]
     },
-    methods: {
-      getChildPayload1(index) {
-        return this.wap.cmps[index];
-      },
-      onDrop(groupName, dropResult) {
-        let currWapToEdit = {...this.wap};
-        if (dropResult.removedIndex === null && dropResult.addedIndex >= 0) {
-          console.log('IN ADDED COMPONENTS');
+    onDrop(groupName, dropResult) {
+      let currWapToEdit = { ...this.wap }
+      if (dropResult.removedIndex === null && dropResult.addedIndex >= 0) {
+        console.log('IN ADDED COMPONENTS')
 
-          console.log('groupName', groupName, 'dropResult', dropResult);
-          this.$store.dispatch({
-            type: 'addCmp',
-            id: dropResult.payload.cmpId,
-            idx: dropResult.addedIndex,
-          });
-        } else {
-          console.log('IN UPDATE COMPONENTS');
-          console.log('groupName', groupName, 'dropResult', dropResult);
-          const removed = currWapToEdit.cmps.splice(dropResult.removedIndex, 1);
-          currWapToEdit.cmps.splice(dropResult.addedIndex, 0, removed[0]);
-          this.$store.dispatch({
-            type: 'updateWapComponents',
-            wap: currWapToEdit,
-          });
-        }
-      },
-      toggleFullScreen() {
-        this.$store.dispatch({type: 'toggleWapFullScreen'});
-      },
-      updateWap(updatedWap) {
-        console.log(updatedWap, 'got to wapBuilder');
-        //try to update here
-      },
+        console.log('groupName', groupName, 'dropResult', dropResult)
+        this.$store.dispatch({
+          type: 'addCmp',
+          id: dropResult.payload.cmpId,
+          idx: dropResult.addedIndex,
+        })
+      } else {
+        console.log('IN UPDATE COMPONENTS')
+        console.log('groupName', groupName, 'dropResult', dropResult)
+        const removed = currWapToEdit.cmps.splice(dropResult.removedIndex, 1)
+        currWapToEdit.cmps.splice(dropResult.addedIndex, 0, removed[0])
+        this.$store.dispatch({
+          type: 'updateWapComponents',
+          wap: currWapToEdit,
+        })
+      }
     },
-    computed: {
-      iconToShow() {
-        const isFullScreen = this.$store.getters.isFullScreen;
-        if (isFullScreen) return 'el-icon-zoom-out';
-        return 'el-icon-zoom-in';
-      },
+    toggleFullScreen() {
+      this.$store.dispatch({ type: 'toggleWapFullScreen' })
+    },
+    updateWap(updatedWap) {
+      console.log(updatedWap, 'got to wapBuilder')
+      //try to update here
+    },
+  },
+  computed: {
+    iconToShow() {
+      const isFullScreen = this.$store.getters.isFullScreen
+      if (isFullScreen) return 'el-icon-zoom-out'
+      return 'el-icon-zoom-in'
+    },
 
-      wap() {
-        // console.log(this.$store.getters.getCurrWap);
-        console.log('wapBuilder computed', this.$store.getters.getCurrWap);
-        return this.$store.getters.getCurrWap;
-      },
+    wap() {
+      // console.log(this.$store.getters.getCurrWap);
+      console.log('wapBuilder computed', this.$store.getters.getCurrWap)
+      return this.$store.getters.getCurrWap
     },
-    components: {
-      // wapHeader,
-      // wapToolBar,
-      cmpsToolBar,
-      wapDynamic,
-      Container,
-      Draggable,
-    },
-  };
+  },
+  components: {
+    // wapHeader,
+    // wapToolBar,
+    cmpsToolBar,
+    wapDynamic,
+    Container,
+    Draggable,
+  },
+}
 </script>
 
 <style></style>
