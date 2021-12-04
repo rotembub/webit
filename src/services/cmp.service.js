@@ -360,6 +360,12 @@ const gCmps = [
       backgroundColor: '',
       fontSize: '16px',
       color: '',
+      //new size style
+      height: '',
+      paddingTop: '',
+      paddingBottom: '',
+      paddingLeft: '',
+      paddingRight: '',
     },
   },
   {
@@ -382,6 +388,11 @@ const gCmps = [
       backgroundColor: '',
       fontSize: '16px',
       color: '',
+      height: '',
+      paddingTop: '',
+      paddingBottom: '',
+      paddingLeft: '',
+      paddingRight: '',
     },
   },
   {

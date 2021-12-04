@@ -1,8 +1,8 @@
-import { storageService } from './async-storage.service'
-import { utilService } from './util.service'
+import {storageService} from './async-storage.service';
+import {utilService} from './util.service';
 
-const KEY = 'wap_DB'
-const CMP_KEY = 'cmp_DB'
+const KEY = 'wap_DB';
+const CMP_KEY = 'cmp_DB';
 
 export const wapService = {
   // add,
@@ -14,7 +14,8 @@ export const wapService = {
   removeCmp,
   addCmp,
   updateCmp,
-}
+  copyCmp,
+};
 
 // More ways to send query params:
 // return axios.get('api/wap/?id=1223&balance=13')
@@ -23,9 +24,9 @@ export const wapService = {
 // Create Test Data:
 
 function createWaps() {
-  const waps = localStorage.getItem(KEY)
+  const waps = localStorage.getItem(KEY);
 
-  storageService.postMany(KEY, [wap_architecture, wap_fylo])
+  storageService.postMany(KEY, [wap_architecture, wap_fylo]);
   // storageService.post(KEY, wap_architecture)
   // console.log('waps found in storage:', waps)
   // if (!waps || !waps.length)
@@ -35,73 +36,81 @@ function createWaps() {
 async function query(filterBy) {
   // console.log('query in services')
   try {
-    const wap = await storageService.query(KEY)
+    const wap = await storageService.query(KEY);
     // if (!wap || !wap.length) return wap_architecture
-    return wap
+    return wap;
   } catch (err) {
-    console.log('couldnt find Waps', err)
+    console.log('couldnt find Waps', err);
   }
 }
 async function getById(id) {
-  console.log(id)
+  console.log(id);
   // if (!id) return getEmptyWap();
   try {
     // console.log('i am still here')
-    const foundWap = await storageService.get(KEY, id)
-    return foundWap
+    const foundWap = await storageService.get(KEY, id);
+    return foundWap;
     // var copiedWap = JSON.parse(JSON.stringify(foundWap))
     // delete copiedWap._id   // when working with mongo be sure to delete the ID entirely before send it to the DB
     // const newWap = save(copiedWap)
     // return newWap;
   } catch (err) {
-    console.log('couldnt get wap by ID', err)
+    console.log('couldnt get wap by ID', err);
   }
 }
 
 async function updateCmp(wapId, newCmp) {
-  console.log('here at Update CMP', wapId, newCmp)
-  var wap = await getById(wapId)
-  const idx = wap.cmps.findIndex(cmp => cmp.id === newCmp.id)
-  wap.cmps.splice(idx, 1, newCmp)
-  console.log(wap)
-  return await save(wap)
+  console.log('here at Update CMP', wapId, newCmp);
+  var wap = await getById(wapId);
+  const idx = wap.cmps.findIndex((cmp) => cmp.id === newCmp.id);
+  wap.cmps.splice(idx, 1, newCmp);
+  console.log(wap);
+  return await save(wap);
 }
 
 // prototype:
 async function removeCmp(wapId, cmpId) {
-  var wap = await getById(wapId)
-  console.log('wap found:', wap)
-  console.log('removing cmp id:', cmpId)
-  const idx = wap.cmps.findIndex(cmp => cmp.id === cmpId)
-  wap.cmps.splice(idx, 1)
-  return await save(wap)
+  var wap = await getById(wapId);
+  console.log('wap found:', wap);
+  console.log('removing cmp id:', cmpId);
+  const idx = wap.cmps.findIndex((cmp) => cmp.id === cmpId);
+  wap.cmps.splice(idx, 1);
+  return await save(wap);
   // return wap;
 }
 // prototype:
 async function addCmp(wapId, cmp, idx) {
-  console.log('adding cmp with ID:', cmp.id)
-  var wap = await getById(wapId)
-  wap.cmps.splice(idx, 0, cmp)
-  return await save(wap)
+  console.log('adding cmp with ID:', cmp.id);
+  var wap = await getById(wapId);
+  wap.cmps.splice(idx, 0, cmp);
+  return await save(wap);
+}
+
+async function copyCmp(wapId, cmpId) {
+  var wap = await getById(wapId);
+  const cmp = wap.cmps.find((cmp) => cmp.id === cmpId);
+  const newCopyCmp = JSON.parse(JSON.stringify(cmp));
+  newCopyCmp.id = utilService.makeId(); //change id soo it will not duplicate
+  return newCopyCmp;
 }
 
 async function save(wap) {
   try {
     const savedWap = wap._id
       ? await storageService.put(KEY, wap)
-      : await storageService.post(KEY, wap)
-    return savedWap
+      : await storageService.post(KEY, wap);
+    return savedWap;
   } catch (err) {
-    console.log('failed to save wap')
+    console.log('failed to save wap');
   }
 }
 
 async function remove(wapId) {
   // return httpService.delete(`wap/${wapId}`)
   try {
-    return await storageService.delete(KEY, wapId)
+    return await storageService.delete(KEY, wapId);
   } catch (err) {
-    console.log('failed to delete wap', err)
+    console.log('failed to delete wap', err);
   }
 }
 
@@ -131,12 +140,12 @@ async function getEmptyWap() {
       username: '',
     },
     usersData: {
-      contacts: [{ email: '', msg: '', at: null }],
-      signups: [{ email: '', at: null }],
+      contacts: [{email: '', msg: '', at: null}],
+      signups: [{email: '', at: null}],
     },
     cmps: [],
-  }
-  return await save(newWap)
+  };
+  return await save(newWap);
 }
 
 // This IIFE async functions for Dev purposes
@@ -172,10 +181,8 @@ const wap_architecture = {
     username: 'Hekro Special',
   },
   usersData: {
-    contacts: [
-      { email: 'user@user.com', msg: 'Please send me stuff', at: 123 },
-    ],
-    signups: [{ email: 'user@user.com', at: 123 }],
+    contacts: [{email: 'user@user.com', msg: 'Please send me stuff', at: 123}],
+    signups: [{email: 'user@user.com', at: 123}],
   },
 
   cmps: [
@@ -185,32 +192,32 @@ const wap_architecture = {
       info: {
         title: '',
         subtitle: '',
-        logo: { type: 'txt', txt: 'Utica', style: { color: '', fontSize: '' } },
+        logo: {type: 'txt', txt: 'Utica', style: {color: '', fontSize: ''}},
         navBar: [
           {
             id: utilService.makeId(6),
             txt: 'Work',
-            style: { color: '', fontSize: '' },
+            style: {color: '', fontSize: ''},
           },
           {
             id: utilService.makeId(6),
             txt: 'About',
-            style: { color: '', fontSize: '' },
+            style: {color: '', fontSize: ''},
           },
           {
             id: utilService.makeId(6),
             txt: 'Our Team',
-            style: { color: '', fontSize: '' },
+            style: {color: '', fontSize: ''},
           },
           {
             id: utilService.makeId(6),
             txt: 'Press',
-            style: { color: '', fontSize: '' },
+            style: {color: '', fontSize: ''},
           },
           {
             id: utilService.makeId(6),
             txt: 'Contact',
-            style: { color: '', fontSize: '' },
+            style: {color: '', fontSize: ''},
           },
         ],
       },
@@ -229,7 +236,7 @@ const wap_architecture = {
           {
             id: utilService.makeId(4),
             txt: 'Utica is an architecture firm based in Copenhagen, Denmark.',
-            style: { color: '', fontSize: '' },
+            style: {color: '', fontSize: ''},
           },
         ],
         subtitle: '',
@@ -250,14 +257,14 @@ const wap_architecture = {
           {
             id: utilService.makeId(4),
             txt: 'Recent Work...',
-            style: { color: '', fontSize: '' },
+            style: {color: '', fontSize: ''},
           },
         ],
         subtitle: [
           {
             id: utilService.makeId(4),
             txt: 'Our practice spans from environmental retrofits of existing buildings to the complete planning and design of new neighborhoods and public spaces. While our work is aesthetically diverse, our projects are linked by a focus on enhancing human relationships through',
-            style: { color: '', fontSize: '' },
+            style: {color: '', fontSize: ''},
           },
         ],
       },
@@ -278,25 +285,25 @@ const wap_architecture = {
           {
             id: utilService.makeId(6),
             url: 'proj1.jpg',
-            title: { txt: 'Project one', style: { color: '', fontSize: '' } },
+            title: {txt: 'Project one', style: {color: '', fontSize: ''}},
             txt: '',
           },
           {
             id: utilService.makeId(6),
             url: 'proj2.jpg',
-            title: { txt: 'Project two', style: { color: '', fontSize: '' } },
+            title: {txt: 'Project two', style: {color: '', fontSize: ''}},
             txt: '',
           },
           {
             id: utilService.makeId(6),
             url: 'proj3.jpg',
-            title: { txt: 'Project three', style: { color: '', fontSize: '' } },
+            title: {txt: 'Project three', style: {color: '', fontSize: ''}},
             txt: '',
           },
           {
             id: utilService.makeId(6),
             url: 'proj4.jpg',
-            title: { txt: 'Project four', style: { color: '', fontSize: '' } },
+            title: {txt: 'Project four', style: {color: '', fontSize: ''}},
             txt: '',
           },
         ],
@@ -315,17 +322,17 @@ const wap_architecture = {
         title: {
           id: utilService.makeId(6),
           txt: "Let's Work Together!",
-          style: { color: '', fontSize: '' },
+          style: {color: '', fontSize: ''},
         },
         subtitle: {
           id: utilService.makeId(6),
           txt: 'We’re always looking for new opportunities and are comfortable working internationally. Please get in touch and one of our project managers will contact you about beginning the proposal process.',
-          style: { color: '', fontSize: '' },
+          style: {color: '', fontSize: ''},
         },
         btnTxt: {
           id: utilService.makeId(6),
           txt: 'Contact Us',
-          style: { color: '', fontSize: '' },
+          style: {color: '', fontSize: ''},
         },
       },
       theme: 'theme-contact-architecture',
@@ -337,7 +344,7 @@ const wap_architecture = {
     },
   ],
   isPublic: true,
-}
+};
 
 const wap_fylo = {
   // _id: '999994123sd12',
@@ -348,10 +355,8 @@ const wap_fylo = {
     username: '',
   },
   usersData: {
-    contacts: [
-      { email: 'user@user.com', msg: 'Please send me stuff', at: 123 },
-    ],
-    signups: [{ email: 'user@user.com', at: 123 }],
+    contacts: [{email: 'user@user.com', msg: 'Please send me stuff', at: 123}],
+    signups: [{email: 'user@user.com', at: 123}],
   },
   theme: 'fylo-main',
 
@@ -366,23 +371,23 @@ const wap_fylo = {
           type: 'img',
           url: 'fylo-imgs/logo.svg',
           txt: '',
-          style: { color: '', fontSize: '' },
+          style: {color: '', fontSize: ''},
         },
         navBar: [
           {
             id: utilService.makeId(6),
             txt: 'Features',
-            style: { color: '', fontSize: '' },
+            style: {color: '', fontSize: ''},
           },
           {
             id: utilService.makeId(6),
             txt: 'Team',
-            style: { color: '', fontSize: '' },
+            style: {color: '', fontSize: ''},
           },
           {
             id: utilService.makeId(6),
             txt: 'Sign In',
-            style: { color: '', fontSize: '' },
+            style: {color: '', fontSize: ''},
           },
         ],
       },
@@ -401,14 +406,14 @@ const wap_fylo = {
           {
             id: utilService.makeId(4),
             txt: 'All your files in one secure location',
-            style: { color: '', fontSize: '' },
+            style: {color: '', fontSize: ''},
           },
         ],
         subtitle: [
           {
             id: utilService.makeId(4),
             txt: 'Fylo stores all your most important files in one secure location. Access them wherever you need, share and collaborate with friends family, and co-workers',
-            style: { color: '', fontSize: '' },
+            style: {color: '', fontSize: ''},
           },
         ],
         imgUrl: 'fylo-imgs/illustration-intro.png',
@@ -416,7 +421,7 @@ const wap_fylo = {
           {
             id: utilService.makeId(6),
             txt: 'Get Started',
-            style: { color: '', fontSize: '' },
+            style: {color: '', fontSize: ''},
           },
         ],
       },
@@ -439,11 +444,11 @@ const wap_fylo = {
             url: 'fylo-imgs/icon-access-anywhere.svg',
             title: {
               txt: 'Access your files, anywhere',
-              style: { color: '', fontSize: '' },
+              style: {color: '', fontSize: ''},
             },
             txt: {
               txt: 'The ability to use a smartphone, tablet, or computer to access your account means your files follow you everywhere',
-              style: { color: '', fontSize: '' },
+              style: {color: '', fontSize: ''},
             },
           },
           {
@@ -451,11 +456,11 @@ const wap_fylo = {
             url: 'fylo-imgs/icon-security.svg',
             title: {
               txt: 'Security you can trust',
-              style: { color: '', fontSize: '' },
+              style: {color: '', fontSize: ''},
             },
             txt: {
               txt: '2-factor authentication and user-controlled encryption are just a couple of the security features we allow to help secure your files',
-              style: { color: '', fontSize: '' },
+              style: {color: '', fontSize: ''},
             },
           },
           {
@@ -463,11 +468,11 @@ const wap_fylo = {
             url: 'fylo-imgs/icon-collaboration.svg',
             title: {
               txt: 'Real-time collaboration',
-              style: { color: '', fontSize: '' },
+              style: {color: '', fontSize: ''},
             },
             txt: {
               txt: 'Securely share files and folders with friends, family and colleagues for live collaboration. No email attachments required',
-              style: { color: '', fontSize: '' },
+              style: {color: '', fontSize: ''},
             },
           },
           {
@@ -475,11 +480,11 @@ const wap_fylo = {
             url: 'fylo-imgs/icon-any-file.svg',
             title: {
               txt: 'Store any type of file',
-              style: { color: '', fontSize: '' },
+              style: {color: '', fontSize: ''},
             },
             txt: {
               txt: "Whether you're sharing holidays photos or work documents, Fylo has you covered allowing for all file types to be securely stored and shared",
-              style: { color: '', fontSize: '' },
+              style: {color: '', fontSize: ''},
             },
           },
         ],
@@ -499,19 +504,19 @@ const wap_fylo = {
           {
             id: utilService.makeId(4),
             txt: 'Stay productive, wherever you are',
-            style: { color: '', fontSize: '' },
+            style: {color: '', fontSize: ''},
           },
         ],
         subtitle: [
           {
             id: utilService.makeId(4),
             txt: 'Never let location be an issue when accessing your files. Fylo has you covered for all of your file storage needs',
-            style: { color: '', fontSize: '' },
+            style: {color: '', fontSize: ''},
           },
           {
             id: utilService.makeId(4),
             txt: 'Securely share files and folders with friends, family and colleagues for live collaboration. No email attachments required',
-            style: { color: '', fontSize: '' },
+            style: {color: '', fontSize: ''},
           },
         ],
         // link: 'See how Fylo works',
@@ -567,22 +572,22 @@ const wap_fylo = {
         title: {
           id: utilService.makeId(4),
           txt: 'Get Early Access Today',
-          style: { color: '', fontSize: '' },
+          style: {color: '', fontSize: ''},
         },
         subtitle: {
           id: utilService.makeId(4),
           txt: 'It only takes a minute to sign up and our free starter tier is extremely generous. If you have any questions, our support team would be happy to help you',
-          style: { color: '', fontSize: '' },
+          style: {color: '', fontSize: ''},
         },
         inputTxt: {
           id: utilService.makeId(4),
           txt: 'Get Started For Free!',
-          style: { color: '', fontSize: '' },
+          style: {color: '', fontSize: ''},
         },
         btnTxt: {
           id: utilService.makeId(4),
           txt: 'Sign Me Up!',
-          style: { color: '', fontSize: '' },
+          style: {color: '', fontSize: ''},
         },
       },
       theme: 'theme-signup-fylo',
@@ -593,9 +598,9 @@ const wap_fylo = {
       },
     },
   ],
-}
+};
 
-storageService.post('wap_DB', wap_fylo)
-storageService.post('wap_DB', wap_architecture)
+storageService.post('wap_DB', wap_fylo);
+storageService.post('wap_DB', wap_architecture);
 
-createWaps()
+createWaps();

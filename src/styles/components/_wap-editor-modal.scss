@@ -1,8 +1,9 @@
-.wap-editor-modal .element-editor-cmp{
-    display: flex;
-    flex-direction: column;
-    color: rgb(240, 240, 240);
-    background-color: #353b48;
-    height:150px;
-    font-family:poppins light;
+.wap-editor-modal,
+.element-editor-cmp {
+  display: flex;
+  flex-direction: column;
+  color: rgb(240, 240, 240);
+  background-color: #353b48;
+  height: 150px;
+  font-family: poppins light;
 }

@@ -1,29 +1,54 @@
 <template>
   <div @click.stop="" class="wap-editor-modal">
-    <template v-if="isImg">
-      <span>
-        Width :
-        <input type="range" />
-      </span>
-      <span>
-        Top spacing :
-        <input type="range" />
-      </span>
-      <span>
-        Bottom spacing :
-        <input type="range" />
-      </span>
-      <span>
-        Left spacing :
-        <input type="range" />
-      </span>
-      <span>
-        Right spacing :
-        <input type="range" />
-      </span>
-    </template>
-    <!-- ////////////////////////////////// -->
     <span>
+      Height :
+      <input
+        type="range"
+        @input="updateCmp"
+        v-model="currWap.cmps[currCmpIdx].style.height"
+      />
+      <!-- add on mouse move , fix the problem when the height become too small, min,max,step,value,-->
+    </span>
+    <span>
+      Top spacing :
+      <input
+        type="range"
+        min="30"
+        @input="updateCmp"
+        v-model="currWap.cmps[currCmpIdx].style.paddingTop"
+      />
+    </span>
+    <!-- adding padding 2em from the start works good with paddingTop/ archit headr dont have it -->
+    <!-- can change the min value later -->
+    <span>
+      Bottom spacing :
+      <input
+        type="range"
+        min="30"
+        @input="updateCmp"
+        v-model="currWap.cmps[currCmpIdx].style.paddingBottom"
+      />
+    </span>
+    <span>
+      Left spacing :
+      <input
+        type="range"
+        min="30"
+        @input="updateCmp"
+        v-model="currWap.cmps[currCmpIdx].style.paddingLeft"
+      />
+    </span>
+    <span>
+      Right spacing :
+      <input
+        type="range"
+        min="30"
+        @input="updateCmp"
+        v-model="currWap.cmps[currCmpIdx].style.paddingRight"
+      />
+    </span>
+    <!-- ////////////////////////////////// -->
+    <!-- <span>
       BackgroundColor :
       <input
         @input="updateCmp"
@@ -38,7 +63,7 @@
         v-model="currWap.cmps[currCmpIdx].style.color"
         type="color"
       />
-    </span>
+    </span> -->
     <!-- only background color edit on cmps -->
     <!-- <span>
       Font size :

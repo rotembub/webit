@@ -1,9 +1,9 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
-import { wapService } from '../services/wap.service.js'
-import { cmpService } from '../services/cmp.service.js'
+import Vue from 'vue';
+import Vuex from 'vuex';
+import {wapService} from '../services/wap.service.js';
+import {cmpService} from '../services/cmp.service.js';
 
-Vue.use(Vuex)
+Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
@@ -15,124 +15,134 @@ export default new Vuex.Store({
   },
   getters: {
     isFullScreen(state) {
-      return state.isFullScreen
+      return state.isFullScreen;
     },
     getCurrWap(state) {
-      return state.currWap
+      return state.currWap;
     },
     publishedWap(state) {
-      return state.wapToPublish
+      return state.wapToPublish;
     },
     getWaps(state) {
-      return state.waps
+      return state.waps;
     },
   },
   mutations: {
-    setCurrWap(state, { wap }) {
-      console.log('Store currWap:', wap)
-      state.currWap = wap
+    setCurrWap(state, {wap}) {
+      console.log('Store currWap:', wap);
+      state.currWap = wap;
     },
-    addCmp(state, { cmp }) {
-      state.currWap.cmps.push(cmp)
+    addCmp(state, {cmp}) {
+      state.currWap.cmps.push(cmp);
     },
-    setWaps(state, { waps }) {
-      state.waps = waps
-      console.log(state.waps)
+    setWaps(state, {waps}) {
+      state.waps = waps;
+      console.log(state.waps);
     },
     updateWap(state, payload) {
-      const idx = state.waps.findIndex(wap => wap._id === payload.wap._id)
-      state.waps.splice(idx, 1, payload.wap)
+      const idx = state.waps.findIndex((wap) => wap._id === payload.wap._id);
+      state.waps.splice(idx, 1, payload.wap);
     },
-    removeCmp(state, { id }) {
-      const idx = state.currWap.cmps.findIndex(cmp => cmp.id === id)
-      state.currWap.cmps.splice(idx, 1)
+    removeCmp(state, {id}) {
+      const idx = state.currWap.cmps.findIndex((cmp) => cmp.id === id);
+      state.currWap.cmps.splice(idx, 1);
     },
-    saveWap(state, { wap }) {
-      state.waps.push(wap)
+    saveWap(state, {wap}) {
+      state.waps.push(wap);
     },
-    removeWap(state, { wapId }) {
-      const idx = state.waps.findIndex(wap => wap._id === wapId)
-      state.waps.splice(idx, 1)
+    removeWap(state, {wapId}) {
+      const idx = state.waps.findIndex((wap) => wap._id === wapId);
+      state.waps.splice(idx, 1);
     },
-    updateWapStyle(state, { updatedWap }) {
-      console.log('IN COMMIT', updatedWap)
-      state.currWap = updatedWap
+    updateWapStyle(state, {updatedWap}) {
+      console.log('IN COMMIT', updatedWap);
+      state.currWap = updatedWap;
     },
-    publishWap(state, { wapToPublish }) {
-      console.log(wapToPublish, 'IN COMMIT')
-      state.wapToPublish = wapToPublish
+    publishWap(state, {wapToPublish}) {
+      console.log(wapToPublish, 'IN COMMIT');
+      state.wapToPublish = wapToPublish;
     },
     toggleWapFullScreen(state) {
-      state.isFullScreen = !state.isFullScreen
+      state.isFullScreen = !state.isFullScreen;
     },
-    setSelectedElement(state, { element }) {
+    setSelectedElement(state, {element}) {
       state.elementSelected = element;
-    }
+    },
   },
   actions: {
-    async updateWapComponents({ commit }, { wap }) {
+    async updateWapComponents({commit}, {wap}) {
       try {
-        const updatedWap = await wapService.save(wap)
-        console.log('IN STORe', updatedWap)
-        commit({ type: 'setCurrWap', wap: updatedWap })
+        const updatedWap = await wapService.save(wap);
+        console.log('IN STORe', updatedWap);
+        commit({type: 'setCurrWap', wap: updatedWap});
       } catch (err) {
-        console.log(err)
+        console.log(err);
       }
     },
-    toggleWapFullScreen({ commit }) {
-      commit({ type: 'toggleWapFullScreen' })
+    toggleWapFullScreen({commit}) {
+      commit({type: 'toggleWapFullScreen'});
     },
-    publishWap({ commit }, { wapToPublish }) {
-      commit({ type: 'publishWap', wapToPublish })
+    publishWap({commit}, {wapToPublish}) {
+      commit({type: 'publishWap', wapToPublish});
 
       // console.log('IN STORE', wapToPublish)
     },
-    async updateWapStyle({ commit }, { currWap, cmpId }) {
-      console.log('updateWapStyle', currWap)
+    async updateWapStyle({commit}, {currWap, cmpId}) {
+      console.log('updateWapStyle', currWap);
       try {
         // const updatedWap = await wapService.save(currWap);
-        const newCmp = currWap.cmps.find(cmp => cmp.id === cmpId)
-        const updatedWap = await wapService.updateCmp(currWap._id, newCmp)
+        const newCmp = currWap.cmps.find((cmp) => cmp.id === cmpId);
+        const updatedWap = await wapService.updateCmp(currWap._id, newCmp);
 
-        commit({ type: 'setCurrWap', wap: updatedWap })
-        return updatedWap
+        commit({type: 'setCurrWap', wap: updatedWap});
+        return updatedWap;
       } catch (err) {
-        console.log(err)
+        console.log(err);
       }
     },
-    async setCurrWap({ commit }, { wapId }) {
-      console.log(wapId, 'ID')
+    async setCurrWap({commit}, {wapId}) {
+      console.log(wapId, 'ID');
       try {
-        const currWap = await wapService.getById(wapId)
-        commit({ type: 'setCurrWap', wap: currWap })
-        console.log(currWap, 'back in the action')
-        return currWap
+        const currWap = await wapService.getById(wapId);
+        commit({type: 'setCurrWap', wap: currWap});
+        console.log(currWap, 'back in the action');
+        return currWap;
       } catch (err) {
-        console.log('Ahalan', err)
+        console.log('Ahalan', err);
       }
     },
-    async loadWaps({ commit }) {
+    async loadWaps({commit}) {
       try {
-        const waps = await wapService.query()
-        commit({ type: 'setWaps', waps })
+        const waps = await wapService.query();
+        commit({type: 'setWaps', waps});
       } catch (err) {
-        console.log('Store reports failed to Load Waps')
+        console.log('Store reports failed to Load Waps');
       }
     },
-    async addCmp({ commit, state }, { id, idx }) {
+    async addCmp({commit, state}, {id, idx}) {
       try {
-        const cmp = await cmpService.getCmpById(id)
-        console.log(cmp)
+        const cmp = await cmpService.getCmpById(id);
+        console.log(cmp);
         // commit({ type: 'addCmp', cmp });
 
-        const wapId = state.currWap._id
-        const updatedWap = await wapService.addCmp(wapId, cmp, idx)
-        commit({ type: 'setCurrWap', wap: updatedWap })
+        const wapId = state.currWap._id;
+        const updatedWap = await wapService.addCmp(wapId, cmp, idx);
+        commit({type: 'setCurrWap', wap: updatedWap});
       } catch (err) {
-        console.log('Store reports: failed to add cmp', err)
+        console.log('Store reports: failed to add cmp', err);
       }
     },
-    // async removeCmp({ commit, state }, { id }) {
+    async copyCmpFromWap({commit, state}, {cmpId, cmpIdx}) {
+      try {
+        const wapId = state.currWap._id;
+        const cmpCopy = await wapService.copyCmp(wapId, cmpId);
+        const updatedWap = await wapService.addCmp(wapId, cmpCopy, cmpIdx + 1);
+        commit({type: 'setCurrWap', wap: updatedWap});
+      } catch (err) {
+        console.log('Store reports: failed to copy cmp', err);
+      }
+    },
+    // async removeCmp({ commit, state }, { id }) {copyCmpFromWap
     //   commit({ type: 'removeCmp', id });
     //   try {
     //     const updatedWap = await wapService.save(state.currWap);
@@ -140,41 +150,41 @@ export default new Vuex.Store({
     //     console.log('store reports: failed to SAVE (during removeCMP) wap ', err);
     //   }
     // },
-    async saveWap({ commit }, { wap }) {
+    async saveWap({commit}, {wap}) {
       try {
         // const type = toy._id ? 'updateToy' : 'addToy';
         // commit({type, toy: savedToy});
-        const savedWap = await wapService.save(wap)
-        commit({ type: 'saveWap', wap: savedWap })
+        const savedWap = await wapService.save(wap);
+        commit({type: 'saveWap', wap: savedWap});
       } catch (err) {
-        console.log('store reports: failed to SAVE wap', err)
+        console.log('store reports: failed to SAVE wap', err);
       }
     },
-    async removeWap({ commit }, { wapId }) {
+    async removeWap({commit}, {wapId}) {
       try {
-        await wapService.remove(wapId)
-        commit({ type: 'removeWap', wapId })
+        await wapService.remove(wapId);
+        commit({type: 'removeWap', wapId});
       } catch (err) {
-        console.log('store reports: failed to REMOVE wap', err)
+        console.log('store reports: failed to REMOVE wap', err);
       }
     },
-    async getEmptyWap({ commit }) {
-      console.log('getting a new one')
+    async getEmptyWap({commit}) {
+      console.log('getting a new one');
       try {
-        const wap = await wapService.getEmptyWap()
-        commit({ type: 'setCurrWap', wap })
+        const wap = await wapService.getEmptyWap();
+        commit({type: 'setCurrWap', wap});
       } catch (err) {
-        console.log('failed to get empty way', wap)
+        console.log('failed to get empty way', wap);
       }
     },
-    async removeCmpFromWap({ commit, state }, { cmpId }) {
+    async removeCmpFromWap({commit, state}, {cmpId}) {
       try {
-        const wapId = state.currWap._id
-        const updatedWap = await wapService.removeCmp(wapId, cmpId)
-        commit({ type: 'setCurrWap', wap: updatedWap })
+        const wapId = state.currWap._id;
+        const updatedWap = await wapService.removeCmp(wapId, cmpId);
+        commit({type: 'setCurrWap', wap: updatedWap});
       } catch (err) {
-        console.log('failed to remove CMP fron WAP', err)
+        console.log('failed to remove CMP fron WAP', err);
       }
     },
   },
-})
+});
