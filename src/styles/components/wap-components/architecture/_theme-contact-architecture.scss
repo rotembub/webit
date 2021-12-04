@@ -11,7 +11,7 @@
            font-weight: bold;
            font-family: poppins;
        } 
-       button:not(.element-tool-bar .tool-element){
+       button:not(.element-tool-bar .tool-element .element-editor-cmp){
            cursor: pointer;
            padding: 10px;
            border: 1px solid rgba(0, 0, 0, 0);

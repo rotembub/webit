@@ -9,10 +9,12 @@
 
 <script>
 import wapToolBar from "../wap-tool-bar.cmp.vue";
+import elementEditor from '../../editor-cmps/element-editor-cmp.vue'
 export default {
   props: ["details"],
   components: {
     wapToolBar,
+    elementEditor
   },
   data() {
     return {
