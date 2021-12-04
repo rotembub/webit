@@ -26,6 +26,10 @@ export default new Vuex.Store({
     getWaps(state) {
       return state.waps;
     },
+    getWapId(state) {
+      console.log('Wap id getters', state.currWap);
+      return state.currWap._id;
+    },
   },
   mutations: {
     setCurrWap(state, {wap}) {
@@ -71,9 +75,9 @@ export default new Vuex.Store({
   },
   actions: {
     async updateWapComponents({commit}, {wap}) {
+      console.log('Wap :', wap);
       try {
         const updatedWap = await wapService.save(wap);
-        console.log('IN STORe', updatedWap);
         commit({type: 'setCurrWap', wap: updatedWap});
       } catch (err) {
         console.log(err);
@@ -184,6 +188,21 @@ export default new Vuex.Store({
         commit({type: 'setCurrWap', wap: updatedWap});
       } catch (err) {
         console.log('failed to remove CMP fron WAP', err);
+      }
+    },
+    async removeElFromCmp({commit, state}, {cmpId, elType, elId}) {
+      try {
+        const wapId = state.currWap._id;
+        const updatedWap = await wapService.removeEl(
+          wapId,
+          cmpId,
+          elType,
+          elId
+        );
+        console.log(updatedWap);
+        commit({type: 'setCurrWap', wap: updatedWap});
+      } catch (err) {
+        console.log('failed to remove element from cmp', err);
       }
     },
   },

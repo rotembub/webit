@@ -1,31 +1,44 @@
 <template>
   <section class="basic-btn">
-    <button @click.stop="isEdit = !isEdit" :style="details.style">
-      {{ details.txt }}
+    <button @click.stop="isEdit = !isEdit" :style="getStyle">
+      {{ details.data.txt }}
     </button>
-    <wap-tool-bar v-if="isEdit"></wap-tool-bar>
+    <basic-el-toolbar
+      @removeEl="removeEl"
+      v-if="isEdit"
+      :elStyle="details.data.style"
+    ></basic-el-toolbar>
   </section>
 </template>
 
 <script>
-import wapToolBar from "../wap-tool-bar.cmp.vue";
-import elementEditor from '../../editor-cmps/element-editor-cmp.vue'
+import basicElToolbar from "../../editor-cmps/basic-el-toolbar.cmp.vue";
 export default {
   props: ["details"],
   components: {
-    wapToolBar,
-    elementEditor
+    basicElToolbar,
   },
   data() {
     return {
       isEdit: false,
     };
   },
-  computed: {},
+  computed: {
+    getStyle() {
+      return {
+        color: this.details.data.style.color,
+        fontSize: this.details.data.style.fontSize + "px",
+      };
+    },
+  },
   methods: {
-    selected() {
-      this.isEdit = !this.isEdit;
-      this.$emit("setSelected", this.details);
+    removeEl() {
+      this.$store.dispatch({
+        type: "removeElFromCmp",
+        cmpId: this.details.cmpId,
+        elType: this.details.elType,
+        elId: this.details.data.id,
+      });
     },
   },
 };

@@ -1,20 +1,24 @@
 <template>
   <section :style="getCurrStyle" class="wap-header" :class="cmp.theme">
-    <div class="logo">
+    <div :style="getCurrStyle" class="logo">
       <basic-h2
         v-if="cmp.info.logo && cmp.info.logo.type === 'txt'"
-        :details="cmp.info.logo"
+        :details="{data: cmp.info.logo, cmpId: cmp.id, elType: 'logo'}"
+        :elType="'logo'"
       ></basic-h2>
       <basic-img
         v-if="cmp.info.logo && cmp.info.logo.type === 'img'"
-        :details="cmp.info.logo"
+        :details="{data: cmp.info.logo, cmpId: cmp.id, elType: 'logo'}"
+        :elType="'logo'"
       ></basic-img>
     </div>
     <div class="nav-bar">
       <basic-anchor
+        @removeEl="removeEl"
         v-for="item in cmp.info.navBar"
         :key="item.details"
-        :details="item"
+        :details="{data: item, cmpId: cmp.id, elType: 'navBar'}"
+        :elType="'navBar'"
       ></basic-anchor>
     </div>
   </section>
@@ -65,17 +69,26 @@
       },
     },
     methods: {
-      test() {
-        console.log('try');
+      setType(type) {
+        this.elType = type;
+      },
+      removeEl(elId, elType) {
+        console.log('elId and elType', elId, elType);
+        this.$store.dispatch({
+          type: 'removeElFromCmp',
+          cmpId: this.cmp.id,
+          elType: 'navBar',
+          elId,
+        });
       },
     },
   };
 </script>
 
 <style></style>
-navBar: [{id: 123, txt: "Work", style:{color:'',fontSize:''}}, {id:444
-,txt:'About',style:{color:'',fontSize:''}}, {id:333, txt:'Our
-Team',style:{color:'',fontSize:''}}, {id:4412,
-txt:'Press',style:{color:'',fontSize:''}},{id:44944,txt:
-'Contact',style:{color:'',fontSize:''}}] style:{backgroundColor: ''
+// navBar: [{id: 123, txt: "Work", style:{color:'',fontSize:''}}, {id:444 // //
+,txt:'About',style:{color:'',fontSize:''}}, {id:333, txt:'Our // //
+Team',style:{color:'',fontSize:''}}, {id:4412, // //
+txt:'Press',style:{color:'',fontSize:''}},{id:44944,txt: // //
+'Contact',style:{color:'',fontSize:''}}] style:{backgroundColor: '' // //
 ,color:'',fontSize:''} style:{color:'',fontSize:''} logo navbar txt/img As

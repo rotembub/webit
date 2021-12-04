@@ -3,10 +3,10 @@
 <template>
   <section class="wap-gallery" :style="getCurrStyle" :class="cmp.theme">
     <template v-if="cmp.info.title">
-      <basic-h1 v-for="item in cmp.info.title" :key="item.id" :details="item"></basic-h1>
+      <basic-h1 v-for="item in cmp.info.title" :key="item.id" :details="{ data: item, cmpId: cmp.id, elType: 'title' }"></basic-h1>
     </template>
     <template v-if="cmp.info.subtitle">
-      <basic-paragraph v-for="item in cmp.info.subtitle" :key="item.id" :details="item"></basic-paragraph>
+      <basic-paragraph v-for="item in cmp.info.subtitle" :key="item.id" :details="{ data: data, cmpId: cmp.id, elType: 'subtitle' }"></basic-paragraph>
     </template>
     <template v-if="cmp.info.imgs">
       <div
@@ -14,9 +14,9 @@
         v-for="(img, idx) in cmp.info.imgs"
         :key="'k' + idx"
       >
-        <basic-img :details="img"></basic-img>
-        <basic-h3 v-if="img.title" :details="img.title"></basic-h3>
-        <basic-paragraph v-if="img.txt" :details="img.txt"></basic-paragraph>
+        <basic-img v-if="img.url" :details="{ data: img, cmpId: cmp.id, elType: {type: 'imgs', parentId: img.id  , is:'url'} }"></basic-img>
+        <basic-h3 v-if="img.title" :details="{ data: img.title, cmpId: cmp.id, elType: {type: 'imgs', parentId: img.id  , is:'title'} }"></basic-h3>
+        <basic-paragraph v-if="img.txt" :details="{ data: img.txt, cmpId: cmp.id, elType: {type: 'imgs', parentId: img.id  , is:'txt'} }"></basic-paragraph>
       </div>
     </template>
   </section>

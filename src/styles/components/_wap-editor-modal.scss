@@ -1,9 +1,11 @@
 .wap-editor-modal,
-.element-editor-cmp {
+.element-editor {
+  // position: absolute;
   display: flex;
   flex-direction: column;
   color: rgb(240, 240, 240);
   background-color: #353b48;
   height: 150px;
   font-family: poppins light;
+  // z-index: 10;
 }

@@ -6,7 +6,7 @@ PROTOTYPE REFACTOR
         <basic-h1
           v-for="item in cmp.info.title"
           :key="item.id"
-          :details="item"
+          :details="{data: item, cmpId: cmp.id, elType: 'title'}"
         ></basic-h1>
         <!-- <h1 v-for="item in cmp.info.title" :key="'k' + item.id">
           {{ item.txt }}
@@ -16,7 +16,7 @@ PROTOTYPE REFACTOR
         <basic-paragraph
           v-for="item in cmp.info.subtitle"
           :key="item.id"
-          :details="item"
+          :details="{data: item, cmpId: cmp.id, elType: 'subtitle'}"
         ></basic-paragraph>
         <!-- <p v-for="item in cmp.info.subtitle" :key="'k' + item.id">
           {{ item.txt }}
@@ -26,7 +26,7 @@ PROTOTYPE REFACTOR
         <basic-btn
           v-for="item in cmp.info.buttons"
           :key="item.id"
-          :details="item"
+          :details="{data: item, cmpId: cmp.id, elType: 'buttons'}"
         ></basic-btn>
         <!-- <button v-for="button in cmp.info.buttons" :key="button.id">
           {{ button.txt }}
@@ -34,7 +34,13 @@ PROTOTYPE REFACTOR
       </template>
     </div>
     <template v-if="cmp.info.imgUrl">
-      <basic-img :details="{url: cmp.info.imgUrl}"></basic-img>
+      <basic-img
+        :details="{
+          data: {url: cmp.info.imgUrl},
+          cmpId: cmp.id,
+          elType: 'imgUrl',
+        }"
+      ></basic-img>
       <!-- <img :src="require('@/assets/wap-imgs/' + cmp.info.imgUrl)" alt="" /> -->
     </template>
   </section>
