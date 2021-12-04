@@ -1,28 +1,37 @@
 <template>
   <el-collapse class="cmp-picker-collapse scrollbar" id="style-2" accordion>
-    <el-collapse-item
-      v-for="type in types"
-      :title="getProperTxt(type)"
-      :key="'k' + type"
-      @click.native="loadThemes(type)"
-    >
-      <template v-if="themes">
-        <ul>
-          <Container group-name="1" :get-child-payload="getChildPayload1">
-            <Draggable v-for="(theme, idx) in themes" :key="idx * Date.now()">
-              <!-- {{
+    <div>
+      <el-collapse-item
+        v-for="type in types"
+        :title="getProperTxt(type)"
+        :key="'k' + type"
+        @click.native="loadThemes(type)"
+      >
+        <template v-if="themes">
+          <div class="collapse-items">
+            <ul class="collapse-items">
+              <Container group-name="1" :get-child-payload="getChildPayload1">
+                <Draggable
+                  v-for="(theme, idx) in themes"
+                  :key="idx * Date.now()"
+                >
+                  <!-- {{
             theme.type
           }} -->
-              <li>
-                <img
-                  :src="require(`@/assets/cmp-picker-preview/` + theme.imgPath)"
-                />
-              </li>
-            </Draggable>
-          </Container>
-        </ul>
-      </template>
-    </el-collapse-item>
+                  <li class="cmp-picker-options">
+                    <img
+                      :src="
+                        require(`@/assets/cmp-picker-preview/` + theme.imgPath)
+                      "
+                    />
+                  </li>
+                </Draggable>
+              </Container>
+            </ul>
+          </div>
+        </template>
+      </el-collapse-item>
+    </div>
     <div class="wap-publish">
       <el-button @click="publishWap" type="primary"
         ><span>Publish</span><i class="el-icon-upload el-icon-right"></i

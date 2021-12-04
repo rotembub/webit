@@ -1,5 +1,8 @@
 .cmp-picker{
     position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     width:20%;
     height:93vh;
     transition: 0.6s;
@@ -15,34 +18,61 @@
         font-size: 1.3em;
         align-items:center;
         padding:10px;
-        position: absolute;
-        bottom: -1vh;
+        // position: absolute;
     
         span{
-            font-size:1.1em;
+            font-size:1.2em;
+
         }
+    }
+
+    .cmp-picker-options{
+        cursor:grab;
     }
 }
 .cmp-picker-fullscreen{
     position: fixed !important;
+    display: flex;
+    flex-direction: column;
+    // align-items: center;
+    justify-content: space-between;
     width:10%;
-    height:90vh;
+    top: 0;
+    height:100vh;
     z-index: 1;
     background-color: #fff;
     transform:translateX(-95%);
     transition: 0.4s;
+    
+
+    .cmp-picker-collapse{
+        display: flex;
+    flex-direction: column;
+    // align-items: center;
+    
+    }
+    
     .wap-publish{
         transition: 0.4s;
     transform:translateX(-100%);
+    span{
+        font-size:1.2em;
+
+    }
 
     }
 }
 .cmp-picker-fullscreen:hover{
     transform:translateX(0%)
+ 
 }
 .cmp-picker-fullscreen:hover .wap-publish{
-    transform:translateX(-12%);
+    transform:translateX(8%);
     justify-content:flex-start;
+
+    span{
+        font-size: 1em;
+    }
 }
 
 

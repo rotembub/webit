@@ -43,15 +43,19 @@ export default {
     },
 
     onDrop(groupName, dropResult) {
-      console.log('groupName', groupName, 'dropResult', dropResult)
       let currWapToEdit = { ...this.wap }
-      if (!dropResult.removedIndex) {
+      if (dropResult.removedIndex === null && dropResult.addedIndex >= 0) {
+        console.log('IN ADDED COMPONENTS')
+
+        console.log('groupName', groupName, 'dropResult', dropResult)
         this.$store.dispatch({
           type: 'addCmp',
           id: dropResult.payload.cmpId,
           idx: dropResult.addedIndex,
         })
       } else {
+        console.log('IN UPDATE COMPONENTS')
+        console.log('groupName', groupName, 'dropResult', dropResult)
         const removed = currWapToEdit.cmps.splice(dropResult.removedIndex, 1)
         currWapToEdit.cmps.splice(dropResult.addedIndex, 0, removed[0])
         this.$store.dispatch({
