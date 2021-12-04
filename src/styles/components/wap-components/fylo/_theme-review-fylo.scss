@@ -31,6 +31,11 @@
     display: flex;
     align-items: center;
     gap: 1em;
+    img{
+        max-width:90px;
+    }
+
+    
 
 
     img:not(.element-tool-bar .tool-element img){

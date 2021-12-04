@@ -12,12 +12,15 @@
         ><router-link to="/template">Get started</router-link></span
       >
     </div>
+    <div class="test slide-in-right">
+      <h1>TEST</h1>
+    </div>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-
+import 'animate.css'
 export default {
   name: 'home-page',
   components: {},

@@ -26,6 +26,10 @@ export default new Vuex.Store({
     getWaps(state) {
       return state.waps
     },
+    getWapId(state) {
+      console.log('Wap id getters', state.currWap)
+      return state.currWap._id
+    },
   },
   mutations: {
     setCurrWap(state, { wap }) {
@@ -66,14 +70,14 @@ export default new Vuex.Store({
       state.isFullScreen = !state.isFullScreen
     },
     setSelectedElement(state, { element }) {
-      state.elementSelected = element;
-    }
+      state.elementSelected = element
+    },
   },
   actions: {
     async updateWapComponents({ commit }, { wap }) {
+      console.log('Wap :', wap)
       try {
         const updatedWap = await wapService.save(wap)
-        console.log('IN STORe', updatedWap)
         commit({ type: 'setCurrWap', wap: updatedWap })
       } catch (err) {
         console.log(err)
