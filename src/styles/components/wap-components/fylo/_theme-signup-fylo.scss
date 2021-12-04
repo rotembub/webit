@@ -1,5 +1,5 @@
 .theme-signup-fylo{
-    top: 10rem;
+    // top: 10rem;
     background-color: $Dark-Blue-intro-and-email-sign-up-bg;
     border-radius: 8px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 7px 5px;
@@ -12,8 +12,8 @@
     width: 90%;
     max-width: 800px;
     padding: 2.5em 3em;
-    margin:0 auto;
-    margin-top: 35px;
+    margin: auto;
+    // margin-top: 35px;
 
     text-align: center;
 
@@ -75,7 +75,7 @@
 
 @media only screen and (min-width : 768px){
     .theme-signup-fylo{
-        top: 7rem;
+        // top: 7rem;
 
         h3{
             font-size: 1.5rem;
