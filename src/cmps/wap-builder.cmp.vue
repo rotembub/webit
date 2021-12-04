@@ -3,11 +3,19 @@
     <!-- <component v-for="cmp in wap.cmps" :cmp="cmp" :is="cmp.type" :key="cmp.id">
     </component> -->
     <div :class="wap.theme">
-      <wap-dynamic v-for="cmp in wap.cmps" :key="cmp.id" :cmp="cmp">
-        <slot>
-          <wap-tool-bar @updated="updateWap" :id="cmp.id"></wap-tool-bar>
-        </slot>
-      </wap-dynamic>
+      <Container
+        group-name="1"
+        :get-child-payload="getChildPayload1"
+        @drop="onDrop('items1', $event)"
+      >
+        <Draggable v-for="cmp in wap.cmps" :key="cmp.id">
+          <wap-dynamic :cmp="cmp">
+            <slot>
+              <wap-tool-bar @updated="updateWap" :id="cmp.id"></wap-tool-bar>
+            </slot>
+          </wap-dynamic>
+        </Draggable>
+      </Container>
     </div>
     <el-button
       @click="toggleFullScreen"
@@ -20,6 +28,7 @@
 </template>
 
 <script>
+import { Container, Draggable } from 'vue-smooth-dnd'
 // import wapHeader from "./wap-cmps/wap-header.cmp.vue";
 import wapDynamic from '../cmps/wap-cmps/wap-dynamic.cmp.vue'
 import wapToolBar from './wap-cmps/wap-tool-bar.cmp.vue'
@@ -29,6 +38,28 @@ export default {
   },
 
   methods: {
+    getChildPayload1(index) {
+      return this.wap.cmps[index]
+    },
+
+    onDrop(groupName, dropResult) {
+      console.log('groupName', groupName, 'dropResult', dropResult)
+      let currWapToEdit = { ...this.wap }
+      if (!dropResult.removedIndex) {
+        this.$store.dispatch({
+          type: 'addCmp',
+          id: dropResult.payload.cmpId,
+          idx: dropResult.addedIndex,
+        })
+      } else {
+        const removed = currWapToEdit.cmps.splice(dropResult.removedIndex, 1)
+        currWapToEdit.cmps.splice(dropResult.addedIndex, 0, removed[0])
+        this.$store.dispatch({
+          type: 'updateWapComponents',
+          wap: currWapToEdit,
+        })
+      }
+    },
     toggleFullScreen() {
       this.$store.dispatch({ type: 'toggleWapFullScreen' })
     },
@@ -54,6 +85,8 @@ export default {
     // wapHeader,
     wapToolBar,
     wapDynamic,
+    Container,
+    Draggable,
   },
 }
 </script>

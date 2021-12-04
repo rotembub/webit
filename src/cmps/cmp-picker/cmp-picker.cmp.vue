@@ -7,15 +7,19 @@
       @click.native="loadThemes(type)"
     >
       <template v-if="themes">
-        <ul v-for="theme in themes" :key="theme.type">
-          <!-- {{
+        <ul>
+          <Container group-name="1" :get-child-payload="getChildPayload1">
+            <Draggable v-for="(theme, idx) in themes" :key="idx * Date.now()">
+              <!-- {{
             theme.type
           }} -->
-          <li @click="add(theme.cmpId)">
-            <img
-              :src="require(`@/assets/cmp-picker-preview/` + theme.imgPath)"
-            />
-          </li>
+              <li>
+                <img
+                  :src="require(`@/assets/cmp-picker-preview/` + theme.imgPath)"
+                />
+              </li>
+            </Draggable>
+          </Container>
         </ul>
       </template>
     </el-collapse-item>
@@ -25,6 +29,7 @@
       ></el-button>
     </div>
   </el-collapse>
+
   <!-- <el-collapse-item title="Headers" @click.native="loadThemes('wap-header')">
       <div
         v-if="themes"
@@ -81,6 +86,7 @@
 import { Collapse, CollapseItem } from 'element-ui'
 import wapHeader from '../wap-cmps/wap-header.cmp.vue'
 import { cmpService } from '../../services/cmp.service.js'
+import { Container, Draggable } from 'vue-smooth-dnd'
 
 export default {
   name: 'cmpPicker',
@@ -88,6 +94,8 @@ export default {
     wapHeader,
     Collapse,
     CollapseItem,
+    Container,
+    Draggable,
   },
   data() {
     return {
@@ -105,6 +113,9 @@ export default {
     }
   },
   methods: {
+    getChildPayload1(index) {
+      return this.themes[index]
+    },
     publishWap() {
       this.wapToPublish = this.$store.getters.getCurrWap
       this.$store.dispatch({

@@ -66,6 +66,15 @@ export default new Vuex.Store({
     },
   },
   actions: {
+    async updateWapComponents({ commit }, { wap }) {
+      try {
+        const updatedWap = await wapService.save(wap)
+        console.log('IN STORe', updatedWap)
+        commit({ type: 'setCurrWap', wap: updatedWap })
+      } catch (err) {
+        console.log(err)
+      }
+    },
     toggleWapFullScreen({ commit }) {
       commit({ type: 'toggleWapFullScreen' })
     },
@@ -106,14 +115,14 @@ export default new Vuex.Store({
         console.log('Store reports failed to Load Waps')
       }
     },
-    async addCmp({ commit, state }, { id }) {
+    async addCmp({ commit, state }, { id, idx }) {
       try {
         const cmp = await cmpService.getCmpById(id)
         console.log(cmp)
         // commit({ type: 'addCmp', cmp });
 
         const wapId = state.currWap._id
-        const updatedWap = await wapService.addCmp(wapId, cmp)
+        const updatedWap = await wapService.addCmp(wapId, cmp, idx)
         commit({ type: 'setCurrWap', wap: updatedWap })
       } catch (err) {
         console.log('Store reports: failed to add cmp', err)
