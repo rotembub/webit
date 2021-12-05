@@ -1,11 +1,11 @@
 <template>
   <section class="basic-img">
     <img
-      @click.stop="isEdit = !isEdit"
+      @click.stop="setSelected"
       :src="require('@/assets/wap-imgs/' + details.data.url)"
       alt=""
     />
-    <basic-el-toolbar @removeEl="removeEl" v-if="isEdit" ></basic-el-toolbar>
+    <basic-el-toolbar @removeEl="removeEl" v-if="isEdit"></basic-el-toolbar>
   </section>
 </template>
 
@@ -15,23 +15,43 @@ export default {
   props: ["details"],
   data() {
     return {
-      isEdit: false,
+      isSelected: false,
     };
   },
   components: {
     basicElToolbar,
   },
-    computed: {
+  computed: {
+    isEdit() {
+      const id = this.$store.getters.getElSelectedId;
+      if (id === this.details.data.id) return true;
+      return false;
+    },
   },
-    methods: {
+  methods: {
     removeEl() {
-            this.$store.dispatch({
+      this.$store.dispatch({
         type: "removeElFromCmp",
         cmpId: this.details.cmpId,
         elType: this.details.elType,
         elId: this.details.data.id,
-        containerId: this.details.containerId
+        containerId: this.details.containerId,
       });
+    },
+    setSelected() {
+      if (this.isSelected) {
+        this.isSelected = false;
+        this.$store.commit({
+          type: "setSelectedElement",
+          id: null,
+        });
+      } else {
+        this.isSelected = true;
+        this.$store.commit({
+          type: "setSelectedElement",
+          id: this.details.data.id,
+        });
+      }
     },
   },
 };
