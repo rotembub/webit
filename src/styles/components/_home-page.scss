@@ -27,7 +27,7 @@
             color: #fff;
             font-size: 1.25rem;
             border: 0;
-            padding: 15px 20px;
+            padding: 8px 20px;
             cursor: pointer;
             display: block;
             border-radius: 50px;
@@ -48,6 +48,7 @@
     justify-content: space-between;
     align-items: center;
     margin-top: 17em;
+    font-family: poppins;
 
 // >div{
 //   display:flex ;
@@ -99,6 +100,7 @@
     // height: 70vh;
     width: 100vw;
     display:flex ;
+    
     padding: 0px 10vw;
     background-color:#ffffff;
     justify-content: space-between;
@@ -115,6 +117,7 @@
     }
   }
   .homepage-second-card-inner{
+    flex-direction: row-reverse;
     display:flex ;
     justify-content: space-between;
     width: 100%;
@@ -143,6 +146,20 @@
 
 
 
+.home-page-card-span a{
+  color:rgba(83, 83, 83, 0.637);
+  font-size: 1rem;
+  border-bottom: 1px rgba(0, 0, 0, 0.212) solid;
+  cursor: pointer;
+  display: block;
+  width: 140px;
+  text-decoration: none;
+  transition: 0.3s;
+}
 
-
+.home-page-card-span a:hover{
+  color: #70a1ff;
+  border-bottom: 1px #70a2ff83 solid;
+  
+}
 

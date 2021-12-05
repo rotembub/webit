@@ -41,7 +41,7 @@
     height:100vh;
     z-index: 1;
     background-color: #fff;
-    transform:translateX(-95%);
+    transform:translateX(-90%);
     transition: 0.4s;
     
 
@@ -51,25 +51,31 @@
     // align-items: center;
     
     }
+
+   
     
     .wap-publish{
         transition: 0.4s;
     transform:translateX(-100%);
     padding-bottom: 15px;
+    display: none;
+
     span{
-        font-size:1.2em;
+        font-size:1.3em;
 
     }
 
     }
 }
 .cmp-picker-fullscreen:hover{
-    transform:translateX(0%)
+    transform:translateX(0%);
+    transition: 0.8s;
  
 }
 .cmp-picker-fullscreen:hover .wap-publish{
-    transform:translateX(8%);
+    transform:translateX(5%);
     justify-content:flex-start;
+
 
     span{
         font-size: 1em;

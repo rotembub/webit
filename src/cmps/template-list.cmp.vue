@@ -1,7 +1,11 @@
 <template>
   <section v-if="waps" class="template-list">
     <div class="template-preview-container">
-      <template-preview :wap="{ _id: '' }" :imgUrl="'add-new.png'">
+      <template-preview
+        class="add-new-image"
+        :wap="{ _id: '' }"
+        :imgUrl="'add-new.png'"
+      >
       </template-preview>
       <template-preview
         v-for="(wap, idx) in waps"
