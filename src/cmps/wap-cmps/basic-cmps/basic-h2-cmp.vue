@@ -54,6 +54,7 @@
           cmpId: this.details.cmpId,
           elType: this.details.elType,
           elId: this.details.data.id,
+          containerId: this.details.containerId,
         });
       },
       onInput(event) {

@@ -1,7 +1,12 @@
 <template>
   <section class="wap-dynamic" @click="isEdit = !isEdit">
     <slot v-if="isEdit"></slot>
-    <component :cmp="cmp" :is="cmp.type" :key="cmp.id"></component>
+    <component
+      :cmp="cmp"
+      :is="cmp.type"
+      :key="cmp.id"
+      :name="cmp.id"
+    ></component>
   </section>
 </template>
 

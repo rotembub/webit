@@ -1,19 +1,25 @@
 <template>
   <section class="wap-contact" :style="getCurrStyle" :class="cmp.theme">
+    <template v-if="cmp.info.title">
     <basic-h2
-      v-if="cmp.info.title"
-      :details="{data: cmp.info.title, cmpId: cmp.id, elType: 'title'}"
+      v-for="item in cmp.info.title" :key="item.id"
+      :details="{data: item, cmpId: cmp.id, containerId, elType: 'title'}"
     ></basic-h2>
+    </template>
     <!-- <h2 v-if="cmp.info.title">{{ cmp.info.title.txt }}</h2> -->
+    <template v-if="cmp.info.subtitle">
     <basic-paragraph
-      v-if="cmp.info.subtitle"
-      :details="{data: cmp.info.subtitle, cmpId: cmp.id, elType: 'title'}"
+      v-for="item in cmp.info.subtitle" :key="item.id"
+      :details="{data: item, cmpId: cmp.id,containerId, elType: 'title'}"
     ></basic-paragraph>
+    </template>
     <!-- <p v-if="cmp.info.subtitle">{{ cmp.info.subtitle.txt }}</p> -->
+    <template v-if="cmp.info.buttons">
     <basic-btn
-      v-if="cmp.info.btnTxt"
-      :details="{data: cmp.info.btnTxt, cmpId: cmp.id, elType: 'btnTxt'}"
+      v-for="item in cmp.info.buttons" :key="item.id" 
+      :details="{data: item, cmpId: cmp.id, containerId, elType: 'buttons'}"
     ></basic-btn>
+    </template>
     <!-- <button v-if="cmp.info.btnTxt">{{ cmp.info.btnTxt.txt }}</button> -->
   </section>
 </template>
@@ -23,7 +29,7 @@
   import basicParagraph from './basic-cmps/basic-paragraph.cmp.vue';
   import basicBtn from './basic-cmps/basic-btn-cmp.vue';
   export default {
-    props: ['cmp'],
+    props: ['cmp','containerId'],
     components: {basicH2, basicParagraph, basicBtn},
     data() {
       return {};

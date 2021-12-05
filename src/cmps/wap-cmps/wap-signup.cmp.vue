@@ -1,20 +1,25 @@
 <template>
   <section class="wap-signup" :style="getCurrStyle" :class="cmp.theme">
-    <basic-h3 v-if="cmp.info.title" :details="{ data: cmp.info.title, cmpId: cmp.id, elType: 'title' }"></basic-h3>
+    <template v-if="cmp.info.title">
+    <basic-h3 v-for="item in  cmp.info.title" :key="item.id" :details="{ data: item, cmpId: cmp.id, containerId, elType: 'title' }"></basic-h3>
+    </template>
     <!-- <h3 v-if="cmp.info.title">{{ cmp.info.title.txt }}</h3> -->
-    <basic-paragraph v-if="cmp.info.subtitle" :details="{ data: cmp.info.subtitle, cmpId: cmp.id, elType: 'subtitle' }"></basic-paragraph>
+    <template v-if="cmp.info.subtitle">
+    <basic-paragraph v-for="item in cmp.info.subtitle" :key="item.id" :details="{ data: item, cmpId: cmp.id, containerId, elType: 'subtitle' }"></basic-paragraph>
+    </template>
     <!-- <p v-if="cmp.info.subtitle">{{ cmp.info.subtitle.txt }}</p> -->
     <form class="sign-up-form">
-      <basic-input :details="{class:'email' ,data:{style:{color:'',fontSize:''}}}"></basic-input>
+      <template v-if="cmp.info.input">
+      <basic-input v-for="item in cmp.info.input" :key="item.id" :details="{data: item,cmpId: cmp.id, containerId, elType: 'input' }"></basic-input>
       <!-- <input type="email" placeholder="email@example.com" class="email" /> -->
       <div class="mail-error hidden">Please enter a valid email address</div>
-      <input
-        type="submit"
-        :value="cmp.info.inputTxt.txt"
-        class="email-submit-btn"
-      />
+      </template>
+      <template v-if="cmp.info.buttons">
+      <basic-btn  v-for="item in cmp.info.buttons" :key="item.id" :details="{data: item,cmpId: cmp.id, containerId, elType: 'buttons' }">
+      </basic-btn>
+      </template>
     </form>
-    <basic-btn v-if="cmp.info.btnTxt" :details="{ data: cmp.info.btnTxt, cmpId: cmp.id, elType: 'btnTxt' }"></basic-btn>
+    <basic-btn v-if="cmp.info.btnTxt" :details="{ data: cmp.info.btnTxt, cmpId: cmp.id, containerId, elType: 'btnTxt' }"></basic-btn>
     <!-- <button v-if="cmp.info.btnTxt">{{ cmp.info.btnTxt.txt }}</button> -->
   </section>
 </template>
@@ -26,7 +31,7 @@ import basicBtn from './basic-cmps/basic-btn-cmp.vue'
 import basicInput from './basic-cmps/basic-input-cmp.vue'
 
 export default {
-  props: ["cmp"],
+  props: ['cmp','containerId'],
   components:{
     basicH3,basicParagraph,basicBtn,basicInput
   },

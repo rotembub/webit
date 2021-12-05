@@ -13,7 +13,7 @@
 
 <script>
 export default {
-  props: ["cmp"],
+  props: ['cmp','containerId'],
 };
 </script>
 

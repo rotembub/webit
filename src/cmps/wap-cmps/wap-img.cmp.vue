@@ -7,6 +7,7 @@
         :details="{
           data: img,
           cmpId: cmp.id,
+          containerId,
           elType: 'imgs',
         }"
       ></basic-img>
@@ -17,7 +18,7 @@
 <script>
 import basicImg from "./basic-cmps/basic-img-cmp.vue";
 export default {
-  props: ["cmp"],
+  props: ['cmp','containerId'],
   components: {
     basicImg,
   },
