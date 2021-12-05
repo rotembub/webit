@@ -1,5 +1,5 @@
 <template>
-  <section v-if="wap">
+  <section class="scrollbar style-2" v-if="wap">
     <!-- <component v-for="cmp in wap.cmps" :cmp="cmp" :is="cmp.type" :key="cmp.id">
     </component> -->
     <div :class="wap.theme">
@@ -21,7 +21,7 @@
     <el-button
       @click="toggleFullScreen"
       class="is-full-wap-btn"
-      type="info"
+      type="Primary"
       :icon="iconToShow"
       circle
     ></el-button>
@@ -75,8 +75,8 @@ export default {
   computed: {
     iconToShow() {
       const isFullScreen = this.$store.getters.isFullScreen
-      if (isFullScreen) return 'el-icon-zoom-out'
-      return 'el-icon-zoom-in'
+      if (isFullScreen) return 'el-icon-right'
+      return 'el-icon-rank'
     },
 
     wap() {

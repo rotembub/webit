@@ -1,16 +1,17 @@
 .theme-signup-fylo{
     // top: 10rem;
     background-color: $Dark-Blue-intro-and-email-sign-up-bg;
-    border-radius: 8px;
+    // border-radius: 8px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 7px 5px;
     color: $White;
     display: flex;
+    background-color: #181f2a;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 1.5em;
-    width: 90%;
-    max-width: 800px;
+    width: 100%;
+    // max-width: 800px;
     padding: 2.5em 3em;
     margin: auto;
     // margin-top: 35px;

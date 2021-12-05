@@ -1,5 +1,5 @@
 <template>
-  <el-collapse class="cmp-picker-collapse scrollbar" id="style-2" accordion>
+  <el-collapse class="cmp-picker-collapse scrollbar style-2" accordion>
     <div>
       <el-collapse-item
         v-for="type in types"

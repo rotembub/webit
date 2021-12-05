@@ -4,14 +4,15 @@
     align-items: center;
     gap: 4em;
     color: $White;
-    // width: 80%;
+    width: 100%;
     // margin: 3em auto;
-    max-width:1240px ;
+    // max-width:1240px ;
     background-color: $Dark-Blue-main-bg;
     
 
     img{
         width: 100%;
+        padding:28px
         // transform: scale(0.8);
         // max-height: 400px;
     }

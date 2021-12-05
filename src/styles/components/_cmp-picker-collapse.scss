@@ -4,17 +4,36 @@ position: relative;
 display: flex;
 flex-direction: column;
 
+
 .collapse-items {
     padding:  0px 0px;
     // padding:10px;
 }
 
+
+
 .el-collapse-item{
+
     >div{
         padding:0px 10px;
+        div{
+
+            font-weight: 200;
+            color: #3d3d3dab;
+            font-family: poppins;
+
+        }
     }
 }
+.el-collapse-item:hover div>div{
+        color: rgb(61, 61, 61);
+    background-color: rgba(199, 199, 199, 0.11);
+
+
 }
+}
+
+
    
 
    
