@@ -5,7 +5,16 @@
   flex-direction: column;
   color: rgb(240, 240, 240);
   background-color: #353b48;
-  height: 150px;
+  padding: 1em;
+  border-radius: 5%;
+  // height: 150px;
   font-family: poppins light;
   // z-index: 10;
+  input[type='range'] {
+    // outline: none;
+    -webkit-appearance: none;
+    height: 3px;
+    // border-radius: 4px;
+    background: #645a53;
+  }
 }
