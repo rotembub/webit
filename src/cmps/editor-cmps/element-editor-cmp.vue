@@ -1,3 +1,4 @@
+
 <template>
   <div @click.stop="" class="element-editor">
     <template v-if="isImg">
@@ -24,13 +25,19 @@
     </template>
     <span @click.stop>
       Text Color :
-      <input @drag.stop v-model="elStyle.color" type="color" />
+      <input
+        @drag.stop
+        v-model="elStyle.color"
+        @mouseup="updateStyle"
+        type="color"
+      />
     </span>
     <span>
       Font size :
-      <input @mousemove.stop=""
+      <input
+        @mousemove.stop=""
+        @mouseup="updateStyle"
         v-model="elStyle.fontSize"
-        
         type="range"
         min="10"
         max="50"
@@ -41,9 +48,10 @@
 </template>
 
 <script>
+import {utilService} from '../../services/util.service'
 import { ColorPicker } from "element-ui";
 export default {
-  props: ["id", "elStyle"],
+  props: ["id", "elStyle", "cmpId"],
   data() {
     return {
       isText: false,
@@ -70,9 +78,15 @@ export default {
         console.log(err);
       }
     },
+    async updateStyle() {
+      try {
+        this.$store.dispatch({ type: "updateWapStyle", cmpId: this.cmpId });
+      } catch (err) {
+        console.log(err);
+      }
+    },
   },
-  computed: {
-  },
+  computed: {},
 };
 </script>
 

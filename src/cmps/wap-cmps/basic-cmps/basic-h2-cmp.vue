@@ -10,6 +10,7 @@
     </h2>
     <basic-el-toolbar
       @removeEl="removeEl"
+      :cmpId="getCmpId"
       v-if="isEdit"
       :elStyle="details.data.style"
     ></basic-el-toolbar>
@@ -50,6 +51,10 @@ export default {
       const id = this.$store.getters.getElSelectedId;
       if (id === this.details.data.id) return true;
       return false;
+    },
+    getCmpId() {
+      if (this.details.containerId) return this.details.containerId;
+      return this.details.cmpId;
     },
   },
   methods: {

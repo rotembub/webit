@@ -87,19 +87,21 @@ export default new Vuex.Store({
       }
     },
     toggleWapFullScreen({ commit }) {
-      commit({ type: 'toggleWapFullScreen' });
+      commit({ type: 'toggleWapFullScreen' }); // is there a need for an action here? why not just commit - Yaron Biton
     },
     publishWap({ commit }, { wapToPublish }) {
-      commit({ type: 'publishWap', wapToPublish });
+      commit({ type: 'publishWap', wapToPublish }); // is there a need for an action here? why not just commit - Yaron Biton
 
       // console.log('IN STORE', wapToPublish)
     },
-    async updateWapStyle({ commit }, { currWap, cmpId }) {
-      console.log('updateWapStyle', currWap);
+    async updateWapStyle({ commit, state }, { currWap, cmpId }) {
+      const editedWap = state.currWap;
+      console.log(editedWap,'EDITED WAP !!!!!!!!!!!!')
+      // console.log('updateWapStyle', currWap);
       try {
         // const updatedWap = await wapService.save(currWap);
-        const newCmp = currWap.cmps.find((cmp) => cmp.id === cmpId);
-        const updatedWap = await wapService.updateCmp(currWap._id, newCmp);
+        const newCmp = editedWap.cmps.find((cmp) => cmp.id === cmpId);
+        const updatedWap = await wapService.updateCmp(editedWap._id, newCmp);
 
         commit({ type: 'setCurrWap', wap: updatedWap });
         return updatedWap;
@@ -207,6 +209,14 @@ export default new Vuex.Store({
         commit({ type: 'setCurrWap', wap: updatedWap });
       } catch (err) {
         console.log('failed to remove element from cmp', err);
+      }
+    },
+    async saveWap({ commit }) { // WORK IN PROGRESS NEED TO CLEAN UP THE CODE
+      try {
+        const savedWap = await wapService.save(wap);
+        commit({ type: 'setCurrWap', wap: savedWap });
+      } catch (err) {
+        console.log('store reports: failed to SAVE wap', err);
       }
     },
 
