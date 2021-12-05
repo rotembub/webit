@@ -14,7 +14,7 @@
       <basic-h3
         v-for="item in cmp.info.subtitle"
         :key="item.id"
-        :details="{data: item, cmpId: cmp.id, elType: 'subtitle'}"
+        :details="{data: item, cmpId: cmp.id, containerId, elType: 'subtitle'}"
       ></basic-h3>
       <!-- <h3 v-for="item in cmp.info.subtitle" :key="'k' + item.id">
         {{ item.txt }}
@@ -25,7 +25,7 @@
       <basic-paragraph
         v-for="item in cmp.info.txt"
         :key="item.id"
-        :details="{data: item, cmpId: cmp.id, elType: 'txt'}"
+        :details="{data: item, cmpId: cmp.id, containerId, elType: 'txt'}"
       ></basic-paragraph>
       <!-- <p v-for="item in cmp.info.txt" :key="'k' + item.id">{{ item.txt }}</p> -->
     </template>
@@ -38,7 +38,7 @@
   import basicParagraph from './basic-cmps/basic-paragraph.cmp.vue';
 
   export default {
-    props: ['cmp'],
+    props: ['cmp','containerId'],
     components: {basicParagraph, basicH3, basicH1},
     data() {
       return {};

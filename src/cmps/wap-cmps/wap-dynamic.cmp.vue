@@ -6,6 +6,7 @@
       :cmp="cmp"
       :is="cmp.type"
       :key="cmp.id"
+      :name="cmp.id"
     ></component>
   </section>
 </template>

@@ -30,7 +30,7 @@
 
 <script>
 export default {
-  props: ["cmp"],
+  props: ['cmp','containerId'],
   created() {
     // console.log("IM HERE", this.cmp);
   },

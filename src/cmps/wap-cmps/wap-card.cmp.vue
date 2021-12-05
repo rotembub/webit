@@ -1,4 +1,4 @@
-PROTOTYPE REFACTOR
+
 <template>
   <section class="wap-card" :style="getCurrStyle" :class="cmp.theme">
     <div class="text-block">
@@ -6,42 +6,33 @@ PROTOTYPE REFACTOR
         <basic-h1
           v-for="item in cmp.info.title"
           :key="item.id"
-          :details="{data: item, cmpId: cmp.id, elType: 'title'}"
+          :details="{data: item, cmpId: cmp.id, containerId,elType: 'title'}"
         ></basic-h1>
-        <!-- <h1 v-for="item in cmp.info.title" :key="'k' + item.id">
-          {{ item.txt }}
-        </h1> -->
       </template>
       <template v-if="cmp.info.subtitle">
         <basic-paragraph
           v-for="item in cmp.info.subtitle"
           :key="item.id"
-          :details="{data: item, cmpId: cmp.id, elType: 'subtitle'}"
+          :details="{data: item, cmpId: cmp.id, containerId,elType: 'subtitle'}"
         ></basic-paragraph>
-        <!-- <p v-for="item in cmp.info.subtitle" :key="'k' + item.id">
-          {{ item.txt }}
-        </p> -->
       </template>
       <template v-if="cmp.info.buttons">
         <basic-btn
           v-for="item in cmp.info.buttons"
           :key="item.id"
-          :details="{data: item, cmpId: cmp.id, elType: 'buttons'}"
+          :details="{data: item, cmpId: cmp.id , containerId, elType: 'buttons'}"
         ></basic-btn>
-        <!-- <button v-for="button in cmp.info.buttons" :key="button.id">
-          {{ button.txt }}
-        </button> -->
       </template>
     </div>
-    <template v-if="cmp.info.imgUrl">
-      <basic-img
+    <template v-if="cmp.info.imgs">
+      <basic-img v-for="img in cmp.info.imgs" :key="img.id"
         :details="{
-          data: {url: cmp.info.imgUrl},
+          data: img,
           cmpId: cmp.id,
-          elType: 'imgUrl',
+          containerId,
+          elType: 'imgs',
         }"
       ></basic-img>
-      <!-- <img :src="require('@/assets/wap-imgs/' + cmp.info.imgUrl)" alt="" /> -->
     </template>
   </section>
 </template>
@@ -52,7 +43,7 @@ PROTOTYPE REFACTOR
   import basicParagraph from './basic-cmps/basic-paragraph.cmp.vue';
   import basicBtn from './basic-cmps/basic-btn-cmp.vue';
   export default {
-    props: ['cmp'],
+    props: ['cmp','containerId'],
     components: {
       basicH1,
       basicParagraph,
