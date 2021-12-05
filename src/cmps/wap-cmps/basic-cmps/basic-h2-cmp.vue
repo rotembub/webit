@@ -18,6 +18,7 @@
 
 <script>
   import basicElToolbar from '../../editor-cmps/basic-el-toolbar.cmp.vue';
+  import {utilService} from '../../../services/util.service.js';
   export default {
     props: ['details'],
     data() {
@@ -36,6 +37,7 @@
       this.currCmpIdx = this.currWap.cmps.findIndex(
         (cmp) => cmp.id === this.details.cmpId
       );
+      this.onInput = utilService.debounce(this.onInput); //using debounce
     },
     computed: {
       getStyle() {
