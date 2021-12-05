@@ -38,7 +38,7 @@
     data() {
       return {
         cmpStyle: null,
-
+        text: '',
         // {
         //   color: this.cmp.style.color,
         //   fontSize: this.cmp.style.fontSize + 'px',
