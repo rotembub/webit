@@ -8,6 +8,10 @@ const imgCMP = {
     imgs: [{ id: 123, url: '123.com', style: { stuff: '......' } }]
 }
 
+// CHANGE GALLERY TO CONTAINER OF CARDS!!!!
+// IMG CAN ONLY RECIEVE IMGS! NO TXT
+
+
 const reviewCMP = {
     review: [{
         id: utilService.makeId(4),
@@ -27,7 +31,6 @@ const contact = {
 
 }
 
-// const gallery  = container  
 
 const header = {
 
@@ -88,7 +91,7 @@ const wap_architecture = {
                         fontStyle: '',
                     },
                 },
-                navBar: [ // havnt figured our what to do here yet...
+                navBar: [
                     {
                         id: utilService.makeId(6),
                         txt: 'Work',
@@ -292,85 +295,174 @@ const wap_architecture = {
         },
         {
             id: utilService.makeId(4),
-            type: 'wap-gallery',
+            type: 'wap-container',
             info: {
-                imgs: [
+                dir: 'row',
+                cmps: [
                     {
-                        id: utilService.makeId(6),
-                        url: 'proj1.jpg',
-                        title: [{
-                            txt: 'Project one', style: {
-                                background: 'url()',
-                                color: '',
-                                backgroundColor: '',
-                                fontSize: '',
-                                paddingRight: '',
-                                paddingTop: '',
-                                paddingBottom: '',
-                                paddingLeft: '',
-                                lineHeight: '',
-                                fontFamily: '',
-                                fontStyle: '',
-                            }
-                        }],
+                        id: utilService.makeId(4),
+                        type: 'wap-card',
+                        info: {
+                            title: [
+                                {
+                                    id: utilService.makeId(4),
+                                    txt: 'Project one',
+                                    style: {
+                                        background: 'url()',
+                                        color: '',
+                                        backgroundColor: '',
+                                        fontSize: '',
+                                        paddingRight: '',
+                                        paddingTop: '',
+                                        paddingBottom: '',
+                                        paddingLeft: '',
+                                        lineHeight: '',
+                                        fontFamily: '',
+                                        fontStyle: '',
+                                    },
+                                },
+                            ],
+                            subtitle: '',
+                            imgs: [{ id: utilService.makeId(4), url: 'proj1.jpg', style: { background: 'url()', color: '', backgroundColor: '', fontSize: '', paddingRight: '', paddingTop: '', paddingBottom: '', paddingLeft: '', lineHeight: '', fontFamily: '', fontStyle: '' } }],
+                        },
+                        theme: 'theme-card-architecture-inner',
+                        style: {
+                            background: 'url()',
+                            color: '',
+                            backgroundColor: '',
+                            fontSize: '',
+                            paddingRight: '',
+                            paddingTop: '',
+                            paddingBottom: '',
+                            paddingLeft: '',
+                            lineHeight: '',
+                            fontFamily: '',
+                            fontStyle: '',
+                        },
                     },
                     {
-                        id: utilService.makeId(6),
-                        url: 'proj2.jpg',
-                        title: [{
-                            txt: 'Project two', style: {
-                                background: 'url()',
-                                color: '',
-                                backgroundColor: '',
-                                fontSize: '',
-                                paddingRight: '',
-                                paddingTop: '',
-                                paddingBottom: '',
-                                paddingLeft: '',
-                                lineHeight: '',
-                                fontFamily: '',
-                                fontStyle: '',
-                            }
-                        }],
+                        id: utilService.makeId(4),
+                        type: 'wap-card',
+                        info: {
+                            title: [
+                                {
+                                    id: utilService.makeId(4),
+                                    txt: 'Project two',
+                                    style: {
+                                        background: 'url()',
+                                        color: '',
+                                        backgroundColor: '',
+                                        fontSize: '',
+                                        paddingRight: '',
+                                        paddingTop: '',
+                                        paddingBottom: '',
+                                        paddingLeft: '',
+                                        lineHeight: '',
+                                        fontFamily: '',
+                                        fontStyle: '',
+                                    },
+                                },
+                            ],
+                            subtitle: '',
+                            imgs: [{ id: utilService.makeId(4), url: 'proj2.jpg', style: { background: 'url()', color: '', backgroundColor: '', fontSize: '', paddingRight: '', paddingTop: '', paddingBottom: '', paddingLeft: '', lineHeight: '', fontFamily: '', fontStyle: '' } }],
+                        },
+                        theme: 'theme-card-architecture-inner',
+                        style: {
+                            background: 'url()',
+                            color: '',
+                            backgroundColor: '',
+                            fontSize: '',
+                            paddingRight: '',
+                            paddingTop: '',
+                            paddingBottom: '',
+                            paddingLeft: '',
+                            lineHeight: '',
+                            fontFamily: '',
+                            fontStyle: '',
+                        },
                     },
                     {
-                        id: utilService.makeId(6),
-                        url: 'proj3.jpg',
-                        title: [{
-                            txt: 'Project three', style: {
-                                background: 'url()',
-                                color: '',
-                                backgroundColor: '',
-                                fontSize: '',
-                                paddingRight: '',
-                                paddingTop: '',
-                                paddingBottom: '',
-                                paddingLeft: '',
-                                lineHeight: '',
-                                fontFamily: '',
-                                fontStyle: '',
-                            }
-                        }],
+                        id: utilService.makeId(4),
+                        type: 'wap-card',
+                        info: {
+                            title: [
+                                {
+                                    id: utilService.makeId(4),
+                                    txt: 'Project three',
+                                    style: {
+                                        background: 'url()',
+                                        color: '',
+                                        backgroundColor: '',
+                                        fontSize: '',
+                                        paddingRight: '',
+                                        paddingTop: '',
+                                        paddingBottom: '',
+                                        paddingLeft: '',
+                                        lineHeight: '',
+                                        fontFamily: '',
+                                        fontStyle: '',
+                                    },
+                                },
+                            ],
+                            subtitle: '',
+                            imgs: [{ id: utilService.makeId(4), url: 'proj3.jpg', style: { background: 'url()', color: '', backgroundColor: '', fontSize: '', paddingRight: '', paddingTop: '', paddingBottom: '', paddingLeft: '', lineHeight: '', fontFamily: '', fontStyle: '' } }],
+                        },
+                        theme: 'theme-card-architecture-inner',
+                        style: {
+                            background: 'url()',
+                            color: '',
+                            backgroundColor: '',
+                            fontSize: '',
+                            paddingRight: '',
+                            paddingTop: '',
+                            paddingBottom: '',
+                            paddingLeft: '',
+                            lineHeight: '',
+                            fontFamily: '',
+                            fontStyle: '',
+                        },
                     },
                     {
-                        id: utilService.makeId(6),
-                        url: 'proj4.jpg',
-                        title: [{
-                            txt: 'Project four', style: {
-                                background: 'url()',
-                                color: '',
-                                backgroundColor: '',
-                                fontSize: '',
-                                paddingRight: '',
-                                paddingTop: '',
-                                paddingBottom: '',
-                                paddingLeft: '',
-                                lineHeight: '',
-                                fontFamily: '',
-                                fontStyle: '',
-                            }
-                        }],
-                    },
+                        id: utilService.makeId(4),
+                        type: 'wap-card',
+                        info: {
+                            title: [
+                                {
+                                    id: utilService.makeId(4),
+                                    txt: 'Project four',
+                                    style: {
+                                        background: 'url()',
+                                        color: '',
+                                        backgroundColor: '',
+                                        fontSize: '',
+                                        paddingRight: '',
+                                        paddingTop: '',
+                                        paddingBottom: '',
+                                        paddingLeft: '',
+                                        lineHeight: '',
+                                        fontFamily: '',
+                                        fontStyle: '',
+                                    },
+                                },
+                            ],
+                            subtitle: '',
+                            imgs: [{ id: utilService.makeId(4), url: 'proj4.jpg', style: { background: 'url()', color: '', backgroundColor: '', fontSize: '', paddingRight: '', paddingTop: '', paddingBottom: '', paddingLeft: '', lineHeight: '', fontFamily: '', fontStyle: '' } }],
+                        },
+                        theme: 'theme-card-architecture-inner',
+                        style: {
+                            background: 'url()',
+                            color: '',
+                            backgroundColor: '',
+                            fontSize: '',
+                            paddingRight: '',
+                            paddingTop: '',
+                            paddingBottom: '',
+                            paddingLeft: '',
+                            lineHeight: '',
+                            fontFamily: '',
+                            fontStyle: '',
+                        },
+                    }
                 ],
             },
             theme: 'theme-gallery-architecture',
@@ -575,12 +667,16 @@ const wap_fylo = {
         },
         {
             id: utilService.makeId(4),
-            type: 'wap-card',
+            type: 'wap-container',
             info: {
-                title: [
+                cmps: [
                     {
                         id: utilService.makeId(4),
-                        txt: 'All your files in one secure location',
+                        type: 'wap-img',
+                        info: {
+                            imgs: [{ id: utilService.makeId(4), url: 'fylo-imgs/illustration-intro.png', style: { background: 'url()', color: '', backgroundColor: '', fontSize: '', paddingRight: '', paddingTop: '', paddingBottom: '', paddingLeft: '', lineHeight: '', fontFamily: '', fontStyle: '' } }],
+                        },
+                        theme: 'theme-img-fylo',
                         style: {
                             background: 'url()',
                             color: '',
@@ -595,11 +691,32 @@ const wap_fylo = {
                             fontStyle: '',
                         },
                     },
-                ],
-                subtitle: [
                     {
                         id: utilService.makeId(4),
-                        txt: 'Fylo stores all your most important files in one secure location. Access them wherever you need, share and collaborate with friends family, and co-workers',
+                        type: 'wap-text',
+                        info: {
+                            title: '',
+                            subtitle: [
+                                {
+                                    id: utilService.makeId(4),
+                                    txt: 'Fylo stores all your most important files in one secure location. Access them wherever you need, share and collaborate with friends family, and co-workers',
+                                    style: {
+                                        background: 'url()',
+                                        color: '',
+                                        backgroundColor: '',
+                                        fontSize: '',
+                                        paddingRight: '',
+                                        paddingTop: '',
+                                        paddingBottom: '',
+                                        paddingLeft: '',
+                                        lineHeight: '',
+                                        fontFamily: '',
+                                        fontStyle: '',
+                                    },
+                                },
+                            ],
+                        },
+                        theme: 'theme-text-fylo',
                         style: {
                             background: 'url()',
                             color: '',
@@ -614,12 +731,34 @@ const wap_fylo = {
                             fontStyle: '',
                         },
                     },
-                ],
-                imgs: [{ id: utilService.makeId(4), url: 'fylo-imgs/illustration-intro.png', style: { background: 'url()', color: '', backgroundColor: '', fontSize: '', paddingRight: '', paddingTop: '', paddingBottom: '', paddingLeft: '', lineHeight: '', fontFamily: '', fontStyle: '' } }],
-                buttons: [
                     {
-                        id: utilService.makeId(6),
-                        txt: 'Get Started',
+                        id: utilService.makeId(4),
+                        type: 'wap-card',
+                        info: {
+                            title: '',
+                            subtitle: '',
+                            imgs: '',
+                            buttons: [
+                                {
+                                    id: utilService.makeId(6),
+                                    txt: 'Get Started',
+                                    style: {
+                                        background: 'url()',
+                                        color: '',
+                                        backgroundColor: '',
+                                        fontSize: '',
+                                        paddingRight: '',
+                                        paddingTop: '',
+                                        paddingBottom: '',
+                                        paddingLeft: '',
+                                        lineHeight: '',
+                                        fontFamily: '',
+                                        fontStyle: '',
+                                    },
+                                },
+                            ],
+                        },
+                        theme: 'theme-hero-fylo-v1',
                         style: {
                             background: 'url()',
                             color: '',
@@ -633,10 +772,10 @@ const wap_fylo = {
                             fontFamily: '',
                             fontStyle: '',
                         },
-                    },
-                ],
+                    }
+                ]
             },
-            theme: 'theme-card-fylo-v1',
+            theme: 'theme-hero-fylo-v1',
             style: {
                 background: 'url()',
                 color: '',
@@ -653,155 +792,238 @@ const wap_fylo = {
         },
         {
             id: utilService.makeId(4),
-            type: 'wap-gallery',
+            type: 'wap-container',
             info: {
-                title: '',
-                subtitle: '',
-                imgs: [
+                dir: 'row',
+                cmps: [
                     {
                         id: utilService.makeId(4),
-                        url: 'fylo-imgs/icon-access-anywhere.svg',
-                        title: {
-                            txt: 'Access your files, anywhere',
-                            style: {
-                                background: 'url()',
-                                color: '',
-                                backgroundColor: '',
-                                fontSize: '',
-                                paddingRight: '',
-                                paddingTop: '',
-                                paddingBottom: '',
-                                paddingLeft: '',
-                                lineHeight: '',
-                                fontFamily: '',
-                                fontStyle: '',
-                            },
+                        type: 'wap-card',
+                        info: {
+                            title: [
+                                {
+                                    id: utilService.makeId(4),
+                                    txt: 'Access your files, anywhere',
+                                    style: {
+                                        background: 'url()',
+                                        color: '',
+                                        backgroundColor: '',
+                                        fontSize: '',
+                                        paddingRight: '',
+                                        paddingTop: '',
+                                        paddingBottom: '',
+                                        paddingLeft: '',
+                                        lineHeight: '',
+                                        fontFamily: '',
+                                        fontStyle: '',
+                                    },
+                                },
+                            ],
+                            subtitle: [{
+                                id: utilService.makeId(4),
+                                txt: 'The ability to use a smartphone, tablet, or computer to access your account means your files follow you everywhere',
+                                style: {
+                                    background: 'url()',
+                                    color: '',
+                                    backgroundColor: '',
+                                    fontSize: '',
+                                    paddingRight: '',
+                                    paddingTop: '',
+                                    paddingBottom: '',
+                                    paddingLeft: '',
+                                    lineHeight: '',
+                                    fontFamily: '',
+                                    fontStyle: '',
+                                },
+                            },],
+                            imgs: [{ id: utilService.makeId(4), url: 'fylo-imgs/icon-access-anywhere.svg', style: { background: 'url()', color: '', backgroundColor: '', fontSize: '', paddingRight: '', paddingTop: '', paddingBottom: '', paddingLeft: '', lineHeight: '', fontFamily: '', fontStyle: '' } }],
                         },
-                        txt: {
-                            txt: 'The ability to use a smartphone, tablet, or computer to access your account means your files follow you everywhere',
-                            style: {
-                                background: 'url()',
-                                color: '',
-                                backgroundColor: '',
-                                fontSize: '',
-                                paddingRight: '',
-                                paddingTop: '',
-                                paddingBottom: '',
-                                paddingLeft: '',
-                                lineHeight: '',
-                                fontFamily: '',
-                                fontStyle: '',
-                            },
+                        theme: 'theme-card-fylo-inner',
+                        style: {
+                            background: 'url()',
+                            color: '',
+                            backgroundColor: '',
+                            fontSize: '',
+                            paddingRight: '',
+                            paddingTop: '',
+                            paddingBottom: '',
+                            paddingLeft: '',
+                            lineHeight: '',
+                            fontFamily: '',
+                            fontStyle: '',
                         },
                     },
                     {
                         id: utilService.makeId(4),
-                        url: 'fylo-imgs/icon-security.svg',
-                        title: {
-                            txt: 'Security you can trust',
-                            style: {
-                                background: 'url()',
-                                color: '',
-                                backgroundColor: '',
-                                fontSize: '',
-                                paddingRight: '',
-                                paddingTop: '',
-                                paddingBottom: '',
-                                paddingLeft: '',
-                                lineHeight: '',
-                                fontFamily: '',
-                                fontStyle: '',
-                            },
+                        type: 'wap-card',
+                        info: {
+                            title: [
+                                {
+                                    id: utilService.makeId(4),
+                                    txt: 'Security you can trust',
+                                    style: {
+                                        background: 'url()',
+                                        color: '',
+                                        backgroundColor: '',
+                                        fontSize: '',
+                                        paddingRight: '',
+                                        paddingTop: '',
+                                        paddingBottom: '',
+                                        paddingLeft: '',
+                                        lineHeight: '',
+                                        fontFamily: '',
+                                        fontStyle: '',
+                                    },
+                                },
+                            ],
+                            subtitle: [{
+                                id: utilService.makeId(4),
+                                txt: '2-factor authentication and user-controlled encryption are just a couple of the security features we allow to help secure your files',
+                                style: {
+                                    background: 'url()',
+                                    color: '',
+                                    backgroundColor: '',
+                                    fontSize: '',
+                                    paddingRight: '',
+                                    paddingTop: '',
+                                    paddingBottom: '',
+                                    paddingLeft: '',
+                                    lineHeight: '',
+                                    fontFamily: '',
+                                    fontStyle: '',
+                                },
+                            },],
+                            imgs: [{ id: utilService.makeId(4), url: 'fylo-imgs/icon-security.svg', style: { background: 'url()', color: '', backgroundColor: '', fontSize: '', paddingRight: '', paddingTop: '', paddingBottom: '', paddingLeft: '', lineHeight: '', fontFamily: '', fontStyle: '' } }],
                         },
-                        txt: {
-                            txt: '2-factor authentication and user-controlled encryption are just a couple of the security features we allow to help secure your files',
-                            style: {
-                                background: 'url()',
-                                color: '',
-                                backgroundColor: '',
-                                fontSize: '',
-                                paddingRight: '',
-                                paddingTop: '',
-                                paddingBottom: '',
-                                paddingLeft: '',
-                                lineHeight: '',
-                                fontFamily: '',
-                                fontStyle: '',
-                            },
-                        },
-                    },
-                    {
-                        id: utilService.makeId(4),
-                        url: 'fylo-imgs/icon-collaboration.svg',
-                        title: {
-                            txt: 'Real-time collaboration',
-                            style: {
-                                background: 'url()',
-                                color: '',
-                                backgroundColor: '',
-                                fontSize: '',
-                                paddingRight: '',
-                                paddingTop: '',
-                                paddingBottom: '',
-                                paddingLeft: '',
-                                lineHeight: '',
-                                fontFamily: '',
-                                fontStyle: '',
-                            },
-                        },
-                        txt: {
-                            txt: 'Securely share files and folders with friends, family and colleagues for live collaboration. No email attachments required',
-                            style: {
-                                background: 'url()',
-                                color: '',
-                                backgroundColor: '',
-                                fontSize: '',
-                                paddingRight: '',
-                                paddingTop: '',
-                                paddingBottom: '',
-                                paddingLeft: '',
-                                lineHeight: '',
-                                fontFamily: '',
-                                fontStyle: '',
-                            },
+                        theme: 'theme-card-fylo-inner',
+                        style: {
+                            background: 'url()',
+                            color: '',
+                            backgroundColor: '',
+                            fontSize: '',
+                            paddingRight: '',
+                            paddingTop: '',
+                            paddingBottom: '',
+                            paddingLeft: '',
+                            lineHeight: '',
+                            fontFamily: '',
+                            fontStyle: '',
                         },
                     },
                     {
                         id: utilService.makeId(4),
-                        url: 'fylo-imgs/icon-any-file.svg',
-                        title: {
-                            txt: 'Store any type of file',
-                            style: {
-                                background: 'url()',
-                                color: '',
-                                backgroundColor: '',
-                                fontSize: '',
-                                paddingRight: '',
-                                paddingTop: '',
-                                paddingBottom: '',
-                                paddingLeft: '',
-                                lineHeight: '',
-                                fontFamily: '',
-                                fontStyle: '',
-                            },
+                        type: 'wap-card',
+                        info: {
+                            title: [
+                                {
+                                    id: utilService.makeId(4),
+                                    txt: 'Real-time collaboration',
+                                    style: {
+                                        background: 'url()',
+                                        color: '',
+                                        backgroundColor: '',
+                                        fontSize: '',
+                                        paddingRight: '',
+                                        paddingTop: '',
+                                        paddingBottom: '',
+                                        paddingLeft: '',
+                                        lineHeight: '',
+                                        fontFamily: '',
+                                        fontStyle: '',
+                                    },
+                                },
+                            ],
+                            subtitle: [{
+                                id: utilService.makeId(4),
+                                txt: 'Securely share files and folders with friends, family and colleagues for live collaboration. No email attachments required',
+                                style: {
+                                    background: 'url()',
+                                    color: '',
+                                    backgroundColor: '',
+                                    fontSize: '',
+                                    paddingRight: '',
+                                    paddingTop: '',
+                                    paddingBottom: '',
+                                    paddingLeft: '',
+                                    lineHeight: '',
+                                    fontFamily: '',
+                                    fontStyle: '',
+                                },
+                            },],
+                            imgs: [{ id: utilService.makeId(4), url: 'fylo-imgs/icon-collaboration.svg', style: { background: 'url()', color: '', backgroundColor: '', fontSize: '', paddingRight: '', paddingTop: '', paddingBottom: '', paddingLeft: '', lineHeight: '', fontFamily: '', fontStyle: '' } }],
                         },
-                        txt: {
-                            txt: "Whether you're sharing holidays photos or work documents, Fylo has you covered allowing for all file types to be securely stored and shared",
-                            style: {
-                                background: 'url()',
-                                color: '',
-                                backgroundColor: '',
-                                fontSize: '',
-                                paddingRight: '',
-                                paddingTop: '',
-                                paddingBottom: '',
-                                paddingLeft: '',
-                                lineHeight: '',
-                                fontFamily: '',
-                                fontStyle: '',
-                            },
+                        theme: 'theme-card-fylo-inner',
+                        style: {
+                            background: 'url()',
+                            color: '',
+                            backgroundColor: '',
+                            fontSize: '',
+                            paddingRight: '',
+                            paddingTop: '',
+                            paddingBottom: '',
+                            paddingLeft: '',
+                            lineHeight: '',
+                            fontFamily: '',
+                            fontStyle: '',
                         },
                     },
+                    {
+                        id: utilService.makeId(4),
+                        type: 'wap-card',
+                        info: {
+                            title: [
+                                {
+                                    id: utilService.makeId(4),
+                                    txt: 'Store any type of file',
+                                    style: {
+                                        background: 'url()',
+                                        color: '',
+                                        backgroundColor: '',
+                                        fontSize: '',
+                                        paddingRight: '',
+                                        paddingTop: '',
+                                        paddingBottom: '',
+                                        paddingLeft: '',
+                                        lineHeight: '',
+                                        fontFamily: '',
+                                        fontStyle: '',
+                                    },
+                                },
+                            ],
+                            subtitle: [{
+                                id: utilService.makeId(4),
+                                txt: 'Whether you\'re sharing holidays photos or work documents, Fylo has you covered allowing for all file types to be securely stored and shared',
+                                style: {
+                                    background: 'url()',
+                                    color: '',
+                                    backgroundColor: '',
+                                    fontSize: '',
+                                    paddingRight: '',
+                                    paddingTop: '',
+                                    paddingBottom: '',
+                                    paddingLeft: '',
+                                    lineHeight: '',
+                                    fontFamily: '',
+                                    fontStyle: '',
+                                },
+                            },],
+                            imgs: [{ id: utilService.makeId(4), url: 'fylo-imgs/icon-any-file.svg', style: { background: 'url()', color: '', backgroundColor: '', fontSize: '', paddingRight: '', paddingTop: '', paddingBottom: '', paddingLeft: '', lineHeight: '', fontFamily: '', fontStyle: '' } }],
+                        },
+                        theme: 'theme-card-fylo-inner',
+                        style: {
+                            background: 'url()',
+                            color: '',
+                            backgroundColor: '',
+                            fontSize: '',
+                            paddingRight: '',
+                            paddingTop: '',
+                            paddingBottom: '',
+                            paddingLeft: '',
+                            lineHeight: '',
+                            fontFamily: '',
+                            fontStyle: '',
+                        },
+                    }
                 ],
             },
             theme: 'theme-gallery-fylo',
@@ -821,31 +1043,16 @@ const wap_fylo = {
         },
         {
             id: utilService.makeId(4),
-            type: 'wap-card',
+            type: 'wap-container',
             info: {
-                title: [
+                cmps: [
                     {
                         id: utilService.makeId(4),
-                        txt: 'Stay productive, wherever you are',
-                        style: {
-                            background: 'url()',
-                            color: '',
-                            backgroundColor: '',
-                            fontSize: '',
-                            paddingRight: '',
-                            paddingTop: '',
-                            paddingBottom: '',
-                            paddingLeft: '',
-                            lineHeight: '',
-                            fontFamily: '',
-                            fontStyle: '',
+                        type: 'wap-img',
+                        info: {
+                            imgs: [{ id: utilService.makeId(4), url: 'fylo-imgs/illustration-stay-productive.png', style: { background: 'url()', color: '', backgroundColor: '', fontSize: '', paddingRight: '', paddingTop: '', paddingBottom: '', paddingLeft: '', lineHeight: '', fontFamily: '', fontStyle: '' } }],
                         },
-                    },
-                ],
-                subtitle: [
-                    {
-                        id: utilService.makeId(4),
-                        txt: 'Never let location be an issue when accessing your files. Fylo has you covered for all of your file storage needs',
+                        theme: 'theme-img-fylo-v2',
                         style: {
                             background: 'url()',
                             color: '',
@@ -862,7 +1069,63 @@ const wap_fylo = {
                     },
                     {
                         id: utilService.makeId(4),
-                        txt: 'Securely share files and folders with friends, family and colleagues for live collaboration. No email attachments required',
+                        type: 'wap-text',
+                        info: {
+                            title: {
+                                id: utilService.makeId(4),
+                                txt: 'Stay productive, wherever you are',
+                                style: {
+                                    background: 'url()',
+                                    color: '',
+                                    backgroundColor: '',
+                                    fontSize: '',
+                                    paddingRight: '',
+                                    paddingTop: '',
+                                    paddingBottom: '',
+                                    paddingLeft: '',
+                                    lineHeight: '',
+                                    fontFamily: '',
+                                    fontStyle: '',
+                                },
+                            },
+                            subtitle: [
+                                {
+                                    id: utilService.makeId(4),
+                                    txt: 'Never let location be an issue when accessing your files. Fylo has you covered for all of your file storage needs',
+                                    style: {
+                                        background: 'url()',
+                                        color: '',
+                                        backgroundColor: '',
+                                        fontSize: '',
+                                        paddingRight: '',
+                                        paddingTop: '',
+                                        paddingBottom: '',
+                                        paddingLeft: '',
+                                        lineHeight: '',
+                                        fontFamily: '',
+                                        fontStyle: '',
+                                    },
+                                },
+                                {
+                                    id: utilService.makeId(4),
+                                    txt: 'Securely share files and folders with friends, family and colleagues for live collaboration. No email attachments required',
+                                    style: {
+                                        background: 'url()',
+                                        color: '',
+                                        backgroundColor: '',
+                                        fontSize: '',
+                                        paddingRight: '',
+                                        paddingTop: '',
+                                        paddingBottom: '',
+                                        paddingLeft: '',
+                                        lineHeight: '',
+                                        fontFamily: '',
+                                        fontStyle: '',
+                                    },
+                                },
+                            ],
+                        },
+                        theme: 'theme-text-fylo-v2',
                         style: {
                             background: 'url()',
                             color: '',
@@ -877,15 +1140,21 @@ const wap_fylo = {
                             fontStyle: '',
                         },
                     },
-                ],
-                // link: 'See how Fylo works',
-                imgs: [{ id: utilService.makeId(4), url: 'fylo-imgs/illustration-stay-productive.png', style: { background: 'url()', color: '', backgroundColor: '', fontSize: '', paddingRight: '', paddingTop: '', paddingBottom: '', paddingLeft: '', lineHeight: '', fontFamily: '', fontStyle: '' } }],
+                ]
             },
-            theme: 'theme-card-fylo-v2',
+            theme: 'theme-container-fylo-v2',
             style: {
                 background: 'url()',
-                font: '',
                 color: '',
+                backgroundColor: '',
+                fontSize: '',
+                paddingRight: '',
+                paddingTop: '',
+                paddingBottom: '',
+                paddingLeft: '',
+                lineHeight: '',
+                fontFamily: '',
+                fontStyle: '',
             },
         },
         {
@@ -1032,7 +1301,7 @@ const wap_fylo = {
                 }],
                 input: [{
                     id: utilService.makeId(4),
-                    txt: 'Get Started For Free!',
+                    txt: '',
                     style: {
                         background: 'url()',
                         color: '',
@@ -1049,7 +1318,7 @@ const wap_fylo = {
                 }],
                 buttons: [{
                     id: utilService.makeId(4),
-                    txt: 'Sign Me Up!',
+                    txt: 'Get Started For Free!',
                     style: {
                         background: 'url()',
                         color: '',
@@ -1190,10 +1459,388 @@ const containerofreviews = {
     }
 }
 
+const wapGallery = {
+    id: utilService.makeId(4),
+    type: 'wap-container',
+    info: {
+        cmps: [
+            {
+                id: utilService.makeId(4),
+                type: 'wap-card',
+                info: {
+                    title: [
+                        {
+                            id: utilService.makeId(4),
+                            txt: 'Project one',
+                            style: {
+                                background: 'url()',
+                                color: '',
+                                backgroundColor: '',
+                                fontSize: '',
+                                paddingRight: '',
+                                paddingTop: '',
+                                paddingBottom: '',
+                                paddingLeft: '',
+                                lineHeight: '',
+                                fontFamily: '',
+                                fontStyle: '',
+                            },
+                        },
+                    ],
+                    subtitle: '',
+                    imgs: [{ id: utilService.makeId(4), url: 'proj1.jpg', style: { background: 'url()', color: '', backgroundColor: '', fontSize: '', paddingRight: '', paddingTop: '', paddingBottom: '', paddingLeft: '', lineHeight: '', fontFamily: '', fontStyle: '' } }],
+                },
+            },
+            {
+                id: utilService.makeId(4),
+                type: 'wap-card',
+                info: {
+                    title: [
+                        {
+                            id: utilService.makeId(4),
+                            txt: 'Project two',
+                            style: {
+                                background: 'url()',
+                                color: '',
+                                backgroundColor: '',
+                                fontSize: '',
+                                paddingRight: '',
+                                paddingTop: '',
+                                paddingBottom: '',
+                                paddingLeft: '',
+                                lineHeight: '',
+                                fontFamily: '',
+                                fontStyle: '',
+                            },
+                        },
+                    ],
+                    subtitle: '',
+                    imgs: [{ id: utilService.makeId(4), url: 'proj2.jpg', style: { background: 'url()', color: '', backgroundColor: '', fontSize: '', paddingRight: '', paddingTop: '', paddingBottom: '', paddingLeft: '', lineHeight: '', fontFamily: '', fontStyle: '' } }],
+                },
+            },
+            {
+                id: utilService.makeId(4),
+                type: 'wap-card',
+                info: {
+                    title: [
+                        {
+                            id: utilService.makeId(4),
+                            txt: 'Project three',
+                            style: {
+                                background: 'url()',
+                                color: '',
+                                backgroundColor: '',
+                                fontSize: '',
+                                paddingRight: '',
+                                paddingTop: '',
+                                paddingBottom: '',
+                                paddingLeft: '',
+                                lineHeight: '',
+                                fontFamily: '',
+                                fontStyle: '',
+                            },
+                        },
+                    ],
+                    subtitle: '',
+                    imgs: [{ id: utilService.makeId(4), url: 'proj3.jpg', style: { background: 'url()', color: '', backgroundColor: '', fontSize: '', paddingRight: '', paddingTop: '', paddingBottom: '', paddingLeft: '', lineHeight: '', fontFamily: '', fontStyle: '' } }],
+                },
+            },
+            {
+                id: utilService.makeId(4),
+                type: 'wap-card',
+                info: {
+                    title: [
+                        {
+                            id: utilService.makeId(4),
+                            txt: 'Project four',
+                            style: {
+                                background: 'url()',
+                                color: '',
+                                backgroundColor: '',
+                                fontSize: '',
+                                paddingRight: '',
+                                paddingTop: '',
+                                paddingBottom: '',
+                                paddingLeft: '',
+                                lineHeight: '',
+                                fontFamily: '',
+                                fontStyle: '',
+                            },
+                        },
+                    ],
+                    subtitle: '',
+                    imgs: [{ id: utilService.makeId(4), url: 'proj4.jpg', style: { background: 'url()', color: '', backgroundColor: '', fontSize: '', paddingRight: '', paddingTop: '', paddingBottom: '', paddingLeft: '', lineHeight: '', fontFamily: '', fontStyle: '' } }],
+                },
+            }
+        ],
+    },
+    theme: 'theme-gallery-architecture',
+    style: {
+        background: 'url()',
+        color: '',
+        backgroundColor: '',
+        fontSize: '',
+        paddingRight: '',
+        paddingTop: '',
+        paddingBottom: '',
+        paddingLeft: '',
+        lineHeight: '',
+        fontFamily: '',
+        fontStyle: '',
+    },
+},
 
 
 
 
+
+
+
+
+
+
+
+
+//     {
+//         id: utilService.makeId(4),
+//             type: 'wap-card',
+//                 info: {
+//     title: [
+//         {
+//             id: utilService.makeId(4),
+//             txt: 'Store any type of file',
+//             style: {
+//                 background: 'url()',
+//                 color: '',
+//                 backgroundColor: '',
+//                 fontSize: '',
+//                 paddingRight: '',
+//                 paddingTop: '',
+//                 paddingBottom: '',
+//                 paddingLeft: '',
+//                 lineHeight: '',
+//                 fontFamily: '',
+//                 fontStyle: '',
+//             },
+//         },
+//     ],
+//         subtitle: [{
+//             id: utilService.makeId(4),
+//             txt: 'Whether you\'re sharing holidays photos or work documents, Fylo has you covered allowing for all file types to be securely stored and shared',
+//             style: {
+//                 background: 'url()',
+//                 color: '',
+//                 backgroundColor: '',
+//                 fontSize: '',
+//                 paddingRight: '',
+//                 paddingTop: '',
+//                 paddingBottom: '',
+//                 paddingLeft: '',
+//                 lineHeight: '',
+//                 fontFamily: '',
+//                 fontStyle: '',
+//             },
+//         },],
+//             imgs: [{ id: utilService.makeId(4), url: 'fylo-imgs/icon-any-file.svg', style: { background: 'url()', color: '', backgroundColor: '', fontSize: '', paddingRight: '', paddingTop: '', paddingBottom: '', paddingLeft: '', lineHeight: '', fontFamily: '', fontStyle: '' } }],
+//     },
+// }
+
+
+
+// const gallerycmpfylo = {
+//     id: utilService.makeId(4),
+//     type: 'wap-container',
+//     info: {
+//         cmps: [
+//             {
+//                 id: utilService.makeId(4),
+//                 type: 'wap-card',
+//                 info: {
+//                     title: [
+//                         {
+//                             id: utilService.makeId(4),
+//                             txt: 'Access your files, anywhere',
+//                             style: {
+//                                 background: 'url()',
+//                                 color: '',
+//                                 backgroundColor: '',
+//                                 fontSize: '',
+//                                 paddingRight: '',
+//                                 paddingTop: '',
+//                                 paddingBottom: '',
+//                                 paddingLeft: '',
+//                                 lineHeight: '',
+//                                 fontFamily: '',
+//                                 fontStyle: '',
+//                             },
+//                         },
+//                     ],
+//                     subtitle: [{
+//                         id: utilService.makeId(4),
+//                         txt: 'The ability to use a smartphone, tablet, or computer to access your account means your files follow you everywhere',
+//                         style: {
+//                             background: 'url()',
+//                             color: '',
+//                             backgroundColor: '',
+//                             fontSize: '',
+//                             paddingRight: '',
+//                             paddingTop: '',
+//                             paddingBottom: '',
+//                             paddingLeft: '',
+//                             lineHeight: '',
+//                             fontFamily: '',
+//                             fontStyle: '',
+//                         },
+//                     },],
+//                     imgs: [{ id: utilService.makeId(4), url: 'fylo-imgs/icon-access-anywhere.svg', style: { background: 'url()', color: '', backgroundColor: '', fontSize: '', paddingRight: '', paddingTop: '', paddingBottom: '', paddingLeft: '', lineHeight: '', fontFamily: '', fontStyle: '' } }],
+//                 },
+//             },
+//             {
+//                 id: utilService.makeId(4),
+//                 type: 'wap-card',
+//                 info: {
+//                     title: [
+//                         {
+//                             id: utilService.makeId(4),
+//                             txt: 'Security you can trust',
+//                             style: {
+//                                 background: 'url()',
+//                                 color: '',
+//                                 backgroundColor: '',
+//                                 fontSize: '',
+//                                 paddingRight: '',
+//                                 paddingTop: '',
+//                                 paddingBottom: '',
+//                                 paddingLeft: '',
+//                                 lineHeight: '',
+//                                 fontFamily: '',
+//                                 fontStyle: '',
+//                             },
+//                         },
+//                     ],
+//                     subtitle: [{
+//                         id: utilService.makeId(4),
+//                         txt: '2-factor authentication and user-controlled encryption are just a couple of the security features we allow to help secure your files',
+//                         style: {
+//                             background: 'url()',
+//                             color: '',
+//                             backgroundColor: '',
+//                             fontSize: '',
+//                             paddingRight: '',
+//                             paddingTop: '',
+//                             paddingBottom: '',
+//                             paddingLeft: '',
+//                             lineHeight: '',
+//                             fontFamily: '',
+//                             fontStyle: '',
+//                         },
+//                     },],
+//                     imgs: [{ id: utilService.makeId(4), url: 'fylo-imgs/icon-security.svg', style: { background: 'url()', color: '', backgroundColor: '', fontSize: '', paddingRight: '', paddingTop: '', paddingBottom: '', paddingLeft: '', lineHeight: '', fontFamily: '', fontStyle: '' } }],
+//                 },
+//             },
+//             {
+//                 id: utilService.makeId(4),
+//                 type: 'wap-card',
+//                 info: {
+//                     title: [
+//                         {
+//                             id: utilService.makeId(4),
+//                             txt: 'Real-time collaboration',
+//                             style: {
+//                                 background: 'url()',
+//                                 color: '',
+//                                 backgroundColor: '',
+//                                 fontSize: '',
+//                                 paddingRight: '',
+//                                 paddingTop: '',
+//                                 paddingBottom: '',
+//                                 paddingLeft: '',
+//                                 lineHeight: '',
+//                                 fontFamily: '',
+//                                 fontStyle: '',
+//                             },
+//                         },
+//                     ],
+//                     subtitle: [{
+//                         id: utilService.makeId(4),
+//                         txt: 'Securely share files and folders with friends, family and colleagues for live collaboration. No email attachments required',
+//                         style: {
+//                             background: 'url()',
+//                             color: '',
+//                             backgroundColor: '',
+//                             fontSize: '',
+//                             paddingRight: '',
+//                             paddingTop: '',
+//                             paddingBottom: '',
+//                             paddingLeft: '',
+//                             lineHeight: '',
+//                             fontFamily: '',
+//                             fontStyle: '',
+//                         },
+//                     },],
+//                     imgs: [{ id: utilService.makeId(4), url: 'fylo-imgs/icon-collaboration.svg', style: { background: 'url()', color: '', backgroundColor: '', fontSize: '', paddingRight: '', paddingTop: '', paddingBottom: '', paddingLeft: '', lineHeight: '', fontFamily: '', fontStyle: '' } }],
+//                 },
+//             },
+//             {
+//                 id: utilService.makeId(4),
+//                 type: 'wap-card',
+//                 info: {
+//                     title: [
+//                         {
+//                             id: utilService.makeId(4),
+//                             txt: 'Store any type of file',
+//                             style: {
+//                                 background: 'url()',
+//                                 color: '',
+//                                 backgroundColor: '',
+//                                 fontSize: '',
+//                                 paddingRight: '',
+//                                 paddingTop: '',
+//                                 paddingBottom: '',
+//                                 paddingLeft: '',
+//                                 lineHeight: '',
+//                                 fontFamily: '',
+//                                 fontStyle: '',
+//                             },
+//                         },
+//                     ],
+//                     subtitle: [{
+//                         id: utilService.makeId(4),
+//                         txt: 'Whether you\'re sharing holidays photos or work documents, Fylo has you covered allowing for all file types to be securely stored and shared',
+//                         style: {
+//                             background: 'url()',
+//                             color: '',
+//                             backgroundColor: '',
+//                             fontSize: '',
+//                             paddingRight: '',
+//                             paddingTop: '',
+//                             paddingBottom: '',
+//                             paddingLeft: '',
+//                             lineHeight: '',
+//                             fontFamily: '',
+//                             fontStyle: '',
+//                         },
+//                     },],
+//                     imgs: [{ id: utilService.makeId(4), url: 'fylo-imgs/icon-any-file.svg', style: { background: 'url()', color: '', backgroundColor: '', fontSize: '', paddingRight: '', paddingTop: '', paddingBottom: '', paddingLeft: '', lineHeight: '', fontFamily: '', fontStyle: '' } }],
+//                 },
+//             }
+//         ],
+//     },
+//     theme: 'theme-gallery-fylo',
+//     style: {
+//         background: 'url()',
+//         color: '',
+//         backgroundColor: '',
+//         fontSize: '',
+//         paddingRight: '',
+//         paddingTop: '',
+//         paddingBottom: '',
+//         paddingLeft: '',
+//         lineHeight: '',
+//         fontFamily: '',
+//         fontStyle: '',
+//     },
+// },
 
 // {
 //     id: utilService.makeId(4),
@@ -1237,5 +1884,197 @@ const containerofreviews = {
 //         lineHeight: '',
 //         fontFamily: '',
 //         fontStyle: '',
+//     },
+// },
+
+
+
+
+
+// const wapHeroFylo = {
+//     id: utilService.makeId(4),
+//     type: 'wap-container',
+//     info: {
+//         cmps: [
+//             {
+//                 id: utilService.makeId(4),
+//                 type: 'wap-img',
+//                 info: {
+//                     imgs: [{ id: utilService.makeId(4), url: 'fylo-imgs/illustration-stay-productive.png', style: { background: 'url()', color: '', backgroundColor: '', fontSize: '', paddingRight: '', paddingTop: '', paddingBottom: '', paddingLeft: '', lineHeight: '', fontFamily: '', fontStyle: '' } }],
+//                 },
+//                 theme: 'theme-img-fylo-v2',
+//                 style: {
+//                     background: 'url()',
+//                     color: '',
+//                     backgroundColor: '',
+//                     fontSize: '',
+//                     paddingRight: '',
+//                     paddingTop: '',
+//                     paddingBottom: '',
+//                     paddingLeft: '',
+//                     lineHeight: '',
+//                     fontFamily: '',
+//                     fontStyle: '',
+//                 },
+//             },
+//             {
+//                 id: utilService.makeId(4),
+//                 type: 'wap-text',
+//                 info: {
+//                     title: {
+//                         id: utilService.makeId(4),
+//                         txt: 'Stay productive, wherever you are',
+//                         style: {
+//                             background: 'url()',
+//                             color: '',
+//                             backgroundColor: '',
+//                             fontSize: '',
+//                             paddingRight: '',
+//                             paddingTop: '',
+//                             paddingBottom: '',
+//                             paddingLeft: '',
+//                             lineHeight: '',
+//                             fontFamily: '',
+//                             fontStyle: '',
+//                         },
+//                     },
+//                     subtitle: [
+//                         {
+//                             id: utilService.makeId(4),
+//                             txt: 'Never let location be an issue when accessing your files. Fylo has you covered for all of your file storage needs',
+//                             style: {
+//                                 background: 'url()',
+//                                 color: '',
+//                                 backgroundColor: '',
+//                                 fontSize: '',
+//                                 paddingRight: '',
+//                                 paddingTop: '',
+//                                 paddingBottom: '',
+//                                 paddingLeft: '',
+//                                 lineHeight: '',
+//                                 fontFamily: '',
+//                                 fontStyle: '',
+//                             },
+//                         },
+//                         {
+//                             id: utilService.makeId(4),
+//                             txt: 'Securely share files and folders with friends, family and colleagues for live collaboration. No email attachments required',
+//                             style: {
+//                                 background: 'url()',
+//                                 color: '',
+//                                 backgroundColor: '',
+//                                 fontSize: '',
+//                                 paddingRight: '',
+//                                 paddingTop: '',
+//                                 paddingBottom: '',
+//                                 paddingLeft: '',
+//                                 lineHeight: '',
+//                                 fontFamily: '',
+//                                 fontStyle: '',
+//                             },
+//                         },
+//                     ],
+//                 },
+//                 theme: 'theme-text-fylo-v2',
+//                 style: {
+//                     background: 'url()',
+//                     color: '',
+//                     backgroundColor: '',
+//                     fontSize: '',
+//                     paddingRight: '',
+//                     paddingTop: '',
+//                     paddingBottom: '',
+//                     paddingLeft: '',
+//                     lineHeight: '',
+//                     fontFamily: '',
+//                     fontStyle: '',
+//                 },
+//             },
+//         ]
+//     },
+//     theme: 'theme-container-fylo-v2',
+//     style: {
+//         background: 'url()',
+//         color: '',
+//         backgroundColor: '',
+//         fontSize: '',
+//         paddingRight: '',
+//         paddingTop: '',
+//         paddingBottom: '',
+//         paddingLeft: '',
+//         lineHeight: '',
+//         fontFamily: '',
+//         fontStyle: '',
+//     },
+// },
+
+
+
+// const containerv2fylo = { /////////////////////////////////////////////////////////
+//     id: utilService.makeId(4),
+//     type: 'wap-card',
+//     info: {
+//         title: [
+//             {
+//                 id: utilService.makeId(4),
+//                 txt: 'Stay productive, wherever you are',
+//                 style: {
+//                     background: 'url()',
+//                     color: '',
+//                     backgroundColor: '',
+//                     fontSize: '',
+//                     paddingRight: '',
+//                     paddingTop: '',
+//                     paddingBottom: '',
+//                     paddingLeft: '',
+//                     lineHeight: '',
+//                     fontFamily: '',
+//                     fontStyle: '',
+//                 },
+//             },
+//         ],
+//         subtitle: [
+//             {
+//                 id: utilService.makeId(4),
+//                 txt: 'Never let location be an issue when accessing your files. Fylo has you covered for all of your file storage needs',
+//                 style: {
+//                     background: 'url()',
+//                     color: '',
+//                     backgroundColor: '',
+//                     fontSize: '',
+//                     paddingRight: '',
+//                     paddingTop: '',
+//                     paddingBottom: '',
+//                     paddingLeft: '',
+//                     lineHeight: '',
+//                     fontFamily: '',
+//                     fontStyle: '',
+//                 },
+//             },
+//             {
+//                 id: utilService.makeId(4),
+//                 txt: 'Securely share files and folders with friends, family and colleagues for live collaboration. No email attachments required',
+//                 style: {
+//                     background: 'url()',
+//                     color: '',
+//                     backgroundColor: '',
+//                     fontSize: '',
+//                     paddingRight: '',
+//                     paddingTop: '',
+//                     paddingBottom: '',
+//                     paddingLeft: '',
+//                     lineHeight: '',
+//                     fontFamily: '',
+//                     fontStyle: '',
+//                 },
+//             },
+//         ],
+//         imgs: [{ id: utilService.makeId(4), url: 'fylo-imgs/illustration-stay-productive.png', style: { background: 'url()', color: '', backgroundColor: '', fontSize: '', paddingRight: '', paddingTop: '', paddingBottom: '', paddingLeft: '', lineHeight: '', fontFamily: '', fontStyle: '' } }],
+//     },
+//     theme: 'theme-card-fylo-v2',
+//     style: {
+//         background: 'url()',
+//         font: '',
+//         color: '',
 //     },
 // },
