@@ -11,7 +11,7 @@ export default new Vuex.Store({
     waps: [],
     wapToPublish: null,
     isFullScreen: false,
-    elementSelected: null,
+    elSelectedId: null,
   },
   getters: {
     isFullScreen(state) {
@@ -30,6 +30,9 @@ export default new Vuex.Store({
       console.log('Wap id getters', state.currWap);
       return state.currWap._id;
     },
+    getElSelectedId(state) {
+      return state.elSelectedId;
+    }
   },
   mutations: {
     setCurrWap(state, { wap }) {
@@ -69,8 +72,8 @@ export default new Vuex.Store({
     toggleWapFullScreen(state) {
       state.isFullScreen = !state.isFullScreen;
     },
-    setSelectedElement(state, { element }) {
-      state.elementSelected = element;
+    setSelectedElement(state, { id }) {
+      state.elSelectedId = id;
     },
   },
   actions: {
@@ -206,5 +209,6 @@ export default new Vuex.Store({
         console.log('failed to remove element from cmp', err);
       }
     },
+
   },
 });

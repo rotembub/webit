@@ -1,6 +1,6 @@
 <template>
   <section class="basic-h1">
-    <h1 @click.stop="isEdit = !isEdit" :style="getStyle">
+    <h1 @click.stop="setSelected" :style="getStyle">
       {{ details.data.txt }}
     </h1>
     <basic-el-toolbar
@@ -12,37 +12,57 @@
 </template>
 
 <script>
-  import basicElToolbar from '../../editor-cmps/basic-el-toolbar.cmp.vue';
-  export default {
-    props: ['details'],
-    data() {
+import basicElToolbar from "../../editor-cmps/basic-el-toolbar.cmp.vue";
+export default {
+  props: ["details"],
+  data() {
+    return {
+      isSelected: false,
+    };
+  },
+  components: {
+    basicElToolbar,
+  },
+  computed: {
+    getStyle() {
       return {
-        isEdit: false,
+        color: this.details.data.style.color,
+        fontSize: this.details.data.style.fontSize + "px",
       };
     },
-    components: {
-      basicElToolbar,
+    isEdit() {
+      const id = this.$store.getters.getElSelectedId;
+      if (id === this.details.data.id) return true;
+      return false;
     },
-    computed: {
-      getStyle() {
-        return {
-          color: this.details.data.style.color,
-          fontSize: this.details.data.style.fontSize + 'px',
-        };
-      },
+  },
+  methods: {
+    removeEl() {
+      this.$store.dispatch({
+        type: "removeElFromCmp",
+        cmpId: this.details.cmpId,
+        elType: this.details.elType,
+        elId: this.details.data.id,
+        containerId: this.details.containerId,
+      });
     },
-    methods: {
-      removeEl() {
-        this.$store.dispatch({
-          type: 'removeElFromCmp',
-          cmpId: this.details.cmpId,
-          elType: this.details.elType,
-          elId: this.details.data.id,
-          containerId: this.details.containerId,
+    setSelected() {
+      if (this.isSelected) {
+        this.isSelected = false;
+        this.$store.commit({
+          type: "setSelectedElement",
+          id: null,
         });
-      },
+      } else {
+        this.isSelected = true;
+        this.$store.commit({
+          type: "setSelectedElement",
+          id: this.details.data.id,
+        });
+      }
     },
-  };
+  },
+};
 </script>
 
 <style></style>
