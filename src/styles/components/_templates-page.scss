@@ -6,13 +6,28 @@
         font-size: xx-large;
     }
     .template-list{
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
+    //  display: flex;
+    //  flex-wrap: wrap;
+    //  justify-content: center;
+    //  height: 250px;
+
         gap: 10px;
         img{
-            height: 300px;
+            height: 250px;
         }
     }
 
     
+}
+
+.template-preview-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    div{
+        text-align: center;
+        width:300px;
+    }
+
 }

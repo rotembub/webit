@@ -1,6 +1,8 @@
 <template>
   <section class="basic-h1">
-    <h1 @click.stop="isEdit = !isEdit" :style="getStyle">{{ details.data.txt }}</h1>
+    <h1 @click.stop="isEdit = !isEdit" :style="getStyle">
+      {{ details.data.txt }}
+    </h1>
     <basic-el-toolbar
       @removeEl="removeEl"
       v-if="isEdit"
@@ -10,37 +12,36 @@
 </template>
 
 <script>
-import basicElToolbar from "../../editor-cmps/basic-el-toolbar.cmp.vue";
-export default {
-  props: ["details"],
-  data() {
-    return {
-      isEdit: false,
-    };
-  },
-  components: {
-    basicElToolbar,
-  },
-  computed: {
-    getStyle() {
+  import basicElToolbar from '../../editor-cmps/basic-el-toolbar.cmp.vue';
+  export default {
+    props: ['details'],
+    data() {
       return {
-        color: this.details.data.style.color,
-        fontSize: this.details.data.style.fontSize + "px",
+        isEdit: false,
       };
     },
-  },
-  methods: {
-    removeEl() {
-      this.$store.dispatch({
-        type: "removeElFromCmp",
-        cmpId: this.details.cmpId,
-        elType: this.details.elType,
-        elId: this.details.data.id,
-      });
+    components: {
+      basicElToolbar,
     },
-  },
-};
+    computed: {
+      getStyle() {
+        return {
+          color: this.details.data.style.color,
+          fontSize: this.details.data.style.fontSize + 'px',
+        };
+      },
+    },
+    methods: {
+      removeEl() {
+        this.$store.dispatch({
+          type: 'removeElFromCmp',
+          cmpId: this.details.cmpId,
+          elType: this.details.elType,
+          elId: this.details.data.id,
+        });
+      },
+    },
+  };
 </script>
 
-<style>
-</style>
+<style></style>

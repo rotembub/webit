@@ -58,11 +58,11 @@ export default {
   components: {},
   methods: {
     animateDiv(isVisible, entry) {
-      if (!isVisible) entry.target.classList.remove('slide-in-right')
+      // if (!isVisible) entry.target.classList.remove('slide-in-right')
       if (isVisible) entry.target.classList.add('slide-in-right')
     },
     animateDivLeft(isVisible, entry) {
-      if (!isVisible) entry.target.classList.remove('slide-in-left')
+      // if (!isVisible) entry.target.classList.remove('slide-in-left')
       if (isVisible) entry.target.classList.add('slide-in-left')
     },
   },
