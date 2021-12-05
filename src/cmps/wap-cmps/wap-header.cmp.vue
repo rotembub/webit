@@ -64,7 +64,6 @@ export default {
         paddingLeft: this.cmp.style.paddingLeft + 'px',
         paddingRight: this.cmp.style.paddingRight + 'px',
       }
-
       return style
     },
   },
