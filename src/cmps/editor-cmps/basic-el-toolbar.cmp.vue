@@ -1,5 +1,5 @@
 <template>
-  <section class="basic-el-toolbar">
+  <section class="basic-el-toolbar" style="">
     <button title="Remove" class="tool-element" @click.stop="removeEl">
       <img src="@/assets/element-editor/trashcan.png" />
     </button>
@@ -32,6 +32,7 @@ export default {
   data() {
     return {
       openEditorModal: false,
+      modalPos: null
     };
   },
   methods: {

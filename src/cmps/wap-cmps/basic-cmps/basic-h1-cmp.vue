@@ -51,7 +51,11 @@ export default {
         containerId: this.details.containerId,
       });
     },
-    setSelected() {
+    setSelected(ev) {
+      const pos = {
+        y:ev.target.offsetTop,
+        x:ev.target.offsetLeft
+      }
       if (this.isSelected) {
         this.isSelected = false;
         this.$store.commit({
@@ -63,6 +67,7 @@ export default {
         this.$store.commit({
           type: "setSelectedElement",
           id: this.details.data.id,
+          pos
         });
       }
     },
