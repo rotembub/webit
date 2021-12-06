@@ -1,60 +1,67 @@
 <template>
-  <div class="home-page">
-    <div class="title">
-      <h1>Create your dream site in minutes</h1>
-    </div>
-    <p>
-      Discover the platform that gives you the freedom to create, design, manage
-      and develop your web presence exactly the way you want.
-    </p>
-    <div class="home-page-btn">
-      <span class="home-page-span"
-        ><router-link :to="'/template'">Get started</router-link></span
-      >
-    </div>
-    <div class="homepage-first-card">
-      <div class="homepage-first-card-inner" v-observe-visibility="animateDiv">
-        <div>
-          <h2>
-            Make your own website and get built-in tools to grow your business
-            online.
-          </h2>
-          <p>
-            Pick a template and customize anything, or answer a few questions
-            and get a free website designed just for you.
-          </p>
-          <span class="home-page-card-span"
-            ><router-link :to="'/template'"
-              >Our templates &rarr;</router-link
-            ></span
-          >
-        </div>
-        <img
-          :src="
-            require(`@/assets/homepage/illustration-woman-online-desktop.svg`)
-          "
-        />
+  <div>
+    <app-header></app-header>
+    <div class="home-page">
+      <div class="title">
+        <h1>Create your dream site in minutes</h1>
       </div>
-    </div>
-    <div class="homepage-second-card">
-      <div
-        class="homepage-second-card-inner"
-        v-observe-visibility="animateDivLeft"
-      >
-        <div>
-          <h2>Create the Websites You Want</h2>
-          <p>
-            Design and build your own high-quality websites. Whether you’re
-            promoting your business, showcasing your work, opening your store or
-            starting a blog—you can do it all with the Webit website builder.
-          </p>
-          <span class="home-page-card-span"
-            ><router-link :to="'/editor'"
-              >Start creating &rarr;</router-link
-            ></span
-          >
+      <p>
+        Discover the platform that gives you the freedom to create, design,
+        manage and develop your web presence exactly the way you want.
+      </p>
+      <div class="home-page-btn">
+        <span class="home-page-span"
+          ><router-link :to="'/template'">Get started</router-link></span
+        >
+      </div>
+      <div class="homepage-first-card">
+        <div
+          class="homepage-first-card-inner"
+          v-observe-visibility="animateDiv"
+        >
+          <div>
+            <h2>
+              Make your own website and get built-in tools to grow your business
+              online.
+            </h2>
+            <p>
+              Pick a template and customize anything, or answer a few questions
+              and get a free website designed just for you.
+            </p>
+            <span class="home-page-card-span"
+              ><router-link :to="'/template'"
+                >Our templates &rarr;</router-link
+              ></span
+            >
+          </div>
+          <img
+            :src="
+              require(`@/assets/homepage/illustration-woman-online-desktop.svg`)
+            "
+          />
         </div>
-        <img :src="require(`@/assets/homepage/homepage.svg`)" />
+      </div>
+      <div class="homepage-second-card">
+        <div
+          class="homepage-second-card-inner"
+          v-observe-visibility="animateDivLeft"
+        >
+          <div>
+            <h2>Create the Websites You Want</h2>
+            <p>
+              Design and build your own high-quality websites. Whether you’re
+              promoting your business, showcasing your work, opening your store
+              or starting a blog—you can do it all with the Webit website
+              builder.
+            </p>
+            <span class="home-page-card-span"
+              ><router-link :to="'/editor'"
+                >Start creating &rarr;</router-link
+              ></span
+            >
+          </div>
+          <img :src="require(`@/assets/homepage/homepage.svg`)" />
+        </div>
       </div>
     </div>
   </div>
@@ -62,10 +69,10 @@
 
 <script>
 // @ is an alias to /src
-
+import appHeader from '../cmps/app-header.cmp.vue'
 export default {
   name: 'home-page',
-  components: {},
+  components: { appHeader },
   methods: {
     toTheTemplates() {
       this.$router.push('/template')
