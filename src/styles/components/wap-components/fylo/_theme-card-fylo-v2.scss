@@ -9,7 +9,7 @@
     background-color: $Dark-Blue-main-bg;
     
 
-    img{
+    img:not(.basic-el-toolbar img){
         width: 100%;
         padding:28px
         // transform: scale(0.8);

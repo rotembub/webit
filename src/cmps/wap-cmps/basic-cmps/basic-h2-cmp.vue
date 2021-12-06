@@ -72,6 +72,9 @@ export default {
         y: ev.target.offsetTop,
         x: ev.target.offsetLeft,
       };
+      if (ev.offsetY > ev.target.offsetHeight / 2) {
+        pos.y = ev.target.offsetTop + ev.target.offsetHeight;
+      } else pos.y = ev.target.offsetTop - 16;
       console.log(pos);
       if (this.isSelected) {
         this.isSelected = false;
