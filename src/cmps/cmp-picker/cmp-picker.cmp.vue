@@ -1,6 +1,7 @@
 <template>
   <el-collapse class="cmp-picker-collapse scrollbar style-2" accordion>
     <div>
+      <editor-header></editor-header>
       <div class="cmp-picker-title">
         <h5>Undo <i class="el-icon-refresh-left"></i></h5>
         <h4>Drag from here</h4>
@@ -104,6 +105,7 @@ import { Collapse, CollapseItem } from 'element-ui'
 import wapHeader from '../wap-cmps/wap-header.cmp.vue'
 import { cmpService } from '../../services/cmp.service.js'
 import { Container, Draggable } from 'vue-smooth-dnd'
+import editorHeader from '../editor-header.cmp.vue'
 
 export default {
   name: 'cmpPicker',
@@ -113,6 +115,7 @@ export default {
     CollapseItem,
     Container,
     Draggable,
+    editorHeader,
   },
   data() {
     return {

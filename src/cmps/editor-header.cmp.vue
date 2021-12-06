@@ -3,7 +3,7 @@
     <div v-if="isOpen" @click="toggleHeader" class="screen"></div>
     <div @click="toggleHeader" class="sticky-tab">
       <div class="">
-        <i type="danger" class="el-icon-arrow-left"></i>
+        <i type="danger" class="el-icon-menu"></i>
       </div>
     </div>
     <div @click="toggleHeader" :class="isOpenClass">
