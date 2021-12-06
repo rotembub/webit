@@ -1,5 +1,8 @@
 <template>
-  <section class="basic-el-toolbar" style="">
+  <section
+    class="basic-el-toolbar"
+    :style="getPos"
+  >
     <button title="Remove" class="tool-element" @click.stop="removeEl">
       <img src="@/assets/element-editor/trashcan.png" />
     </button>
@@ -10,9 +13,9 @@
     >
       <img src="@/assets/element-editor/font-size.png" />
     </button>
-    <button title="Color" class="tool-element">
+    <!-- <button title="Color" class="tool-element">
       <img src="@/assets/element-editor/color.png" />
-    </button>
+    </button> -->
     <button title="Size" class="tool-element">
       <img src="@/assets/element-editor/size.png" />
     </button>
@@ -27,13 +30,22 @@
 <script>
 import elementEditor from "./element-editor-cmp.vue";
 export default {
-  props: ["id", "elStyle", "cmpId"],
+  props: ["id", "elStyle", "cmpId", "pos"],
   components: { elementEditor },
+  created() {
+    console.log(this.pos);
+  },
   data() {
     return {
       openEditorModal: false,
-      modalPos: null
+      modalPos: null,
     };
+  },
+  computed: {
+    getPos() {
+      const pos =  this.$store.getters.getElSelectedPos;
+      return { top: pos.y + 'px', left: pos.x + 'px' }
+    },
   },
   methods: {
     removeEl() {

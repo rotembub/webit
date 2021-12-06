@@ -1,19 +1,39 @@
+.theme-card-architecture-inner{
+    display: flex;
+    flex-direction: column-reverse;
+    background-color: rgb(255, 255, 255);
+
+    .text-block{
+        text-align: center;
+        h1{
+            font-size:1.5em;
+            padding-left: 10px;
+            font-family: poppins;
+         
+    }
+    }
+        img:not(.element-editor-cmp img){
+        //    max-height: 25vh;
+        max-width: 350px;
+           object-fit:contain;
+       }
+}
 .theme-card-architecture{
     display: flex;
     flex-direction: column;
     background-color: rgb(255, 255, 255);
 
     .text-block{
+        text-align: center;
         h1{
-            font-size:3em;
+            font-size:1.5em;
             padding-left: 10px;
             font-family: poppins;
          
     }
-     
     }
         img:not(.element-editor-cmp img){
-           min-height: 90vh;
+        //    max-height: 25vh;
            object-fit:contain;
        }
 }

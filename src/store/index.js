@@ -12,6 +12,7 @@ export default new Vuex.Store({
     wapToPublish: null,
     isFullScreen: false,
     elSelectedId: null,
+    elSelectedPos: null,
   },
   getters: {
     isFullScreen(state) {
@@ -32,6 +33,9 @@ export default new Vuex.Store({
     },
     getElSelectedId(state) {
       return state.elSelectedId;
+    },
+    getElSelectedPos(state) {
+      return state.elSelectedPos;
     }
   },
   mutations: {
@@ -72,8 +76,9 @@ export default new Vuex.Store({
     toggleWapFullScreen(state) {
       state.isFullScreen = !state.isFullScreen;
     },
-    setSelectedElement(state, { id,pos }) {
+    setSelectedElement(state, { id, pos }) {
       state.elSelectedId = id;
+      state.elSelectedPos = pos;
     },
   },
   actions: {
@@ -96,11 +101,12 @@ export default new Vuex.Store({
     },
     async updateWapStyle({ commit, state }, { currWap, cmpId }) {
       const editedWap = state.currWap;
-      console.log(editedWap,'EDITED WAP !!!!!!!!!!!!')
+      console.log(editedWap, 'EDITED WAP !!!!!!!!!!!!')
       // console.log('updateWapStyle', currWap);
       try {
         // const updatedWap = await wapService.save(currWap);
         const newCmp = editedWap.cmps.find((cmp) => cmp.id === cmpId);
+        console.log('newCmp', newCmp)
         const updatedWap = await wapService.updateCmp(editedWap._id, newCmp);
 
         commit({ type: 'setCurrWap', wap: updatedWap });

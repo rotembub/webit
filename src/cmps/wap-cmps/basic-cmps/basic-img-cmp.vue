@@ -38,18 +38,29 @@ export default {
         containerId: this.details.containerId,
       });
     },
-    setSelected() {
+    setSelected(ev) {
+      console.log("event", ev);
+      const pos = {
+        y: ev.target.offsetTop,
+        x: ev.target.offsetLeft,
+      };
+      if (ev.offsetY > ev.target.offsetHeight / 2) {
+        pos.y = ev.target.offsetTop + ev.target.offsetHeight;
+      } else pos.y = ev.target.offsetTop - 16;
+      console.log(pos);
       if (this.isSelected) {
         this.isSelected = false;
         this.$store.commit({
           type: "setSelectedElement",
           id: null,
+          pos: null,
         });
       } else {
         this.isSelected = true;
         this.$store.commit({
           type: "setSelectedElement",
           id: this.details.data.id,
+          pos,
         });
       }
     },

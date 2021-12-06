@@ -19,75 +19,86 @@
 </template>
 
 <script>
-  import basicElToolbar from '../../editor-cmps/basic-el-toolbar.cmp.vue';
-  import {utilService} from '../../../services/util.service.js';
+import basicElToolbar from "../../editor-cmps/basic-el-toolbar.cmp.vue";
+import { utilService } from "../../../services/util.service.js";
 
-  export default {
-    props: ['details'],
-    components: {
-      basicElToolbar,
-    },
-    data() {
+export default {
+  props: ["details"],
+  components: {
+    basicElToolbar,
+  },
+  data() {
+    return {
+      isSelected: false,
+    };
+  },
+  created() {
+    this.onInput = utilService.debounce(this.onInput); //using debounce
+  },
+  computed: {
+    getStyle() {
       return {
-        isSelected: false,
+        color: this.details.data.style.color,
+        fontSize: this.details.data.style.fontSize + "px",
       };
     },
-    created() {
-      this.onInput = utilService.debounce(this.onInput); //using debounce
+    isEdit() {
+      const id = this.$store.getters.getElSelectedId;
+      if (id === this.details.data.id) return true;
+      return false;
     },
-    computed: {
-      getStyle() {
-        return {
-          color: this.details.data.style.color,
-          fontSize: this.details.data.style.fontSize + 'px',
-        };
-      },
-      isEdit() {
-        const id = this.$store.getters.getElSelectedId;
-        if (id === this.details.data.id) return true;
-        return false;
-      },
-      getCmpId() {
-        if (this.details.containerId) return this.details.containerId;
-        return this.details.cmpId;
-      },
+    getCmpId() {
+      if (this.details.containerId) return this.details.containerId;
+      return this.details.cmpId;
     },
-    methods: {
-      removeEl() {
-        this.$store.dispatch({
-          type: 'removeElFromCmp',
-          cmpId: this.details.cmpId,
-          elType: this.details.elType,
-          elId: this.details.data.id,
-          containerId: this.details.containerId,
+  },
+  methods: {
+    removeEl() {
+      this.$store.dispatch({
+        type: "removeElFromCmp",
+        cmpId: this.details.cmpId,
+        elType: this.details.elType,
+        elId: this.details.data.id,
+        containerId: this.details.containerId,
+      });
+    },
+    onInput(event) {
+      const value = event.target.innerText;
+      this.details.data.txt = value;
+      this.$store.dispatch({
+        type: "updateWapStyle",
+        currWap: this.currWap,
+        cmpId: this.details.cmpId,
+      });
+    },
+    setSelected(ev) {
+      const pos = {
+        y: ev.target.offsetTop,
+        x: ev.target.offsetLeft,
+      };
+      // console.log("Ypressed:", ev.offsetY, "Xpressed:", ev.offsetX,"targetHeight",ev.target.offsetHeight,"offseTtop:",ev.target.offsetTop,"calc:",ev.target.offsetTop + ev.target.offsetHeight/2);
+      if (ev.offsetY > ev.target.offsetHeight / 2) {
+        pos.y = ev.target.offsetTop + ev.target.offsetHeight;
+      } else pos.y = ev.target.offsetTop - 16;
+      console.log(pos);
+      if (this.isSelected) {
+        this.isSelected = false;
+        this.$store.commit({
+          type: "setSelectedElement",
+          id: null,
+          pos: null,
         });
-      },
-      onInput(event) {
-        const value = event.target.innerText;
-        this.details.data.txt = value;
-        this.$store.dispatch({
-          type: 'updateWapStyle',
-          currWap: this.currWap,
-          cmpId: this.details.cmpId,
+      } else {
+        this.isSelected = true;
+        this.$store.commit({
+          type: "setSelectedElement",
+          id: this.details.data.id,
+          pos,
         });
-      },
-      setSelected() {
-        if (this.isSelected) {
-          this.isSelected = false;
-          this.$store.commit({
-            type: 'setSelectedElement',
-            id: null,
-          });
-        } else {
-          this.isSelected = true;
-          this.$store.commit({
-            type: 'setSelectedElement',
-            id: this.details.data.id,
-          });
-        }
-      },
+      }
     },
-  };
+  },
+};
 </script>
 
 <style></style>
