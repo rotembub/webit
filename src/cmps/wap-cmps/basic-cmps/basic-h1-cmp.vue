@@ -74,6 +74,7 @@ export default {
         y: ev.target.offsetTop,
         x: ev.target.offsetLeft,
       };
+      console.log(pos);
       if (this.isSelected) {
         this.isSelected = false;
         this.$store.commit({
