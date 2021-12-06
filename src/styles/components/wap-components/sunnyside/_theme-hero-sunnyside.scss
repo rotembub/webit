@@ -1,0 +1,51 @@
+.theme-hero-sunnyside{
+    // background-color: rgb(2, 164, 240);
+    padding-top: 20px;
+    color: white;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+    background-position: 50% 0;
+    height: 100vh;
+    h1{
+        font-size: 3rem;
+        margin-top: 80px;
+        text-align: center;
+    }
+    
+    // .inner-container{
+    //     display: flex;
+    //     justify-content: space-between;
+    //     margin-inline-start: 50px;
+    //     margin-inline-end: 50px;
+    
+    // }
+    .theme-header-sunnyside{
+        display: flex;
+        justify-content: space-between;
+        .logo{
+            img{
+                height: 30px;
+                width: 100%;
+                object-fit: contain;
+                margin-inline-start: 10px;
+            }
+        }
+        .nav-bar{
+            // flex: 2;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+
+            a{
+                border: 2px transparent solid ;
+                border-radius: 3em;
+                padding: 10px;
+                color: white;
+                text-decoration: none;
+            }
+            a:hover{
+                background-color: rgba(255, 255, 255, 0.294);
+            }
+        }
+    }
+}

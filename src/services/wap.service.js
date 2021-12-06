@@ -2147,8 +2147,8 @@ const wap_sunnyside = {
       },
       theme: 'theme-hero-sunnyside',
       style: {
-        background:
-          'url(~@/assets/wap-imgs/sunnyside-imgs/images/desktop/image-header.jpg)', //'url(sunnyside-imgs/images/desktop/image-header.jpg)',
+        background: 
+          `url('https://res.cloudinary.com/rb-mister-toy/image/upload/v1638813593/edeyukdwkhhk5we1vbeh.jpg')`, //'url(sunnyside-imgs/images/desktop/image-header.jpg)',
         color: '',
         backgroundColor: '',
         fontSize: '',

@@ -40,7 +40,7 @@
 
 <script>
   import wapDynamic from './wap-dynamic.cmp.vue';
-
+  
   import wapHeader from './wap-header.cmp.vue';
   import wapFooter from './wap-footer.cmp.vue';
   import wapGallery from './wap-gallery.cmp.vue';
@@ -68,9 +68,11 @@
     props: ['cmp'],
     computed: {
       getCurrStyle() {
+        console.log(this.cmp.style,'!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
         console.log('IM HERE Gallery', this.cmp.style);
         console.log('color', this.cmp.style.color);
         const style = {
+          backgroundImage: this.cmp.style.background,
           color: this.cmp.style.color,
           fontSize: this.cmp.style.fontSize + 'px', //fix fontSize not change
           backgroundColor: this.cmp.style.backgroundColor,
