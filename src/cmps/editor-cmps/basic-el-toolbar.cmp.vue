@@ -16,14 +16,18 @@
     <button title="Size" class="tool-element">
       <img src="@/assets/element-editor/size.png" />
     </button>
-    <element-editor v-if="openEditorModal" :elStyle="elStyle"></element-editor>
+    <element-editor
+      v-if="openEditorModal"
+      :cmpId="cmpId"
+      :elStyle="elStyle"
+    ></element-editor>
   </section>
 </template>
 
 <script>
 import elementEditor from "./element-editor-cmp.vue";
 export default {
-  props: ["id", "elStyle"],
+  props: ["id", "elStyle", "cmpId"],
   components: { elementEditor },
   data() {
     return {
@@ -31,10 +35,10 @@ export default {
     };
   },
   methods: {
-    removeEl(){
-      console.log('emiting for removal')
-      this.$emit('removeEl')
-    }
+    removeEl() {
+      console.log("emiting for removal");
+      this.$emit("removeEl");
+    },
   },
 };
 </script>

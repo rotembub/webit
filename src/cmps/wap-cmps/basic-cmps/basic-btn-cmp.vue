@@ -1,10 +1,11 @@
 <template>
   <section class="basic-btn">
-    <button @click.stop="isEdit = !isEdit" :style="getStyle">
+    <button @click.stop="setSelected" :style="getStyle">
       {{ details.data.txt }}
     </button>
     <basic-el-toolbar
       @removeEl="removeEl"
+      :cmpId="getCmpId"
       v-if="isEdit"
       :elStyle="details.data.style"
     ></basic-el-toolbar>
@@ -20,7 +21,7 @@ export default {
   },
   data() {
     return {
-      isEdit: false,
+      isSelected: false,
     };
   },
   computed: {
@@ -29,6 +30,15 @@ export default {
         color: this.details.data.style.color,
         fontSize: this.details.data.style.fontSize + "px",
       };
+    },
+    isEdit() {
+      const id = this.$store.getters.getElSelectedId;
+      if (id === this.details.data.id) return true;
+      return false;
+    },
+    getCmpId() {
+      if (this.details.containerId) return this.details.containerId;
+      return this.details.cmpId;
     },
   },
   methods: {
@@ -40,6 +50,21 @@ export default {
         elId: this.details.data.id,
         containerId: this.details.containerId,
       });
+    },
+    setSelected() {
+      if (this.isSelected) {
+        this.isSelected = false;
+        this.$store.commit({
+          type: "setSelectedElement",
+          id: null,
+        });
+      } else {
+        this.isSelected = true;
+        this.$store.commit({
+          type: "setSelectedElement",
+          id: this.details.data.id,
+        });
+      }
     },
   },
 };

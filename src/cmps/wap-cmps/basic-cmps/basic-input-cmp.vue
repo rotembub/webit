@@ -2,12 +2,17 @@
   <section class="basic-input">
     <input
       :style="getStyle"
-      @click.stop="isEdit = !isEdit"
+      @click.stop="setSelected"
       :class="details.class"
       type="email"
       placeholder="email@example.com"
     />
-    <basic-el-toolbar @removeEl="removeEl" v-if="isEdit" :elStyle="details.data.style"></basic-el-toolbar>
+    <basic-el-toolbar
+      @removeEl="removeEl"
+      :cmpId="getCmpId"
+      v-if="isEdit"
+      :elStyle="details.data.style"
+    ></basic-el-toolbar>
   </section>
 </template>
 
@@ -17,7 +22,7 @@ export default {
   props: ["details"],
   data() {
     return {
-      isEdit: false,
+      isSelected: false,
     };
   },
   components: {
@@ -30,16 +35,40 @@ export default {
         fontSize: this.details.data.style.fontSize + "px",
       };
     },
+    isEdit() {
+      const id = this.$store.getters.getElSelectedId;
+      if (id === this.details.data.id) return true;
+      return false;
+    },
+    getCmpId() {
+      if (this.details.containerId) return this.details.containerId;
+      return this.details.cmpId;
+    },
   },
-    methods: {
+  methods: {
     removeEl() {
-            this.$store.dispatch({
+      this.$store.dispatch({
         type: "removeElFromCmp",
         cmpId: this.details.cmpId,
         elType: this.details.elType,
         elId: this.details.data.id,
         containerId: this.details.containerId,
       });
+    },
+    setSelected() {
+      if (this.isSelected) {
+        this.isSelected = false;
+        this.$store.commit({
+          type: "setSelectedElement",
+          id: null,
+        });
+      } else {
+        this.isSelected = true;
+        this.$store.commit({
+          type: "setSelectedElement",
+          id: this.details.data.id,
+        });
+      }
     },
   },
 };

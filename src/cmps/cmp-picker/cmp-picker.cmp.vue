@@ -92,73 +92,74 @@
 </template>
 
 <script>
-import { Collapse, CollapseItem } from 'element-ui'
-import wapHeader from '../wap-cmps/wap-header.cmp.vue'
-import { cmpService } from '../../services/cmp.service.js'
-import { Container, Draggable } from 'vue-smooth-dnd'
+  import {Collapse, CollapseItem} from 'element-ui';
+  import wapHeader from '../wap-cmps/wap-header.cmp.vue';
+  import {cmpService} from '../../services/cmp.service.js';
+  import {Container, Draggable} from 'vue-smooth-dnd';
 
-export default {
-  name: 'cmpPicker',
-  components: {
-    wapHeader,
-    Collapse,
-    CollapseItem,
-    Container,
-    Draggable,
-  },
-  data() {
-    return {
-      themes: null,
-      types: [
-        'wap-header',
-        'wap-gallery',
-        'wap-text',
-        'wap-contact',
-        'wap-card',
-        'wap-review',
-        'wap-signup',
-      ],
-      wapToPublish: null,
-    }
-  },
-  methods: {
-    getChildPayload1(index) {
-      return this.themes[index]
+  export default {
+    name: 'cmpPicker',
+    components: {
+      wapHeader,
+      Collapse,
+      CollapseItem,
+      Container,
+      Draggable,
     },
-    publishWap() {
-      this.wapToPublish = this.$store.getters.getCurrWap
-      this.$store.dispatch({
-        type: 'publishWap',
-        wapToPublish: this.wapToPublish,
-      })
-      console.log('ID', this.wapToPublish._id)
-      this.$router.push(`/publish/${this.wapToPublish._id}`)
-      // console.log('wapToPublish', wapToPublish)
+    data() {
+      return {
+        themes: null,
+        types: [
+          'wap-header',
+          // 'wap-gallery',
+          'wap-text',
+          'wap-contact',
+          'wap-card',
+          // 'wap-review',
+          'wap-signup',
+          'wap-container',
+        ],
+        wapToPublish: null,
+      };
     },
-    async add(cmpId) {
-      // console.log(cmpId);
-      try {
-        const cmp = await this.$store.dispatch({
-          type: 'addCmp',
-          id: cmpId,
-        })
-      } catch (err) {
-        console.log(err)
-      }
+    methods: {
+      getChildPayload1(index) {
+        return this.themes[index];
+      },
+      publishWap() {
+        this.wapToPublish = this.$store.getters.getCurrWap;
+        this.$store.dispatch({
+          type: 'publishWap',
+          wapToPublish: this.wapToPublish,
+        });
+        console.log('ID', this.wapToPublish._id);
+        this.$router.push(`/publish/${this.wapToPublish._id}`);
+        // console.log('wapToPublish', wapToPublish)
+      },
+      async add(cmpId) {
+        // console.log(cmpId);
+        try {
+          const cmp = await this.$store.dispatch({
+            type: 'addCmp',
+            id: cmpId,
+          });
+        } catch (err) {
+          console.log(err);
+        }
+      },
+      loadThemes(cmpType) {
+        const allThemes = cmpService.getThemesFor(cmpType);
+        this.themes = allThemes;
+        // console.log(this.themes);
+      },
+      getProperTxt(type) {
+        // console.log(type);
+        const textToShow = type.substring(4);
+        return textToShow.charAt(0).toUpperCase() + textToShow.slice(1);
+      },
     },
-    loadThemes(cmpType) {
-      const allThemes = cmpService.getThemesFor(cmpType)
-      this.themes = allThemes
-      // console.log(this.themes);
-    },
-    getProperTxt(type) {
-      // console.log(type);
-      const textToShow = type.substring(4)
-      return textToShow.charAt(0).toUpperCase() + textToShow.slice(1)
-    },
-  },
-  computed: {},
-}
+    computed: {},
+  };
 </script>
 
 <style></style>

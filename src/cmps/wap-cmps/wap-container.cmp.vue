@@ -1,6 +1,7 @@
 <!--
 <template>
   <section v-if="cmp" class="wap-container" :class="cmp.theme">
+   //need to make the resize and color work on the container
   
     <wap-dynamic
       v-for="cmp in cmp.info.cmps"
@@ -15,7 +16,12 @@
 -->
 
 <template>
-  <section v-if="cmp" class="wap-container" :class="cmp.theme">
+  <section
+    v-if="cmp"
+    :style="getCurrStyle"
+    class="wap-container"
+    :class="cmp.theme"
+  >
     <!--Need to see if its fits or not as a class  -->
     <!-- <slot>
       <cmps-tool-bar :id="cmp.id"></cmps-tool-bar>
@@ -32,38 +38,51 @@
   </section>
 </template>
 
-
-
-
-
-
 <script>
-import wapDynamic from "./wap-dynamic.cmp.vue";
+  import wapDynamic from './wap-dynamic.cmp.vue';
 
-import wapHeader from "./wap-header.cmp.vue";
-import wapFooter from "./wap-footer.cmp.vue";
-import wapGallery from "./wap-gallery.cmp.vue";
-import wapSocial from "./wap-social.cmp.vue";
-import wapSignup from "./wap-signup.cmp.vue";
-import wapContact from "./wap-contact.cmp.vue";
-import wapText from "./wap-text.cmp.vue";
-import wapCard from "./wap-card.cmp.vue";
-import wapReview from "./wap-review.cmp.vue";
-import wapImg from "./wap-img.cmp.vue";
-export default {
-  components: {
-    wapDynamic,
-    wapHeader,
-    wapFooter,
-    wapGallery,
-    wapSocial,
-    wapSignup,
-    wapContact,
-    wapText,
-    wapCard,
-    wapReview,
-    wapImg,
-  },
-  props: ["cmp"],
-};
+  import wapHeader from './wap-header.cmp.vue';
+  import wapFooter from './wap-footer.cmp.vue';
+  import wapGallery from './wap-gallery.cmp.vue';
+  import wapSocial from './wap-social.cmp.vue';
+  import wapSignup from './wap-signup.cmp.vue';
+  import wapContact from './wap-contact.cmp.vue';
+  import wapText from './wap-text.cmp.vue';
+  import wapCard from './wap-card.cmp.vue';
+  import wapReview from './wap-review.cmp.vue';
+  import wapImg from './wap-img.cmp.vue';
+  export default {
+    components: {
+      wapDynamic,
+      wapHeader,
+      wapFooter,
+      wapGallery,
+      wapSocial,
+      wapSignup,
+      wapContact,
+      wapText,
+      wapCard,
+      wapReview,
+      wapImg,
+    },
+    props: ['cmp'],
+    computed: {
+      getCurrStyle() {
+        console.log('IM HERE Gallery', this.cmp.style);
+        console.log('color', this.cmp.style.color);
+        const style = {
+          color: this.cmp.style.color,
+          fontSize: this.cmp.style.fontSize + 'px', //fix fontSize not change
+          backgroundColor: this.cmp.style.backgroundColor,
+          //new size style
+          height: this.cmp.style.height + 'px', // **problem range too small
+          paddingTop: this.cmp.style.paddingTop + 'px',
+          paddingBottom: this.cmp.style.paddingBottom + 'px',
+          paddingLeft: this.cmp.style.paddingLeft + 'px',
+          paddingRight: this.cmp.style.paddingRight + 'px',
+        };
+        return style;
+      },
+    },
+  };
 </script>
