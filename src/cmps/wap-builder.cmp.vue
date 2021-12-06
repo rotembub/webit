@@ -21,7 +21,7 @@
     <el-button
       @click="toggleFullScreen"
       class="is-full-wap-btn"
-      type="Primary"
+      type="info"
       :icon="iconToShow"
       circle
     ></el-button>

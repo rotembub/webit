@@ -1,6 +1,10 @@
 <template>
   <el-collapse class="cmp-picker-collapse scrollbar style-2" accordion>
     <div>
+      <div class="cmp-picker-title">
+        <h5>Undo <i class="el-icon-refresh-left"></i></h5>
+        <h4>Drag from here</h4>
+      </div>
       <el-collapse-item
         v-for="type in types"
         :title="getProperTxt(type)"
@@ -33,6 +37,10 @@
       </el-collapse-item>
     </div>
     <div class="wap-publish">
+      <div class="publish-icons">
+        <i class="el-icon-mobile"></i>
+        <i class="el-icon-monitor"></i>
+      </div>
       <el-button @click="publishWap" type="primary"
         ><span>Publish</span><i class="el-icon-upload el-icon-right"></i
       ></el-button>
@@ -92,74 +100,74 @@
 </template>
 
 <script>
-  import {Collapse, CollapseItem} from 'element-ui';
-  import wapHeader from '../wap-cmps/wap-header.cmp.vue';
-  import {cmpService} from '../../services/cmp.service.js';
-  import {Container, Draggable} from 'vue-smooth-dnd';
+import { Collapse, CollapseItem } from 'element-ui'
+import wapHeader from '../wap-cmps/wap-header.cmp.vue'
+import { cmpService } from '../../services/cmp.service.js'
+import { Container, Draggable } from 'vue-smooth-dnd'
 
-  export default {
-    name: 'cmpPicker',
-    components: {
-      wapHeader,
-      Collapse,
-      CollapseItem,
-      Container,
-      Draggable,
+export default {
+  name: 'cmpPicker',
+  components: {
+    wapHeader,
+    Collapse,
+    CollapseItem,
+    Container,
+    Draggable,
+  },
+  data() {
+    return {
+      themes: null,
+      types: [
+        'wap-header',
+        // 'wap-gallery',
+        'wap-text',
+        'wap-contact',
+        'wap-card',
+        // 'wap-review',
+        'wap-signup',
+        'wap-container',
+      ],
+      wapToPublish: null,
+    }
+  },
+  methods: {
+    getChildPayload1(index) {
+      return this.themes[index]
     },
-    data() {
-      return {
-        themes: null,
-        types: [
-          'wap-header',
-          // 'wap-gallery',
-          'wap-text',
-          'wap-contact',
-          'wap-card',
-          // 'wap-review',
-          'wap-signup',
-          'wap-container',
-        ],
-        wapToPublish: null,
-      };
+    publishWap() {
+      this.wapToPublish = this.$store.getters.getCurrWap
+      this.$store.dispatch({
+        type: 'publishWap',
+        wapToPublish: this.wapToPublish,
+      })
+      console.log('ID', this.wapToPublish._id)
+      this.$router.push(`/publish/${this.wapToPublish._id}`)
+      // console.log('wapToPublish', wapToPublish)
     },
-    methods: {
-      getChildPayload1(index) {
-        return this.themes[index];
-      },
-      publishWap() {
-        this.wapToPublish = this.$store.getters.getCurrWap;
-        this.$store.dispatch({
-          type: 'publishWap',
-          wapToPublish: this.wapToPublish,
-        });
-        console.log('ID', this.wapToPublish._id);
-        this.$router.push(`/publish/${this.wapToPublish._id}`);
-        // console.log('wapToPublish', wapToPublish)
-      },
-      async add(cmpId) {
-        // console.log(cmpId);
-        try {
-          const cmp = await this.$store.dispatch({
-            type: 'addCmp',
-            id: cmpId,
-          });
-        } catch (err) {
-          console.log(err);
-        }
-      },
-      loadThemes(cmpType) {
-        const allThemes = cmpService.getThemesFor(cmpType);
-        this.themes = allThemes;
-        // console.log(this.themes);
-      },
-      getProperTxt(type) {
-        // console.log(type);
-        const textToShow = type.substring(4);
-        return textToShow.charAt(0).toUpperCase() + textToShow.slice(1);
-      },
+    async add(cmpId) {
+      // console.log(cmpId);
+      try {
+        const cmp = await this.$store.dispatch({
+          type: 'addCmp',
+          id: cmpId,
+        })
+      } catch (err) {
+        console.log(err)
+      }
     },
-    computed: {},
-  };
+    loadThemes(cmpType) {
+      const allThemes = cmpService.getThemesFor(cmpType)
+      this.themes = allThemes
+      // console.log(this.themes);
+    },
+    getProperTxt(type) {
+      // console.log(type);
+      const textToShow = type.substring(4)
+      return textToShow.charAt(0).toUpperCase() + textToShow.slice(1)
+    },
+  },
+  computed: {},
+}
 </script>
 
 <style></style>

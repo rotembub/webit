@@ -14,7 +14,26 @@
     }
         img:not(.element-editor-cmp img){
         //    max-height: 25vh;
-        max-width: 300px;
+        max-width: 350px;
+           object-fit:contain;
+       }
+}
+.theme-card-architecture{
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(255, 255, 255);
+
+    .text-block{
+        text-align: center;
+        h1{
+            font-size:1.5em;
+            padding-left: 10px;
+            font-family: poppins;
+         
+    }
+    }
+        img:not(.element-editor-cmp img){
+        //    max-height: 25vh;
            object-fit:contain;
        }
 }
