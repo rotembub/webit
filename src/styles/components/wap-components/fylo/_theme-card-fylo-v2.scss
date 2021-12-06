@@ -1,6 +1,5 @@
-.theme-card-fylo-v2{
+.theme-container-fylo-v2{
     display: flex;
-    flex-direction: column;
     align-items: center;
     gap: 4em;
     color: $White;
@@ -17,17 +16,19 @@
         // max-height: 400px;
     }
 
-
-.text-block{
+.wap-text{
     display: flex;
     flex-direction: column;
-    align-items: center;
     gap: 1.5em;
 
     h1{
         font-family: 'Raleway', sans-serif;
         font-weight: 700;
         font-size: 1.1rem;
+    }
+    h3{
+        font-size: 0.8rem;
+        font-weight: lighter;
     }
     a{
         display: flex;
@@ -51,13 +52,12 @@
 }
 }
 
-@media only screen and (min-width : 768px) {
-    .theme-card-fylo-v2{
+@media only screen and (max-width : 700px) {
+    .theme-container-fylo-v2{
         display: flex;
-        flex-direction: row-reverse;
+        flex-direction:column;
         gap: 4em;
         .img{
-            width: 50%;
         }
     }
 
