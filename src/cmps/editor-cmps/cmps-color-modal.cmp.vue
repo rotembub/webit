@@ -25,8 +25,9 @@
     <!-- ////////////////////////////////// -->
     <span>
       BackgroundColor :
+       <!-- @input="updateCmp" -->
       <input
-        @input="updateCmp"
+        @mouseup="updateCmp"
         v-model="currWap.cmps[currCmpIdx].style.backgroundColor"
         type="color"
       />
