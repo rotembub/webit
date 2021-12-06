@@ -1,6 +1,12 @@
 <template>
   <section class="basic-btn">
-    <button @click.stop="setSelected" :style="getStyle">
+    <!-- on click here refresh the page need to fix -->
+    <button
+      @click.stop.prevent="setSelected"
+      contenteditable
+      @input.prevent="onInput($event)"
+      :style="getStyle"
+    >
       {{ details.data.txt }}
     </button>
     <basic-el-toolbar
@@ -13,62 +19,75 @@
 </template>
 
 <script>
-import basicElToolbar from "../../editor-cmps/basic-el-toolbar.cmp.vue";
-export default {
-  props: ["details"],
-  components: {
-    basicElToolbar,
-  },
-  data() {
-    return {
-      isSelected: false,
-    };
-  },
-  computed: {
-    getStyle() {
+  import basicElToolbar from '../../editor-cmps/basic-el-toolbar.cmp.vue';
+  import {utilService} from '../../../services/util.service.js';
+
+  export default {
+    props: ['details'],
+    components: {
+      basicElToolbar,
+    },
+    data() {
       return {
-        color: this.details.data.style.color,
-        fontSize: this.details.data.style.fontSize + "px",
+        isSelected: false,
       };
     },
-    isEdit() {
-      const id = this.$store.getters.getElSelectedId;
-      if (id === this.details.data.id) return true;
-      return false;
+    created() {
+      this.onInput = utilService.debounce(this.onInput); //using debounce
     },
-    getCmpId() {
-      if (this.details.containerId) return this.details.containerId;
-      return this.details.cmpId;
+    computed: {
+      getStyle() {
+        return {
+          color: this.details.data.style.color,
+          fontSize: this.details.data.style.fontSize + 'px',
+        };
+      },
+      isEdit() {
+        const id = this.$store.getters.getElSelectedId;
+        if (id === this.details.data.id) return true;
+        return false;
+      },
+      getCmpId() {
+        if (this.details.containerId) return this.details.containerId;
+        return this.details.cmpId;
+      },
     },
-  },
-  methods: {
-    removeEl() {
-      this.$store.dispatch({
-        type: "removeElFromCmp",
-        cmpId: this.details.cmpId,
-        elType: this.details.elType,
-        elId: this.details.data.id,
-        containerId: this.details.containerId,
-      });
-    },
-    setSelected() {
-      if (this.isSelected) {
-        this.isSelected = false;
-        this.$store.commit({
-          type: "setSelectedElement",
-          id: null,
+    methods: {
+      removeEl() {
+        this.$store.dispatch({
+          type: 'removeElFromCmp',
+          cmpId: this.details.cmpId,
+          elType: this.details.elType,
+          elId: this.details.data.id,
+          containerId: this.details.containerId,
         });
-      } else {
-        this.isSelected = true;
-        this.$store.commit({
-          type: "setSelectedElement",
-          id: this.details.data.id,
+      },
+      onInput(event) {
+        const value = event.target.innerText;
+        this.details.data.txt = value;
+        this.$store.dispatch({
+          type: 'updateWapStyle',
+          currWap: this.currWap,
+          cmpId: this.details.cmpId,
         });
-      }
+      },
+      setSelected() {
+        if (this.isSelected) {
+          this.isSelected = false;
+          this.$store.commit({
+            type: 'setSelectedElement',
+            id: null,
+          });
+        } else {
+          this.isSelected = true;
+          this.$store.commit({
+            type: 'setSelectedElement',
+            id: this.details.data.id,
+          });
+        }
+      },
     },
-  },
-};
+  };
 </script>
 
-<style>
-</style>
+<style></style>
