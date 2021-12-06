@@ -1,6 +1,6 @@
 <template>
   <section>
-    <editorHeader></editorHeader>
+    <!-- <editor-header></editor-header> -->
     <section class="editor-page flex">
       <cmp-picker :class="classForPicker" />
       <wap-builder :class="classForBuilder" />
@@ -11,13 +11,13 @@
 <script>
 import wapBuilder from '../cmps/wap-builder.cmp.vue'
 import cmpPicker from '../cmps/cmp-picker/cmp-picker.cmp.vue'
-import editorHeader from '../cmps/editor-header.cmp.vue'
+// import editorHeader from '../cmps/editor-header.cmp.vue'
 
 export default {
   components: {
     wapBuilder,
     cmpPicker,
-    editorHeader,
+    // editorHeader,
   },
   data() {
     return {}

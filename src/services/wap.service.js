@@ -1972,7 +1972,6 @@ const wap_fylo = {
   ],
 }
 
-
 const wap_sunnyside = {
   name: 'SunnySide',
   imgUrl: '',
@@ -1981,7 +1980,9 @@ const wap_sunnyside = {
     username: '',
   },
   usersData: {
-    contacts: [{ email: 'user@user.com', msg: 'Please send me stuff', at: 123 }],
+    contacts: [
+      { email: 'user@user.com', msg: 'Please send me stuff', at: 123 },
+    ],
     signups: [{ email: 'user@user.com', at: 123 }],
   },
   theme: 'sunnyside-main',
@@ -2144,10 +2145,10 @@ const wap_sunnyside = {
           },
         ],
       },
-      theme: 'theme-header-sunnyside',
+      theme: 'theme-hero-sunnyside',
       style: {
-        background:
-          'url(~@/assets/wap-imgs/sunnyside-imgs/images/desktop/image-header.jpg)', //'url(sunnyside-imgs/images/desktop/image-header.jpg)',
+        background: 
+          `url('https://res.cloudinary.com/rb-mister-toy/image/upload/v1638813593/edeyukdwkhhk5we1vbeh.jpg')`, //'url(sunnyside-imgs/images/desktop/image-header.jpg)',
         color: '',
         backgroundColor: '',
         fontSize: '',
@@ -2178,7 +2179,7 @@ const wap_sunnyside = {
                     background: 'url()',
                     color: '',
                     backgroundColor: '',
-                    fontSize: '3rem',
+                    fontSize: '2em',
                     paddingRight: '',
                     paddingTop: '',
                     paddingBottom: '',
@@ -2567,7 +2568,7 @@ const wap_sunnyside = {
       theme: 'theme-gallery-sunnyside-v3',
       style: {
         background:
-          'url(~@/assets/wap-imgs/sunnyside-imgs/images/desktop/image-photography.jpg)',
+          'url(wap-imgs/sunnyside-imgs/images/desktop/image-photography.jpg)',
         color: '',
         backgroundColor: '',
         fontSize: '',
@@ -3249,7 +3250,7 @@ const wap_sunnyside = {
                     lineHeight: '',
                     fontFamily: '',
                     fontStyle: '',
-                  }
+                  },
                 },
                 {
                   id: utilService.makeId(4),
@@ -3266,7 +3267,7 @@ const wap_sunnyside = {
                     lineHeight: '',
                     fontFamily: '',
                     fontStyle: '',
-                  }
+                  },
                 },
                 {
                   id: utilService.makeId(4),
@@ -3283,7 +3284,7 @@ const wap_sunnyside = {
                     lineHeight: '',
                     fontFamily: '',
                     fontStyle: '',
-                  }
+                  },
                 },
                 {
                   id: utilService.makeId(4),
@@ -3300,9 +3301,9 @@ const wap_sunnyside = {
                     lineHeight: '',
                     fontFamily: '',
                     fontStyle: '',
-                  }
+                  },
                 },
-              ]
+              ],
             },
             theme: 'theme-sunnyside-footer-icons',
             style: {
@@ -3318,7 +3319,7 @@ const wap_sunnyside = {
               fontFamily: '',
               fontStyle: '',
             },
-          }
+          },
         ],
       },
       theme: 'theme-footer-sunnyside',
@@ -3337,8 +3338,7 @@ const wap_sunnyside = {
       },
     },
   ],
-};
-
+}
 
 storageService.post('wap_DB', wap_fylo)
 storageService.post('wap_DB', wap_sunnyside)

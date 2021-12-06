@@ -1,0 +1,23 @@
+
+.theme-reviews-sunnyside{
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        grid-template-rows: repeat(4, 1fr);
+        .theme-text-sunnyside-review-title{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            grid-row: 1;
+            grid-column: 1 / -1;
+        }
+        .theme-review-sunnyside{
+            grid-row: 2 / span 3;
+            grid-column: span 2;
+            .customer{
+                flex-direction: column;
+                gap: 0;
+            }
+        }
+
+}
+
