@@ -18,7 +18,7 @@
     }
 
 
-.text-block{
+.theme-text-fylo{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -31,20 +31,20 @@
         line-height: 1.5em;
         font-size:1.5em;
     }
-    button:not(.element-tool-bar .tool-element ,.element-editor-cmp button , .basic-el-toolbar button){
-        padding: 1em 5em;
-        border: none;
-        border-radius: 50em;
-        font-family: 'Raleway', sans-serif;
-        font-weight: 700;
-        color: $White;
-        background: linear-gradient(to right, $Cyan 5%, $Blue);
-        margin-bottom: 3em;
+}
+button:not(.element-tool-bar .tool-element ,.element-editor-cmp button , .basic-el-toolbar button){
+    padding: 1em 5em;
+    border: none;
+    border-radius: 50em;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700;
+    color: $White;
+    background: linear-gradient(to right, $Cyan 5%, $Blue);
+    margin-bottom: 3em;
 
-        &:hover{
-            cursor: pointer;
-            background: linear-gradient(to right, hsl(176, 73%, 72%) 5%, hsl(198, 72%, 65%));
-        }
+    &:hover{
+        cursor: pointer;
+        background: linear-gradient(to right, hsl(176, 73%, 72%) 5%, hsl(198, 72%, 65%));
     }
 }
 }
