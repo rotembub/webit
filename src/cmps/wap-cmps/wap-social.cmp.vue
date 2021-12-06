@@ -1,19 +1,43 @@
 <template>
-  <section class="wap-social" :class="cmp.theme">
+  <section class="wap-social" :style="getCurrStyle" :class="cmp.theme">
     <template v-if="cmp.info.icons">
-      <a
-        v-for="(icon, idx) in cmp.info.icons"
-        :key="'k' + icon + idx"
-        href=""
-        >{{ icon }}</a
-      > <!--NOT READY YET NEED TO FIGURE OUT WHETHER TO USE A LIBRARY FOR THE ICONS OR SIMPLY USE IMGS -->
+      <basic-img
+        v-for="img in cmp.info.icons"
+        :key="img.id"
+        :details="{
+          data: img,
+          cmpId: cmp.id,
+          containerId,
+          elType: 'icons',
+        }"
+      ></basic-img>
     </template>
   </section>
 </template>
 
 <script>
+import basicImg from "./basic-cmps/basic-img-cmp.vue";
 export default {
-  props: ['cmp','containerId'],
+  props: ["cmp", "containerId"],
+  components: {
+    basicImg,
+  },
+  computed: {
+    getCurrStyle() {
+      const style = {
+        color: this.cmp.style.color,
+        fontSize: this.cmp.style.fontSize + "px",
+        backgroundColor: this.cmp.style.backgroundColor,
+        //new size style
+        height: this.cmp.style.height + "px", // problem range too small
+        paddingTop: this.cmp.style.paddingTop + "px",
+        paddingBottom: this.cmp.style.paddingBottom + "px",
+        paddingLeft: this.cmp.style.paddingLeft + "px",
+        paddingRight: this.cmp.style.paddingRight + "px",
+      };
+      return style;
+    },
+  },
 };
 </script>
 
