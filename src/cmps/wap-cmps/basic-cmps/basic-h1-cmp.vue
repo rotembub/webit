@@ -49,6 +49,9 @@ export default {
       if (this.details.containerId) return this.details.containerId;
       return this.details.cmpId;
     },
+    // getPos() {
+    //   return this.$store.getters.getElSelectedPos;
+    // },
   },
   methods: {
     removeEl() {
@@ -80,13 +83,14 @@ export default {
         this.$store.commit({
           type: "setSelectedElement",
           id: null,
+          pos: null,
         });
       } else {
         this.isSelected = true;
         this.$store.commit({
           type: "setSelectedElement",
           id: this.details.data.id,
-          pos
+          pos,
         });
       }
     },

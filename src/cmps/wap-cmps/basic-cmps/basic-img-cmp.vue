@@ -38,18 +38,25 @@ export default {
         containerId: this.details.containerId,
       });
     },
-    setSelected() {
+    setSelected(ev) {
+      const pos = {
+        y: ev.target.offsetTop,
+        x: ev.target.offsetLeft,
+      };
+      console.log(pos);
       if (this.isSelected) {
         this.isSelected = false;
         this.$store.commit({
           type: "setSelectedElement",
           id: null,
+          pos: null,
         });
       } else {
         this.isSelected = true;
         this.$store.commit({
           type: "setSelectedElement",
           id: this.details.data.id,
+          pos,
         });
       }
     },
