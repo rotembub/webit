@@ -40,14 +40,14 @@
 
 
 //sunnyside-theme
-@import 'components/wap-components/sunnyside/theme-reviews-sunnyside';
-@import 'components/wap-components/sunnyside/theme-footer-sunnyside';
-@import 'components/wap-components/sunnyside/theme-gallery-sunnyside-v1';
-@import 'components/wap-components/sunnyside/theme-gallery-sunnyside-v2';
-@import 'components/wap-components/sunnyside/theme-gallery-sunnyside-v3';
-@import 'components/wap-components/sunnyside/theme-header-sunnyside';
-@import 'components/wap-components/sunnyside/theme-imgs-sunnyside';
-@import 'components/wap-components/sunnyside/theme-hero-sunnyside';
+// @import 'components/wap-components/sunnyside/theme-reviews-sunnyside';
+// @import 'components/wap-components/sunnyside/theme-footer-sunnyside';
+// @import 'components/wap-components/sunnyside/theme-gallery-sunnyside-v1';
+// @import 'components/wap-components/sunnyside/theme-gallery-sunnyside-v2';
+// @import 'components/wap-components/sunnyside/theme-gallery-sunnyside-v3';
+// @import 'components/wap-components/sunnyside/theme-header-sunnyside';
+// @import 'components/wap-components/sunnyside/theme-imgs-sunnyside';
+// @import 'components/wap-components/sunnyside/theme-hero-sunnyside';
 
 // EDITOR
 @import 'components/wap-builder';
@@ -55,3 +55,9 @@
 @import 'components/cmp-picker-collapse';
 @import 'components/element-tool-bar';
 @import 'components/wap-editor-modal';
+
+//wap-components
+
+@import 'components/wap-components/wap-container';
+@import 'components/wap-components/wap-card';
+@import 'components/wap-components/card-img'

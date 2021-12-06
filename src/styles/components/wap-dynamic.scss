@@ -1,8 +1,9 @@
 
 .wap-dynamic:hover{
         outline:dashed 2px rgba(192, 192, 192, 0.993);
-        z-index: 100000;
-        overflow: auto !important;
+        z-index: 9999;
+        overflow: visible !important;
+        // background-color: green;
 }
 .smooth-dnd-draggable-wrapper{
         overflow: visible !important;
