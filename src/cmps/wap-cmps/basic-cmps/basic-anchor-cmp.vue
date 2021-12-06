@@ -73,11 +73,16 @@ export default {
       });
     },
     setSelected(ev) {
-      console.log('event', ev)
+      console.log("event", ev);
+      console.log("Ypressed:", ev.offsetY, "Xpressed:", ev.offsetX,"targetHeight",ev.target.offsetHeight,"offseTtop:",ev.target.offsetTop,"calc:",ev.target.offsetTop - ev.target.offsetHeight/2);
       const pos = {
-        y: ev.target.offsetTop,
+        y: ev.target.offsetTop + ev.target.offsetHeight,
         x: ev.target.offsetLeft,
       };
+      if (ev.offsetY > ev.target.offsetHeight / 2) {
+        pos.y = ev.target.offsetTop + ev.target.offsetHeight;
+      } else pos.y = ev.target.offsetTop - 16;
+
       console.log(pos);
       if (this.isSelected) {
         this.isSelected = false;

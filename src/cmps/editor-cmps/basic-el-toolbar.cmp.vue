@@ -13,9 +13,9 @@
     >
       <img src="@/assets/element-editor/font-size.png" />
     </button>
-    <button title="Color" class="tool-element">
+    <!-- <button title="Color" class="tool-element">
       <img src="@/assets/element-editor/color.png" />
-    </button>
+    </button> -->
     <button title="Size" class="tool-element">
       <img src="@/assets/element-editor/size.png" />
     </button>
