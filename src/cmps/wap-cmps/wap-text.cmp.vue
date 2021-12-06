@@ -4,7 +4,7 @@
       <basic-h1
         v-for="item in cmp.info.title"
         :key="item.id"
-        :details="{data: item, cmpId: cmp.id, elType: 'title'}"
+        :details="{data: item, cmpId: cmp.id, containerId, elType: 'title'}"
       ></basic-h1>
       <!-- <h1 v-for="item in cmp.info.title" :key="'k' + item.id">
         {{ item.txt }}

@@ -40,7 +40,7 @@
             color: $Light-Red;
         }
 
-        input{
+        input:not(.tool-element){
             position: relative;
             width: 100%;
             padding: 1.1em 2.5em;
@@ -53,7 +53,7 @@
             }
             
         }
-        button{
+        button:not(.tool-element){
             width: 100%;
             padding: 1.1em 2.5em;
             border-radius: 55rem;

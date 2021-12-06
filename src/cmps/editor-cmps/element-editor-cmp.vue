@@ -48,7 +48,7 @@
 </template>
 
 <script>
-import {utilService} from '../../services/util.service'
+import { utilService } from "../../services/util.service";
 import { ColorPicker } from "element-ui";
 export default {
   props: ["id", "elStyle", "cmpId"],
@@ -65,19 +65,20 @@ export default {
     // this.currWap = this.$store.getters.getCurrWap;
     // console.log(this.currWap, "created");
     // this.currCmpIdx = this.currWap.cmps.findIndex((cmp) => cmp.id === this.id);
+    console.log("cmpId", this.cmpId);
   },
   methods: {
-    async updateCmp() {
-      try {
-        const updatedWap = await this.$store.dispatch({
-          type: "updateWapStyle",
-          currWap: this.currWap,
-          cmpId: this.id, // WATCHOUT
-        });
-      } catch (err) {
-        console.log(err);
-      }
-    },
+    // async updateCmp() {
+    //   try {
+    //     const updatedWap = await this.$store.dispatch({
+    //       type: "updateWapStyle",
+    //       currWap: this.currWap,
+    //       cmpId: this.id, // WATCHOUT
+    //     });
+    //   } catch (err) {
+    //     console.log(err);
+    //   }
+    // },
     async updateStyle() {
       try {
         this.$store.dispatch({ type: "updateWapStyle", cmpId: this.cmpId });
