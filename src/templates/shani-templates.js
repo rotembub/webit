@@ -1,4 +1,4 @@
-import {utilService} from './util.service';
+import { utilService } from './util.service';
 
 const wap_sunnyside = {
   name: 'SunnySide',
@@ -8,8 +8,8 @@ const wap_sunnyside = {
     username: '',
   },
   usersData: {
-    contacts: [{email: 'user@user.com', msg: 'Please send me stuff', at: 123}],
-    signups: [{email: 'user@user.com', at: 123}],
+    contacts: [{ email: 'user@user.com', msg: 'Please send me stuff', at: 123 }],
+    signups: [{ email: 'user@user.com', at: 123 }],
   },
   theme: 'sunnyside-main',
   cmps: [
@@ -1227,8 +1227,111 @@ const wap_sunnyside = {
                 },
               ],
             },
+            theme: 'theme-sunnyside-footer-nav',
+            style: {
+              background: 'url()',
+              color: '',
+              backgroundColor: '',
+              fontSize: '',
+              paddingRight: '',
+              paddingTop: '',
+              paddingBottom: '',
+              paddingLeft: '',
+              lineHeight: '',
+              fontFamily: '',
+              fontStyle: '',
+            },
           },
-          //wap-social here
+          {
+            id: utilService.makeId(4),
+            type: 'wap-social',
+            info: {
+              icons: [
+                {
+                  id: utilService.makeId(4),
+                  url: 'sunnyside-imgs/images/icon-facebook.svg',
+                  style: {
+                    background: 'url()',
+                    color: '',
+                    backgroundColor: '',
+                    fontSize: '',
+                    paddingRight: '',
+                    paddingTop: '',
+                    paddingBottom: '',
+                    paddingLeft: '',
+                    lineHeight: '',
+                    fontFamily: '',
+                    fontStyle: '',
+                  }
+                },
+                {
+                  id: utilService.makeId(4),
+                  url: 'sunnyside-imgs/images/icon-instagram.svg',
+                  style: {
+                    background: 'url()',
+                    color: '',
+                    backgroundColor: '',
+                    fontSize: '',
+                    paddingRight: '',
+                    paddingTop: '',
+                    paddingBottom: '',
+                    paddingLeft: '',
+                    lineHeight: '',
+                    fontFamily: '',
+                    fontStyle: '',
+                  }
+                },
+                {
+                  id: utilService.makeId(4),
+                  url: 'sunnyside-imgs/images/icon-twitter.svg',
+                  style: {
+                    background: 'url()',
+                    color: '',
+                    backgroundColor: '',
+                    fontSize: '',
+                    paddingRight: '',
+                    paddingTop: '',
+                    paddingBottom: '',
+                    paddingLeft: '',
+                    lineHeight: '',
+                    fontFamily: '',
+                    fontStyle: '',
+                  }
+                },
+                {
+                  id: utilService.makeId(4),
+                  url: 'sunnyside-imgs/images/icon-pinterest.svg',
+                  style: {
+                    background: 'url()',
+                    color: '',
+                    backgroundColor: '',
+                    fontSize: '',
+                    paddingRight: '',
+                    paddingTop: '',
+                    paddingBottom: '',
+                    paddingLeft: '',
+                    lineHeight: '',
+                    fontFamily: '',
+                    fontStyle: '',
+                  }
+                },
+              ]
+            },
+            theme: 'theme-sunnyside-footer-icons',
+            style: {
+              background: 'url()',
+              color: '',
+              backgroundColor: '',
+              fontSize: '',
+              paddingRight: '',
+              paddingTop: '',
+              paddingBottom: '',
+              paddingLeft: '',
+              lineHeight: '',
+              fontFamily: '',
+              fontStyle: '',
+            },
+          }
         ],
       },
       theme: 'theme-footer-sunnyside',
