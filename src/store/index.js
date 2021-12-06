@@ -72,7 +72,7 @@ export default new Vuex.Store({
     toggleWapFullScreen(state) {
       state.isFullScreen = !state.isFullScreen;
     },
-    setSelectedElement(state, { id }) {
+    setSelectedElement(state, { id,pos }) {
       state.elSelectedId = id;
     },
   },

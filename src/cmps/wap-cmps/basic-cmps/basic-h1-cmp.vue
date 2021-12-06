@@ -1,6 +1,11 @@
 <template>
   <section class="basic-h1">
-    <h1 @click.stop="setSelected" :style="getStyle">
+    <h1
+      @click.stop="setSelected"
+      contenteditable
+      @input="onInput($event)"
+      :style="getStyle"
+    >
       {{ details.data.txt }}
     </h1>
     <basic-el-toolbar
@@ -14,6 +19,7 @@
 
 <script>
 import basicElToolbar from "../../editor-cmps/basic-el-toolbar.cmp.vue";
+import { utilService } from "../../../services/util.service.js";
 export default {
   props: ["details"],
   data() {
@@ -23,6 +29,9 @@ export default {
   },
   components: {
     basicElToolbar,
+  },
+  created() {
+    this.onInput = utilService.debounce(this.onInput); //using debounce
   },
   computed: {
     getStyle() {
@@ -51,7 +60,20 @@ export default {
         containerId: this.details.containerId,
       });
     },
-    setSelected() {
+    onInput(event) {
+      const value = event.target.innerText;
+      this.details.data.txt = value;
+      this.$store.dispatch({
+        type: "updateWapStyle",
+        currWap: this.currWap,
+        cmpId: this.details.cmpId,
+      });
+    },
+    setSelected(ev) {
+      const pos = {
+        y: ev.target.offsetTop,
+        x: ev.target.offsetLeft,
+      };
       if (this.isSelected) {
         this.isSelected = false;
         this.$store.commit({
@@ -63,6 +85,7 @@ export default {
         this.$store.commit({
           type: "setSelectedElement",
           id: this.details.data.id,
+          pos
         });
       }
     },
