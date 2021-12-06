@@ -2144,7 +2144,7 @@ const wap_sunnyside = {
           },
         ],
       },
-      theme: 'theme-header-sunnyside',
+      theme: 'theme-hero-sunnyside',
       style: {
         background:
           'url(~@/assets/wap-imgs/sunnyside-imgs/images/desktop/image-header.jpg)', //'url(sunnyside-imgs/images/desktop/image-header.jpg)',
