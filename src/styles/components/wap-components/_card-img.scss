@@ -1,4 +1,4 @@
-.wap-img{
+.wap-img-sunny{
     width: 50%;
     height:100%;
     
@@ -6,4 +6,9 @@
         object-fit:cover;
         vertical-align: middle;
     }
+}
+
+.wap-bg-img{
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
 }

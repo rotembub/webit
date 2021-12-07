@@ -1,4 +1,4 @@
-.wap-card{
+.wap-card-default{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -8,6 +8,7 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
+        padding: 10px;
         h1{
             font-size:30px;
         }
@@ -26,9 +27,44 @@
       
         }
     }
+}    
+
+.wap-card-sunny{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    width:50%;
+    .text-block{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        h1{
+            font-size:35px;
+            color: rgb(117, 204, 204);
+        }
+        p{
+            font-size:13px;
+        }
+        button{
+            background-color: rgba(236, 132, 62, 0);
+            border: none;
+            border-bottom: 1px rgba(0, 0, 0, 0.274) solid;
+            transition: 0.6;
+        }
+        button:hover{
+            color: #f9ca24;
+            border-bottom: 1px #ffeba2 solid;
+      
+        }
+    }
     
 }    
 
+
+
+//////////////////////////////////////
 .wap-card-text-inside{
     display: flex;
     flex-direction: column;
@@ -59,4 +95,9 @@
     }
     
 }    
+
+
+
+
+
 

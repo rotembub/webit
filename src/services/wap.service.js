@@ -2147,8 +2147,7 @@ const wap_sunnyside = {
       },
       theme: 'theme-hero-sunnyside',
       style: {
-        background: 
-          `url('https://res.cloudinary.com/rb-mister-toy/image/upload/v1638813593/edeyukdwkhhk5we1vbeh.jpg')`, //'url(sunnyside-imgs/images/desktop/image-header.jpg)',
+        background: `url('https://res.cloudinary.com/rb-mister-toy/image/upload/v1638813593/edeyukdwkhhk5we1vbeh.jpg')`, //'url(sunnyside-imgs/images/desktop/image-header.jpg)',
         color: '',
         backgroundColor: '',
         fontSize: '',
@@ -2230,7 +2229,7 @@ const wap_sunnyside = {
                 },
               ],
             },
-            theme: 'theme-card-sunnyside-v1',
+            theme: 'wap-card-default',
             style: {
               background: 'url()',
               color: '',
@@ -2269,7 +2268,7 @@ const wap_sunnyside = {
                 },
               ],
             },
-            theme: 'theme-img-sunnyside-egg',
+            theme: 'wap-img-sunny',
             style: {
               background: 'url()',
               color: '',
@@ -2286,7 +2285,7 @@ const wap_sunnyside = {
           },
         ],
       },
-      theme: 'theme-gallery-sunnyside-v1',
+      theme: 'wap-container-flex',
       style: {
         background: 'url()',
         color: '',
@@ -2331,7 +2330,7 @@ const wap_sunnyside = {
                 },
               ],
             },
-            theme: 'theme-img-sunnyside-pink',
+            theme: 'wap-img-sunny',
             style: {
               background: 'url()',
               color: '',
@@ -2409,7 +2408,7 @@ const wap_sunnyside = {
                 },
               ],
             },
-            theme: 'theme-card-sunnyside-v2',
+            theme: 'wap-card-default',
             style: {
               background: 'url()',
               color: '',
@@ -2426,7 +2425,7 @@ const wap_sunnyside = {
           },
         ],
       },
-      theme: 'theme-gallery-sunnyside-v2',
+      theme: 'wap-container-flex',
       style: {
         background: 'url()',
         color: '',
@@ -2490,7 +2489,7 @@ const wap_sunnyside = {
                 },
               ],
             },
-            theme: 'theme-text-sunnyside-v1', //maybe same theme like before
+            theme: 'wap-card-default', //maybe same theme like before
             style: {
               background: 'url()',
               color: '',
@@ -2514,7 +2513,7 @@ const wap_sunnyside = {
                   id: utilService.makeId(4),
                   txt: 'Photography',
                   style: {
-                    background: 'url()',
+                    background: `url()`,
                     color: '',
                     backgroundColor: '',
                     fontSize: '',
@@ -2548,7 +2547,7 @@ const wap_sunnyside = {
                 },
               ],
             },
-            theme: 'theme-text-sunnyside-v1', //maybe same theme like before
+            theme: 'wap-card-default', //maybe same theme like before
             style: {
               background: 'url()',
               color: '',
@@ -2565,10 +2564,9 @@ const wap_sunnyside = {
           },
         ],
       },
-      theme: 'theme-gallery-sunnyside-v3',
+      theme: 'wap-container-flex',
       style: {
-        background:
-          'url(wap-imgs/sunnyside-imgs/images/desktop/image-photography.jpg)',
+        background: `url()`,
         color: '',
         backgroundColor: '',
         fontSize: '',
@@ -2961,7 +2959,7 @@ const wap_sunnyside = {
                 },
               ],
             },
-            theme: 'theme-img-sunnyside-cone',
+            theme: 'wap-img-sunny',
             style: {
               background: 'url()',
               color: '',
@@ -3000,7 +2998,7 @@ const wap_sunnyside = {
                 },
               ],
             },
-            theme: 'theme-img-sunnyside-milk',
+            theme: 'wap-img-sunny',
             style: {
               background: 'url()',
               color: '',
@@ -3039,7 +3037,7 @@ const wap_sunnyside = {
                 },
               ],
             },
-            theme: 'theme-img-sunnyside-orange',
+            theme: 'wap-img-sunny',
             style: {
               background: 'url()',
               color: '',
@@ -3078,7 +3076,7 @@ const wap_sunnyside = {
                 },
               ],
             },
-            theme: 'theme-img-sunnyside-sugar',
+            theme: 'wap-img-sunny',
             style: {
               background: 'url()',
               color: '',
@@ -3095,7 +3093,7 @@ const wap_sunnyside = {
           },
         ],
       },
-      theme: 'theme-imgs-sunnyside',
+      theme: 'wap-container-flex',
       style: {
         background: 'url()',
         color: '',
@@ -3126,7 +3124,7 @@ const wap_sunnyside = {
                   txt: 'sunnyside',
                   style: {
                     background: 'url()',
-                    color: '#99A799',
+                    color: '',
                     backgroundColor: '',
                     fontSize: '3rem',
                     paddingRight: '',
@@ -3322,7 +3320,7 @@ const wap_sunnyside = {
           },
         ],
       },
-      theme: 'theme-footer-sunnyside',
+      theme: 'wap-footer-sunny',
       style: {
         background: 'url()',
         color: '',
