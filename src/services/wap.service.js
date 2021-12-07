@@ -4074,7 +4074,7 @@ const wap_feliciano = {
       info: {
         dir: 'row',
         cmps: [
-          {
+          { //1
             id: utilService.makeId(4),
             type: 'wap-img',
             info: {
@@ -4112,7 +4112,7 @@ const wap_feliciano = {
               fontFamily: '',
               fontStyle: '',
             },
-          },
+          },// 2
           {
             id: utilService.makeId(4),
             type: 'wap-card',
@@ -4164,7 +4164,7 @@ const wap_feliciano = {
               background: 'url()',
               color: '',
             },
-          },
+          }, // 3
           {
             id: utilService.makeId(4),
             type: 'wap-img',
@@ -4204,7 +4204,7 @@ const wap_feliciano = {
               fontStyle: '',
             },
           },
-          {
+          { // 4
             id: utilService.makeId(4),
             type: 'wap-card',
             info: {
@@ -4255,7 +4255,59 @@ const wap_feliciano = {
               background: 'url()',
               color: '',
             },
-          },
+          }, // end of the first line
+          { // second line begins // 1
+            id: utilService.makeId(4),
+            type: 'wap-card',
+            info: {
+              title: [
+                {
+                  id: utilService.makeId(4),
+                  txt: 'Grilled Beef with potatoes',
+                  style: {
+                    background: 'url()',
+                    color: '',
+                    backgroundColor: '',
+                    fontSize: '',
+                    fontFamily: 'Poppins',
+                  },
+                },
+              ],
+              subtitle: [
+                {
+                  id: utilService.makeId(4),
+                  txt: 'Meat, Potatoes, Rice, Tomatoe',
+                  style: {
+                    background: 'url()',
+                    color: '',
+                    backgroundColor: '',
+                    fontSize: '',
+                    fontFamily: 'Poppins',
+                    fontStyle: '',
+                  },
+                },
+              ],
+              buttons: [
+                //see if its good
+                {
+                  id: utilService.makeId(4),
+                  txt: 'Order now',
+                  style: {
+                    background: 'url()',
+                    color: 'white',
+                    backgroundColor: '#c8a97e',
+                    fontFamily: 'Poppins',
+                    fontStyle: '',
+                  },
+                },
+              ],
+            },
+            theme: 'wap-card-default',
+            style: {
+              background: 'url()',
+              color: '',
+            },
+          }, // 2
           {
             id: utilService.makeId(4),
             type: 'wap-img',
@@ -4294,7 +4346,7 @@ const wap_feliciano = {
               fontFamily: '',
               fontStyle: '',
             },
-          },
+          }, // 3
           {
             id: utilService.makeId(4),
             type: 'wap-card',
@@ -4346,7 +4398,46 @@ const wap_feliciano = {
               background: 'url()',
               color: '',
             },
-          },
+          }, //4
+          {
+            id: utilService.makeId(4),
+            type: 'wap-img',
+            info: {
+              imgs: [
+                {
+                  id: utilService.makeId(4),
+                  url: 'feliciano-imgs/dish-4-feliciano.jpg',
+                  style: {
+                    background: 'url()',
+                    color: '',
+                    backgroundColor: '',
+                    fontSize: '',
+                    paddingRight: '',
+                    paddingTop: '',
+                    paddingBottom: '',
+                    paddingLeft: '',
+                    lineHeight: '',
+                    fontFamily: '',
+                    fontStyle: '',
+                  },
+                },
+              ],
+            },
+            theme: 'wap-img-sunny',
+            style: {
+              background: 'url()',
+              color: '',
+              backgroundColor: '',
+              fontSize: '',
+              paddingRight: '',
+              paddingTop: '',
+              paddingBottom: '',
+              paddingLeft: '',
+              lineHeight: '',
+              fontFamily: '',
+              fontStyle: '',
+            },
+          }, // 3rd line begins // 1
           {
             id: utilService.makeId(4),
             type: 'wap-img',
@@ -4386,7 +4477,7 @@ const wap_feliciano = {
               fontStyle: '',
             },
           },
-          {
+          { // 2
             id: utilService.makeId(4),
             type: 'wap-card',
             info: {
@@ -4437,7 +4528,7 @@ const wap_feliciano = {
               background: 'url()',
               color: '',
             },
-          },
+          }, //3
           {
             id: utilService.makeId(4),
             type: 'wap-img',
@@ -4476,150 +4567,7 @@ const wap_feliciano = {
               fontFamily: '',
               fontStyle: '',
             },
-          },
-          {
-            id: utilService.makeId(4),
-            type: 'wap-card',
-            info: {
-              title: [
-                {
-                  id: utilService.makeId(4),
-                  txt: 'Grilled Beef with potatoes',
-                  style: {
-                    background: 'url()',
-                    color: '',
-                    backgroundColor: '',
-                    fontSize: '',
-                    fontFamily: 'Poppins',
-                  },
-                },
-              ],
-              subtitle: [
-                {
-                  id: utilService.makeId(4),
-                  txt: 'Meat, Potatoes, Rice, Tomatoe',
-                  style: {
-                    background: 'url()',
-                    color: '',
-                    backgroundColor: '',
-                    fontSize: '',
-                    fontFamily: 'Poppins',
-                    fontStyle: '',
-                  },
-                },
-              ],
-              buttons: [
-                //see if its good
-                {
-                  id: utilService.makeId(4),
-                  txt: 'Order now',
-                  style: {
-                    background: 'url()',
-                    color: 'white',
-                    backgroundColor: '#c8a97e',
-                    fontFamily: 'Poppins',
-                    fontStyle: '',
-                  },
-                },
-              ],
-            },
-            theme: 'wap-card-default',
-            style: {
-              background: 'url()',
-              color: '',
-            },
-          },
-          {
-            id: utilService.makeId(4),
-            type: 'wap-img',
-            info: {
-              imgs: [
-                {
-                  id: utilService.makeId(4),
-                  url: 'feliciano-imgs/dish-2-feliciano.jpg',
-                  style: {
-                    background: 'url()',
-                    color: '',
-                    backgroundColor: '',
-                    fontSize: '',
-                    paddingRight: '',
-                    paddingTop: '',
-                    paddingBottom: '',
-                    paddingLeft: '',
-                    lineHeight: '',
-                    fontFamily: '',
-                    fontStyle: '',
-                  },
-                },
-              ],
-            },
-            theme: 'wap-img-sunny',
-            style: {
-              background: 'url()',
-              color: '',
-              backgroundColor: '',
-              fontSize: '',
-              paddingRight: '',
-              paddingTop: '',
-              paddingBottom: '',
-              paddingLeft: '',
-              lineHeight: '',
-              fontFamily: '',
-              fontStyle: '',
-            },
-          },
-          {
-            id: utilService.makeId(4),
-            type: 'wap-card',
-            info: {
-              title: [
-                {
-                  id: utilService.makeId(4),
-                  txt: 'Grilled Beef with potatoes',
-                  style: {
-                    background: 'url()',
-                    color: '',
-                    backgroundColor: '',
-                    fontSize: '',
-                    fontFamily: 'Poppins',
-                  },
-                },
-              ],
-              subtitle: [
-                {
-                  id: utilService.makeId(4),
-                  txt: 'Meat, Potatoes, Rice, Tomatoe',
-                  style: {
-                    background: 'url()',
-                    color: '',
-                    backgroundColor: '',
-                    fontSize: '',
-                    fontFamily: 'Poppins',
-                    fontStyle: '',
-                  },
-                },
-              ],
-              buttons: [
-                //see if its good
-                {
-                  id: utilService.makeId(4),
-                  txt: 'Order now',
-                  style: {
-                    background: 'url()',
-                    color: 'white',
-                    backgroundColor: '#c8a97e',
-                    fontFamily: 'Poppins',
-                    fontStyle: '',
-                  },
-                },
-              ],
-            },
-            theme: 'wap-card-default',
-            style: {
-              background: 'url()',
-              color: '',
-            },
-          },
+          } // 4
         ],
       },
       theme: 'feliciano-menu-gallery',
