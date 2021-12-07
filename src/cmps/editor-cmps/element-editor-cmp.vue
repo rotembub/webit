@@ -164,3 +164,16 @@ export default {
 </script>
 
 <style></style>
+                  style: {
+                    background: 'url()',
+                    color: '',
+                    backgroundColor: '',
+                    fontSize: '',
+                    paddingRight: '',
+                    paddingTop: '',
+                    paddingBottom: '',
+                    paddingLeft: '',
+                    lineHeight: '',
+                    fontFamily: '',
+                    fontStyle: '',
+                  },
