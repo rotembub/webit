@@ -4081,7 +4081,7 @@ const wap_feliciano = {
               imgs: [
                 {
                   id: utilService.makeId(4),
-                  url: 'feliciano-imgs/dish-1-feliciano.jpg',
+                  url: 'feliciano-imgs/dish-1-feliciano.png',
                   style: {
                     background: 'url()',
                     color: '',
@@ -4098,7 +4098,7 @@ const wap_feliciano = {
                 },
               ],
             },
-            theme: 'wap-img-sunny',
+            theme: 'wap-img-menu',
             style: {
               background: 'url()',
               color: '',
@@ -4159,7 +4159,7 @@ const wap_feliciano = {
                 },
               ],
             },
-            theme: 'wap-card-default',
+            theme: 'wap-menu-card',
             style: {
               background: 'url()',
               color: '',
@@ -4172,7 +4172,7 @@ const wap_feliciano = {
               imgs: [
                 {
                   id: utilService.makeId(4),
-                  url: 'feliciano-imgs/dish-3-feliciano.jpg',
+                  url: 'feliciano-imgs/dish-3-feliciano.png',
                   style: {
                     background: 'url()',
                     color: '',
@@ -4189,7 +4189,7 @@ const wap_feliciano = {
                 },
               ],
             },
-            theme: 'wap-img-sunny',
+            theme: 'wap-img-menu',
             style: {
               background: 'url()',
               color: '',
@@ -4250,7 +4250,7 @@ const wap_feliciano = {
                 },
               ],
             },
-            theme: 'wap-card-default',
+            theme: 'wap-menu-card',
             style: {
               background: 'url()',
               color: '',
@@ -4302,7 +4302,7 @@ const wap_feliciano = {
                 },
               ],
             },
-            theme: 'wap-card-default',
+            theme: 'wap-menu-card',
             style: {
               background: 'url()',
               color: '',
@@ -4315,7 +4315,7 @@ const wap_feliciano = {
               imgs: [
                 {
                   id: utilService.makeId(4),
-                  url: 'feliciano-imgs/dish-3-feliciano.jpg',
+                  url: 'feliciano-imgs/dish-3-feliciano.png',
                   style: {
                     background: 'url()',
                     color: '',
@@ -4332,7 +4332,7 @@ const wap_feliciano = {
                 },
               ],
             },
-            theme: 'wap-img-sunny',
+            theme: 'wap-img-menu',
             style: {
               background: 'url()',
               color: '',
@@ -4393,7 +4393,7 @@ const wap_feliciano = {
                 },
               ],
             },
-            theme: 'wap-card-default',
+            theme: 'wap-menu-card',
             style: {
               background: 'url()',
               color: '',
@@ -4406,7 +4406,7 @@ const wap_feliciano = {
               imgs: [
                 {
                   id: utilService.makeId(4),
-                  url: 'feliciano-imgs/dish-4-feliciano.jpg',
+                  url: 'feliciano-imgs/dish-4-feliciano.png',
                   style: {
                     background: 'url()',
                     color: '',
@@ -4423,7 +4423,7 @@ const wap_feliciano = {
                 },
               ],
             },
-            theme: 'wap-img-sunny',
+            theme: 'wap-img-menu',
             style: {
               background: 'url()',
               color: '',
@@ -4445,7 +4445,7 @@ const wap_feliciano = {
               imgs: [
                 {
                   id: utilService.makeId(4),
-                  url: 'feliciano-imgs/dish-4-feliciano.jpg',
+                  url: 'feliciano-imgs/dish-4-feliciano.png',
                   style: {
                     background: 'url()',
                     color: '',
@@ -4462,7 +4462,7 @@ const wap_feliciano = {
                 },
               ],
             },
-            theme: 'wap-img-sunny',
+            theme: 'wap-img-menu',
             style: {
               background: 'url()',
               color: '',
@@ -4523,7 +4523,7 @@ const wap_feliciano = {
                 },
               ],
             },
-            theme: 'wap-card-default',
+            theme: 'wap-menu-card',
             style: {
               background: 'url()',
               color: '',
@@ -4536,7 +4536,7 @@ const wap_feliciano = {
               imgs: [
                 {
                   id: utilService.makeId(4),
-                  url: 'feliciano-imgs/dish-2-feliciano.jpg',
+                  url: 'feliciano-imgs/dish-1-feliciano.png',
                   style: {
                     background: 'url()',
                     color: '',
@@ -4553,7 +4553,7 @@ const wap_feliciano = {
                 },
               ],
             },
-            theme: 'wap-img-sunny',
+            theme: 'wap-img-menu',
             style: {
               background: 'url()',
               color: '',
@@ -4567,7 +4567,59 @@ const wap_feliciano = {
               fontFamily: '',
               fontStyle: '',
             },
-          } // 4
+          },
+          {
+            id: utilService.makeId(4),
+            type: 'wap-card',
+            info: {
+              title: [
+                {
+                  id: utilService.makeId(4),
+                  txt: 'Grilled Beef with potatoes',
+                  style: {
+                    background: 'url()',
+                    color: '',
+                    backgroundColor: '',
+                    fontSize: '',
+                    fontFamily: 'Poppins',
+                  },
+                },
+              ],
+              subtitle: [
+                {
+                  id: utilService.makeId(4),
+                  txt: 'Meat, Potatoes, Rice, Tomatoe',
+                  style: {
+                    background: 'url()',
+                    color: '',
+                    backgroundColor: '',
+                    fontSize: '',
+                    fontFamily: 'Poppins',
+                    fontStyle: '',
+                  },
+                },
+              ],
+              buttons: [
+                //see if its good
+                {
+                  id: utilService.makeId(4),
+                  txt: 'Order now',
+                  style: {
+                    background: 'url()',
+                    color: 'white',
+                    backgroundColor: '#c8a97e',
+                    fontFamily: 'Poppins',
+                    fontStyle: '',
+                  },
+                },
+              ],
+            },
+            theme: 'wap-menu-card',
+            style: {
+              background: 'url()',
+              color: '',
+            },
+          } // 5
         ],
       },
       theme: 'feliciano-menu-gallery',
