@@ -2728,7 +2728,7 @@ const wap_sunnyside = {
               lineHeight: '',
               fontFamily: '',
               fontStyle: '',
-              height: '400'
+              height: '400',
             },
           },
           {
@@ -3560,7 +3560,7 @@ const wap_feliciano = {
             },
             theme: 'basic-title', //maybe same theme like before
             style: {
-              background: `url('https://res.cloudinary.com/rb-mister-toy/image/upload/v1638862155/i2c1irwsrw1eo3ndehxy.jpg')`,
+              background: `url()`,
               color: '',
               backgroundColor: '',
               fontSize: '',
@@ -3620,7 +3620,7 @@ const wap_feliciano = {
               imgs: [
                 {
                   id: utilService.makeId(4),
-                  url: 'dish-1-feliciano.jpg',
+                  url: 'feliciano-imgs/dish-1-feliciano.jpg',
                   style: {
                     background: 'url()',
                     color: '',
@@ -3637,7 +3637,7 @@ const wap_feliciano = {
                 },
               ],
             },
-            theme: 'wap-card-default',
+            theme: 'wap-card-small',
             style: {
               background: 'url()',
               color: '',
@@ -3697,7 +3697,7 @@ const wap_feliciano = {
               imgs: [
                 {
                   id: utilService.makeId(4),
-                  url: 'dish-2-feliciano.jpg',
+                  url: 'felicano-imgs/dish-2-feliciano.jpg',
                   style: {
                     background: 'url()',
                     color: '',
@@ -3714,7 +3714,7 @@ const wap_feliciano = {
                 },
               ],
             },
-            theme: 'wap-card-default',
+            theme: 'wap-card-small',
             style: {
               background: 'url()',
               color: '',
@@ -3774,7 +3774,7 @@ const wap_feliciano = {
               imgs: [
                 {
                   id: utilService.makeId(4),
-                  url: 'dish-3-feliciano.jpg',
+                  url: 'feliciano-imgs/dish-3-feliciano.jpg',
                   style: {
                     background: 'url()',
                     color: '',
@@ -3791,7 +3791,7 @@ const wap_feliciano = {
                 },
               ],
             },
-            theme: 'wap-card-default',
+            theme: 'wap-card-small',
             style: {
               background: 'url()',
               color: '',
@@ -3851,7 +3851,7 @@ const wap_feliciano = {
               imgs: [
                 {
                   id: utilService.makeId(4),
-                  url: 'dish-4-feliciano.jpg',
+                  url: 'feliciano-imgs/dish-4-feliciano.jpg',
                   style: {
                     background: 'url()',
                     color: '',
@@ -3868,7 +3868,7 @@ const wap_feliciano = {
                 },
               ],
             },
-            theme: 'wap-card-default',
+            theme: 'wap-card-small',
             style: {
               background: 'url()',
               color: '',
@@ -3884,7 +3884,6 @@ const wap_feliciano = {
             },
           },
           //CARDS
-          ,
         ],
       },
       theme: 'wap-container-fullscreen',
@@ -4082,7 +4081,7 @@ const wap_feliciano = {
               imgs: [
                 {
                   id: utilService.makeId(4),
-                  url: 'feliciano-imgs/food1.jpg',
+                  url: 'feliciano-imgs/dish-1-feliciano.jpg',
                   style: {
                     background: 'url()',
                     color: '',
@@ -4173,7 +4172,7 @@ const wap_feliciano = {
               imgs: [
                 {
                   id: utilService.makeId(4),
-                  url: 'feliciano-imgs/food1.jpg',
+                  url: 'feliciano-imgs/dish-3-feliciano.jpg',
                   style: {
                     background: 'url()',
                     color: '',
@@ -4264,7 +4263,7 @@ const wap_feliciano = {
               imgs: [
                 {
                   id: utilService.makeId(4),
-                  url: 'feliciano-imgs/food1.jpg',
+                  url: 'feliciano-imgs/dish-3-feliciano.jpg',
                   style: {
                     background: 'url()',
                     color: '',
@@ -4355,7 +4354,7 @@ const wap_feliciano = {
               imgs: [
                 {
                   id: utilService.makeId(4),
-                  url: 'feliciano-imgs/food1.jpg',
+                  url: 'feliciano-imgs/dish-4-feliciano.jpg',
                   style: {
                     background: 'url()',
                     color: '',
@@ -4446,7 +4445,7 @@ const wap_feliciano = {
               imgs: [
                 {
                   id: utilService.makeId(4),
-                  url: 'feliciano-imgs/food1.jpg',
+                  url: 'feliciano-imgs/dish-2-feliciano.jpg',
                   style: {
                     background: 'url()',
                     color: '',
@@ -4537,7 +4536,7 @@ const wap_feliciano = {
               imgs: [
                 {
                   id: utilService.makeId(4),
-                  url: 'feliciano-imgs/food1.jpg',
+                  url: 'feliciano-imgs/dish-2-feliciano.jpg',
                   style: {
                     background: 'url()',
                     color: '',
@@ -4623,7 +4622,7 @@ const wap_feliciano = {
           },
         ],
       },
-      theme: 'wap-container-flex',
+      theme: 'wap-container-wrap',
       style: {
         background: 'url()',
         color: '',
