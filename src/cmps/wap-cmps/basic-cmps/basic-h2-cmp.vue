@@ -41,16 +41,19 @@
       this.onInput = utilService.debounce(this.onInput); //using debounce
     },
     computed: {
-      getStyle() {
-        return {
-          color: this.details.data.style.color,
-          fontSize: this.details.data.style.fontSize + 'px',
-          lineHeight: this.details.data.style.lineHeight + 'px',
-          paddingTop: this.details.data.style.paddingTop + 'px',
-          fontStyle: this.details.data.style.fontStyle,
-          fontFamily: this.details.data.style.fontFamily,
-        };
-      },
+    getStyle() {
+      return {
+        color: this.details.data.style.color,
+        fontSize: this.details.data.style.fontSize + "px",
+        lineHeight: this.details.data.style.lineHeight + "px",
+        paddingTop: this.details.data.style.paddingTop + "px",
+        paddingBottom: this.details.data.style.paddingBottom + "px",
+        paddingRight: this.details.data.style.paddingRight + "px",
+        paddingLeft: this.details.data.style.paddingLeft + "px",
+        fontStyle: this.details.data.style.fontStyle,
+        fontFamily: this.details.data.style.fontFamily,
+      };
+    },
       isEdit() {
         const id = this.$store.getters.getElSelectedId;
         if (id === this.details.data.id) return true;

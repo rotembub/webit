@@ -11,10 +11,15 @@
     <!-- <button title="Color" class="tool-element">
       <img src="@/assets/element-editor/color.png" />
     </button> -->
-    <button title="Size" class="tool-element">
+    <button title="Size" class="tool-element" @click.stop="openSizeModal">
       <!-- <img src="@/assets/element-editor/size.png" /> -->
       <i class="el-icon-rank"></i>
     </button>
+    <element-size
+      v-if="isSizeModal"
+      :cmpId="cmpId"
+      :elStyle="elStyle"
+    ></element-size>
     <element-editor
       v-if="openEditorModal"
       :cmpId="cmpId"
@@ -25,15 +30,17 @@
 
 <script>
 import elementEditor from "./element-editor-cmp.vue";
+import elementSize from "./element-size.cmp.vue";
 export default {
   props: ["id", "elStyle", "cmpId", "pos"],
-  components: { elementEditor },
+  components: { elementEditor, elementSize },
   created() {
     console.log(this.pos);
   },
   data() {
     return {
       openEditorModal: false,
+      isSizeModal: false,
       modalPos: null,
     };
   },
@@ -49,19 +56,34 @@ export default {
       this.$emit("removeEl");
     },
     openModal(ev) {
-      console.log(ev)
+      console.log(ev);
       const pos = {
-        right: '',
-        top: '',
+        right: "",
+        top: "",
       };
       // if(ev.offsetY > )
       if (ev.clientX > window.innerWidth - 300) pos.right = 0;
-      if(ev.clientY > window.innerHeight-250) pos.top = -350;
+      if (ev.clientY > window.innerHeight - 250) pos.top = -350;
       // console.log(ev.offsetX,window.innerWidth - 300,ev.clientX);
       // console.log(pos);
       this.$store.commit({ type: "setModalPos", modalPos: pos });
       //  = pos;
       this.openEditorModal = !this.openEditorModal;
+    },
+    openSizeModal(ev) {
+      console.log(ev);
+      const pos = {
+        right: "",
+        top: "",
+      };
+      // if(ev.offsetY > )
+      if (ev.clientX > window.innerWidth - 300) pos.right = 0;
+      if (ev.clientY > window.innerHeight - 250) pos.top = -350;
+      // console.log(ev.offsetX,window.innerWidth - 300,ev.clientX);
+      // console.log(pos);
+      this.$store.commit({ type: "setModalPos", modalPos: pos });
+      //  = pos;
+      this.isSizeModal = !this.isSizeModal;
     },
   },
 };
