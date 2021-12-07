@@ -123,7 +123,7 @@ const wap_sunnyside = {
               title: [
                 {
                   id: utilService.makeId(4),
-                  txt: 'WE ARE CREATIVES',
+                  txt: 'WE ARE CREATIVE',
                   style: {
                     background: 'url()',
                     color: '',

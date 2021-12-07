@@ -1,5 +1,5 @@
 <template>
-  <div @click.stop="" class="element-editor">
+  <div @click.stop="" :style="getPos" class="element-editor">
     <template v-if="isImg">
       <span>
         Width :
@@ -99,60 +99,68 @@
 </template>
 
 <script>
-  import {utilService} from '../../services/util.service';
-  import {ColorPicker} from 'element-ui';
-  export default {
-    props: ['id', 'elStyle', 'cmpId'],
-    data() {
-      return {
-        isText: false,
-        isImg: false,
-        currWap: null,
-        currCmpIdx: null,
-      };
+import { utilService } from "../../services/util.service";
+import { ColorPicker } from "element-ui";
+export default {
+  props: ["id", "elStyle", "cmpId"],
+  data() {
+    return {
+      isText: false,
+      isImg: false,
+      currWap: null,
+      currCmpIdx: null,
+    };
+  },
+  created() {
+    // this.elStyle.fontSize = 16 + "px";
+    // this.currWap = this.$store.getters.getCurrWap;
+    // console.log(this.currWap, "created");
+    // this.currCmpIdx = this.currWap.cmps.findIndex((cmp) => cmp.id === this.id);
+    console.log("this.pos OF MODAL :", this.pos);
+    console.log("cmpId", this.cmpId);
+  },
+  methods: {
+    makeFontStyle(value) {
+      if (value === "italic") {
+        this.elStyle.fontStyle = "italic";
+        console.log(this.elStyle.fontStyle, "font style");
+        this.updateStyle();
+      } else if (value === "normal") {
+        this.elStyle.fontStyle = "normal";
+        console.log(this.elStyle.fontStyle, "font style");
+        this.updateStyle();
+      }
     },
-    created() {
-      // this.elStyle.fontSize = 16 + "px";
-      // this.currWap = this.$store.getters.getCurrWap;
-      // console.log(this.currWap, "created");
-      // this.currCmpIdx = this.currWap.cmps.findIndex((cmp) => cmp.id === this.id);
-      console.log('cmpId', this.cmpId);
+    // async updateCmp() {
+    //   try {
+    //     const updatedWap = await this.$store.dispatch({
+    //       type: "updateWapStyle",
+    //       currWap: this.currWap,
+    //       cmpId: this.id, // WATCHOUT
+    //     });
+    //   } catch (err) {
+    //     console.log(err);
+    //   }
+    // },
+    async updateStyle() {
+      console.log(this.elStyle.lineHeight, "elStyle-linehight");
+      console.log(this.elStyle, "elStyle");
+      try {
+        this.$store.dispatch({ type: "updateWapStyle", cmpId: this.cmpId });
+      } catch (err) {
+        console.log(err);
+      }
     },
-    methods: {
-      makeFontStyle(value) {
-        if (value === 'italic') {
-          this.elStyle.fontStyle = 'italic';
-          console.log(this.elStyle.fontStyle, 'font style');
-          this.updateStyle();
-        } else if (value === 'normal') {
-          this.elStyle.fontStyle = 'normal';
-          console.log(this.elStyle.fontStyle, 'font style');
-          this.updateStyle();
-        }
-      },
-      // async updateCmp() {
-      //   try {
-      //     const updatedWap = await this.$store.dispatch({
-      //       type: "updateWapStyle",
-      //       currWap: this.currWap,
-      //       cmpId: this.id, // WATCHOUT
-      //     });
-      //   } catch (err) {
-      //     console.log(err);
-      //   }
-      // },
-      async updateStyle() {
-        console.log(this.elStyle.lineHeight, 'elStyle-linehight');
-        console.log(this.elStyle, 'elStyle');
-        try {
-          this.$store.dispatch({type: 'updateWapStyle', cmpId: this.cmpId});
-        } catch (err) {
-          console.log(err);
-        }
-      },
+  },
+  computed: {
+    getPos() {
+      console.log(this.$store.getters.getModalPos);
+      const pos = this.$store.getters.getModalPos;
+      // console.log(pos);
+      return { right: pos.right + "px", top: pos.top + "px" };
     },
-    computed: {},
-  };
+  },
+};
 </script>
 
 <style></style>

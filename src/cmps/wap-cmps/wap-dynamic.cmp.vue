@@ -1,5 +1,5 @@
 <template>
-  <section class="wap-dynamic" @click="isEdit = !isEdit">
+  <section class="wap-dynamic" @click="setSelected">
     <slot v-if="isEdit"></slot>
     <component
       :cmp="cmp"
@@ -11,24 +11,51 @@
 </template>
 
 <script>
-import wapContainer from './wap-container.cmp.vue'
-import wapHeader from './wap-header.cmp.vue'
-import wapFooter from './wap-footer.cmp.vue'
-import wapGallery from './wap-gallery.cmp.vue'
-import wapSocial from './wap-social.cmp.vue'
-import wapSignup from './wap-signup.cmp.vue'
-import wapContact from './wap-contact.cmp.vue'
-import wapText from './wap-text.cmp.vue'
-import wapCard from './wap-card.cmp.vue'
-import wapReview from './wap-review.cmp.vue'
-import wapImg from './wap-img.cmp.vue'
+import wapContainer from "./wap-container.cmp.vue";
+import wapHeader from "./wap-header.cmp.vue";
+import wapFooter from "./wap-footer.cmp.vue";
+import wapGallery from "./wap-gallery.cmp.vue";
+import wapSocial from "./wap-social.cmp.vue";
+import wapSignup from "./wap-signup.cmp.vue";
+import wapContact from "./wap-contact.cmp.vue";
+import wapText from "./wap-text.cmp.vue";
+import wapCard from "./wap-card.cmp.vue";
+import wapReview from "./wap-review.cmp.vue";
+import wapImg from "./wap-img.cmp.vue";
 
 export default {
-  props: ['cmp'],
+  props: ["cmp"],
   data() {
     return {
-      isEdit: false,
-    }
+      // isEdit: false,
+      isSelected: false,
+    };
+  },
+  methods: {
+    setSelected(ev) {
+      if (this.isSelected) {
+        this.isSelected = false;
+        this.$store.commit({
+          type: "setSelectedElement",
+          id: null,
+          pos: null,
+        });
+      } else {
+        this.isSelected = true;
+        this.$store.commit({
+          type: "setSelectedElement",
+          id: this.cmp.id,
+          pos: null,
+        });
+      }
+    },
+  },
+  computed: {
+    isEdit() {
+      const id = this.$store.getters.getElSelectedId;
+      if (id === this.cmp.id) return true;
+      return false;
+    },
   },
   components: {
     wapContainer,
@@ -43,7 +70,7 @@ export default {
     wapReview,
     wapImg,
   },
-}
+};
 </script>
 
 <style></style>

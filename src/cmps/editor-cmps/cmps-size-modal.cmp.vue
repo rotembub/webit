@@ -4,7 +4,9 @@
       Height :
       <input
         type="range"
-        :max="maxSize"
+        min="100"
+        max="1000"
+        
         @mousemove.stop
         @input="updateCmp"
         v-model="currWap.cmps[currCmpIdx].style.height"
