@@ -4,6 +4,8 @@
 
 }
 
+
+
 html {
 //    font-family: Montserrat; 
 //    font-family: GreatVibes; 
@@ -40,3 +42,10 @@ p {
 // section[class*="wap"]{
 //     position: relative;
 // } 
+
+[contenteditable] {
+    outline: 1px solid transparent;
+  }
+[contenteditable]:hover {
+    outline:dashed 2px rgba(192, 192, 192, 0.993);
+  }

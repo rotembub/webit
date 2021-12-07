@@ -2121,7 +2121,7 @@ const wap_sunnyside = {
                     paddingTop: '',
                     paddingBottom: '',
                     paddingLeft: '',
-                    lineHeight: '1',
+                    lineHeight: '',
                     fontFamily: 'Barlow,sans-serif',
                     fontStyle: '',
                   },
@@ -2183,7 +2183,7 @@ const wap_sunnyside = {
                     paddingTop: '',
                     paddingBottom: '',
                     paddingLeft: '',
-                    lineHeight: '1',
+                    lineHeight: '',
                     fontFamily: 'Fraunces,serif',
                     fontStyle: '',
                   },
@@ -2362,7 +2362,7 @@ const wap_sunnyside = {
                     paddingTop: '',
                     paddingBottom: '',
                     paddingLeft: '',
-                    lineHeight: '1',
+                    lineHeight: '',
                     fontFamily: 'Fraunces,serif',
                     fontStyle: '',
                   },
@@ -2489,7 +2489,7 @@ const wap_sunnyside = {
                 },
               ],
             },
-            theme: 'wap-card-default', //maybe same theme like before
+            theme: 'wap-card-text-inside wap-bg-img basic-title', //maybe same theme like before
             style: {
               background: `url('https://res.cloudinary.com/rb-mister-toy/image/upload/v1638862155/i2c1irwsrw1eo3ndehxy.jpg')`,
               color: '',
@@ -2547,9 +2547,10 @@ const wap_sunnyside = {
                 },
               ],
             },
-            theme: 'wap-card-default', //maybe same theme like before
+            theme: 'wap-card-text-inside wap-bg-img basic-title', //maybe same theme like before
             style: {
-              background: 'url()',
+              background: ` url(
+                'https://res.cloudinary.com/rb-mister-toy/image/upload/v1638862167/u54kaytue4izlyy2aqzd.jpg')`,
               color: '',
               backgroundColor: '',
               fontSize: '',
@@ -2609,7 +2610,7 @@ const wap_sunnyside = {
                 },
               ],
             },
-            theme: 'theme-text-sunnyside-review-title',
+            theme: 'theme-text-sunnyside-review-title basic-title',
             style: {
               background: 'url()',
               color: '',

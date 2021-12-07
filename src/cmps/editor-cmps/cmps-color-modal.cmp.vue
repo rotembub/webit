@@ -25,7 +25,9 @@
     <!-- ////////////////////////////////// -->
     <span>
       BackgroundColor :
-       <!-- @input="updateCmp" -->
+      <!-- @input="updateCmp" -->
+      <!-- <el-color-picker v-model="color" show-alpha :predefine="predefineColors">
+      </el-color-picker> -->
       <input
         @mouseup="updateCmp"
         v-model="currWap.cmps[currCmpIdx].style.backgroundColor"
@@ -53,39 +55,37 @@
 </template>
 
 <script>
-  import {ColorPicker} from 'element-ui';
-  export default {
-    props: ['id'],
-    data() {
-      return {
-        isText: false,
-        isImg: false,
-        currWap: null,
-        currCmpIdx: null,
-      };
+import { ColorPicker } from 'element-ui'
+export default {
+  props: ['id'],
+  data() {
+    return {
+      isText: false,
+      isImg: false,
+      currWap: null,
+      currCmpIdx: null,
+    }
+  },
+  created() {
+    this.currWap = this.$store.getters.getCurrWap
+    console.log(this.currWap, 'created')
+    this.currCmpIdx = this.currWap.cmps.findIndex(cmp => cmp.id === this.id)
+  },
+  methods: {
+    async updateCmp() {
+      try {
+        const updatedWap = await this.$store.dispatch({
+          type: 'updateWapStyle',
+          currWap: this.currWap,
+          cmpId: this.id, // WATCHOUT
+        })
+      } catch (err) {
+        console.log(err)
+      }
     },
-    created() {
-      this.currWap = this.$store.getters.getCurrWap;
-      console.log(this.currWap, 'created');
-      this.currCmpIdx = this.currWap.cmps.findIndex(
-        (cmp) => cmp.id === this.id
-      );
-    },
-    methods: {
-      async updateCmp() {
-        try {
-          const updatedWap = await this.$store.dispatch({
-            type: 'updateWapStyle',
-            currWap: this.currWap,
-            cmpId: this.id, // WATCHOUT
-          });
-        } catch (err) {
-          console.log(err);
-        }
-      },
-    },
-    computed: {},
-  };
+  },
+  computed: {},
+}
 </script>
 
 <style></style>

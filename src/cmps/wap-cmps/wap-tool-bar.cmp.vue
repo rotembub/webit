@@ -26,25 +26,25 @@
 </template>
 
 <script>
-  import editorModal from './wap-editor-modal.cmp.vue';
-  import colorModal from '../editor-cmps/cmps-color-modal.cmp.vue';
-  export default {
-    props: ['id'],
-    components: {editorModal, colorModal}, // there is a conflict with the inline edit
-    data() {
-      return {
-        openEditorModal: false,
-        openColorModal: false,
-      };
-    },
-    methods: {
-      removeCmp() {
-        // this.$store.dispatch({ type: "removeCmp", id: this.id });
+import editorModal from './wap-editor-modal.cmp.vue'
+import colorModal from '../editor-cmps/cmps-color-modal.cmp.vue'
+export default {
+  props: ['id'],
+  components: { editorModal, colorModal }, // there is a conflict with the inline edit
+  data() {
+    return {
+      openEditorModal: false,
+      openColorModal: false,
+    }
+  },
+  methods: {
+    removeCmp() {
+      // this.$store.dispatch({ type: "removeCmp", id: this.id });
 
-        this.$store.dispatch({type: 'removeCmpFromWap', cmpId: this.id});
-      },
+      this.$store.dispatch({ type: 'removeCmpFromWap', cmpId: this.id })
     },
-  };
+  },
+}
 </script>
 
 <style></style>

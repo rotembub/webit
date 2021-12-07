@@ -25,30 +25,6 @@
         left: 2%;
     }
 
-}
-.customer{
-    margin-top: 1.4em;
-    display: flex;
-    align-items: center;
-    gap: 1em;
-    img{
-        max-width:90px;
-    }
-
     
-
-
-    img:not(.element-tool-bar .tool-element img){
-        // width: 2.3em;
-        border-radius: 55rem;
-    }
-    h5{
-        font-weight: 700;
-
-        span{
-            font-weight: 400;
-            font-size: 11px;
-        }
-    }
 }
 
