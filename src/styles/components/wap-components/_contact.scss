@@ -1,0 +1,31 @@
+.contact-us{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color:#32353d;
+    font-family: Arial, Helvetica, sans-serif;
+
+
+    .contact-us-content{
+        color:rgb(214, 214, 214);
+        padding: 40px;
+        
+       h2{
+           font-weight: bold;
+           font-family: poppins;
+       } 
+       button{
+           cursor: pointer;
+           padding: 10px;
+           border: 1px solid rgba(0, 0, 0, 0);
+           border-radius:20px;
+           background-color: #fff;
+           transition:0.3s;
+       }
+       button:hover{
+           padding: 12px;
+
+       }
+    }
+
+}
