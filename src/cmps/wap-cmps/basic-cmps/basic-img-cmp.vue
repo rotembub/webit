@@ -1,11 +1,16 @@
 <template>
-  <section class="basic-img">
+  <section class="basic-img" :style="getStyle">
     <img
       @click.stop="setSelected"
       :src="require('@/assets/wap-imgs/' + details.data.url)"
       alt=""
     />
-    <basic-el-toolbar @removeEl="removeEl" v-if="isEdit"></basic-el-toolbar>
+    <basic-el-toolbar
+      @removeEl="removeEl"
+      v-if="isEdit"
+      :cmpId="getCmpId"
+      :elStyle="details.data.style"
+    ></basic-el-toolbar>
   </section>
 </template>
 
@@ -26,6 +31,20 @@ export default {
       const id = this.$store.getters.getElSelectedId;
       if (id === this.details.data.id) return true;
       return false;
+    },
+    getStyle() {
+      return {
+        color: this.details.data.style.color,
+        fontSize: this.details.data.style.fontSize + "px",
+        lineHeight: this.details.data.style.lineHeight + "px",
+        paddingTop: this.details.data.style.paddingTop + "px",
+        fontStyle: this.details.data.style.fontStyle,
+        fontFamily: this.details.data.style.fontFamily,
+      };
+    },
+    getCmpId() {
+      if (this.details.containerId) return this.details.containerId;
+      return this.details.cmpId;
     },
   },
   methods: {

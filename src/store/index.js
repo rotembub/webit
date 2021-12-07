@@ -13,6 +13,7 @@ export default new Vuex.Store({
     isFullScreen: false,
     elSelectedId: null,
     elSelectedPos: null,
+    modalPos: null,
   },
   getters: {
     isFullScreen(state) {
@@ -36,6 +37,9 @@ export default new Vuex.Store({
     },
     getElSelectedPos(state) {
       return state.elSelectedPos
+    },
+    getModalPos(state) {
+      return state.modalPos
     },
   },
   mutations: {
@@ -79,6 +83,9 @@ export default new Vuex.Store({
     setSelectedElement(state, { id, pos }) {
       state.elSelectedId = id
       state.elSelectedPos = pos
+    },
+    setModalPos(state, { modalPos }) {
+      state.modalPos = modalPos
     },
   },
   actions: {

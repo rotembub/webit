@@ -197,8 +197,11 @@ async function removeEl(wapId, cmpId, elType, elId, containerId) {
     const container = wap.cmps.find(cmp => cmp.id === containerId)
     console.log(wap, container)
     const innerCmp = container.info.cmps.find(cmp => cmp.id === cmpId)
-    const idx = innerCmp.info[elType].findIndex(el => el.id === elId)
-    innerCmp.info[elType].splice(idx, 1)
+    if (elType === 'logo') delete innerCmp.info[elType]
+    else {
+      const idx = innerCmp.info[elType].findIndex(el => el.id === elId)
+      innerCmp.info[elType].splice(idx, 1)
+    }
     return await save(wap)
   }
 }
@@ -2116,7 +2119,7 @@ const wap_sunnyside = {
               title: [
                 {
                   id: utilService.makeId(4),
-                  txt: 'WE ARE CREATIVES',
+                  txt: 'WE ARE CREATIVE',
                   style: {
                     background: 'url()',
                     color: '',
@@ -2583,6 +2586,7 @@ const wap_sunnyside = {
         lineHeight: '',
         fontFamily: '',
         fontStyle: '',
+        height: '500',
       },
     },
     {
@@ -2724,6 +2728,7 @@ const wap_sunnyside = {
               lineHeight: '',
               fontFamily: '',
               fontStyle: '',
+              height: '400'
             },
           },
           {
