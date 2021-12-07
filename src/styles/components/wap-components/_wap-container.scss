@@ -84,6 +84,22 @@
 }
 
 
+.feliciano-menu-gallery{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    .feliciano-menu-gallery>*{
+        grid-row: span 1;
+        grid-column: span 1;
+        h1{
+            font-size: 16px;
+        }
+        img{
+            
+        }
+    }
+}
+
 
 @media only screen and (max-width : 800px) {
     .wap-container-flex{
