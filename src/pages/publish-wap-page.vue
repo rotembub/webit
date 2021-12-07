@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import wapDynamic from '../cmps/wap-cmps/wap-dynamic.cmp.vue'
+import wapDynamic from '../cmps/publish-cmps/wap-cmps-publish/wap-dynamic-publish.cmp.vue'
 export default {
   components: { wapDynamic },
   computed: {

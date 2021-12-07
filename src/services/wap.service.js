@@ -3131,7 +3131,7 @@ const wap_sunnyside = {
                     paddingTop: '',
                     paddingBottom: '',
                     paddingLeft: '',
-                    lineHeight: '1',
+                    lineHeight: '',
                     fontFamily: 'Barlow,sans-serif', //maybe change font family
                     fontStyle: '',
                   },
