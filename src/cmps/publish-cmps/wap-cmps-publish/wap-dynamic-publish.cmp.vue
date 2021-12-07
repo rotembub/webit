@@ -1,5 +1,5 @@
 <template>
-  <section class="wap-dynamic">
+  <section class="wap-dynamic-publish">
     <component
       :cmp="cmp"
       :is="cmp.type"
