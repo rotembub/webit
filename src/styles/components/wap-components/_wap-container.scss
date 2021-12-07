@@ -30,15 +30,17 @@
         grid-template-rows: repeat(5, 1fr);
         // grid-column-gap: 0px;
         // grid-row-gap: 0px;
-        
-        
+        background-size: cover !important;
+        background-repeat: no-repeat !important;
+        background-blend-mode:darken;
+        background-position: 50% 0;
+
         .wap-header-feliciano{
-            background-size: cover !important;
-            background-repeat: no-repeat !important;
-            background-position: 50% 0;
+      
             display: flex;
             align-items: center;
             justify-content: space-between;
+            padding-left: 10px;
             grid-row: 1;
             grid-column: 1 / span 4;
             // background-color: coral;
@@ -46,18 +48,33 @@
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
+                a{
+                    margin-right: 20px;
+
+                }
             }
         }
         .landing-feliciano{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             grid-row: 2 / 5;
             grid-column: 1 / span 4;
+            border-bottom: 2px rgba(255, 255, 255, 0.534) solid;
+            h1{
+                font-size:3em;
+                color: rgb(255, 254, 249);
+            }
             // background-color: cornflowerblue;
         }
         .card-dish{
+            display: flex;
+            flex-direction: column-reverse;
+            align-items: center;
             grid-row: 5 / -1;
+            color: rgba(255, 255, 255, 0.603);
             img{
-                object-fit: contain;
-                height: 50px;
+                height: 70px;
                 border-radius: 100vh;
             }
             // grid-column: span 2;

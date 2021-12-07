@@ -14,3 +14,15 @@
     background-repeat: no-repeat !important;
     
 }
+
+.wap-img-feliciano{
+    height:100%;
+    width: 50%;
+    display: flex;
+    
+    img{
+        padding-right: 10px;
+        object-fit:cover;
+        vertical-align: middle;
+    }
+}
