@@ -3865,7 +3865,7 @@ const wap_feliciano = {
                     fontFamily: '',
                     fontStyle: '',
                   },
-                },
+                }
               ],
             },
             theme: 'wap-card-default',
@@ -3884,7 +3884,6 @@ const wap_feliciano = {
             },
           },
           //CARDS
-          ,
         ],
       },
       theme: 'wap-container-fullscreen',
@@ -4620,7 +4619,7 @@ const wap_feliciano = {
               background: 'url()',
               color: '',
             },
-          },
+          }
         ],
       },
       theme: 'wap-container-flex',
