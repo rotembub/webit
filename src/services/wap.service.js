@@ -3500,7 +3500,7 @@ const wap_feliciano = {
                 },
               ],
             },
-            theme: 'wap-header-default',
+            theme: 'wap-header-feliciano',
             style: {
               background: 'url()',
               color: '',
@@ -3558,7 +3558,7 @@ const wap_feliciano = {
                 },
               ],
             },
-            theme: 'basic-title', //maybe same theme like before
+            theme: 'landing-feliciano', //maybe same theme like before
             style: {
               background: `url()`,
               color: '',
@@ -3637,7 +3637,7 @@ const wap_feliciano = {
                 },
               ],
             },
-            theme: 'wap-card-small',
+            theme: 'card-dish',
             style: {
               background: 'url()',
               color: '',
@@ -3714,7 +3714,7 @@ const wap_feliciano = {
                 },
               ],
             },
-            theme: 'wap-card-small',
+            theme: 'card-dish',
             style: {
               background: 'url()',
               color: '',
@@ -3791,7 +3791,7 @@ const wap_feliciano = {
                 },
               ],
             },
-            theme: 'wap-card-small',
+            theme: 'card-dish',
             style: {
               background: 'url()',
               color: '',
@@ -3868,7 +3868,7 @@ const wap_feliciano = {
                 },
               ],
             },
-            theme: 'wap-card-small',
+            theme: 'card-dish',
             style: {
               background: 'url()',
               color: '',
@@ -3886,7 +3886,7 @@ const wap_feliciano = {
           //CARDS
         ],
       },
-      theme: 'wap-container-fullscreen',
+      theme: 'feliciano-landing-page',
       style: {
         background: 'url(../../imgs/main-header-feliciano.jpg)',
         color: '',
