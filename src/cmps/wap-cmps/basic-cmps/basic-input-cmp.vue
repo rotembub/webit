@@ -9,6 +9,7 @@
     />
     <basic-el-toolbar
       @removeEl="removeEl"
+      @dupElement="dupElement"
       :cmpId="getCmpId"
       v-if="isEdit"
       :elStyle="details.data.style"
@@ -34,10 +35,10 @@ export default {
         color: this.details.data.style.color,
         fontSize: this.details.data.style.fontSize + "px",
         lineHeight: this.details.data.style.lineHeight + "px",
-        paddingTop: this.details.data.style.paddingTop + "px",
-        paddingBottom: this.details.data.style.paddingBottom + "px",
-        paddingRight: this.details.data.style.paddingRight + "px",
-        paddingLeft: this.details.data.style.paddingLeft + "px",
+        paddingTop: this.details.data.style.paddingTop + "%",
+        paddingBottom: this.details.data.style.paddingBottom + "%",
+        paddingRight: this.details.data.style.paddingRight + "%",
+        paddingLeft: this.details.data.style.paddingLeft + "%",
         fontStyle: this.details.data.style.fontStyle,
         fontFamily: this.details.data.style.fontFamily,
       };
@@ -56,6 +57,15 @@ export default {
     removeEl() {
       this.$store.dispatch({
         type: "removeElFromCmp",
+        cmpId: this.details.cmpId,
+        elType: this.details.elType,
+        elId: this.details.data.id,
+        containerId: this.details.containerId,
+      });
+    },
+    dupElement() {
+      this.$store.dispatch({
+        type: "dupElement",
         cmpId: this.details.cmpId,
         elType: this.details.elType,
         elId: this.details.data.id,

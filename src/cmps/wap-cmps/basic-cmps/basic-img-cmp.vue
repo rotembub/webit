@@ -7,6 +7,7 @@
     />
     <basic-el-toolbar
       @removeEl="removeEl"
+      @dupElement="dupElement"
       v-if="isEdit"
       :cmpId="getCmpId"
       :elStyle="details.data.style"
@@ -54,6 +55,15 @@ export default {
     removeEl() {
       this.$store.dispatch({
         type: "removeElFromCmp",
+        cmpId: this.details.cmpId,
+        elType: this.details.elType,
+        elId: this.details.data.id,
+        containerId: this.details.containerId,
+      });
+    },
+    dupElement() {
+      this.$store.dispatch({
+        type: "dupElement",
         cmpId: this.details.cmpId,
         elType: this.details.elType,
         elId: this.details.data.id,

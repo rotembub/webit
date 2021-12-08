@@ -1,23 +1,23 @@
 <template>
   <div @click.stop="" class="wap-editor-modal">
-    <span>
+    <!-- <span>
       Height :
       <input
         type="range"
-        min="100"
-        max="1000"
+        min="1"
+        max="100"
         
         @mousemove.stop
         @input="updateCmp"
         v-model="currWap.cmps[currCmpIdx].style.height"
       />
-      <!-- add on mouse move , fix the problem when the height become too small, min,max,step,value,-->
-    </span>
+    </span> -->
     <span>
       Top spacing :
       <input
         type="range"
-        min="30"
+        min="1"
+        max="100"
         @mousemove.stop
         @input="updateCmp"
         v-model="currWap.cmps[currCmpIdx].style.paddingTop"
@@ -29,7 +29,8 @@
       Bottom spacing :
       <input
         type="range"
-        min="30"
+        min="1"
+        max="100"
         @mousemove.stop
         @input="updateCmp"
         v-model="currWap.cmps[currCmpIdx].style.paddingBottom"
@@ -39,7 +40,8 @@
       Left spacing :
       <input
         type="range"
-        min="30"
+        min="1"
+        max="100"
         @mousemove.stop
         @input="updateCmp"
         v-model="currWap.cmps[currCmpIdx].style.paddingLeft"
@@ -49,38 +51,13 @@
       Right spacing :
       <input
         type="range"
-        min="30"
+        min="1"
+        max="100"
         @mousemove.stop
         @input="updateCmp"
         v-model="currWap.cmps[currCmpIdx].style.paddingRight"
       />
     </span>
-    <!-- ////////////////////////////////// -->
-    <!-- <span>
-      BackgroundColor :
-      <input
-        @input="updateCmp"
-        v-model="currWap.cmps[currCmpIdx].style.backgroundColor"
-        type="color"
-      />
-    </span>
-    <span>
-      Text Color :
-      <input
-        @input="updateCmp"
-        v-model="currWap.cmps[currCmpIdx].style.color"
-        type="color"
-      />
-    </span> -->
-    <!-- only background color edit on cmps -->
-    <!-- <span>
-      Font size :
-      <input
-        @input="updateCmp"
-        v-model="currWap.cmps[currCmpIdx].style.fontSize"
-        type="range"
-      />
-    </span> -->
   </div>
 </template>
 

@@ -30,7 +30,7 @@ async function getById(id) {
 async function getCmpById(id) {
   const cmp = gCmps.find((currCmp) => currCmp.id === id);
   const copyCmp = JSON.parse(JSON.stringify(cmp));
-  copyCmp.id = utilService.makeId(); //change id soo it will not duplicate
+  copyCmp.id = utilService.makeId(4); //change id soo it will not duplicate
   return Promise.resolve(copyCmp);
 }
 

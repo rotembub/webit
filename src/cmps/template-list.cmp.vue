@@ -27,7 +27,7 @@ export default {
     templatePreview,
   },
   created() {
-    console.log('created list')
+    // console.log('created list')
   },
   data() {
     return {

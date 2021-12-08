@@ -15,6 +15,9 @@
       <!-- <img src="@/assets/element-editor/size.png" /> -->
       <i class="el-icon-rank"></i>
     </button>
+    <button title="Copy" class="tool-element" @click="dupElement">
+      <i class="el-icon-document-copy"></i>
+    </button>
     <element-size
       v-if="isSizeModal"
       :cmpId="cmpId"
@@ -35,7 +38,7 @@ export default {
   props: ["id", "elStyle", "cmpId", "pos"],
   components: { elementEditor, elementSize },
   created() {
-    console.log(this.pos);
+    // console.log(this.pos);
   },
   data() {
     return {
@@ -52,11 +55,11 @@ export default {
   },
   methods: {
     removeEl() {
-      console.log("emiting for removal");
+      // console.log("emiting for removal");
       this.$emit("removeEl");
     },
     openModal(ev) {
-      console.log(ev);
+      // console.log(ev);
       const pos = {
         right: "",
         top: "",
@@ -68,6 +71,7 @@ export default {
       // console.log(pos);
       this.$store.commit({ type: "setModalPos", modalPos: pos });
       //  = pos;
+      this.isSizeModal = false;
       this.openEditorModal = !this.openEditorModal;
     },
     openSizeModal(ev) {
@@ -83,8 +87,12 @@ export default {
       // console.log(pos);
       this.$store.commit({ type: "setModalPos", modalPos: pos });
       //  = pos;
+      this.openEditorModal = false;
       this.isSizeModal = !this.isSizeModal;
     },
+    dupElement(){
+      this.$emit("dupElement");
+    }
   },
 };
 </script>

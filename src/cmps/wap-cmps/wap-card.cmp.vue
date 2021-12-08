@@ -60,11 +60,11 @@
           fontSize: this.cmp.style.fontSize + 'px',
           backgroundColor: this.cmp.style.backgroundColor,
           //new size style
-          height: this.cmp.style.height + 'px', // problem range too small
-          paddingTop: this.cmp.style.paddingTop + 'px',
-          paddingBottom: this.cmp.style.paddingBottom + 'px',
-          paddingLeft: this.cmp.style.paddingLeft + 'px',
-          paddingRight: this.cmp.style.paddingRight + 'px',
+          height: this.cmp.style.height + 'vh', // problem range too small
+          paddingTop: this.cmp.style.paddingTop + '%',
+          paddingBottom: this.cmp.style.paddingBottom + '%',
+          paddingLeft: this.cmp.style.paddingLeft + '%',
+          paddingRight: this.cmp.style.paddingRight + '%',
         };
         return style;
       },

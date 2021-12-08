@@ -28,7 +28,7 @@
 export default {
   props: ['wap', 'imgUrl'],
   created() {
-    console.log('created preview')
+    // console.log('created preview')
   },
   methods: {
     toTheEditor() {
