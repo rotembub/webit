@@ -39,8 +39,8 @@
     </div>
     <div class="wap-publish">
       <div class="publish-icons">
-        <i class="el-icon-mobile"></i>
-        <i class="el-icon-monitor"></i>
+        <i @click="onMobileState" class="el-icon-mobile"></i>
+        <i @click="onMobileState" class="el-icon-monitor"></i>
       </div>
       <el-button @click="publishWap" type="primary"
         ><span>Publish</span><i class="el-icon-upload el-icon-right"></i
@@ -134,6 +134,10 @@ export default {
     }
   },
   methods: {
+    onMobileState() {
+      console.log('HERE')
+      this.$emit('onMobileState')
+    },
     getChildPayload1(index) {
       return this.themes[index]
     },

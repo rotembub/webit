@@ -1,6 +1,6 @@
 .wap-container-flex{
     display: flex;
-    padding: 4em 0px;
+    // padding: 4em 0px;
    
 }
 .wap-container-reverse{
@@ -215,7 +215,7 @@
         display: grid;
         align-items: center;
         justify-content: center;
-        gap: 2em;
+        gap: 20px;
         color: $White;
         grid-template-columns: repeat(auto-fit, minmax(100px, 360px));
         width: 100%;
@@ -225,18 +225,34 @@
             color: rgba(61, 61, 61, 0.685);
             border-radius: 0.3em;
             max-width: 360px;
-            .customer{
+
+            .review-card{
+                p{
+                    font-size:18px;
+                    font-family: Montserrat;
+                    margin:0;
+
+                }
+            }
+            .customer :nth-child(2){
                 gap: 0;
-                P{
-                    font-weight: 400;
+                p{
+                    font-family:Montserrat;
+                    font-weight: bold;
                     color: rgba(0, 0, 0, 0.623);
-                    font-family: Arial, Helvetica, sans-serif;
                     padding-left: 10px;
                 }
             }
+            .customer :nth-child(3){
+                gap: 0;
+                P{
+                    color: rgba(0, 0, 0, 0.623);
+                    padding-left: 10px;
+                    font-size: 14px;
+                    color: #c8a97e;
+                }
+            }
 
-           p{
-           }
     }
     
         

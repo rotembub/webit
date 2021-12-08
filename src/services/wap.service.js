@@ -184,25 +184,24 @@ async function duplicateEl(wapId, cmpId, elType, elId, containerId) {
   const wap = await getById(wapId)
   if (!containerId) {
     const cmp = wap.cmps.find(cmp => cmp.id === cmpId)
-    console.log('cmp FOUnd in dup', cmp.id, cmp,)
+    console.log('cmp FOUnd in dup', cmp.id, cmp)
     // if (elType === 'logo') delete cmp.info[elType]
     console.log('elType:', elType)
     const originalEl = cmp.info[elType].find(el => el.id === elId)
-    const dupEl = JSON.parse(JSON.stringify(originalEl));
-    dupEl.id = utilService.makeId(6);
-    cmp.info[elType].push(dupEl);
+    const dupEl = JSON.parse(JSON.stringify(originalEl))
+    dupEl.id = utilService.makeId(6)
+    cmp.info[elType].push(dupEl)
   } else {
     const container = wap.cmps.find(cmp => cmp.id === containerId)
     console.log(wap, container)
     const innerCmp = container.info.cmps.find(cmp => cmp.id === cmpId)
     const originalEl = innerCmp.info[elType].find(el => el.id === elId)
-    const dupEl = JSON.parse(JSON.stringify(originalEl));
-    dupEl.id = utilService.makeId(6);
-    innerCmp.info[elType].push(dupEl);
+    const dupEl = JSON.parse(JSON.stringify(originalEl))
+    dupEl.id = utilService.makeId(6)
+    innerCmp.info[elType].push(dupEl)
   }
   return await save(wap)
 }
-
 
 async function removeEl(wapId, cmpId, elType, elId, containerId) {
   // if no type is sent we can delete the entire type from the cmp
@@ -2555,7 +2554,7 @@ const wap_sunnyside = {
                 },
               ],
             },
-            theme: 'wap-card-text-inside wap-bg-img basic-title', //maybe same theme like before
+            theme: 'wap-card-text-inside wap-bg-img', //maybe same theme like before
             style: {
               background: `url('https://res.cloudinary.com/rb-mister-toy/image/upload/v1638862155/i2c1irwsrw1eo3ndehxy.jpg')`,
               color: '',
@@ -2613,7 +2612,7 @@ const wap_sunnyside = {
                 },
               ],
             },
-            theme: 'wap-card-text-inside wap-bg-img basic-title', //maybe same theme like before
+            theme: 'wap-card-text-inside wap-bg-img', //maybe same theme like before
             style: {
               background: ` url(
                 'https://res.cloudinary.com/rb-mister-toy/image/upload/v1638862167/u54kaytue4izlyy2aqzd.jpg')`,
@@ -2644,7 +2643,7 @@ const wap_sunnyside = {
         lineHeight: '',
         fontFamily: '',
         fontStyle: '',
-        height: '500',
+        height: '',
       },
     },
     {
@@ -4109,6 +4108,18 @@ const wap_feliciano = {
             },
           },
         ],
+        subtitle: [
+          {
+            id: utilService.makeId(4),
+            txt: 'Catering Services',
+            style: {
+              background: '',
+              color: '#c8a97e',
+              fontFamily: 'GreatVibes',
+              fontStyle: '',
+            },
+          },
+        ],
       },
       theme: 'wap-feliciano-catering', //maybe same theme like before
       style: {
@@ -4890,8 +4901,20 @@ const wap_feliciano = {
             },
           },
         ],
+        subtitle: [
+          {
+            id: utilService.makeId(4),
+            txt: 'Our Master Chefs',
+            style: {
+              background: '',
+              color: '#c8a97e',
+              fontFamily: 'GreatVibes',
+              fontStyle: '',
+            },
+          },
+        ],
       },
-      theme: 'basic-title wap-feliciano-chef-text', //maybe same theme like before
+      theme: 'wap-feliciano-catering', //maybe same theme like before
       style: {
         background: ``,
         color: '',
@@ -5204,6 +5227,18 @@ const wap_feliciano = {
             },
           },
         ],
+        subtitle: [
+          {
+            id: utilService.makeId(4),
+            txt: 'Happy Customer',
+            style: {
+              background: '',
+              color: '#c8a97e',
+              fontFamily: 'GreatVibes',
+              fontStyle: '',
+            },
+          },
+        ],
       },
       theme: 'wap-feliciano-catering', //maybe same theme like before
       style: {
@@ -5236,7 +5271,7 @@ const wap_feliciano = {
               txt: [
                 {
                   id: utilService.makeId(4),
-                  txt: 'Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.',
+                  txt: '"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts."',
                   style: {
                     background: 'url()',
                     color: '',
@@ -5332,7 +5367,7 @@ const wap_feliciano = {
               txt: [
                 {
                   id: utilService.makeId(4),
-                  txt: 'Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.',
+                  txt: '"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts."',
                   style: {
                     background: 'url()',
                     color: '',
@@ -5428,7 +5463,7 @@ const wap_feliciano = {
               txt: [
                 {
                   id: utilService.makeId(4),
-                  txt: 'Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.',
+                  txt: '"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts."',
                   style: {
                     background: 'url()',
                     color: '',
@@ -5524,7 +5559,7 @@ const wap_feliciano = {
               txt: [
                 {
                   id: utilService.makeId(4),
-                  txt: 'Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.',
+                  txt: '"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts."',
                   style: {
                     background: 'url()',
                     color: '',
