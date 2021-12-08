@@ -12,6 +12,7 @@
     <basic-el-toolbar
       @removeEl="removeEl"
       @dupElement="dupElement"
+      @styleChanged="styleChanged"
       :cmpId="getCmpId"
       v-if="isEdit"
       :elStyle="details.data.style"
@@ -39,16 +40,20 @@ export default {
   computed: {
     getStyle() {
       return {
-        backgroundColor: this.details.data.style.backgroundColor,
         color: this.details.data.style.color,
         fontSize: this.details.data.style.fontSize + "px",
         lineHeight: this.details.data.style.lineHeight + "px",
-        paddingTop: this.details.data.style.paddingTop + "%",
-        paddingBottom: this.details.data.style.paddingBottom + "%",
-        paddingRight: this.details.data.style.paddingRight + "%",
-        paddingLeft: this.details.data.style.paddingLeft + "%",
+        paddingTop: this.details.data.style.paddingTop + "rem",
+        paddingBottom: this.details.data.style.paddingBottom + "rem",
+        paddingRight: this.details.data.style.paddingRight + "rem",
+        paddingLeft: this.details.data.style.paddingLeft + "rem",
         fontStyle: this.details.data.style.fontStyle,
         fontFamily: this.details.data.style.fontFamily,
+        fontWeight: this.details.data.style.fontWeight,
+        marginTop: this.details.data.style.marginTop + "rem",
+        marginBottom: this.details.data.style.marginBottom + "rem",
+        marginRight: this.details.data.style.marginRight + "rem",
+        marginLeft: this.details.data.style.marginLeft + "rem",
       };
     },
     isEdit() {
@@ -113,6 +118,20 @@ export default {
           id: this.details.data.id,
           pos,
         });
+      }
+    },
+    styleChanged(style) {
+      console.log(style);
+      this.details.data.style = style;
+      this.updateStyle();
+    },
+    async updateStyle() {
+      console.log("updating style of an element");
+      const id = this.getCmpId;
+      try {
+        this.$store.dispatch({ type: "updateWapStyle", cmpId: id });
+      } catch (err) {
+        console.log(err);
       }
     },
   },

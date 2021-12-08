@@ -24,30 +24,26 @@
     </template>
     <span @click.stop>
       Text Color :
-      <el-color-picker @drag.stop v-model="elStyle.color" @change="updateStyle"></el-color-picker>
-      <!-- <input
+      <el-color-picker
         @drag.stop
-        v-model="elStyle.color"
-        @mouseup="updateStyle"
-        type="color"
-      /> -->
+        v-model="editedStyle.color"
+        @change="styleChanged"
+      ></el-color-picker>
     </span>
-        <span @click.stop>
+    <span @click.stop>
       Background Color :
-      <el-color-picker @drag.stop v-model="elStyle.backgroundColor" @change="updateStyle"></el-color-picker>
-      <!-- <input
+      <el-color-picker
         @drag.stop
-        v-model="elStyle.backgroundColor"
-        @mouseup="updateStyle"
-        type="color"
-      /> -->
+        v-model="editedStyle.backgroundColor"
+        @change="styleChanged"
+      ></el-color-picker>
     </span>
     <span>
       Font size :
       <input
         @mousemove.stop=""
-        @mouseup="updateStyle"
-        v-model="elStyle.fontSize"
+        @mouseup="styleChanged"
+        v-model="editedStyle.fontSize"
         type="range"
         min="10"
         max="50"
@@ -58,8 +54,8 @@
       Line Height :
       <input
         @mousemove.stop=""
-        @mouseup="updateStyle"
-        v-model="elStyle.lineHeight"
+        @mouseup="styleChanged"
+        v-model="editedStyle.lineHeight"
         type="range"
         min="10"
         max="100"
@@ -74,7 +70,7 @@
     </span>
     <span>
       Font :
-      <select @change="updateStyle" v-model="elStyle.fontFamily">
+      <select @change="styleChanged" v-model="editedStyle.fontFamily">
         <option value="Poppins">Poppins</option>
         <option value="Opensans">Opensans</option>
         <option value="Helvetica">Helvetica</option>
@@ -86,53 +82,38 @@
 </template>
 
 <script>
-import { utilService } from "../../services/util.service";
-import { ColorPicker } from "element-ui";
 export default {
   props: ["id", "elStyle", "cmpId"],
   data() {
     return {
       isText: false,
       isImg: false,
-      currWap: null,
-      currCmpIdx: null,
       boldToggle: false,
+      editedStyle: {},
     };
   },
   created() {
-    // this.elStyle.fontSize = 16 + "px";
-    // this.currWap = this.$store.getters.getCurrWap;
-    // console.log(this.currWap, "created");
-    // this.currCmpIdx = this.currWap.cmps.findIndex((cmp) => cmp.id === this.id);
-    console.log("this.pos OF MODAL :", this.pos);
-    console.log("cmpId", this.cmpId);
+    console.log("at the el font modal");
+    this.editedStyle = { ...this.elStyle };
   },
   methods: {
     makeFontStyle(value) {
-      if (value === "bold" && !this.elStyle.fontWeight)
-        this.elStyle.fontWeight = value;
-      else if (value === "bold" && this.elStyle.fontWeight)
-        this.elStyle.fontWeight = null;
-      else this.elStyle.fontStyle = value;
-      this.updateStyle();
+      if (value === "bold" && !this.editedStyle.fontWeight)
+        this.editedStyle.fontWeight = value;
+      else if (value === "bold" && this.editedStyle.fontWeight)
+        this.editedStyle.fontWeight = null;
+      else this.editedStyle.fontStyle = value;
+      this.styleChanged();
     },
     boldFont() {
-      if (this.boldToggle) this.elStyle.fontWeight = "bold";
-      else this.elStyle.fontWeight = "initial";
+      if (this.boldToggle) this.editedStyle.fontWeight = "bold";
+      else this.editedStyle.fontWeight = "initial";
       this.boldToggle = !this.boldToggle;
-      console.log(this.elStyle);
-      this.updateStyle();
+      console.log(this.editedStyle);
+      this.styleChanged();
     },
-
-    async updateStyle() {
-
-      console.log(this.elStyle.lineHeight, "elStyle-linehight");
-      console.log(this.elStyle, "elStyle");
-      try {
-        this.$store.dispatch({ type: "updateWapStyle", cmpId: this.cmpId });
-      } catch (err) {
-        console.log(err);
-      }
+    styleChanged() {
+      this.$emit("styleChanged", this.editedStyle);
     },
   },
   computed: {

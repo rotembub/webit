@@ -19,11 +19,13 @@
       <i class="el-icon-document-copy"></i>
     </button>
     <element-size
+      @styleChanged="styleChanged"
       v-if="isSizeModal"
       :cmpId="cmpId"
       :elStyle="elStyle"
     ></element-size>
     <element-editor
+      @styleChanged="styleChanged"
       v-if="openEditorModal"
       :cmpId="cmpId"
       :elStyle="elStyle"
@@ -90,9 +92,12 @@ export default {
       this.openEditorModal = false;
       this.isSizeModal = !this.isSizeModal;
     },
-    dupElement(){
+    dupElement() {
       this.$emit("dupElement");
-    }
+    },
+    styleChanged(style) {
+      this.$emit("styleChanged", style);
+    },
   },
 };
 </script>

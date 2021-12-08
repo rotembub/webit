@@ -53,8 +53,7 @@ export default {
   computed: {
     isEdit() {
       const id = this.$store.getters.getElSelectedId;
-      if (id === this.cmp.id) return true;
-      return false;
+      return (id === this.cmp.id) 
     },
   },
   components: {

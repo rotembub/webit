@@ -44,7 +44,6 @@ export default new Vuex.Store({
   },
   mutations: {
     setCurrWap(state, { wap }) {
-      console.log('Store currWap:', wap)
       state.currWap = wap
     },
     addCmp(state, { cmp }) {
@@ -52,7 +51,6 @@ export default new Vuex.Store({
     },
     setWaps(state, { waps }) {
       state.waps = waps
-      console.log(state.waps)
     },
     updateWap(state, payload) {
       const idx = state.waps.findIndex(wap => wap._id === payload.wap._id)
@@ -70,11 +68,9 @@ export default new Vuex.Store({
       state.waps.splice(idx, 1)
     },
     updateWapStyle(state, { updatedWap }) {
-      console.log('IN COMMIT', updatedWap)
       state.currWap = updatedWap
     },
     publishWap(state, { wapToPublish }) {
-      console.log(wapToPublish, 'IN COMMIT')
       state.wapToPublish = wapToPublish
     },
     toggleWapFullScreen(state) {
@@ -90,7 +86,6 @@ export default new Vuex.Store({
   },
   actions: {
     async updateWapComponents({ commit }, { wap }) {
-      console.log('Wap :', wap)
       try {
         const updatedWap = await wapService.save(wap)
         commit({ type: 'setCurrWap', wap: updatedWap })
@@ -106,14 +101,12 @@ export default new Vuex.Store({
 
       // console.log('IN STORE', wapToPublish)
     },
-    async updateWapStyle({ commit, state }, { currWap, cmpId }) {
+    async updateWapStyle({ commit, state }, { cmpId }) {
       const editedWap = state.currWap
-      console.log(editedWap, 'EDITED WAP !!!!!!!!!!!!')
       // console.log('updateWapStyle', currWap);
       try {
         // const updatedWap = await wapService.save(currWap);
         const newCmp = editedWap.cmps.find(cmp => cmp.id === cmpId)
-        console.log('newCmp', newCmp)
         const updatedWap = await wapService.updateCmp(editedWap._id, newCmp)
 
         commit({ type: 'setCurrWap', wap: updatedWap })
@@ -123,11 +116,9 @@ export default new Vuex.Store({
       }
     },
     async setCurrWap({ commit }, { wapId }) {
-      console.log(wapId, 'ID')
       try {
         const currWap = await wapService.getById(wapId)
         commit({ type: 'setCurrWap', wap: currWap })
-        console.log(currWap, 'back in the action')
         return currWap
       } catch (err) {
         console.log('Ahalan', err)
@@ -144,9 +135,6 @@ export default new Vuex.Store({
     async addCmp({ commit, state }, { id, idx }) {
       try {
         const cmp = await cmpService.getCmpById(id)
-        console.log(cmp)
-        // commit({ type: 'addCmp', cmp });
-
         const wapId = state.currWap._id
         const updatedWap = await wapService.addCmp(wapId, cmp, idx)
         commit({ type: 'setCurrWap', wap: updatedWap })
@@ -221,7 +209,6 @@ export default new Vuex.Store({
           elId,
           containerId
         )
-        console.log(updatedWap)
         commit({ type: 'setCurrWap', wap: updatedWap })
       } catch (err) {
         console.log('failed to remove element from cmp', err)
@@ -246,7 +233,6 @@ export default new Vuex.Store({
           elId,
           containerId
         )
-        console.log(updatedWap)
         commit({ type: 'setCurrWap', wap: updatedWap })
       } catch (err) {
         console.log('failed to remove element from cmp', err)
