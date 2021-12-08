@@ -141,7 +141,7 @@ export default {
       console.log("URL RECEIVED", url);
       this.isUploaded = true;
       this.details.data.url = url;
-      this.updateStyle();
+      this.updateStyle;
     },
   },
 };
