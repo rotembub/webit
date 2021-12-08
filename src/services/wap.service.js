@@ -2522,7 +2522,7 @@ const wap_sunnyside = {
                 },
               ],
             },
-            theme: 'wap-card-text-inside wap-bg-img basic-title', //maybe same theme like before
+            theme: 'wap-card-text-inside wap-bg-img', //maybe same theme like before
             style: {
               background: `url('https://res.cloudinary.com/rb-mister-toy/image/upload/v1638862155/i2c1irwsrw1eo3ndehxy.jpg')`,
               color: '',
@@ -2580,7 +2580,7 @@ const wap_sunnyside = {
                 },
               ],
             },
-            theme: 'wap-card-text-inside wap-bg-img basic-title', //maybe same theme like before
+            theme: 'wap-card-text-inside wap-bg-img', //maybe same theme like before
             style: {
               background: ` url(
                 'https://res.cloudinary.com/rb-mister-toy/image/upload/v1638862167/u54kaytue4izlyy2aqzd.jpg')`,
@@ -4869,8 +4869,20 @@ const wap_feliciano = {
             },
           },
         ],
+        subtitle: [
+          {
+            id: utilService.makeId(4),
+            txt: 'Our Master Chefs',
+            style: {
+              background: '',
+              color: '#c8a97e',
+              fontFamily: 'GreatVibes',
+              fontStyle: '',
+            },
+          },
+        ],
       },
-      theme: 'basic-title wap-feliciano-chef-text', //maybe same theme like before
+      theme: 'wap-feliciano-catering', //maybe same theme like before
       style: {
         background: ``,
         color: '',
@@ -5227,7 +5239,7 @@ const wap_feliciano = {
               txt: [
                 {
                   id: utilService.makeId(4),
-                  txt: 'Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.',
+                  txt: '"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts."',
                   style: {
                     background: 'url()',
                     color: '',
@@ -5323,7 +5335,7 @@ const wap_feliciano = {
               txt: [
                 {
                   id: utilService.makeId(4),
-                  txt: 'Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.',
+                  txt: '"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts."',
                   style: {
                     background: 'url()',
                     color: '',
@@ -5419,7 +5431,7 @@ const wap_feliciano = {
               txt: [
                 {
                   id: utilService.makeId(4),
-                  txt: 'Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.',
+                  txt: '"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts."',
                   style: {
                     background: 'url()',
                     color: '',
@@ -5515,7 +5527,7 @@ const wap_feliciano = {
               txt: [
                 {
                   id: utilService.makeId(4),
-                  txt: 'Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.',
+                  txt: '"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts."',
                   style: {
                     background: 'url()',
                     color: '',

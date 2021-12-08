@@ -8,7 +8,7 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
-        padding: 10px;
+        padding: 0px 7px;
         h1{
             font-size:30px;
         }
@@ -92,12 +92,8 @@
     height: 55vh;
     align-items: center;
     width:50%;
-    .text-block{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
         h1{
-            font-size:30px;
+            font-size:1.8em;
         }
         p{
             font-size:16px;
@@ -113,7 +109,6 @@
             border-bottom: 1px #f9ca24 solid;
       
         }
-    }
     
 }    
 

@@ -11,11 +11,15 @@ export default new Vuex.Store({
     waps: [],
     wapToPublish: null,
     isFullScreen: false,
+    isMobile: false,
     elSelectedId: null,
     elSelectedPos: null,
     modalPos: null,
   },
   getters: {
+    isMobile(state) {
+      return state.isMobile
+    },
     isFullScreen(state) {
       return state.isFullScreen
     },
@@ -83,6 +87,9 @@ export default new Vuex.Store({
     setModalPos(state, { modalPos }) {
       state.modalPos = modalPos
     },
+    isMobile(state) {
+      state.isMobile = !state.isMobile
+    },
   },
   actions: {
     async updateWapComponents({ commit }, { wap }) {
@@ -92,6 +99,9 @@ export default new Vuex.Store({
       } catch (err) {
         console.log(err)
       }
+    },
+    isMobile({ commit }) {
+      commit({ type: 'isMobile' }) // is there a need for an action here? why not just commit - Yaron Biton
     },
     toggleWapFullScreen({ commit }) {
       commit({ type: 'toggleWapFullScreen' }) // is there a need for an action here? why not just commit - Yaron Biton
@@ -223,7 +233,7 @@ export default new Vuex.Store({
         console.log('store reports: failed to SAVE wap', err)
       }
     },
-    async dupElement({ commit, state },{ cmpId, elType, elId, containerId }) {
+    async dupElement({ commit, state }, { cmpId, elType, elId, containerId }) {
       try {
         const wapId = state.currWap._id
         const updatedWap = await wapService.duplicateEl(

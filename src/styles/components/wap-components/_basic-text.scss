@@ -1,5 +1,11 @@
-.basic-title{
+.wap-text{
+    // display: inline-block;
     text-align: center;
+}
+
+
+.basic-title{
+    // text-align: center;
     padding-top:4em;
     h1{
         font-size:1.4em;
@@ -24,6 +30,9 @@
 
 .wap-feliciano-detail-card{
     padding-top: 50px;
+    .text-block{
+        margin: 0px 10px;
+    }
 }
 
 

@@ -215,7 +215,7 @@
         display: grid;
         align-items: center;
         justify-content: center;
-        gap: 2em;
+        gap: 20px;
         color: $White;
         grid-template-columns: repeat(auto-fit, minmax(100px, 360px));
         width: 100%;
@@ -230,11 +230,13 @@
                 p{
                     font-size:18px;
                     font-family: Montserrat;
+                    margin:0;
+
                 }
             }
             .customer :nth-child(2){
                 gap: 0;
-                P{
+                p{
                     font-family:Montserrat;
                     font-weight: bold;
                     color: rgba(0, 0, 0, 0.623);
