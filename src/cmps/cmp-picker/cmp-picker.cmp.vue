@@ -134,9 +134,9 @@ export default {
     }
   },
   methods: {
-    onMobileState() {
+    onMobileState(state) {
       // console.log('HERE')
-      this.$emit('onMobileState')
+      this.$emit('onMobileState', state)
     },
     getChildPayload1(index) {
       return this.themes[index]
