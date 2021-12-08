@@ -1,28 +1,17 @@
 <template>
   <section class="element-tool-bar">
     <button title="Remove" class="tool-element" @click="removeCmp">
-      <!-- <img src="@/assets/element-editor/trashcan.png" /> -->
       <i class="el-icon-delete"></i>
     </button>
-    <!-- <button
-      title="Font"
-      class="tool-element"
-      @click.stop="openEditorModal = !openEditorModal"
-    >
-      <img src="@/assets/element-editor/font-size.png" />
-    </button> -->
     <button title="Color" class="tool-element" @click.stop="openModal('color')">
       <img src="@/assets/element-editor/color.png" />
     </button>
     <button title="Size" class="tool-element" @click.stop="openModal('size')">
-      <!-- <img src="@/assets/element-editor/size.png" /> -->
       <i class="el-icon-rank"></i>
     </button>
     <button title="Copy" class="tool-element" @click="copyCmp">
-      <!-- <img src="@/assets/element-editor/copy.png" /> -->
       <i class="el-icon-document-copy"></i>
     </button>
-    <!-- <editor-modal :id="id" v-if="openEditorModal" /> -->
     <color-modal :id="id" v-if="openColorModal" />
     <size-modal :id="id" v-if="openSizeModal" />
   </section>

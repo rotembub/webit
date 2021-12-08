@@ -16,6 +16,7 @@ export const wapService = {
   updateCmp,
   copyCmp,
   removeEl,
+  duplicateEl
 }
 
 // More ways to send query params:
@@ -178,6 +179,29 @@ async function getEmptyWap() {
 //     // {type: 'imgs', parentId: img.id  , is:'url'}
 //   }
 // }
+async function duplicateEl(wapId, cmpId, elType, elId, containerId) {
+  const wap = await getById(wapId)
+  if (!containerId) {
+    const cmp = wap.cmps.find(cmp => cmp.id === cmpId)
+    console.log('cmp FOUnd in dup', cmp.id, cmp,)
+    // if (elType === 'logo') delete cmp.info[elType]
+    console.log('elType:', elType)
+    const originalEl = cmp.info[elType].find(el => el.id === elId)
+    const dupEl = JSON.parse(JSON.stringify(originalEl));
+    dupEl.id = utilService.makeId(6);
+    cmp.info[elType].push(dupEl);
+  } else {
+    const container = wap.cmps.find(cmp => cmp.id === containerId)
+    console.log(wap, container)
+    const innerCmp = container.info.cmps.find(cmp => cmp.id === cmpId)
+    const originalEl = innerCmp.info[elType].find(el => el.id === elId)
+    const dupEl = JSON.parse(JSON.stringify(originalEl));
+    dupEl.id = utilService.makeId(6);
+    innerCmp.info[elType].push(dupEl);
+  }
+  return await save(wap)
+}
+
 
 async function removeEl(wapId, cmpId, elType, elId, containerId) {
   // if no type is sent we can delete the entire type from the cmp

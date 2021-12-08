@@ -5,10 +5,11 @@ import router from './router'
 import store from './store'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
+import locale from 'element-ui/lib/locale/lang/en'
 import '../src/styles/styles.scss'
 import loading from 'vuejs-loading-screen'
 
-Vue.use(ElementUI)
+Vue.use(ElementUI, { locale })
 import { ObserveVisibility } from 'vue-observe-visibility'
 
 Vue.directive('observe-visibility', ObserveVisibility)

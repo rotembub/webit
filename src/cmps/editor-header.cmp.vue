@@ -45,7 +45,7 @@ export default {
       this.$router.push(str)
     },
     toggleHeader() {
-      console.log('TOGGLE:', this.isOpen)
+      // console.log('TOGGLE:', this.isOpen)
       this.isOpen = !this.isOpen
     },
   },

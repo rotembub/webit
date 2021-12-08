@@ -38,36 +38,36 @@
 </template>
 
 <script>
-import basicH1 from './basic-cmps/basic-h1-cmp.vue'
-import basicH3 from './basic-cmps/basic-h3-cmp.vue'
-import basicParagraph from './basic-cmps/basic-paragraph.cmp.vue'
+import basicH1 from "./basic-cmps/basic-h1-cmp.vue";
+import basicH3 from "./basic-cmps/basic-h3-cmp.vue";
+import basicParagraph from "./basic-cmps/basic-paragraph.cmp.vue";
 
 export default {
-  props: ['cmp', 'containerId'],
+  props: ["cmp", "containerId"],
   components: { basicParagraph, basicH3, basicH1 },
   data() {
-    return {}
+    return {};
   },
   computed: {
     getCurrStyle() {
-      console.log('IM HERE', this.cmp.style)
-      console.log('color', this.cmp.style.color)
+      console.log("IM HERE", this.cmp.style);
+      console.log("color", this.cmp.style.color);
       const style = {
         color: this.cmp.style.color,
-        fontSize: this.cmp.style.fontSize + 'px',
+        fontSize: this.cmp.style.fontSize + "px",
         backgroundColor: this.cmp.style.backgroundColor,
         backgroundImage: this.cmp.style.background,
         //new size style
-        height: this.cmp.style.height + 'px',
-        paddingTop: this.cmp.style.paddingTop + 'px',
-        paddingBottom: this.cmp.style.paddingBottom + 'px',
-        paddingLeft: this.cmp.style.paddingLeft + 'px',
-        paddingRight: this.cmp.style.paddingRight + 'px',
-      }
-      return style
+        height: this.cmp.style.height + "vh",
+        paddingTop: this.cmp.style.paddingTop + "%",
+        paddingBottom: this.cmp.style.paddingBottom + "%",
+        paddingLeft: this.cmp.style.paddingLeft + "%",
+        paddingRight: this.cmp.style.paddingRight + "%",
+      };
+      return style;
     },
   },
-}
+};
 </script>
 
 <style></style>

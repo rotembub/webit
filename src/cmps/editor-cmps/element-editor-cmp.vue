@@ -24,12 +24,23 @@
     </template>
     <span @click.stop>
       Text Color :
-      <input
+      <el-color-picker @drag.stop v-model="elStyle.color" @change="updateStyle"></el-color-picker>
+      <!-- <input
         @drag.stop
         v-model="elStyle.color"
         @mouseup="updateStyle"
         type="color"
-      />
+      /> -->
+    </span>
+        <span @click.stop>
+      Background Color :
+      <el-color-picker @drag.stop v-model="elStyle.backgroundColor" @change="updateStyle"></el-color-picker>
+      <!-- <input
+        @drag.stop
+        v-model="elStyle.backgroundColor"
+        @mouseup="updateStyle"
+        type="color"
+      /> -->
     </span>
     <span>
       Font size :
@@ -42,9 +53,6 @@
         max="50"
         step="1"
       />
-      <!-- lineHeight: '',
-                  fontFamily: '',
-                  fontStyle: '', -->
     </span>
     <span>
       Line Height :
@@ -54,33 +62,15 @@
         v-model="elStyle.lineHeight"
         type="range"
         min="10"
-        max="50"
+        max="100"
         step="0.5"
       />
-      <!-- lineHeight: '',
-                  fontFamily: '',
-                  fontStyle: '', -->
-    </span>
-    <span>
-      Top Space :
-      <input
-        @mousemove.stop=""
-        @mouseup="updateStyle"
-        v-model="elStyle.paddingTop"
-        type="range"
-        min="1"
-      />
-      <!-- lineHeight: '',
-                  fontFamily: '',
-                  fontStyle: '', -->
     </span>
     <span>
       Style :
       <button @click="makeFontStyle('italic')">I</button>
       <button @click="makeFontStyle('normal')">N</button>
-      <!-- lineHeight: '',
-                  fontFamily: '',
-                  fontStyle: '', -->
+      <button @click="boldFont('bold')">B</button>
     </span>
     <span>
       Font :
@@ -91,9 +81,6 @@
         <option value="Montserrat">Montserrat</option>
         <option value="Fantasy">Fantasy</option>
       </select>
-      <!-- lineHeight: '',
-                  fontFamily: '',
-                  fontStyle: '', -->
     </span>
   </div>
 </template>
@@ -109,6 +96,7 @@ export default {
       isImg: false,
       currWap: null,
       currCmpIdx: null,
+      boldToggle: false,
     };
   },
   created() {
@@ -121,28 +109,23 @@ export default {
   },
   methods: {
     makeFontStyle(value) {
-      if (value === "italic") {
-        this.elStyle.fontStyle = "italic";
-        console.log(this.elStyle.fontStyle, "font style");
-        this.updateStyle();
-      } else if (value === "normal") {
-        this.elStyle.fontStyle = "normal";
-        console.log(this.elStyle.fontStyle, "font style");
-        this.updateStyle();
-      }
+      if (value === "bold" && !this.elStyle.fontWeight)
+        this.elStyle.fontWeight = value;
+      else if (value === "bold" && this.elStyle.fontWeight)
+        this.elStyle.fontWeight = null;
+      else this.elStyle.fontStyle = value;
+      this.updateStyle();
     },
-    // async updateCmp() {
-    //   try {
-    //     const updatedWap = await this.$store.dispatch({
-    //       type: "updateWapStyle",
-    //       currWap: this.currWap,
-    //       cmpId: this.id, // WATCHOUT
-    //     });
-    //   } catch (err) {
-    //     console.log(err);
-    //   }
-    // },
+    boldFont() {
+      if (this.boldToggle) this.elStyle.fontWeight = "bold";
+      else this.elStyle.fontWeight = "initial";
+      this.boldToggle = !this.boldToggle;
+      console.log(this.elStyle);
+      this.updateStyle();
+    },
+
     async updateStyle() {
+
       console.log(this.elStyle.lineHeight, "elStyle-linehight");
       console.log(this.elStyle, "elStyle");
       try {
