@@ -3510,9 +3510,9 @@ const wap_feliciano = {
                   txt: 'Book a table',
                   style: {
                     background: 'url()',
-                    color: '',
-                    backgroundColor: '',
-                    fontSize: '',
+                    color: 'white',
+                    backgroundColor: '#c8a97e',
+                    fontSize: '18',
                     paddingRight: '',
                     paddingTop: '',
                     paddingBottom: '',
@@ -3551,15 +3551,15 @@ const wap_feliciano = {
                   txt: 'Feliciano',
                   style: {
                     background: '',
-                    color: '',
+                    color: '#c8a97e',
                     backgroundColor: '',
-                    fontSize: '50px',
+                    fontSize: '',
                     paddingRight: '',
                     paddingTop: '',
                     paddingBottom: '',
                     paddingLeft: '',
                     lineHeight: '',
-                    fontFamily: 'cursive',
+                    fontFamily: 'GreatVibes',
                     fontStyle: '',
                   },
                 },
@@ -3576,7 +3576,7 @@ const wap_feliciano = {
                     paddingBottom: '',
                     paddingLeft: '',
                     lineHeight: '',
-                    fontFamily: 'Opensans',
+                    fontFamily: 'Arial',
                     fontStyle: '50px',
                   },
                 },
@@ -3644,7 +3644,7 @@ const wap_feliciano = {
               imgs: [
                 {
                   id: utilService.makeId(4),
-                  url: 'feliciano-imgs/dish-1-feliciano.jpg',
+                  url: 'feliciano-imgs/dish-1-feliciano.png',
                   style: {
                     background: 'url()',
                     color: '',
@@ -3721,7 +3721,7 @@ const wap_feliciano = {
               imgs: [
                 {
                   id: utilService.makeId(4),
-                  url: 'felicano-imgs/dish-2-feliciano.jpg',
+                  url: 'feliciano-imgs/dish-2-feliciano.png',
                   style: {
                     background: 'url()',
                     color: '',
@@ -3798,7 +3798,7 @@ const wap_feliciano = {
               imgs: [
                 {
                   id: utilService.makeId(4),
-                  url: 'feliciano-imgs/dish-3-feliciano.jpg',
+                  url: 'feliciano-imgs/dish-3-feliciano.png',
                   style: {
                     background: 'url()',
                     color: '',
@@ -3875,7 +3875,7 @@ const wap_feliciano = {
               imgs: [
                 {
                   id: utilService.makeId(4),
-                  url: 'feliciano-imgs/dish-4-feliciano.jpg',
+                  url: 'feliciano-imgs/dish-4-feliciano.png',
                   style: {
                     background: 'url()',
                     color: '',
@@ -4090,6 +4090,179 @@ const wap_feliciano = {
         fontStyle: '',
       },
     },
+    {
+      id: utilService.makeId(4),
+      type: 'wap-container',
+      info: {
+        dir: 'row',
+        cmps: [
+          //IMAGES
+          {
+            id: utilService.makeId(4),
+            type: 'wap-card',
+            info: {
+              title: [
+                {
+                  id: utilService.makeId(4),
+                  txt: 'Birthday Party',
+                  style: {
+                    background: 'url()',
+                    color: '',
+                    backgroundColor: '',
+                    fontSize: '',
+                    fontFamily: 'Poppins',
+                  },
+                },
+              ],
+              imgs: [
+                {
+                  id: utilService.makeId(4),
+                  url: 'feliciano-imgs/catering-logo-1.png',
+                  style: {
+                    background: 'url()',
+                    color: '',
+                    backgroundColor: '',
+                    fontSize: '',
+                    fontFamily: 'Poppins',
+                  },
+                },
+              ],
+              subtitle: [
+                {
+                  id: utilService.makeId(4),
+                  txt: 'Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.',
+                  style: {
+                    background: 'url()',
+                    color: '',
+                    backgroundColor: '',
+                    fontSize: '',
+                    fontFamily: 'Poppins',
+                    fontStyle: '',
+                  },
+                },
+              ],
+            },
+            theme: 'wap-catering-preview',
+            style: {
+              background: 'url()',
+              color: '',
+            },
+          },
+          {
+            id: utilService.makeId(4),
+            type: 'wap-card',
+            info: {
+              title: [
+                {
+                  id: utilService.makeId(4),
+                  txt: 'Business Meetings',
+                  style: {
+                    background: 'url()',
+                    color: '',
+                    backgroundColor: '',
+                    fontSize: '',
+                    fontFamily: 'Poppins',
+                  },
+                },
+              ],
+              imgs: [
+                {
+                  id: utilService.makeId(4),
+                  url: 'feliciano-imgs/catering-logo-2.png',
+                  style: {
+                    background: 'url()',
+                    color: '',
+                    backgroundColor: '',
+                    fontSize: '',
+                    fontFamily: 'Poppins',
+                  },
+                },
+              ],
+              subtitle: [
+                {
+                  id: utilService.makeId(4),
+                  txt: 'Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.',
+                  style: {
+                    background: 'url()',
+                    color: '',
+                    backgroundColor: '',
+                    fontSize: '',
+                    fontFamily: 'Poppins',
+                    fontStyle: '',
+                  },
+                },
+              ],
+            },
+            theme: 'wap-catering-preview',
+            style: {
+              background: 'url()',
+              color: '',
+            },
+          },
+          {
+            id: utilService.makeId(4),
+            type: 'wap-card',
+            info: {
+              title: [
+                {
+                  id: utilService.makeId(4),
+                  txt: 'Wedding Party',
+                  style: {
+                    background: 'url()',
+                    color: '',
+                    backgroundColor: '',
+                    fontSize: '',
+                    fontFamily: 'Poppins',
+                  },
+                },
+              ],
+              imgs: [
+                {
+                  id: utilService.makeId(4),
+                  url: 'feliciano-imgs/catering-logo-3.png',
+                  style: {
+                    background: 'url()',
+                    color: '',
+                    backgroundColor: '',
+                    fontSize: '',
+                    fontFamily: 'Poppins',
+                  },
+                },
+              ],
+              subtitle: [
+                {
+                  id: utilService.makeId(4),
+                  txt: 'Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.',
+                  style: {
+                    background: 'url()',
+                    color: '',
+                    backgroundColor: '',
+                    fontSize: '',
+                    fontFamily: 'Poppins',
+                    fontStyle: '',
+                  },
+                },
+              ],
+            },
+            theme: 'wap-catering-preview',
+            style: {
+              background: 'url()',
+              color: '',
+            },
+          },
+          //IMAGES
+        ],
+      },
+      theme: 'wap-container-flex',
+      style: {
+        background: 'url()',
+        color: '',
+        backgroundColor: '',
+        fontSize: '',
+        fontStyle: '',
+      },
+    },
+
     //TEXT CMP
     //MENU-CONTAINER
     {
@@ -4098,7 +4271,8 @@ const wap_feliciano = {
       info: {
         dir: 'row',
         cmps: [
-          { //1
+          {
+            //1
             id: utilService.makeId(4),
             type: 'wap-img',
             info: {
@@ -4136,7 +4310,7 @@ const wap_feliciano = {
               fontFamily: '',
               fontStyle: '',
             },
-          },// 2
+          }, // 2
           {
             id: utilService.makeId(4),
             type: 'wap-card',
@@ -4228,7 +4402,8 @@ const wap_feliciano = {
               fontStyle: '',
             },
           },
-          { // 4
+          {
+            // 4
             id: utilService.makeId(4),
             type: 'wap-card',
             info: {
@@ -4280,7 +4455,8 @@ const wap_feliciano = {
               color: '',
             },
           }, // end of the first line
-          { // second line begins // 1
+          {
+            // second line begins // 1
             id: utilService.makeId(4),
             type: 'wap-card',
             info: {
@@ -4501,7 +4677,8 @@ const wap_feliciano = {
               fontStyle: '',
             },
           },
-          { // 2
+          {
+            // 2
             id: utilService.makeId(4),
             type: 'wap-card',
             info: {
@@ -4643,7 +4820,7 @@ const wap_feliciano = {
               background: 'url()',
               color: '',
             },
-          } // 5
+          }, // 5
         ],
       },
       theme: 'feliciano-menu-gallery',
@@ -4662,6 +4839,38 @@ const wap_feliciano = {
       },
     },
     //MENU-CONTAINER
+    {
+      id: utilService.makeId(4),
+      type: 'wap-text',
+      info: {
+        title: [
+          {
+            id: utilService.makeId(4),
+            txt: 'Our Master Chefs',
+            style: {
+              background: '',
+              color: '',
+              fontFamily: 'Poppins',
+              fontStyle: '50px',
+            },
+          },
+        ],
+      },
+      theme: 'basic-title wap-feliciano-chef-text', //maybe same theme like before
+      style: {
+        background: ``,
+        color: '',
+        backgroundColor: '',
+        fontSize: '',
+        paddingRight: '',
+        paddingTop: '',
+        paddingBottom: '',
+        paddingLeft: '',
+        lineHeight: '',
+        fontFamily: '',
+        fontStyle: '',
+      },
+    },
     //CHEF-IMGS
     {
       id: utilService.makeId(4),
@@ -4672,72 +4881,262 @@ const wap_feliciano = {
           //IMAGES
           {
             id: utilService.makeId(4),
-            type: 'wap-img',
+            type: 'wap-card',
             info: {
+              title: [
+                {
+                  id: utilService.makeId(4),
+                  txt: 'John Smooth',
+                  style: {
+                    background: 'url()',
+                    color: '',
+                    backgroundColor: '',
+                    fontSize: '',
+                    fontFamily: 'Poppins',
+                  },
+                },
+              ],
               imgs: [
                 {
                   id: utilService.makeId(4),
-                  url: 'feliciano-imgs/chef-1.jpg',
+                  url: 'feliciano-imgs/chef-1.png',
                   style: {
                     background: 'url()',
                     color: '',
                     backgroundColor: '',
                     fontSize: '',
-                    fontFamily: '',
+                    fontFamily: 'Poppins',
+                  },
+                },
+              ],
+              subtitle: [
+                {
+                  id: utilService.makeId(4),
+                  txt: 'Restaurant Owner',
+                  style: {
+                    background: 'url()',
+                    color: '',
+                    backgroundColor: '',
+                    fontSize: '',
+                    fontFamily: 'Poppins',
                     fontStyle: '',
                   },
                 },
+              ],
+              buttons: [
+                //see if its good
                 {
                   id: utilService.makeId(4),
-                  url: 'feliciano-imgs/chef-2.jpg',
+                  txt: 'Contact the chef',
                   style: {
                     background: 'url()',
-                    color: '',
-                    backgroundColor: '',
-                    fontSize: '',
-                    fontFamily: '',
-                    fontStyle: '',
-                  },
-                },
-                {
-                  id: utilService.makeId(4),
-                  url: 'feliciano-imgs/chef-3.jpg',
-                  style: {
-                    background: 'url()',
-                    color: '',
-                    backgroundColor: '',
-                    fontSize: '',
-                    fontFamily: '',
-                    fontStyle: '',
-                  },
-                },
-                {
-                  id: utilService.makeId(4),
-                  url: 'feliciano-imgs/chef-4.jpg',
-                  style: {
-                    background: 'url()',
-                    color: '',
-                    backgroundColor: '',
-                    fontSize: '',
-                    fontFamily: '',
+                    color: 'white',
+                    backgroundColor: '#c8a97e',
+                    fontFamily: 'Poppins',
                     fontStyle: '',
                   },
                 },
               ],
             },
-            theme: 'wap-img-sunny',
+            theme: 'wap-chef-preview',
             style: {
               background: 'url()',
               color: '',
-              backgroundColor: '',
-              fontSize: '',
-              paddingRight: '',
-              paddingTop: '',
-              paddingBottom: '',
-              paddingLeft: '',
-              lineHeight: '',
-              fontFamily: '',
-              fontStyle: '',
+            },
+          },
+          {
+            id: utilService.makeId(4),
+            type: 'wap-card',
+            info: {
+              title: [
+                {
+                  id: utilService.makeId(4),
+                  txt: 'Becky Welson',
+                  style: {
+                    background: 'url()',
+                    color: '',
+                    backgroundColor: '',
+                    fontSize: '',
+                    fontFamily: 'Poppins',
+                  },
+                },
+              ],
+              imgs: [
+                {
+                  id: utilService.makeId(4),
+                  url: 'feliciano-imgs/chef-2.png',
+                  style: {
+                    background: 'url()',
+                    color: '',
+                    backgroundColor: '',
+                    fontSize: '',
+                    fontFamily: 'Poppins',
+                  },
+                },
+              ],
+              subtitle: [
+                {
+                  id: utilService.makeId(4),
+                  txt: 'Head Chef',
+                  style: {
+                    background: 'url()',
+                    color: '',
+                    backgroundColor: '',
+                    fontSize: '',
+                    fontFamily: 'Poppins',
+                    fontStyle: '',
+                  },
+                },
+              ],
+              buttons: [
+                //see if its good
+                {
+                  id: utilService.makeId(4),
+                  txt: 'Contact the chef',
+                  style: {
+                    background: 'url()',
+                    color: 'white',
+                    backgroundColor: '#c8a97e',
+                    fontFamily: 'Poppins',
+                    fontStyle: '',
+                  },
+                },
+              ],
+            },
+            theme: 'wap-chef-preview',
+            style: {
+              background: 'url()',
+              color: '',
+            },
+          },
+          {
+            id: utilService.makeId(4),
+            type: 'wap-card',
+            info: {
+              title: [
+                {
+                  id: utilService.makeId(4),
+                  txt: 'Kharl Branyt',
+                  style: {
+                    background: 'url()',
+                    color: '',
+                    backgroundColor: '',
+                    fontSize: '',
+                    fontFamily: 'Poppins',
+                  },
+                },
+              ],
+              imgs: [
+                {
+                  id: utilService.makeId(4),
+                  url: 'feliciano-imgs/chef-3.png',
+                  style: {
+                    background: 'url()',
+                    color: '',
+                    backgroundColor: '',
+                    fontSize: '',
+                    fontFamily: 'Poppins',
+                  },
+                },
+              ],
+              subtitle: [
+                {
+                  id: utilService.makeId(4),
+                  txt: 'Chef',
+                  style: {
+                    background: 'url()',
+                    color: '',
+                    backgroundColor: '',
+                    fontSize: '',
+                    fontFamily: 'Poppins',
+                    fontStyle: '',
+                  },
+                },
+              ],
+              buttons: [
+                //see if its good
+                {
+                  id: utilService.makeId(4),
+                  txt: 'Contact the chef',
+                  style: {
+                    background: 'url()',
+                    color: 'white',
+                    backgroundColor: '#c8a97e',
+                    fontFamily: 'Poppins',
+                    fontStyle: '',
+                  },
+                },
+              ],
+            },
+            theme: 'wap-chef-preview',
+            style: {
+              background: 'url()',
+              color: '',
+            },
+          },
+          {
+            id: utilService.makeId(4),
+            type: 'wap-card',
+            info: {
+              title: [
+                {
+                  id: utilService.makeId(4),
+                  txt: 'Luke Simon',
+                  style: {
+                    background: 'url()',
+                    color: '',
+                    backgroundColor: '',
+                    fontSize: '',
+                    fontFamily: 'Poppins',
+                  },
+                },
+              ],
+              imgs: [
+                {
+                  id: utilService.makeId(4),
+                  url: 'feliciano-imgs/chef-4.png',
+                  style: {
+                    background: 'url()',
+                    color: '',
+                    backgroundColor: '',
+                    fontSize: '',
+                    fontFamily: 'Poppins',
+                  },
+                },
+              ],
+              subtitle: [
+                {
+                  id: utilService.makeId(4),
+                  txt: 'Chef',
+                  style: {
+                    background: 'url()',
+                    color: '',
+                    backgroundColor: '',
+                    fontSize: '',
+                    fontFamily: 'Poppins',
+                    fontStyle: '',
+                  },
+                },
+              ],
+              buttons: [
+                //see if its good
+                {
+                  id: utilService.makeId(4),
+                  txt: 'Contact the chef',
+                  style: {
+                    background: 'url()',
+                    color: 'white',
+                    backgroundColor: '#c8a97e',
+                    fontFamily: 'Poppins',
+                    fontStyle: '',
+                  },
+                },
+              ],
+            },
+            theme: 'wap-chef-preview',
+            style: {
+              background: 'url()',
+              color: '',
             },
           },
           //IMAGES
@@ -4752,6 +5151,452 @@ const wap_feliciano = {
         fontStyle: '',
       },
     },
+
+    //TEXT CMP
+    {
+      id: utilService.makeId(4),
+      type: 'wap-text',
+      info: {
+        title: [
+          {
+            id: utilService.makeId(4),
+            txt: 'Happy Customer',
+            style: {
+              background: '',
+              color: '',
+              fontFamily: 'Poppins',
+              fontStyle: '50px',
+            },
+          },
+        ],
+      },
+      theme: 'wap-feliciano-catering', //maybe same theme like before
+      style: {
+        background: ``,
+        color: '',
+        backgroundColor: '',
+        fontSize: '',
+        paddingRight: '',
+        paddingTop: '',
+        paddingBottom: '',
+        paddingLeft: '',
+        lineHeight: '',
+        fontFamily: '',
+        fontStyle: '',
+      },
+    },
+
+    //TEXT CMP
+    //Reviews
+    {
+      id: utilService.makeId(4),
+      type: 'wap-container',
+      info: {
+        dir: 'row',
+        cmps: [
+          {
+            id: utilService.makeId(4),
+            type: 'wap-review',
+            info: {
+              txt: [
+                {
+                  id: utilService.makeId(4),
+                  txt: 'Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.',
+                  style: {
+                    background: 'url()',
+                    color: '',
+                    backgroundColor: '',
+                    fontSize: '',
+                    paddingRight: '',
+                    paddingTop: '',
+                    paddingBottom: '',
+                    paddingLeft: '',
+                    lineHeight: '',
+                    fontFamily: '',
+                    fontStyle: '',
+                  },
+                },
+              ],
+              name: [
+                {
+                  id: utilService.makeId(4),
+                  txt: 'Yarden M.',
+                  style: {
+                    background: 'url()',
+                    color: '',
+                    backgroundColor: '',
+                    fontSize: '',
+                    paddingRight: '',
+                    paddingTop: '',
+                    paddingBottom: '',
+                    paddingLeft: '',
+                    lineHeight: '',
+                    fontFamily: '',
+                    fontStyle: '',
+                  },
+                },
+              ],
+              title: [
+                {
+                  id: utilService.makeId(4),
+                  txt: 'CEO & Head of lunch',
+                  style: {
+                    background: 'url()',
+                    color: '',
+                    backgroundColor: '',
+                    fontSize: '',
+                    paddingRight: '',
+                    paddingTop: '',
+                    paddingBottom: '',
+                    paddingLeft: '',
+                    lineHeight: '',
+                    fontFamily: '',
+                    fontStyle: '',
+                  },
+                },
+              ],
+              avatar: [
+                {
+                  id: utilService.makeId(4),
+                  url: 'feliciano-imgs/yarden-review.png',
+                  style: {
+                    background: 'url()',
+                    color: '',
+                    backgroundColor: '',
+                    fontSize: '',
+                    paddingRight: '',
+                    paddingTop: '',
+                    paddingBottom: '',
+                    paddingLeft: '',
+                    lineHeight: '',
+                    fontFamily: '',
+                    fontStyle: '',
+                  },
+                },
+              ],
+            },
+            theme: 'feliciano-review',
+            style: {
+              background: 'url()',
+              color: '',
+              backgroundColor: '',
+              fontSize: '',
+              paddingRight: '',
+              paddingTop: '',
+              paddingBottom: '',
+              paddingLeft: '',
+              lineHeight: '',
+              fontFamily: '',
+              fontStyle: '',
+            },
+          },
+          {
+            id: utilService.makeId(4),
+            type: 'wap-review',
+            info: {
+              txt: [
+                {
+                  id: utilService.makeId(4),
+                  txt: 'Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.',
+                  style: {
+                    background: 'url()',
+                    color: '',
+                    backgroundColor: '',
+                    fontSize: '',
+                    paddingRight: '',
+                    paddingTop: '',
+                    paddingBottom: '',
+                    paddingLeft: '',
+                    lineHeight: '',
+                    fontFamily: '',
+                    fontStyle: '',
+                  },
+                },
+              ],
+              name: [
+                {
+                  id: utilService.makeId(4),
+                  txt: 'Rotem Bublil',
+                  style: {
+                    background: 'url()',
+                    color: '',
+                    backgroundColor: '',
+                    fontSize: '',
+                    paddingRight: '',
+                    paddingTop: '',
+                    paddingBottom: '',
+                    paddingLeft: '',
+                    lineHeight: '',
+                    fontFamily: '',
+                    fontStyle: '',
+                  },
+                },
+              ],
+              title: [
+                {
+                  id: utilService.makeId(4),
+                  txt: 'CEO & Head of lunch',
+                  style: {
+                    background: 'url()',
+                    color: '',
+                    backgroundColor: '',
+                    fontSize: '',
+                    paddingRight: '',
+                    paddingTop: '',
+                    paddingBottom: '',
+                    paddingLeft: '',
+                    lineHeight: '',
+                    fontFamily: '',
+                    fontStyle: '',
+                  },
+                },
+              ],
+              avatar: [
+                {
+                  id: utilService.makeId(4),
+                  url: 'feliciano-imgs/rotem-review.png',
+                  style: {
+                    background: 'url()',
+                    color: '',
+                    backgroundColor: '',
+                    fontSize: '',
+                    paddingRight: '',
+                    paddingTop: '',
+                    paddingBottom: '',
+                    paddingLeft: '',
+                    lineHeight: '',
+                    fontFamily: '',
+                    fontStyle: '',
+                  },
+                },
+              ],
+            },
+            theme: 'feliciano-review',
+            style: {
+              background: 'url()',
+              color: '',
+              backgroundColor: '',
+              fontSize: '',
+              paddingRight: '',
+              paddingTop: '',
+              paddingBottom: '',
+              paddingLeft: '',
+              lineHeight: '',
+              fontFamily: '',
+              fontStyle: '',
+            },
+          },
+          {
+            id: utilService.makeId(4),
+            type: 'wap-review',
+            info: {
+              txt: [
+                {
+                  id: utilService.makeId(4),
+                  txt: 'Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.',
+                  style: {
+                    background: 'url()',
+                    color: '',
+                    backgroundColor: '',
+                    fontSize: '',
+                    paddingRight: '',
+                    paddingTop: '',
+                    paddingBottom: '',
+                    paddingLeft: '',
+                    lineHeight: '',
+                    fontFamily: '',
+                    fontStyle: '',
+                  },
+                },
+              ],
+              name: [
+                {
+                  id: utilService.makeId(4),
+                  txt: 'Matan Lasry',
+                  style: {
+                    background: 'url()',
+                    color: '',
+                    backgroundColor: '',
+                    fontSize: '',
+                    paddingRight: '',
+                    paddingTop: '',
+                    paddingBottom: '',
+                    paddingLeft: '',
+                    lineHeight: '',
+                    fontFamily: '',
+                    fontStyle: '',
+                  },
+                },
+              ],
+              title: [
+                {
+                  id: utilService.makeId(4),
+                  txt: 'Chief ',
+                  style: {
+                    background: 'url()',
+                    color: '',
+                    backgroundColor: '',
+                    fontSize: '',
+                    paddingRight: '',
+                    paddingTop: '',
+                    paddingBottom: '',
+                    paddingLeft: '',
+                    lineHeight: '',
+                    fontFamily: '',
+                    fontStyle: '',
+                  },
+                },
+              ],
+              avatar: [
+                {
+                  id: utilService.makeId(4),
+                  url: 'feliciano-imgs/matan-review.png',
+                  style: {
+                    background: 'url()',
+                    color: '',
+                    backgroundColor: '',
+                    fontSize: '',
+                    paddingRight: '',
+                    paddingTop: '',
+                    paddingBottom: '',
+                    paddingLeft: '',
+                    lineHeight: '',
+                    fontFamily: '',
+                    fontStyle: '',
+                  },
+                },
+              ],
+            },
+            theme: 'feliciano-review',
+            style: {
+              background: 'url()',
+              color: '',
+              backgroundColor: '',
+              fontSize: '',
+              paddingRight: '',
+              paddingTop: '',
+              paddingBottom: '',
+              paddingLeft: '',
+              lineHeight: '',
+              fontFamily: '',
+              fontStyle: '',
+            },
+          },
+          {
+            id: utilService.makeId(4),
+            type: 'wap-review',
+            info: {
+              txt: [
+                {
+                  id: utilService.makeId(4),
+                  txt: 'Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.',
+                  style: {
+                    background: 'url()',
+                    color: '',
+                    backgroundColor: '',
+                    fontSize: '',
+                    paddingRight: '',
+                    paddingTop: '',
+                    paddingBottom: '',
+                    paddingLeft: '',
+                    lineHeight: '',
+                    fontFamily: '',
+                    fontStyle: '',
+                  },
+                },
+              ],
+              name: [
+                {
+                  id: utilService.makeId(4),
+                  txt: 'Shani Aharon',
+                  style: {
+                    background: 'url()',
+                    color: '',
+                    backgroundColor: '',
+                    fontSize: '',
+                    paddingRight: '',
+                    paddingTop: '',
+                    paddingBottom: '',
+                    paddingLeft: '',
+                    lineHeight: '',
+                    fontFamily: '',
+                    fontStyle: '',
+                  },
+                },
+              ],
+              title: [
+                {
+                  id: utilService.makeId(4),
+                  txt: 'CEO & Head of lunch',
+                  style: {
+                    background: 'url()',
+                    color: '',
+                    backgroundColor: '',
+                    fontSize: '',
+                    paddingRight: '',
+                    paddingTop: '',
+                    paddingBottom: '',
+                    paddingLeft: '',
+                    lineHeight: '',
+                    fontFamily: '',
+                    fontStyle: '',
+                  },
+                },
+              ],
+              avatar: [
+                {
+                  id: utilService.makeId(4),
+                  url: 'feliciano-imgs/shani-review.png',
+                  style: {
+                    background: 'url()',
+                    color: '',
+                    backgroundColor: '',
+                    fontSize: '',
+                    paddingRight: '',
+                    paddingTop: '',
+                    paddingBottom: '',
+                    paddingLeft: '',
+                    lineHeight: '',
+                    fontFamily: '',
+                    fontStyle: '',
+                  },
+                },
+              ],
+            },
+            theme: 'feliciano-review',
+            style: {
+              background: 'url()',
+              color: '',
+              backgroundColor: '',
+              fontSize: '',
+              paddingRight: '',
+              paddingTop: '',
+              paddingBottom: '',
+              paddingLeft: '',
+              lineHeight: '',
+              fontFamily: '',
+              fontStyle: '',
+            },
+          },
+        ],
+      },
+      theme: 'feliciano-review-container',
+      style: {
+        background: 'url()',
+        color: '',
+        backgroundColor: '',
+        fontSize: '',
+        paddingRight: '',
+        paddingTop: '',
+        paddingBottom: '',
+        paddingLeft: '',
+        lineHeight: '',
+        fontFamily: '',
+        fontStyle: '',
+      },
+    },
+    //Reviews
+
     //CHEF-IMGS
   ],
 }
