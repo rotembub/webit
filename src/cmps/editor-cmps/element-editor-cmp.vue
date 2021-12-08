@@ -93,7 +93,7 @@ export default {
     };
   },
   created() {
-    console.log("at the el font modal");
+    // console.log("at the el font modal");
     this.editedStyle = { ...this.elStyle };
   },
   methods: {
@@ -109,7 +109,7 @@ export default {
       if (this.boldToggle) this.editedStyle.fontWeight = "bold";
       else this.editedStyle.fontWeight = "initial";
       this.boldToggle = !this.boldToggle;
-      console.log(this.editedStyle);
+      // console.log(this.editedStyle);
       this.styleChanged();
     },
     styleChanged() {

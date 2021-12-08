@@ -42,7 +42,7 @@ export default {
   },
   computed: {
     getCurrStyle() {
-      console.log("IM HERE cmpStyle", this.cmp.style);
+      // console.log("IM HERE cmpStyle", this.cmp.style);
       const style = {
         color: this.cmp.style.color,
         fontSize: this.cmp.style.fontSize + "px",

@@ -1,14 +1,22 @@
 <template>
   <section class="basic-img" :style="getStyle">
     <img
+      v-if="!isUploaded"
       @click.stop="setSelected"
       :src="require('@/assets/wap-imgs/' + details.data.url)"
+      alt=""
+    />
+    <img
+      v-else
+      @click.stop="setSelected"
+      :src="details.data.url"
       alt=""
     />
     <basic-el-toolbar
       @removeEl="removeEl"
       @dupElement="dupElement"
       @styleChanged="styleChanged"
+      @onSaveImg="saveImg"
       v-if="isEdit"
       :cmpId="getCmpId"
       :elStyle="details.data.style"
@@ -23,6 +31,7 @@ export default {
   data() {
     return {
       isSelected: false,
+      isUploaded: false,
     };
   },
   components: {
@@ -83,8 +92,9 @@ export default {
         x: ev.target.offsetLeft,
       };
       if (ev.offsetY > ev.target.offsetHeight / 2) {
-        pos.y = ev.target.offsetTop + ev.target.offsetHeight;
-      } else pos.y = ev.target.offsetTop - 16;
+        pos.y = ev.target.offsetTop + ev.target.offsetHeight +5;
+      } else pos.y = ev.target.offsetTop - 30;
+      if (ev.clientX > window.innerWidth - 150) pos.x = ev.target.offsetLeft -50;
       console.log(pos);
       if (this.isSelected) {
         this.isSelected = false;
@@ -104,17 +114,34 @@ export default {
     },
     styleChanged(style) {
       console.log(style);
-      this.details.data.style = style;
-      this.updateStyle();
+      // this.details.data.style = style;
+      this.updateElStyle(style);
+      // this.updateStyle();
     },
-    async updateStyle() {
-      console.log("updating style of an element");
-      const id = this.getCmpId;
-      try {
-        this.$store.dispatch({ type: "updateWapStyle", cmpId: id });
-      } catch (err) {
-        console.log(err);
-      }
+    // async updateStyle() {
+    //   console.log("updating style of an element");
+    //   const id = this.getCmpId;
+    //   try {
+    //     this.$store.dispatch({ type: "updateWapStyle", cmpId: id });
+    //   } catch (err) {
+    //     console.log(err);
+    //   }
+    // },
+    async updateElStyle(style) {
+      this.$store.dispatch({
+        type: "updateElementStyle",
+        cmpId: this.details.cmpId,
+        elType: this.details.elType,
+        elId: this.details.data.id,
+        containerId: this.details.containerId,
+        style,
+      });
+    },
+    saveImg(url) {
+      console.log("URL RECEIVED", url);
+      this.isUploaded = true;
+      this.details.data.url = url;
+      this.updateStyle();
     },
   },
 };

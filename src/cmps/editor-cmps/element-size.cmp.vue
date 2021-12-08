@@ -81,7 +81,7 @@ export default {
     };
   },
   created() {
-    console.log("at the el size modal");
+    // console.log("at the el size modal");
     this.editedStyle = { ...this.elStyle , marginTop: '',marginRight:'',marginBottom:'',marginLeft:'' };
   },
   methods: {

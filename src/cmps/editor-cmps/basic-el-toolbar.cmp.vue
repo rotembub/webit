@@ -18,6 +18,13 @@
     <button title="Copy" class="tool-element" @click="dupElement">
       <i class="el-icon-document-copy"></i>
     </button>
+    <button
+      title="Upload"
+      class="tool-element"
+      @click.stop="isUpload = !isUpload"
+    >
+      <i class="el-icon-upload"></i>
+    </button>
     <element-size
       @styleChanged="styleChanged"
       v-if="isSizeModal"
@@ -30,15 +37,17 @@
       :cmpId="cmpId"
       :elStyle="elStyle"
     ></element-editor>
+    <img-upload v-if="isUpload" @onSaveImg="onSaveImg"></img-upload>
   </section>
 </template>
 
 <script>
+import imgUpload from "./img-upload.vue";
 import elementEditor from "./element-editor-cmp.vue";
 import elementSize from "./element-size.cmp.vue";
 export default {
   props: ["id", "elStyle", "cmpId", "pos"],
-  components: { elementEditor, elementSize },
+  components: { elementEditor, elementSize, imgUpload },
   created() {
     // console.log(this.pos);
   },
@@ -47,6 +56,7 @@ export default {
       openEditorModal: false,
       isSizeModal: false,
       modalPos: null,
+      isUpload: false,
     };
   },
   computed: {
@@ -68,7 +78,7 @@ export default {
       };
       // if(ev.offsetY > )
       if (ev.clientX > window.innerWidth - 300) pos.right = 0;
-      if (ev.clientY > window.innerHeight - 250) pos.top = -350;
+      if (ev.clientY > window.innerHeight - 250) pos.top = -365;
       // console.log(ev.offsetX,window.innerWidth - 300,ev.clientX);
       // console.log(pos);
       this.$store.commit({ type: "setModalPos", modalPos: pos });
@@ -97,6 +107,10 @@ export default {
     },
     styleChanged(style) {
       this.$emit("styleChanged", style);
+    },
+    onSaveImg(url) {
+      // console.log("url at toolbar", url);
+      this.$emit("onSaveImg", url);
     },
   },
 };

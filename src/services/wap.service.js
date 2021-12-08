@@ -17,6 +17,7 @@ export const wapService = {
   copyCmp,
   removeEl,
   duplicateEl,
+  updateElStyle
 }
 
 // More ways to send query params:
@@ -228,6 +229,37 @@ async function removeEl(wapId, cmpId, elType, elId, containerId) {
     return await save(wap)
   }
 }
+
+
+async function updateElStyle(wapId, cmpId, elType, elId, containerId, style) {
+  // if no type is sent we can delete the entire type from the cmp
+  console.log(wapId, cmpId, elType, elId, containerId)
+  const wap = await getById(wapId)
+
+  if (!containerId) {
+    const cmp = wap.cmps.find(cmp => cmp.id === cmpId)
+    if (elType === 'logo') cmp.info[elType].style = style;
+    else {
+      console.log('elType:', elType)
+      const element = cmp.info[elType].find(el => el.id === elId)
+      element.style = style;
+    }
+  } else {
+    const container = wap.cmps.find(cmp => cmp.id === containerId)
+    console.log(wap, container)
+    const innerCmp = container.info.cmps.find(cmp => cmp.id === cmpId)
+    if (elType === 'logo') innerCmp.info[elType].style = style;
+    else {
+      const element = innerCmp.info[elType].find(el => el.id === elId)
+      element.style = style;
+      // innerCmp.info[elType].splice(idx, 1)
+    }
+  }
+  return await save(wap)
+}
+
+
+
 
 // This IIFE async functions for Dev purposes
 // It allows testing of real time updates (such as sockets) by listening to storage events

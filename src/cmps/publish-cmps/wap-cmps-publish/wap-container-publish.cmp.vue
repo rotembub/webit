@@ -48,9 +48,9 @@
     props: ['cmp'],
     computed: {
       getCurrStyle() {
-        console.log(this.cmp.style,'!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
-        console.log('IM HERE Gallery', this.cmp.style);
-        console.log('color', this.cmp.style.color);
+        // console.log(this.cmp.style,'!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
+        // console.log('IM HERE Gallery', this.cmp.style);
+        // console.log('color', this.cmp.style.color);
         const style = {
           backgroundImage: this.cmp.style.background,
           color: this.cmp.style.color,

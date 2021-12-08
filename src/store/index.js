@@ -251,5 +251,21 @@ export default new Vuex.Store({
         console.log('failed to remove element from cmp', err)
       }
     },
+    async updateElementStyle({ commit, state }, { cmpId, elType, elId, containerId, style }) {
+      try {
+        const wapId = state.currWap._id;
+        const updatedWap = await wapService.updateElStyle(
+          wapId,
+          cmpId,
+          elType,
+          elId,
+          containerId,
+          style
+        )
+        commit({ type: 'setCurrWap', wap: updatedWap })
+      } catch (err) {
+        console.log(err)
+      }
+    }
   },
 })

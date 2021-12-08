@@ -39,8 +39,8 @@ export default {
   },
   computed: {
     getCurrStyle() {
-      console.log("IM HERE", this.cmp.style);
-      console.log("color", this.cmp.style.color);
+      // console.log("IM HERE", this.cmp.style);
+      // console.log("color", this.cmp.style.color);
       const style = {
         color: this.cmp.style.color,
         fontSize: this.cmp.style.fontSize + "px",

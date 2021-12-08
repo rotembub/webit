@@ -52,7 +52,6 @@ export default {
   },
   computed: {
     getCurrStyle() {
-      console.log("IM HERE cmpStyle", this.cmp.style);
       const style = {
         color: this.cmp.style.color,
         fontSize: this.cmp.style.fontSize + "px",
@@ -71,8 +70,7 @@ export default {
     setType(type) {
       this.elType = type;
     },
-    removeEl(elId, elType) {
-      console.log("elId and elType", elId, elType);
+    removeEl(elId, elType) { // odd, need to double check this
       this.$store.dispatch({
         type: "removeElFromCmp",
         cmpId: this.cmp.id,

@@ -134,10 +134,9 @@ export default {
     }
   },
   methods: {
-    onMobileState(state) {
-      console.log('HERE')
-
-      this.$emit('onMobileState', state)
+    onMobileState() {
+      // console.log('HERE')
+      this.$emit('onMobileState')
     },
     getChildPayload1(index) {
       return this.themes[index]
@@ -148,7 +147,7 @@ export default {
         type: 'publishWap',
         wapToPublish: this.wapToPublish,
       })
-      console.log('ID', this.wapToPublish._id)
+      // console.log('ID', this.wapToPublish._id)
       this.$router.push(`/publish/${this.wapToPublish._id}`)
       // console.log('wapToPublish', wapToPublish)
     },
