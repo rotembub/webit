@@ -26,8 +26,8 @@
       Top Spacing :
       <input
         @mousemove.stop=""
-        @mouseup="updateStyle"
-        v-model="elStyle.paddingTop"
+        @mouseup="styleChanged"
+        v-model="editedStyle.marginTop"
         type="range"
         min="0"
         max="100"
@@ -38,8 +38,8 @@
       Bottom Spacing :
       <input
         @mousemove.stop=""
-        @mouseup="updateStyle"
-        v-model="elStyle.paddingBottom"
+        @mouseup="styleChanged"
+        v-model="editedStyle.marginBottom"
         type="range"
         min="0"
         max="100"
@@ -49,8 +49,8 @@
       Right Spacing :
       <input
         @mousemove.stop=""
-        @mouseup="updateStyle"
-        v-model="elStyle.paddingRight"
+        @mouseup="styleChanged"
+        v-model="editedStyle.marginRight"
         type="range"
         min="0"
         max="100"
@@ -60,8 +60,8 @@
       Left Spacing :
       <input
         @mousemove.stop=""
-        @mouseup="updateStyle"
-        v-model="elStyle.paddingLeft"
+        @mouseup="styleChanged"
+        v-model="editedStyle.marginLeft"
         type="range"
         min="0"
         max="100"
@@ -77,20 +77,16 @@ export default {
     return {
       isText: false,
       isImg: false,
-      currWap: null,
-      currCmpIdx: null,
+      editedStyle: {},
     };
   },
-  created() {},
+  created() {
+    console.log("at the el size modal");
+    this.editedStyle = { ...this.elStyle , marginTop: '',marginRight:'',marginBottom:'',marginLeft:'' };
+  },
   methods: {
-    async updateStyle() {
-      console.log(this.elStyle.lineHeight, "elStyle-linehight");
-      console.log(this.elStyle, "elStyle");
-      try {
-        this.$store.dispatch({ type: "updateWapStyle", cmpId: this.cmpId });
-      } catch (err) {
-        console.log(err);
-      }
+    styleChanged() {
+      this.$emit("styleChanged", this.editedStyle);
     },
   },
   computed: {
@@ -105,16 +101,3 @@ export default {
 </script>
 
 <style></style>
-                  style: {
-                    background: 'url()',
-                    color: '',
-                    backgroundColor: '',
-                    fontSize: '',
-                    paddingRight: '',
-                    paddingTop: '',
-                    paddingBottom: '',
-                    paddingLeft: '',
-                    lineHeight: '',
-                    fontFamily: '',
-                    fontStyle: '',
-                  },
