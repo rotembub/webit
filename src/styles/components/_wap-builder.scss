@@ -34,3 +34,20 @@
     right: 3vw;
     z-index: 9999999;
 }
+
+.drag-here-div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    h1{
+        font-family: Montserrat;
+        font-size: 3em;
+        color: #00000080;
+        padding: 50px;
+        border: 1px  ;
+        outline:dashed 2px rgba(192, 192, 192, 0.993);
+
+    }
+ 
+}

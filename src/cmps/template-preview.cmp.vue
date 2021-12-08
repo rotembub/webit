@@ -15,7 +15,7 @@
         <el-card :body-style="{ padding: '0px' }">
           <img :src="require('@/assets/tempImgs/' + imgUrl)" class="image" />
           <div style="padding: 14px">
-            <!-- <span>{{ wap.name }}</span> -->
+            <span>{{ wap.name || 'New Template' }}</span>
             <div class="bottom clearfix"></div>
           </div>
         </el-card>

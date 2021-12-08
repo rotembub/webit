@@ -2,6 +2,7 @@
   <section class="scrollbar style-2" v-if="wap">
     <!-- <component v-for="cmp in wap.cmps" :cmp="cmp" :is="cmp.type" :key="cmp.id">
     </component> -->
+
     <div :class="wap.theme">
       <Container
         :auto-scroll-enabled="true"
@@ -16,8 +17,12 @@
             </slot>
           </wap-dynamic>
         </Draggable>
+        <div v-if="!wap.cmps.length" class="drag-here-div">
+          <h1>Please Drag Here</h1>
+        </div>
       </Container>
     </div>
+
     <el-button
       @click="toggleFullScreen"
       class="is-full-wap-btn"

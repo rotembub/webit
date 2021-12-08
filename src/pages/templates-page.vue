@@ -2,8 +2,10 @@
   <div>
     <app-header></app-header>
     <section class="templates-page">
-      <h1>You can pick one of our best templates</h1>
-      <h2>Or you can start from scratch</h2>
+      <div class="templates-page-title">
+        <h1>You can pick one of our best templates</h1>
+        <p>Or you can start from scratch</p>
+      </div>
       <template-list v-if="waps" :waps="waps"></template-list>
     </section>
   </div>
