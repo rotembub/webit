@@ -4,9 +4,6 @@
       <wap-dynamic v-for="cmp in wapToPublish.cmps" :key="cmp.id" :cmp="cmp">
       </wap-dynamic>
     </div>
-    <el-button class="back-to-edit-btn" type="primary"
-      >Back To Edit<i class="el-icon-right"></i
-    ></el-button>
   </section>
 </template>
 

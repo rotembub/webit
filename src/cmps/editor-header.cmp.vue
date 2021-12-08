@@ -1,11 +1,11 @@
 <template>
   <section class="editor-header">
     <div v-if="isOpen" @click="toggleHeader" class="screen"></div>
-    <div @click="toggleHeader" class="sticky-tab">
+    <!-- <div @click="toggleHeader" class="sticky-tab">
       <div class="">
         <i type="danger" class="el-icon-menu"></i>
       </div>
-    </div>
+    </div> -->
     <div @click="toggleHeader" :class="isOpenClass">
       <div @click="openRoute('/')">
         <i type="danger" class="el-icon-s-home"></i>

@@ -20,9 +20,7 @@ export default {
     // editorHeader,
   },
   data() {
-    return {
-      classState: 'editor-page',
-    }
+    return {}
   },
   created() {
     const id = this.wapId
@@ -31,8 +29,8 @@ export default {
     else this.$store.dispatch({ type: 'setCurrWap', wapId: id })
   },
   methods: {
-    onMobile() {
-      this.$store.dispatch({ type: 'isMobile' })
+    onMobile(str) {
+      this.$store.dispatch({ type: 'isMobile', str })
     },
   },
   computed: {
@@ -46,9 +44,12 @@ export default {
       const isMobile = this.$store.getters.isMobile
       console.log(isMobile)
 
-      if (isFullScreen) return 'wap-builder-fullscreen'
-      if (isMobile) return 'wap-builder-mobile'
-      else return 'wap-builder'
+      let classForBuilder = ''
+
+      if (isFullScreen) classForBuilder = 'wap-builder-fullscreen'
+      if (isMobile) classForBuilder = 'wap-builder-mobile'
+      else classForBuilder = 'wap-builder'
+      return classForBuilder
     },
     wapId() {
       return this.$route.params.wapId

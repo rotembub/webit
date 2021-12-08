@@ -15,6 +15,7 @@ export default new Vuex.Store({
     elSelectedId: null,
     elSelectedPos: null,
     modalPos: null,
+    wapHistory: [],
   },
   getters: {
     isMobile(state) {
@@ -87,8 +88,10 @@ export default new Vuex.Store({
     setModalPos(state, { modalPos }) {
       state.modalPos = modalPos
     },
-    isMobile(state) {
-      state.isMobile = !state.isMobile
+    isMobile(state, { str }) {
+      console.log(str)
+      if (str === 'mobile') return (state.isMobile = true)
+      state.isMobile = false
     },
   },
   actions: {
@@ -100,8 +103,8 @@ export default new Vuex.Store({
         console.log(err)
       }
     },
-    isMobile({ commit }) {
-      commit({ type: 'isMobile' }) // is there a need for an action here? why not just commit - Yaron Biton
+    isMobile({ commit }, { str }) {
+      commit({ type: 'isMobile', str }) // is there a need for an action here? why not just commit - Yaron Biton
     },
     toggleWapFullScreen({ commit }) {
       commit({ type: 'toggleWapFullScreen' }) // is there a need for an action here? why not just commit - Yaron Biton

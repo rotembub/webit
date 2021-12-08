@@ -3578,7 +3578,7 @@ const wap_feliciano = {
                     paddingBottom: '',
                     paddingLeft: '',
                     lineHeight: '',
-                    fontFamily: 'Arial',
+                    fontFamily: '',
                     fontStyle: '50px',
                   },
                 },

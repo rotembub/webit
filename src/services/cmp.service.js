@@ -1,7 +1,7 @@
-import {storageService} from './async-storage.service';
-import {utilService} from './util.service';
+import { storageService } from './async-storage.service'
+import { utilService } from './util.service'
 
-const CMP_KEY = 'cmp_DB';
+const CMP_KEY = 'cmp_DB'
 
 export const cmpService = {
   // add,
@@ -9,7 +9,7 @@ export const cmpService = {
   getById,
   getCmpById,
   getThemesFor,
-};
+}
 
 // More ways to send query params:
 // return axios.get('api/wap/?id=1223&balance=13')
@@ -21,30 +21,30 @@ async function query(filterBy) {
   // return JSON_TEST1;
   // return gWap;
 
-  return storageService.query(CMP_KEY);
+  return storageService.query(CMP_KEY)
 }
 async function getById(id) {
-  return storageService.get(CMP_KEY, id);
+  return storageService.get(CMP_KEY, id)
 }
 
 async function getCmpById(id) {
-  const cmp = gCmps.find((currCmp) => currCmp.id === id);
-  const copyCmp = JSON.parse(JSON.stringify(cmp));
-  copyCmp.id = utilService.makeId(4); //change id soo it will not duplicate
-  return Promise.resolve(copyCmp);
+  const cmp = gCmps.find(currCmp => currCmp.id === id)
+  const copyCmp = JSON.parse(JSON.stringify(cmp))
+  copyCmp.id = utilService.makeId(4) //change id soo it will not duplicate
+  return Promise.resolve(copyCmp)
 }
 
 function getThemesFor(cmpType) {
-  const themes = gThemes[cmpType];
-  console.log('themes', themes);
-  return themes;
+  const themes = gThemes[cmpType]
+  console.log('themes', themes)
+  return themes
 }
 
 async function save(cmp) {
   const savedCmp = cmp._id
     ? storageService.put(CMP_KEY, cmp)
-    : storageService.post(CMP_KEY, cmp);
-  return savedCmp;
+    : storageService.post(CMP_KEY, cmp)
+  return savedCmp
 }
 
 // const gCmps = [
@@ -687,7 +687,7 @@ const gCmps = [
       color: '',
       backgroundColor: '',
       fontSize: '',
-      height: '693.350',
+      height: '',
       paddingRight: '',
       paddingTop: '',
       paddingBottom: '',
@@ -747,7 +747,7 @@ const gCmps = [
       color: '',
       backgroundColor: '',
       fontSize: '',
-      height: '220.100',
+      height: '',
       paddingRight: '',
       paddingTop: '',
       paddingBottom: '',
@@ -1008,7 +1008,7 @@ const gCmps = [
       color: '',
       backgroundColor: '',
       fontSize: '',
-      height: '647.050',
+      height: '',
       paddingRight: '',
       paddingTop: '',
       paddingBottom: '',
@@ -1087,7 +1087,7 @@ const gCmps = [
       color: '',
       backgroundColor: '',
       fontSize: '',
-      height: '199.600',
+      height: '',
       paddingRight: '',
       paddingTop: '',
       paddingBottom: '',
@@ -1346,7 +1346,7 @@ const gCmps = [
       color: '',
       backgroundColor: '',
       fontSize: '',
-      height: '648.675',
+      height: '',
       paddingRight: '',
       paddingTop: '',
       paddingBottom: '',
@@ -1679,7 +1679,7 @@ const gCmps = [
       color: '',
       backgroundColor: '',
       fontSize: '',
-      height: '848.013',
+      height: '',
       paddingRight: '',
       paddingTop: '',
       paddingBottom: '',
@@ -1818,7 +1818,7 @@ const gCmps = [
       color: '',
       backgroundColor: '',
       fontSize: '',
-      height: '649.438',
+      height: '',
       paddingRight: '',
       paddingTop: '',
       paddingBottom: '',
@@ -2131,7 +2131,7 @@ const gCmps = [
       color: '',
       backgroundColor: '',
       fontSize: '',
-      height: '640',
+      height: '',
       paddingRight: '',
       paddingTop: '',
       paddingBottom: '',
@@ -2229,7 +2229,7 @@ const gCmps = [
       color: '',
       backgroundColor: '',
       fontSize: '',
-      height: '307.725',
+      height: '',
       paddingRight: '',
       paddingTop: '',
       paddingBottom: '',
@@ -2239,20 +2239,20 @@ const gCmps = [
       fontStyle: '',
     },
   },
-];
+]
 
 const gThemes = gCmps.reduce((acc, cmp) => {
   if (!acc[cmp.type])
     acc[cmp.type] = [
-      {type: cmp.theme, cmpId: cmp.id, imgPath: cmp.screenshotImg},
-    ];
+      { type: cmp.theme, cmpId: cmp.id, imgPath: cmp.screenshotImg },
+    ]
   else
     acc[cmp.type].push({
       type: cmp.theme,
       cmpId: cmp.id,
       imgPath: cmp.screenshotImg,
-    });
-  return acc;
-}, {});
+    })
+  return acc
+}, {})
 
-console.log('test gThemes funccc', gThemes);
+console.log('test gThemes funccc', gThemes)
