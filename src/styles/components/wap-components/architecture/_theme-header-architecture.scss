@@ -1,11 +1,11 @@
-.theme-header-architecture {
+.theme-header-architecture{
     height: 10vh;
     display: flex;
     justify-content: space-between;
     background-color: rgb(255, 255, 255);
     align-items: center;
 
-    .logo{
+    .logo:not(.element-editor span, .element-size span) {
         display: flex;
         margin: 0;
         color: #4b4d4e;

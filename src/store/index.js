@@ -223,7 +223,7 @@ export default new Vuex.Store({
         console.log('store reports: failed to SAVE wap', err)
       }
     },
-    async dupElement({ commit, state },{ cmpId, elType, elId, containerId }) {
+    async dupElement({ commit, state }, { cmpId, elType, elId, containerId }) {
       try {
         const wapId = state.currWap._id
         const updatedWap = await wapService.duplicateEl(
@@ -238,5 +238,21 @@ export default new Vuex.Store({
         console.log('failed to remove element from cmp', err)
       }
     },
+    async updateElementStyle({ commit, state }, { cmpId, elType, elId, containerId, style }) {
+      try {
+        const wapId = state.currWap._id;
+        const updatedWap = await wapService.updateElStyle(
+          wapId,
+          cmpId,
+          elType,
+          elId,
+          containerId,
+          style
+        )
+        commit({ type: 'setCurrWap', wap: updatedWap })
+      } catch (err) {
+        console.log(err)
+      }
+    }
   },
 })

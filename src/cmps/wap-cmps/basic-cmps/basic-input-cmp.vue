@@ -105,17 +105,28 @@ export default {
     },
     styleChanged(style) {
       console.log(style);
-      this.details.data.style = style;
-      this.updateStyle();
+      // this.details.data.style = style;
+      this.updateElStyle(style);
+      // this.updateStyle();
     },
-    async updateStyle() {
-      console.log("updating style of an element");
-      const id = this.getCmpId;
-      try {
-        this.$store.dispatch({ type: "updateWapStyle", cmpId: id });
-      } catch (err) {
-        console.log(err);
-      }
+    // async updateStyle() {
+    //   console.log("updating style of an element");
+    //   const id = this.getCmpId;
+    //   try {
+    //     this.$store.dispatch({ type: "updateWapStyle", cmpId: id });
+    //   } catch (err) {
+    //     console.log(err);
+    //   }
+    // },
+    async updateElStyle(style) {
+      this.$store.dispatch({
+        type: "updateElementStyle",
+        cmpId: this.details.cmpId,
+        elType: this.details.elType,
+        elId: this.details.data.id,
+        containerId: this.details.containerId,
+        style,
+      });
     },
   },
 };
