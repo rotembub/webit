@@ -10,9 +10,16 @@
 .wap-feliciano-catering{
     height:25vh;
     display: flex;
+    flex-direction: column-reverse;
     align-items: center;
     justify-content: center;
-    font-size:3em
+    font-size:3em;
+    h1{
+        margin:0;
+    }
+    h3{
+        margin:0;
+    }
 }
 
 .wap-feliciano-detail-card{

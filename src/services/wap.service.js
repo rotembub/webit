@@ -4076,6 +4076,18 @@ const wap_feliciano = {
             },
           },
         ],
+        subtitle: [
+          {
+            id: utilService.makeId(4),
+            txt: 'Catering Services',
+            style: {
+              background: '',
+              color: '#c8a97e',
+              fontFamily: 'GreatVibes',
+              fontStyle: '',
+            },
+          },
+        ],
       },
       theme: 'wap-feliciano-catering', //maybe same theme like before
       style: {
@@ -5168,6 +5180,18 @@ const wap_feliciano = {
               color: '',
               fontFamily: 'Poppins',
               fontStyle: '50px',
+            },
+          },
+        ],
+        subtitle: [
+          {
+            id: utilService.makeId(4),
+            txt: 'Happy Customer',
+            style: {
+              background: '',
+              color: '#c8a97e',
+              fontFamily: 'GreatVibes',
+              fontStyle: '',
             },
           },
         ],
