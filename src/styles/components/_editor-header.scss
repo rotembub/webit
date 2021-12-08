@@ -19,7 +19,7 @@
 
     .sticky-tab{
         position:absolute;
-        background-color: white;
+        // background-color: white;
         width: 35px; 
         height:40px;
         left: 0px ;
@@ -42,8 +42,7 @@
             width: 20px;
             height: 30px;
             border-radius: 50%;
-            // background-color:rgb(255, 255, 255);
-            color:rgba(43, 42, 42, 0.692);
+            color: #dbdbdb;
             display: flex;
             justify-content: center;
             align-items: center;

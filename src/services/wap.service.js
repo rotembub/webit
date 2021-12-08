@@ -830,6 +830,7 @@ const wap_architecture = {
 }
 
 const wap_fylo = {
+  isPublic: true,
   // _id: '999994123sd12',
   name: 'fylo',
   imgUrl: '',
@@ -1981,6 +1982,7 @@ const wap_fylo = {
 }
 
 const wap_sunnyside = {
+  isPublic: true,
   name: 'SunnySide',
   imgUrl: '',
   createdBy: {
@@ -3350,6 +3352,7 @@ const wap_sunnyside = {
 }
 
 const wap_feliciano = {
+  isPublic: true,
   name: 'Feliciano',
   imgUrl: '',
   createdBy: {

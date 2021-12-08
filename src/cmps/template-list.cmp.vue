@@ -7,11 +7,13 @@
         :imgUrl="'add-new.png'"
       >
       </template-preview>
+
       <template-preview
         v-for="(wap, idx) in waps"
         :key="wap._id"
         :wap="wap"
         :imgUrl="urls[idx]"
+        v-if="wap.isPublic"
       ></template-preview>
       <!-- watchout for the imgUrls these are fake i made just for show till we gonna have proper templates -->
     </div>
@@ -32,10 +34,10 @@ export default {
   data() {
     return {
       urls: [
-        '1.jpg',
-        '2.jpg',
-        '3.jpg',
-        '4.png',
+        'utica-template.png',
+        'fylo-template.png',
+        'sunnyside-template.png',
+        'feliciano-template.png',
         '5.jpg',
         '6.jpg',
         '7.png',
