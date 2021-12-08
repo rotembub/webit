@@ -135,7 +135,7 @@ export default {
   },
   methods: {
     onMobileState() {
-      console.log('HERE')
+      // console.log('HERE')
       this.$emit('onMobileState')
     },
     getChildPayload1(index) {
@@ -147,7 +147,7 @@ export default {
         type: 'publishWap',
         wapToPublish: this.wapToPublish,
       })
-      console.log('ID', this.wapToPublish._id)
+      // console.log('ID', this.wapToPublish._id)
       this.$router.push(`/publish/${this.wapToPublish._id}`)
       // console.log('wapToPublish', wapToPublish)
     },

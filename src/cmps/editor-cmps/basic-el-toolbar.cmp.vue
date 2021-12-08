@@ -78,7 +78,7 @@ export default {
       };
       // if(ev.offsetY > )
       if (ev.clientX > window.innerWidth - 300) pos.right = 0;
-      if (ev.clientY > window.innerHeight - 250) pos.top = -350;
+      if (ev.clientY > window.innerHeight - 250) pos.top = -365;
       // console.log(ev.offsetX,window.innerWidth - 300,ev.clientX);
       // console.log(pos);
       this.$store.commit({ type: "setModalPos", modalPos: pos });
@@ -109,7 +109,7 @@ export default {
       this.$emit("styleChanged", style);
     },
     onSaveImg(url) {
-      console.log("url at toolbar", url);
+      // console.log("url at toolbar", url);
       this.$emit("onSaveImg", url);
     },
   },

@@ -43,7 +43,7 @@ export default {
         cmpId: this.id,
         cmpIdx: currCmpIdx,
       })
-      console.log('copy')
+      // console.log('copy')
     },
     openModal(type) {
       if (type === 'color') {

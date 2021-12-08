@@ -73,7 +73,7 @@ export default {
       this.$store.dispatch({ type: 'toggleWapFullScreen' })
     },
     updateWap(updatedWap) {
-      console.log(updatedWap, 'got to wapBuilder')
+      // console.log(updatedWap, 'got to wapBuilder')
       //try to update here
     },
   },
@@ -86,7 +86,7 @@ export default {
 
     wap() {
       // console.log(this.$store.getters.getCurrWap);
-      console.log('wapBuilder computed', this.$store.getters.getCurrWap)
+      // console.log('wapBuilder computed', this.$store.getters.getCurrWap)
       return this.$store.getters.getCurrWap
     },
   },

@@ -76,13 +76,13 @@
     },
     created() {
       this.currWap = this.$store.getters.getCurrWap;
-      console.log(this.currWap, 'created');
+      // console.log(this.currWap, 'created');
       this.currCmpIdx = this.currWap.cmps.findIndex(
         (cmp) => cmp.id === this.id
       );
       this.maxSize =
         parseInt(this.currWap.cmps[this.currCmpIdx].style.height) + 50 + '';
-      console.log(this.maxSize, 'maxSize');
+      // console.log(this.maxSize, 'maxSize');
     },
     methods: {
       async updateCmp() {

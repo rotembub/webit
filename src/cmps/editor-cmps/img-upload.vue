@@ -27,7 +27,7 @@ export default {
       try {
         this.isLoading = true;
         let res = await uploadImg(ev);
-        console.log(res);
+        // console.log(res);
         this.$emit("onSaveImg", res.url);
         this.isLoading = false;
       } catch (err) {
