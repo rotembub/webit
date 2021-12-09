@@ -27,7 +27,7 @@ async function query(filterBy) {
   gThemes = gCmps.reduce((acc, cmp) => {
     if (!acc[cmp.type])
       acc[cmp.type] = [
-        {type: cmp.theme, cmpId: cmp.id, imgPath: cmp.screenshotImg},
+        {type: cmp.theme, cmpId: cmp.id, imgPath: cmp.screenshotImg}, //**change to category in the json
       ];
     else
       acc[cmp.type].push({
