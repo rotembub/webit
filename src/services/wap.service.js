@@ -5875,7 +5875,7 @@ const newStuff = {
 const newFooter = {
   id: utilService.makeId(4),
   type: 'wap-container',
-  screenshotImg: '',
+  screenshotImg: 'pexels-photo-12211.jpeg',
   category: 'Footers',
   info: {
     dir: 'row',
