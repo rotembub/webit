@@ -65,7 +65,7 @@
     },
     created() {
       this.currWap = this.$store.getters.getCurrWap;
-      console.log(this.currWap, 'created');
+      // console.log(this.currWap, 'created');
       this.currCmpIdx = this.currWap.cmps.findIndex(
         (cmp) => cmp.id === this.id
       );
