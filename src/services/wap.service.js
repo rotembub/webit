@@ -1,10 +1,10 @@
-import {storageService} from './async-storage.service';
-import {utilService} from './util.service';
-import {httpService} from './http.service.js';
+import { storageService } from './async-storage.service'
+import { utilService } from './util.service'
+import { httpService } from './http.service.js'
 
-const KEY = 'wap_DB';
-const CMP_KEY = 'cmp_DB';
-const ENDPOINT = 'wap';
+const KEY = 'wap_DB'
+const CMP_KEY = 'cmp_DB'
+const ENDPOINT = 'wap'
 
 export const wapService = {
   // add,
@@ -20,7 +20,7 @@ export const wapService = {
   removeEl,
   duplicateEl,
   updateElStyle,
-};
+}
 
 // More ways to send query params:
 // return axios.get('api/wap/?id=1223&balance=13')
@@ -51,7 +51,7 @@ async function query(filterBy) {
   // } catch (err) {
   //   console.log('couldnt find Waps', err);
   // }
-  return await httpService.get(ENDPOINT, filterBy);
+  return await httpService.get(ENDPOINT, filterBy)
 }
 async function getById(id) {
   // try {
@@ -60,7 +60,7 @@ async function getById(id) {
   // } catch (err) {
   //   console.log('couldnt get wap by ID', err);
   // }
-  return await httpService.get(`${ENDPOINT}/${id}`);
+  return await httpService.get(`${ENDPOINT}/${id}`)
 }
 
 async function updateCmp(wap, newCmp) {
@@ -71,9 +71,9 @@ async function updateCmp(wap, newCmp) {
   // wap.cmps.splice(idx, 1, newCmp);
   // console.log(wap);
   // return await save(wap);
-  const idx = wap.cmps.findIndex((cmp) => cmp.id === newCmp.id);
-  wap.cmps.splice(idx, 1, newCmp);
-  return Promise.resolve(wap);
+  const idx = wap.cmps.findIndex(cmp => cmp.id === newCmp.id)
+  wap.cmps.splice(idx, 1, newCmp)
+  return Promise.resolve(wap)
 }
 
 // prototype:
@@ -85,9 +85,9 @@ async function removeCmp(wap, cmpId) {
   // wap.cmps.splice(idx, 1);
   // return await save(wap);
   // return wap;
-  const idx = wap.cmps.findIndex((cmp) => cmp.id === cmpId);
-  wap.cmps.splice(idx, 1);
-  return Promise.resolve(wap);
+  const idx = wap.cmps.findIndex(cmp => cmp.id === cmpId)
+  wap.cmps.splice(idx, 1)
+  return Promise.resolve(wap)
 }
 // prototype:
 async function addCmp(wap, cmp, idx) {
@@ -95,9 +95,9 @@ async function addCmp(wap, cmp, idx) {
   // var wap = await getById(wapId);
   // wap.cmps.splice(idx, 0, cmp);
   // return await save(wap);
-  wap.cmps.splice(idx, 0, cmp);
-  console.log('wap after splice', wap);
-  return Promise.resolve(wap);
+  wap.cmps.splice(idx, 0, cmp)
+  console.log('wap after splice', wap)
+  return Promise.resolve(wap)
 }
 
 async function copyCmp(wap, cmpId) {
@@ -106,10 +106,10 @@ async function copyCmp(wap, cmpId) {
   // const newCopyCmp = JSON.parse(JSON.stringify(cmp));
   // newCopyCmp.id = utilService.makeId(); //change id soo it will not duplicate
   // return newCopyCmp;
-  const cmp = wap.cmps.find((cmp) => cmp.id === cmpId);
-  const newCopyCmp = JSON.parse(JSON.stringify(cmp));
-  newCopyCmp.id = utilService.makeId(); //change id soo it will not duplicate
-  return newCopyCmp;
+  const cmp = wap.cmps.find(cmp => cmp.id === cmpId)
+  const newCopyCmp = JSON.parse(JSON.stringify(cmp))
+  newCopyCmp.id = utilService.makeId() //change id soo it will not duplicate
+  return newCopyCmp
 }
 
 async function save(wap) {
@@ -122,9 +122,9 @@ async function save(wap) {
   //   console.log('failed to save wap');
   // }
   if (wap._id) {
-    return await httpService.put(`${ENDPOINT}/${wap._id}`, wap);
+    return await httpService.put(`${ENDPOINT}/${wap._id}`, wap)
   } else {
-    return await httpService.post(ENDPOINT, wap);
+    return await httpService.post(ENDPOINT, wap)
   }
 }
 
@@ -135,7 +135,7 @@ async function remove(wapId) {
   // } catch (err) {
   //   console.log('failed to delete wap', err);
   // }
-  return await httpService.delete(`${ENDPOINT}/${wapId}`);
+  return await httpService.delete(`${ENDPOINT}/${wapId}`)
 }
 
 // async function getEmptyWap() {
@@ -164,13 +164,13 @@ async function getEmptyWap() {
       username: '',
     },
     usersData: {
-      contacts: [{email: '', msg: '', at: null}],
-      signups: [{email: '', at: null}],
+      contacts: [{ email: '', msg: '', at: null }],
+      signups: [{ email: '', at: null }],
     },
     cmps: [],
-  };
+  }
   // return await save(newWap);
-  return await httpService.post(ENDPOINT, newWap);
+  return await httpService.post(ENDPOINT, newWap)
 }
 
 // async function removeEl(wapId, cmpId, containerId ,elType, elId) {
@@ -200,82 +200,82 @@ async function getEmptyWap() {
 async function duplicateEl(wap, cmpId, elType, elId, containerId) {
   // const wap = await getById(wapId);
   if (!containerId) {
-    const cmp = wap.cmps.find((cmp) => cmp.id === cmpId);
-    console.log('cmp FOUnd in dup', cmp.id, cmp);
+    const cmp = wap.cmps.find(cmp => cmp.id === cmpId)
+    console.log('cmp FOUnd in dup', cmp.id, cmp)
     // if (elType === 'logo') delete cmp.info[elType]
-    console.log('elType:', elType);
-    const originalEl = cmp.info[elType].find((el) => el.id === elId);
-    const dupEl = JSON.parse(JSON.stringify(originalEl));
-    dupEl.id = utilService.makeId(6);
-    cmp.info[elType].push(dupEl);
+    console.log('elType:', elType)
+    const originalEl = cmp.info[elType].find(el => el.id === elId)
+    const dupEl = JSON.parse(JSON.stringify(originalEl))
+    dupEl.id = utilService.makeId(6)
+    cmp.info[elType].push(dupEl)
   } else {
-    const container = wap.cmps.find((cmp) => cmp.id === containerId);
-    console.log(wap, container);
-    const innerCmp = container.info.cmps.find((cmp) => cmp.id === cmpId);
-    const originalEl = innerCmp.info[elType].find((el) => el.id === elId);
-    const dupEl = JSON.parse(JSON.stringify(originalEl));
-    dupEl.id = utilService.makeId(6);
-    innerCmp.info[elType].push(dupEl);
+    const container = wap.cmps.find(cmp => cmp.id === containerId)
+    console.log(wap, container)
+    const innerCmp = container.info.cmps.find(cmp => cmp.id === cmpId)
+    const originalEl = innerCmp.info[elType].find(el => el.id === elId)
+    const dupEl = JSON.parse(JSON.stringify(originalEl))
+    dupEl.id = utilService.makeId(6)
+    innerCmp.info[elType].push(dupEl)
   }
   // return await save(wap);
-  return wap;
+  return wap
 }
 
 async function removeEl(wap, cmpId, elType, elId, containerId) {
   //get wap no wapId from store
   // if no type is sent we can delete the entire type from the cmp
-  console.log(wap, cmpId, elType, elId, containerId);
+  console.log(wap, cmpId, elType, elId, containerId)
   // const wap = await getById(wapId);
 
   if (!containerId) {
-    const cmp = wap.cmps.find((cmp) => cmp.id === cmpId);
-    if (elType === 'logo') delete cmp.info[elType];
+    const cmp = wap.cmps.find(cmp => cmp.id === cmpId)
+    if (elType === 'logo') delete cmp.info[elType]
     else {
-      console.log('elType:', elType);
-      const idx = cmp.info[elType].findIndex((el) => el.id === elId);
-      cmp.info[elType].splice(idx, 1);
+      console.log('elType:', elType)
+      const idx = cmp.info[elType].findIndex(el => el.id === elId)
+      cmp.info[elType].splice(idx, 1)
     }
     // return await save(wap);
-    return wap;
+    return wap
   } else {
-    const container = wap.cmps.find((cmp) => cmp.id === containerId);
-    console.log(wap, container);
-    const innerCmp = container.info.cmps.find((cmp) => cmp.id === cmpId);
-    if (elType === 'logo') delete innerCmp.info[elType];
+    const container = wap.cmps.find(cmp => cmp.id === containerId)
+    console.log(wap, container)
+    const innerCmp = container.info.cmps.find(cmp => cmp.id === cmpId)
+    if (elType === 'logo') delete innerCmp.info[elType]
     else {
-      const idx = innerCmp.info[elType].findIndex((el) => el.id === elId);
-      innerCmp.info[elType].splice(idx, 1);
+      const idx = innerCmp.info[elType].findIndex(el => el.id === elId)
+      innerCmp.info[elType].splice(idx, 1)
     }
     // return await save(wap);
-    return wap;
+    return wap
   }
 }
 
 async function updateElStyle(wap, cmpId, elType, elId, containerId, style) {
   // if no type is sent we can delete the entire type from the cmp
-  console.log(wap, cmpId, elType, elId, containerId);
+  console.log(wap, cmpId, elType, elId, containerId)
   // const wap = await getById(wapId)
 
   if (!containerId) {
-    const cmp = wap.cmps.find((cmp) => cmp.id === cmpId);
-    if (elType === 'logo') cmp.info[elType].style = style;
+    const cmp = wap.cmps.find(cmp => cmp.id === cmpId)
+    if (elType === 'logo') cmp.info[elType].style = style
     else {
-      console.log('elType:', elType);
-      const element = cmp.info[elType].find((el) => el.id === elId);
-      element.style = style;
+      console.log('elType:', elType)
+      const element = cmp.info[elType].find(el => el.id === elId)
+      element.style = style
     }
   } else {
-    const container = wap.cmps.find((cmp) => cmp.id === containerId);
-    console.log(wap, container);
-    const innerCmp = container.info.cmps.find((cmp) => cmp.id === cmpId);
-    if (elType === 'logo') innerCmp.info[elType].style = style;
+    const container = wap.cmps.find(cmp => cmp.id === containerId)
+    console.log(wap, container)
+    const innerCmp = container.info.cmps.find(cmp => cmp.id === cmpId)
+    if (elType === 'logo') innerCmp.info[elType].style = style
     else {
-      const element = innerCmp.info[elType].find((el) => el.id === elId);
-      element.style = style;
+      const element = innerCmp.info[elType].find(el => el.id === elId)
+      element.style = style
       // innerCmp.info[elType].splice(idx, 1)
     }
   }
-  return wap;
+  return wap
   // return await save(wap)
 }
 
@@ -312,8 +312,10 @@ const wap_architecture = {
     username: 'Hekro Special',
   },
   usersData: {
-    contacts: [{email: 'user@user.com', msg: 'Please send me stuff', at: 123}],
-    signups: [{email: 'user@user.com', at: 123}],
+    contacts: [
+      { email: 'user@user.com', msg: 'Please send me stuff', at: 123 },
+    ],
+    signups: [{ email: 'user@user.com', at: 123 }],
   },
 
   cmps: [
@@ -898,7 +900,7 @@ const wap_architecture = {
     },
   ],
   isPublic: true,
-};
+}
 
 const wap_fylo = {
   isPublic: true,
@@ -910,8 +912,10 @@ const wap_fylo = {
     username: '',
   },
   usersData: {
-    contacts: [{email: 'user@user.com', msg: 'Please send me stuff', at: 123}],
-    signups: [{email: 'user@user.com', at: 123}],
+    contacts: [
+      { email: 'user@user.com', msg: 'Please send me stuff', at: 123 },
+    ],
+    signups: [{ email: 'user@user.com', at: 123 }],
   },
   theme: 'fylo-main',
 
@@ -2048,7 +2052,7 @@ const wap_fylo = {
       },
     },
   ],
-};
+}
 
 const wap_sunnyside = {
   isPublic: true,
@@ -2059,8 +2063,10 @@ const wap_sunnyside = {
     username: '',
   },
   usersData: {
-    contacts: [{email: 'user@user.com', msg: 'Please send me stuff', at: 123}],
-    signups: [{email: 'user@user.com', at: 123}],
+    contacts: [
+      { email: 'user@user.com', msg: 'Please send me stuff', at: 123 },
+    ],
+    signups: [{ email: 'user@user.com', at: 123 }],
   },
   theme: 'sunnyside-main',
   cmps: [
@@ -3416,7 +3422,7 @@ const wap_sunnyside = {
       },
     },
   ],
-};
+}
 
 const wap_feliciano = {
   isPublic: true,
@@ -3427,8 +3433,10 @@ const wap_feliciano = {
     username: '',
   },
   usersData: {
-    contacts: [{email: 'user@user.com', msg: 'Please send me stuff', at: 123}],
-    signups: [{email: 'user@user.com', at: 123}],
+    contacts: [
+      { email: 'user@user.com', msg: 'Please send me stuff', at: 123 },
+    ],
+    signups: [{ email: 'user@user.com', at: 123 }],
   },
   theme: 'feliciano-main',
   cmps: [
@@ -4879,7 +4887,7 @@ const wap_feliciano = {
           }, // 5
         ],
       },
-      theme: 'feliciano-menu-gallery',
+      theme: 'feliciano-menu-gallery container-layout',
       style: {
         background: 'url()',
         color: '',
@@ -5210,7 +5218,7 @@ const wap_feliciano = {
           //IMAGES
         ],
       },
-      theme: 'wap-container-flex',
+      theme: 'wap-container-center container-layout',
       style: {
         background: 'url()',
         color: '',
@@ -5679,7 +5687,7 @@ const wap_feliciano = {
 
     //CHEF-IMGS
   ],
-};
+}
 
 //gets the data form database*****
 // storageService.post('wap_DB', wap_feliciano);

@@ -83,61 +83,51 @@
 
 <script>
 export default {
-  props: ["id", "elStyle", "cmpId"],
+  props: ['id', 'elStyle', 'cmpId'],
   data() {
     return {
       isText: false,
       isImg: false,
       boldToggle: false,
       editedStyle: {},
-    };
+    }
   },
   created() {
     // console.log("at the el font modal");
-    this.editedStyle = { ...this.elStyle };
+    this.editedStyle = { ...this.elStyle }
   },
   methods: {
     makeFontStyle(value) {
-      if (value === "bold" && !this.editedStyle.fontWeight)
-        this.editedStyle.fontWeight = value;
-      else if (value === "bold" && this.editedStyle.fontWeight)
-        this.editedStyle.fontWeight = null;
-      else this.editedStyle.fontStyle = value;
-      this.styleChanged();
+      if (value === 'bold' && !this.editedStyle.fontWeight)
+        this.editedStyle.fontWeight = value
+      else if (value === 'bold' && this.editedStyle.fontWeight)
+        this.editedStyle.fontWeight = null
+      else this.editedStyle.fontStyle = value
+      this.styleChanged()
     },
     boldFont() {
-      if (this.boldToggle) this.editedStyle.fontWeight = "bold";
-      else this.editedStyle.fontWeight = "initial";
-      this.boldToggle = !this.boldToggle;
+      if (this.boldToggle) this.editedStyle.fontWeight = 'bold'
+      else this.editedStyle.fontWeight = 'initial'
+      this.boldToggle = !this.boldToggle
       // console.log(this.editedStyle);
-      this.styleChanged();
+      this.styleChanged()
     },
     styleChanged() {
-      this.$emit("styleChanged", this.editedStyle);
+      this.$emit('styleChanged', this.editedStyle)
     },
   },
   computed: {
     getPos() {
-      console.log(this.$store.getters.getModalPos);
-      const pos = this.$store.getters.getModalPos;
+      console.log(this.$store.getters.getModalPos)
+      const pos = this.$store.getters.getModalPos
       // console.log(pos);
-      return { right: pos.right + "px", top: pos.top + "px" };
+      return { right: pos.right + 'px', top: pos.top + 'px' }
     },
   },
-};
+}
 </script>
 
 <style></style>
-                  style: {
-                    background: 'url()',
-                    color: '',
-                    backgroundColor: '',
-                    fontSize: '',
-                    paddingRight: '',
-                    paddingTop: '',
-                    paddingBottom: '',
-                    paddingLeft: '',
-                    lineHeight: '',
-                    fontFamily: '',
-                    fontStyle: '',
-                  },
+style: { background: 'url()', color: '', backgroundColor: '', fontSize: '',
+paddingRight: '', paddingTop: '', paddingBottom: '', paddingLeft: '',
+lineHeight: '', fontFamily: '', fontStyle: '', },
