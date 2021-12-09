@@ -1,17 +1,12 @@
 <template>
   <section class="basic-img" :style="getStyle">
-    <img
+    <!-- <img
       v-if="!isUploaded"
       @click.stop="setSelected"
       :src="require('@/assets/wap-imgs/' + details.data.url)"
       alt=""
-    />
-    <img
-      v-else
-      @click.stop="setSelected"
-      :src="details.data.url"
-      alt=""
-    />
+    /> -->
+    <img @click.stop="setSelected" :src="details.data.url" alt="" />
     <basic-el-toolbar
       @removeEl="removeEl"
       @dupElement="dupElement"
@@ -77,7 +72,7 @@ export default {
         containerId: this.details.containerId,
       });
     },
-    dupElement() { 
+    dupElement() {
       this.$store.dispatch({
         type: "dupElement",
         cmpId: this.details.cmpId,
@@ -93,9 +88,10 @@ export default {
         x: ev.target.offsetLeft,
       };
       if (ev.offsetY > ev.target.offsetHeight / 2) {
-        pos.y = ev.target.offsetTop + ev.target.offsetHeight +5;
+        pos.y = ev.target.offsetTop + ev.target.offsetHeight + 5;
       } else pos.y = ev.target.offsetTop - 30;
-      if (ev.clientX > window.innerWidth - 150) pos.x = ev.target.offsetLeft -50;
+      if (ev.clientX > window.innerWidth - 150)
+        pos.x = ev.target.offsetLeft - 50;
       console.log(pos);
       if (this.isSelected) {
         this.isSelected = false;
