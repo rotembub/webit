@@ -3,7 +3,7 @@
     <app-header></app-header>
     <section class="templates-page">
       <div class="templates-page-title">
-        <h1>You can pick one of our best templates</h1>
+        <h1>Just pick one of our best templates</h1>
         <p>Or you can start from scratch</p>
       </div>
       <template-list v-if="waps" :waps="waps"></template-list>

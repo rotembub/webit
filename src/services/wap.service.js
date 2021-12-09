@@ -1,10 +1,10 @@
-import {storageService} from './async-storage.service';
-import {utilService} from './util.service';
-import {httpService} from './http.service.js';
+import { storageService } from './async-storage.service'
+import { utilService } from './util.service'
+import { httpService } from './http.service.js'
 
-const KEY = 'wap_DB';
-const CMP_KEY = 'cmp_DB';
-const ENDPOINT = 'wap';
+const KEY = 'wap_DB'
+const CMP_KEY = 'cmp_DB'
+const ENDPOINT = 'wap'
 
 export const wapService = {
   // add,
@@ -20,7 +20,7 @@ export const wapService = {
   removeEl,
   duplicateEl,
   updateElStyle,
-};
+}
 
 // More ways to send query params:
 // return axios.get('api/wap/?id=1223&balance=13')
@@ -51,7 +51,7 @@ async function query(filterBy) {
   // } catch (err) {
   //   console.log('couldnt find Waps', err);
   // }
-  return await httpService.get(ENDPOINT, filterBy);
+  return await httpService.get(ENDPOINT, filterBy)
 }
 async function getById(id) {
   // try {
@@ -60,7 +60,7 @@ async function getById(id) {
   // } catch (err) {
   //   console.log('couldnt get wap by ID', err);
   // }
-  return await httpService.get(`${ENDPOINT}/${id}`);
+  return await httpService.get(`${ENDPOINT}/${id}`)
 }
 
 async function updateCmp(wap, newCmp) {
@@ -71,9 +71,9 @@ async function updateCmp(wap, newCmp) {
   // wap.cmps.splice(idx, 1, newCmp);
   // console.log(wap);
   // return await save(wap);
-  const idx = wap.cmps.findIndex((cmp) => cmp.id === newCmp.id);
-  wap.cmps.splice(idx, 1, newCmp);
-  return Promise.resolve(wap);
+  const idx = wap.cmps.findIndex(cmp => cmp.id === newCmp.id)
+  wap.cmps.splice(idx, 1, newCmp)
+  return Promise.resolve(wap)
 }
 
 // prototype:
@@ -85,9 +85,9 @@ async function removeCmp(wap, cmpId) {
   // wap.cmps.splice(idx, 1);
   // return await save(wap);
   // return wap;
-  const idx = wap.cmps.findIndex((cmp) => cmp.id === cmpId);
-  wap.cmps.splice(idx, 1);
-  return Promise.resolve(wap);
+  const idx = wap.cmps.findIndex(cmp => cmp.id === cmpId)
+  wap.cmps.splice(idx, 1)
+  return Promise.resolve(wap)
 }
 // prototype:
 async function addCmp(wap, cmp, idx) {
@@ -95,9 +95,9 @@ async function addCmp(wap, cmp, idx) {
   // var wap = await getById(wapId);
   // wap.cmps.splice(idx, 0, cmp);
   // return await save(wap);
-  wap.cmps.splice(idx, 0, cmp);
-  console.log('wap after splice', wap);
-  return Promise.resolve(wap);
+  wap.cmps.splice(idx, 0, cmp)
+  console.log('wap after splice', wap)
+  return Promise.resolve(wap)
 }
 
 async function copyCmp(wap, cmpId) {
@@ -106,10 +106,10 @@ async function copyCmp(wap, cmpId) {
   // const newCopyCmp = JSON.parse(JSON.stringify(cmp));
   // newCopyCmp.id = utilService.makeId(); //change id soo it will not duplicate
   // return newCopyCmp;
-  const cmp = wap.cmps.find((cmp) => cmp.id === cmpId);
-  const newCopyCmp = JSON.parse(JSON.stringify(cmp));
-  newCopyCmp.id = utilService.makeId(); //change id soo it will not duplicate
-  return newCopyCmp;
+  const cmp = wap.cmps.find(cmp => cmp.id === cmpId)
+  const newCopyCmp = JSON.parse(JSON.stringify(cmp))
+  newCopyCmp.id = utilService.makeId() //change id soo it will not duplicate
+  return newCopyCmp
 }
 
 async function save(wap) {
@@ -122,9 +122,9 @@ async function save(wap) {
   //   console.log('failed to save wap');
   // }
   if (wap._id) {
-    return await httpService.put(`${ENDPOINT}/${wap._id}`, wap);
+    return await httpService.put(`${ENDPOINT}/${wap._id}`, wap)
   } else {
-    return await httpService.post(ENDPOINT, wap);
+    return await httpService.post(ENDPOINT, wap)
   }
 }
 
@@ -135,7 +135,7 @@ async function remove(wapId) {
   // } catch (err) {
   //   console.log('failed to delete wap', err);
   // }
-  return await httpService.delete(`${ENDPOINT}/${wapId}`);
+  return await httpService.delete(`${ENDPOINT}/${wapId}`)
 }
 
 // async function getEmptyWap() {
@@ -164,13 +164,13 @@ async function getEmptyWap() {
       username: '',
     },
     usersData: {
-      contacts: [{email: '', msg: '', at: null}],
-      signups: [{email: '', at: null}],
+      contacts: [{ email: '', msg: '', at: null }],
+      signups: [{ email: '', at: null }],
     },
     cmps: [],
-  };
+  }
   // return await save(newWap);
-  return await httpService.post(ENDPOINT, newWap);
+  return await httpService.post(ENDPOINT, newWap)
 }
 
 // async function removeEl(wapId, cmpId, containerId ,elType, elId) {
@@ -200,82 +200,82 @@ async function getEmptyWap() {
 async function duplicateEl(wap, cmpId, elType, elId, containerId) {
   // const wap = await getById(wapId);
   if (!containerId) {
-    const cmp = wap.cmps.find((cmp) => cmp.id === cmpId);
-    console.log('cmp FOUnd in dup', cmp.id, cmp);
+    const cmp = wap.cmps.find(cmp => cmp.id === cmpId)
+    console.log('cmp FOUnd in dup', cmp.id, cmp)
     // if (elType === 'logo') delete cmp.info[elType]
-    console.log('elType:', elType);
-    const originalEl = cmp.info[elType].find((el) => el.id === elId);
-    const dupEl = JSON.parse(JSON.stringify(originalEl));
-    dupEl.id = utilService.makeId(6);
-    cmp.info[elType].push(dupEl);
+    console.log('elType:', elType)
+    const originalEl = cmp.info[elType].find(el => el.id === elId)
+    const dupEl = JSON.parse(JSON.stringify(originalEl))
+    dupEl.id = utilService.makeId(6)
+    cmp.info[elType].push(dupEl)
   } else {
-    const container = wap.cmps.find((cmp) => cmp.id === containerId);
-    console.log(wap, container);
-    const innerCmp = container.info.cmps.find((cmp) => cmp.id === cmpId);
-    const originalEl = innerCmp.info[elType].find((el) => el.id === elId);
-    const dupEl = JSON.parse(JSON.stringify(originalEl));
-    dupEl.id = utilService.makeId(6);
-    innerCmp.info[elType].push(dupEl);
+    const container = wap.cmps.find(cmp => cmp.id === containerId)
+    console.log(wap, container)
+    const innerCmp = container.info.cmps.find(cmp => cmp.id === cmpId)
+    const originalEl = innerCmp.info[elType].find(el => el.id === elId)
+    const dupEl = JSON.parse(JSON.stringify(originalEl))
+    dupEl.id = utilService.makeId(6)
+    innerCmp.info[elType].push(dupEl)
   }
   // return await save(wap);
-  return wap;
+  return wap
 }
 
 async function removeEl(wap, cmpId, elType, elId, containerId) {
   //get wap no wapId from store
   // if no type is sent we can delete the entire type from the cmp
-  console.log(wap, cmpId, elType, elId, containerId);
+  console.log(wap, cmpId, elType, elId, containerId)
   // const wap = await getById(wapId);
 
   if (!containerId) {
-    const cmp = wap.cmps.find((cmp) => cmp.id === cmpId);
-    if (elType === 'logo') delete cmp.info[elType];
+    const cmp = wap.cmps.find(cmp => cmp.id === cmpId)
+    if (elType === 'logo') delete cmp.info[elType]
     else {
-      console.log('elType:', elType);
-      const idx = cmp.info[elType].findIndex((el) => el.id === elId);
-      cmp.info[elType].splice(idx, 1);
+      console.log('elType:', elType)
+      const idx = cmp.info[elType].findIndex(el => el.id === elId)
+      cmp.info[elType].splice(idx, 1)
     }
     // return await save(wap);
-    return wap;
+    return wap
   } else {
-    const container = wap.cmps.find((cmp) => cmp.id === containerId);
-    console.log(wap, container);
-    const innerCmp = container.info.cmps.find((cmp) => cmp.id === cmpId);
-    if (elType === 'logo') delete innerCmp.info[elType];
+    const container = wap.cmps.find(cmp => cmp.id === containerId)
+    console.log(wap, container)
+    const innerCmp = container.info.cmps.find(cmp => cmp.id === cmpId)
+    if (elType === 'logo') delete innerCmp.info[elType]
     else {
-      const idx = innerCmp.info[elType].findIndex((el) => el.id === elId);
-      innerCmp.info[elType].splice(idx, 1);
+      const idx = innerCmp.info[elType].findIndex(el => el.id === elId)
+      innerCmp.info[elType].splice(idx, 1)
     }
     // return await save(wap);
-    return wap;
+    return wap
   }
 }
 
 async function updateElStyle(wap, cmpId, elType, elId, containerId, style) {
   // if no type is sent we can delete the entire type from the cmp
-  console.log(wap, cmpId, elType, elId, containerId);
+  console.log(wap, cmpId, elType, elId, containerId)
   // const wap = await getById(wapId)
 
   if (!containerId) {
-    const cmp = wap.cmps.find((cmp) => cmp.id === cmpId);
-    if (elType === 'logo') cmp.info[elType].style = style;
+    const cmp = wap.cmps.find(cmp => cmp.id === cmpId)
+    if (elType === 'logo') cmp.info[elType].style = style
     else {
-      console.log('elType:', elType);
-      const element = cmp.info[elType].find((el) => el.id === elId);
-      element.style = style;
+      console.log('elType:', elType)
+      const element = cmp.info[elType].find(el => el.id === elId)
+      element.style = style
     }
   } else {
-    const container = wap.cmps.find((cmp) => cmp.id === containerId);
-    console.log(wap, container);
-    const innerCmp = container.info.cmps.find((cmp) => cmp.id === cmpId);
-    if (elType === 'logo') innerCmp.info[elType].style = style;
+    const container = wap.cmps.find(cmp => cmp.id === containerId)
+    console.log(wap, container)
+    const innerCmp = container.info.cmps.find(cmp => cmp.id === cmpId)
+    if (elType === 'logo') innerCmp.info[elType].style = style
     else {
-      const element = innerCmp.info[elType].find((el) => el.id === elId);
-      element.style = style;
+      const element = innerCmp.info[elType].find(el => el.id === elId)
+      element.style = style
       // innerCmp.info[elType].splice(idx, 1)
     }
   }
-  return wap;
+  return wap
   // return await save(wap)
 }
 
@@ -312,14 +312,18 @@ const wap_architecture = {
     username: 'Hekro Special',
   },
   usersData: {
-    contacts: [{email: 'user@user.com', msg: 'Please send me stuff', at: 123}],
-    signups: [{email: 'user@user.com', at: 123}],
+    contacts: [
+      { email: 'user@user.com', msg: 'Please send me stuff', at: 123 },
+    ],
+    signups: [{ email: 'user@user.com', at: 123 }],
   },
 
   cmps: [
     {
       id: utilService.makeId(4),
       type: 'wap-header',
+      screenshotImg: 'archi-examples/theme-header-architecture.png',
+      category: 'Headers',
       info: {
         title: '',
         subtitle: '',
@@ -446,6 +450,8 @@ const wap_architecture = {
     {
       id: utilService.makeId(4),
       type: 'wap-card',
+      screenshotImg: 'archi-examples/card-archi.png',
+      category: 'Cards' ,
       info: {
         title: [
           {
@@ -470,7 +476,7 @@ const wap_architecture = {
         imgs: [
           {
             id: utilService.makeId(4),
-            url: 'building1.jpg',
+            url: 'https://res.cloudinary.com/rb-mister-toy/image/upload/v1639047582/k6uufj8vqob5zmeqqguz.jpg',
             style: {
               background: 'url()',
               color: '',
@@ -505,6 +511,8 @@ const wap_architecture = {
     {
       id: utilService.makeId(4),
       type: 'wap-text',
+      screenshotImg: 'archi-examples/text-archi.png',
+      category: 'Text',
       info: {
         title: [
           {
@@ -563,6 +571,8 @@ const wap_architecture = {
     {
       id: utilService.makeId(4),
       type: 'wap-container',
+      screenshotImg: 'archi-examples/gallery-archi.png',
+      category: 'Galleries',
       info: {
         dir: 'row',
         cmps: [
@@ -593,7 +603,7 @@ const wap_architecture = {
               imgs: [
                 {
                   id: utilService.makeId(4),
-                  url: 'proj1.jpg',
+                  url: 'https://res.cloudinary.com/rb-mister-toy/image/upload/v1639047583/z37wb0ptsbys73axascc.jpg',
                   style: {
                     background: 'url()',
                     color: '',
@@ -652,7 +662,7 @@ const wap_architecture = {
               imgs: [
                 {
                   id: utilService.makeId(4),
-                  url: 'proj2.jpg',
+                  url: 'https://res.cloudinary.com/rb-mister-toy/image/upload/v1639047584/divy2h23e5uzapcqpqup.jpg',
                   style: {
                     background: 'url()',
                     color: '',
@@ -711,7 +721,7 @@ const wap_architecture = {
               imgs: [
                 {
                   id: utilService.makeId(4),
-                  url: 'proj3.jpg',
+                  url: 'https://res.cloudinary.com/rb-mister-toy/image/upload/v1639047583/cb0vpto1vvxblurhj3rf.jpg',
                   style: {
                     background: 'url()',
                     color: '',
@@ -770,7 +780,7 @@ const wap_architecture = {
               imgs: [
                 {
                   id: utilService.makeId(4),
-                  url: 'proj4.jpg',
+                  url: 'https://res.cloudinary.com/rb-mister-toy/image/upload/v1639047585/uywwyuledud6ctzctxit.jpg',
                   style: {
                     background: 'url()',
                     color: '',
@@ -822,6 +832,8 @@ const wap_architecture = {
     {
       id: utilService.makeId(4),
       type: 'wap-contact',
+      screenshotImg: 'archi-examples/contact-archi.png',
+      category:'Contacts',
       info: {
         title: [
           {
@@ -845,7 +857,7 @@ const wap_architecture = {
         subtitle: [
           {
             id: utilService.makeId(6),
-            txt: 'We’re always looking for new opportunities and are comfortable working internationally. Please get in touch and one of our project managers will contact you about beginning the proposal process.',
+            txt: 'We\'re always looking for new opportunities and are comfortable working internationally. Please get in touch and one of our project managers will contact you about beginning the proposal process.',
             style: {
               background: 'url()',
               color: '',
@@ -898,7 +910,7 @@ const wap_architecture = {
     },
   ],
   isPublic: true,
-};
+}
 
 const wap_fylo = {
   isPublic: true,
@@ -910,8 +922,10 @@ const wap_fylo = {
     username: '',
   },
   usersData: {
-    contacts: [{email: 'user@user.com', msg: 'Please send me stuff', at: 123}],
-    signups: [{email: 'user@user.com', at: 123}],
+    contacts: [
+      { email: 'user@user.com', msg: 'Please send me stuff', at: 123 },
+    ],
+    signups: [{ email: 'user@user.com', at: 123 }],
   },
   theme: 'fylo-main',
 
@@ -919,12 +933,14 @@ const wap_fylo = {
     {
       id: utilService.makeId(4),
       type: 'wap-header',
+      screenshotImg: 'fylo-examples/fylo-header.png',
+      category:'Headers',
       info: {
         title: '',
         subtitle: '',
         logo: {
           type: 'img',
-          url: 'fylo-imgs/logo.svg',
+          url: 'https://res.cloudinary.com/rb-mister-toy/image/upload/v1639046911/y8xzjmh6sikx4iaxsjoy.svg',
           txt: '',
           style: {
             background: 'url()',
@@ -1013,6 +1029,8 @@ const wap_fylo = {
     {
       id: utilService.makeId(4),
       type: 'wap-container',
+      screenshotImg: 'fylo-examples/fylo-card-v1.png',
+      category:'Landings',
       info: {
         dir: 'row',
         cmps: [
@@ -1023,7 +1041,7 @@ const wap_fylo = {
               imgs: [
                 {
                   id: utilService.makeId(4),
-                  url: 'fylo-imgs/illustration-intro.png',
+                  url: 'https://res.cloudinary.com/rb-mister-toy/image/upload/v1639046608/nwynylnvzz3cl5rtsmdo.png',
                   style: {
                     background: 'url()',
                     color: '',
@@ -1175,6 +1193,8 @@ const wap_fylo = {
     {
       id: utilService.makeId(4),
       type: 'wap-container',
+      screenshotImg: 'fylo-examples/fylo-gallery.png',
+      category:'Cards',
       info: {
         dir: 'row',
         cmps: [
@@ -1223,7 +1243,7 @@ const wap_fylo = {
               imgs: [
                 {
                   id: utilService.makeId(4),
-                  url: 'fylo-imgs/icon-access-anywhere.svg',
+                  url: 'https://res.cloudinary.com/rb-mister-toy/image/upload/v1639046824/hdxrb2fjvotkfjrglqkb.svg',
                   style: {
                     background: 'url()',
                     color: '',
@@ -1300,7 +1320,7 @@ const wap_fylo = {
               imgs: [
                 {
                   id: utilService.makeId(4),
-                  url: 'fylo-imgs/icon-security.svg',
+                  url: 'https://res.cloudinary.com/rb-mister-toy/image/upload/v1639046802/z1cwegkmiv9qawbmmwad.svg',
                   style: {
                     background: 'url()',
                     color: '',
@@ -1377,7 +1397,7 @@ const wap_fylo = {
               imgs: [
                 {
                   id: utilService.makeId(4),
-                  url: 'fylo-imgs/icon-collaboration.svg',
+                  url: 'https://res.cloudinary.com/rb-mister-toy/image/upload/v1639046825/g1weljwqgxhryicacme3.svg',
                   style: {
                     background: 'url()',
                     color: '',
@@ -1454,7 +1474,7 @@ const wap_fylo = {
               imgs: [
                 {
                   id: utilService.makeId(4),
-                  url: 'fylo-imgs/icon-any-file.svg',
+                  url: 'https://res.cloudinary.com/rb-mister-toy/image/upload/v1639046824/lq0ngmmk0ciulsowcdb0.svg',
                   style: {
                     background: 'url()',
                     color: '',
@@ -1506,6 +1526,8 @@ const wap_fylo = {
     {
       id: utilService.makeId(4),
       type: 'wap-container',
+      screenshotImg: 'fylo-examples/fylo-card-v2.png',
+      category:'Cards',
       info: {
         dir: 'row',
         cmps: [
@@ -1516,7 +1538,7 @@ const wap_fylo = {
               imgs: [
                 {
                   id: utilService.makeId(4),
-                  url: 'fylo-imgs/illustration-stay-productive.png',
+                  url: 'https://res.cloudinary.com/rb-mister-toy/image/upload/v1639046608/so8bjwwlzcl4eikovxgr.png',
                   style: {
                     background: 'url()',
                     color: '',
@@ -1643,6 +1665,8 @@ const wap_fylo = {
     {
       id: utilService.makeId(4),
       type: 'wap-container',
+      screenshotImg: 'fylo-examples/fylo-review.png',
+      category:'Reviews',
       info: {
         dir: 'row',
         cmps: [
@@ -1710,7 +1734,7 @@ const wap_fylo = {
               avatar: [
                 {
                   id: utilService.makeId(4),
-                  url: 'fylo-imgs/profile-1.jpg',
+                  url: 'https://res.cloudinary.com/rb-mister-toy/image/upload/v1639046608/tcrmtyvjpse0llvh7r45.jpg',
                   style: {
                     background: 'url()',
                     color: '',
@@ -1806,7 +1830,7 @@ const wap_fylo = {
               avatar: [
                 {
                   id: utilService.makeId(4),
-                  url: 'fylo-imgs/profile-2.jpg',
+                  url: 'https://res.cloudinary.com/rb-mister-toy/image/upload/v1639046608/ongddbdwdh9wjmscaydh.jpg',
                   style: {
                     background: 'url()',
                     color: '',
@@ -1902,7 +1926,7 @@ const wap_fylo = {
               avatar: [
                 {
                   id: utilService.makeId(4),
-                  url: 'fylo-imgs/profile-3.jpg',
+                  url: 'https://res.cloudinary.com/rb-mister-toy/image/upload/v1639046608/j4wfnxxodyuxlayfvjno.jpg',
                   style: {
                     background: 'url()',
                     color: '',
@@ -1954,6 +1978,8 @@ const wap_fylo = {
     {
       id: utilService.makeId(4),
       type: 'wap-signup',
+      screenshotImg: 'fylo-examples/fylo-sign-up.png',
+      category: 'Contacts',
       info: {
         title: [
           {
@@ -2048,7 +2074,7 @@ const wap_fylo = {
       },
     },
   ],
-};
+}
 
 const wap_sunnyside = {
   isPublic: true,
@@ -2059,8 +2085,10 @@ const wap_sunnyside = {
     username: '',
   },
   usersData: {
-    contacts: [{email: 'user@user.com', msg: 'Please send me stuff', at: 123}],
-    signups: [{email: 'user@user.com', at: 123}],
+    contacts: [
+      { email: 'user@user.com', msg: 'Please send me stuff', at: 123 },
+    ],
+    signups: [{ email: 'user@user.com', at: 123 }],
   },
   theme: 'sunnyside-main',
   cmps: [
@@ -2068,6 +2096,7 @@ const wap_sunnyside = {
       id: utilService.makeId(4),
       type: 'wap-container',
       screenshotImg: 'sunnyside-examples/hero.png',
+      category: 'Landings',
       info: {
         dir: 'column',
         cmps: [
@@ -2079,7 +2108,7 @@ const wap_sunnyside = {
               subtitle: '',
               logo: {
                 type: 'img',
-                url: 'sunnyside-imgs/images/logo.svg',
+                url: 'https://res.cloudinary.com/rb-mister-toy/image/upload/v1639047189/gvhktnel0e6qvqxpnooy.svg',
                 txt: '',
                 style: {
                   background: 'url()',
@@ -2242,6 +2271,7 @@ const wap_sunnyside = {
       id: utilService.makeId(4),
       type: 'wap-container',
       screenshotImg: 'sunnyside-examples/egg.png',
+      category: 'Cards',
       info: {
         dir: 'row',
         cmps: [
@@ -2330,7 +2360,7 @@ const wap_sunnyside = {
               imgs: [
                 {
                   id: utilService.makeId(4),
-                  url: 'sunnyside-imgs/images/desktop/image-transform.jpg',
+                  url: 'https://res.cloudinary.com/rb-mister-toy/image/upload/v1639047278/tchg2bfwn2rcbo7u5jsr.jpg',
                   style: {
                     background: 'url()',
                     color: '',
@@ -2383,6 +2413,7 @@ const wap_sunnyside = {
       id: utilService.makeId(4),
       type: 'wap-container',
       screenshotImg: 'sunnyside-examples/pink.png',
+      category: 'Cards',
       info: {
         dir: 'row',
         cmps: [
@@ -2393,7 +2424,7 @@ const wap_sunnyside = {
               imgs: [
                 {
                   id: utilService.makeId(4),
-                  url: 'sunnyside-imgs/images/desktop/image-stand-out.jpg',
+                  url: 'https://res.cloudinary.com/rb-mister-toy/image/upload/v1639047278/l4imdffltxtyeo3muyat.jpg',
                   style: {
                     background: 'url()',
                     color: '',
@@ -2524,6 +2555,7 @@ const wap_sunnyside = {
       id: utilService.makeId(4),
       type: 'wap-container',
       screenshotImg: 'sunnyside-examples/orange.png',
+      category:'Cards',
       info: {
         dir: 'row',
         cmps: [
@@ -2666,6 +2698,7 @@ const wap_sunnyside = {
       id: utilService.makeId(4),
       type: 'wap-container',
       screenshotImg: 'sunnyside-examples/reviews.png',
+      category: 'Reviews',
       info: {
         dir: 'row',
         cmps: [
@@ -2772,7 +2805,7 @@ const wap_sunnyside = {
               avatar: [
                 {
                   id: utilService.makeId(4),
-                  url: 'sunnyside-imgs/images/image-emily.jpg',
+                  url: 'https://res.cloudinary.com/rb-mister-toy/image/upload/v1639047218/vhclmr440m2t8djfwvp3.jpg',
                   style: {
                     background: 'url()',
                     color: '',
@@ -2869,7 +2902,7 @@ const wap_sunnyside = {
               avatar: [
                 {
                   id: utilService.makeId(4),
-                  url: 'sunnyside-imgs/images/image-thomas.jpg',
+                  url: 'https://res.cloudinary.com/rb-mister-toy/image/upload/v1639047218/mzogv0hke7fyqncuoofq.jpg',
                   style: {
                     background: 'url()',
                     color: '',
@@ -2965,7 +2998,7 @@ const wap_sunnyside = {
               avatar: [
                 {
                   id: utilService.makeId(4),
-                  url: 'sunnyside-imgs/images/image-jennie.jpg',
+                  url: 'https://res.cloudinary.com/rb-mister-toy/image/upload/v1639047217/lsttztfqqw0ydmzw2aad.jpg',
                   style: {
                     background: 'url()',
                     color: '',
@@ -3018,6 +3051,7 @@ const wap_sunnyside = {
       id: utilService.makeId(4),
       type: 'wap-container',
       screenshotImg: 'sunnyside-examples/imgs.png',
+      category: 'Galleries',
       info: {
         dir: 'row',
         cmps: [
@@ -3028,7 +3062,7 @@ const wap_sunnyside = {
               imgs: [
                 {
                   id: utilService.makeId(4),
-                  url: 'sunnyside-imgs/images/desktop/image-gallery-cone.jpg',
+                  url: 'https://res.cloudinary.com/rb-mister-toy/image/upload/v1639047277/obournwajbm91puewp2d.jpg',
                   style: {
                     background: 'url()',
                     color: '',
@@ -3067,7 +3101,7 @@ const wap_sunnyside = {
               imgs: [
                 {
                   id: utilService.makeId(4),
-                  url: 'sunnyside-imgs/images/desktop/image-gallery-milkbottles.jpg',
+                  url: 'https://res.cloudinary.com/rb-mister-toy/image/upload/v1639047277/ypwtbx0kygjlafvspjoa.jpg',
                   style: {
                     background: 'url()',
                     color: '',
@@ -3106,7 +3140,7 @@ const wap_sunnyside = {
               imgs: [
                 {
                   id: utilService.makeId(4),
-                  url: 'sunnyside-imgs/images/desktop/image-gallery-orange.jpg',
+                  url: 'https://res.cloudinary.com/rb-mister-toy/image/upload/v1639047277/xzoon57pmlzolnwh05jw.jpg',
                   style: {
                     background: 'url()',
                     color: '',
@@ -3145,7 +3179,7 @@ const wap_sunnyside = {
               imgs: [
                 {
                   id: utilService.makeId(4),
-                  url: 'sunnyside-imgs/images/desktop/image-gallery-sugarcubes.jpg',
+                  url: 'https://res.cloudinary.com/rb-mister-toy/image/upload/v1639047277/xjgf5ouan5y7ielhflby.jpg',
                   style: {
                     background: 'url()',
                     color: '',
@@ -3198,6 +3232,7 @@ const wap_sunnyside = {
       id: utilService.makeId(4),
       type: 'wap-container',
       screenshotImg: 'sunnyside-examples/footer.png',
+      category: 'Footers',
       info: {
         dir: 'row',
         cmps: [
@@ -3322,7 +3357,7 @@ const wap_sunnyside = {
               icons: [
                 {
                   id: utilService.makeId(4),
-                  url: 'sunnyside-imgs/images/icon-facebook.svg',
+                  url: 'https://res.cloudinary.com/rb-mister-toy/image/upload/v1639047488/fsrwrmaypdamlutcckaj.svg',
                   style: {
                     background: 'url()',
                     color: '',
@@ -3339,7 +3374,7 @@ const wap_sunnyside = {
                 },
                 {
                   id: utilService.makeId(4),
-                  url: 'sunnyside-imgs/images/icon-instagram.svg',
+                  url: 'https://res.cloudinary.com/rb-mister-toy/image/upload/v1639047488/hu70lgble2ovlac6rd3d.svg',
                   style: {
                     background: 'url()',
                     color: '',
@@ -3356,7 +3391,7 @@ const wap_sunnyside = {
                 },
                 {
                   id: utilService.makeId(4),
-                  url: 'sunnyside-imgs/images/icon-twitter.svg',
+                  url: 'https://res.cloudinary.com/rb-mister-toy/image/upload/v1639047488/kgvy5qmccx4fjf1qk7ic.svg',
                   style: {
                     background: 'url()',
                     color: '',
@@ -3373,7 +3408,7 @@ const wap_sunnyside = {
                 },
                 {
                   id: utilService.makeId(4),
-                  url: 'sunnyside-imgs/images/icon-pinterest.svg',
+                  url: 'https://res.cloudinary.com/rb-mister-toy/image/upload/v1639047488/oy2fh5qxeimwjkw5f5zz.svg',
                   style: {
                     background: 'url()',
                     color: '',
@@ -3423,7 +3458,7 @@ const wap_sunnyside = {
       },
     },
   ],
-};
+}
 
 const wap_feliciano = {
   isPublic: true,
@@ -3434,8 +3469,10 @@ const wap_feliciano = {
     username: '',
   },
   usersData: {
-    contacts: [{email: 'user@user.com', msg: 'Please send me stuff', at: 123}],
-    signups: [{email: 'user@user.com', at: 123}],
+    contacts: [
+      { email: 'user@user.com', msg: 'Please send me stuff', at: 123 },
+    ],
+    signups: [{ email: 'user@user.com', at: 123 }],
   },
   theme: 'feliciano-main',
   cmps: [
@@ -3443,6 +3480,8 @@ const wap_feliciano = {
     {
       id: utilService.makeId(4),
       type: 'wap-container',
+      screenshotImg: 'feliciano-examples/hero.png',
+      category: 'Landings',
       info: {
         dir: 'column',
         cmps: [
@@ -3695,7 +3734,7 @@ const wap_feliciano = {
               imgs: [
                 {
                   id: utilService.makeId(4),
-                  url: 'feliciano-imgs/dish-1-feliciano.png',
+                  url: 'https://res.cloudinary.com/rb-mister-toy/image/upload/v1639045688/uaarokyp98gttuio0rp2.png',
                   style: {
                     background: 'url()',
                     color: '',
@@ -3772,7 +3811,7 @@ const wap_feliciano = {
               imgs: [
                 {
                   id: utilService.makeId(4),
-                  url: 'feliciano-imgs/dish-2-feliciano.png',
+                  url: 'https://res.cloudinary.com/rb-mister-toy/image/upload/v1639045687/czna341vpw6mm15tbygi.png',
                   style: {
                     background: 'url()',
                     color: '',
@@ -3849,7 +3888,7 @@ const wap_feliciano = {
               imgs: [
                 {
                   id: utilService.makeId(4),
-                  url: 'feliciano-imgs/dish-3-feliciano.png',
+                  url: 'https://res.cloudinary.com/rb-mister-toy/image/upload/v1639045687/so8gr3gawwx5ejpyecw8.png',
                   style: {
                     background: 'url()',
                     color: '',
@@ -3926,7 +3965,7 @@ const wap_feliciano = {
               imgs: [
                 {
                   id: utilService.makeId(4),
-                  url: 'feliciano-imgs/dish-4-feliciano.png',
+                  url: 'https://res.cloudinary.com/rb-mister-toy/image/upload/v1639045688/yf4oetd3x5yqgqz6lbe0.png',
                   style: {
                     background: 'url()',
                     color: '',
@@ -3976,6 +4015,8 @@ const wap_feliciano = {
     {
       id: utilService.makeId(4),
       type: 'wap-container',
+      screenshotImg: 'feliciano-examples/herochefs.png',
+      category: 'Cards',
       info: {
         dir: 'row',
         cmps: [
@@ -3987,7 +4028,7 @@ const wap_feliciano = {
               imgs: [
                 {
                   id: utilService.makeId(4),
-                  url: 'feliciano-imgs/chef-salting.jpg',
+                  url: 'https://res.cloudinary.com/rb-mister-toy/image/upload/v1639045697/hbahgn9wxtzvj51kctdi.jpg',
                   style: {
                     background: 'url()',
                     color: '',
@@ -3999,7 +4040,7 @@ const wap_feliciano = {
                 },
                 {
                   id: utilService.makeId(4),
-                  url: 'feliciano-imgs/chef-cleaning-salt.jpg',
+                  url: 'https://res.cloudinary.com/rb-mister-toy/image/upload/v1639045690/dv65ye7pvztvruzwjj4q.jpg',
                   style: {
                     background: 'url()',
                     color: '',
@@ -4112,6 +4153,8 @@ const wap_feliciano = {
     {
       id: utilService.makeId(4),
       type: 'wap-text',
+      screenshotImg: 'feliciano-examples/text.png',
+      category: 'Text',
       info: {
         title: [
           {
@@ -4156,6 +4199,8 @@ const wap_feliciano = {
     {
       id: utilService.makeId(4),
       type: 'wap-container',
+      screenshotImg: 'feliciano-examples/services.png',
+      category: 'Cards',
       info: {
         dir: 'row',
         cmps: [
@@ -4180,7 +4225,7 @@ const wap_feliciano = {
               imgs: [
                 {
                   id: utilService.makeId(4),
-                  url: 'feliciano-imgs/catering-logo-1.png',
+                  url: 'https://res.cloudinary.com/rb-mister-toy/image/upload/v1639045685/otxtfe0johrcwqdug2dz.png',
                   style: {
                     background: 'url()',
                     color: '',
@@ -4231,7 +4276,7 @@ const wap_feliciano = {
               imgs: [
                 {
                   id: utilService.makeId(4),
-                  url: 'feliciano-imgs/catering-logo-2.png',
+                  url: 'https://res.cloudinary.com/rb-mister-toy/image/upload/v1639045686/wx7awvwj6ff2rgpo5496.png',
                   style: {
                     background: 'url()',
                     color: '',
@@ -4282,7 +4327,7 @@ const wap_feliciano = {
               imgs: [
                 {
                   id: utilService.makeId(4),
-                  url: 'feliciano-imgs/catering-logo-3.png',
+                  url: 'https://res.cloudinary.com/rb-mister-toy/image/upload/v1639045686/cstj9mlafjyman7kbqqv.png',
                   style: {
                     background: 'url()',
                     color: '',
@@ -4331,6 +4376,8 @@ const wap_feliciano = {
     {
       id: utilService.makeId(4),
       type: 'wap-container',
+      screenshotImg: 'feliciano-examples/menu1.png',
+      category: 'Cards',
       info: {
         dir: 'row',
         cmps: [
@@ -4342,7 +4389,7 @@ const wap_feliciano = {
               imgs: [
                 {
                   id: utilService.makeId(4),
-                  url: 'feliciano-imgs/dish-1-feliciano.png',
+                  url: 'https://res.cloudinary.com/rb-mister-toy/image/upload/v1639045688/uaarokyp98gttuio0rp2.png',
                   style: {
                     background: 'url()',
                     color: '',
@@ -4433,7 +4480,7 @@ const wap_feliciano = {
               imgs: [
                 {
                   id: utilService.makeId(4),
-                  url: 'feliciano-imgs/dish-3-feliciano.png',
+                  url: 'https://res.cloudinary.com/rb-mister-toy/image/upload/v1639045687/so8gr3gawwx5ejpyecw8.png',
                   style: {
                     background: 'url()',
                     color: '',
@@ -4578,7 +4625,7 @@ const wap_feliciano = {
               imgs: [
                 {
                   id: utilService.makeId(4),
-                  url: 'feliciano-imgs/dish-3-feliciano.png',
+                  url: 'https://res.cloudinary.com/rb-mister-toy/image/upload/v1639045687/czna341vpw6mm15tbygi.png',
                   style: {
                     background: 'url()',
                     color: '',
@@ -4669,7 +4716,7 @@ const wap_feliciano = {
               imgs: [
                 {
                   id: utilService.makeId(4),
-                  url: 'feliciano-imgs/dish-4-feliciano.png',
+                  url: 'https://res.cloudinary.com/rb-mister-toy/image/upload/v1639045687/p1oib2rzk32ne5mwyxz9.png',
                   style: {
                     background: 'url()',
                     color: '',
@@ -4708,7 +4755,7 @@ const wap_feliciano = {
               imgs: [
                 {
                   id: utilService.makeId(4),
-                  url: 'feliciano-imgs/dish-4-feliciano.png',
+                  url: 'https://res.cloudinary.com/rb-mister-toy/image/upload/v1639045688/yf4oetd3x5yqgqz6lbe0.png',
                   style: {
                     background: 'url()',
                     color: '',
@@ -4800,7 +4847,7 @@ const wap_feliciano = {
               imgs: [
                 {
                   id: utilService.makeId(4),
-                  url: 'feliciano-imgs/dish-1-feliciano.png',
+                  url: 'https://res.cloudinary.com/rb-mister-toy/image/upload/v1639045688/uaarokyp98gttuio0rp2.png',
                   style: {
                     background: 'url()',
                     color: '',
@@ -4886,7 +4933,7 @@ const wap_feliciano = {
           }, // 5
         ],
       },
-      theme: 'feliciano-menu-gallery',
+      theme: 'feliciano-menu-gallery container-layout',
       style: {
         background: 'url()',
         color: '',
@@ -4905,6 +4952,8 @@ const wap_feliciano = {
     {
       id: utilService.makeId(4),
       type: 'wap-text',
+      screenshotImg: 'feliciano-examples/chefs-text.png',
+      category:'Text',
       info: {
         title: [
           {
@@ -4950,6 +4999,8 @@ const wap_feliciano = {
     {
       id: utilService.makeId(4),
       type: 'wap-container',
+      screenshotImg: 'feliciano-examples/chefs-imgs.png',
+      category: 'Cards',
       info: {
         dir: 'row',
         cmps: [
@@ -4974,7 +5025,7 @@ const wap_feliciano = {
               imgs: [
                 {
                   id: utilService.makeId(4),
-                  url: 'feliciano-imgs/chef-1.png',
+                  url: 'https://res.cloudinary.com/rb-mister-toy/image/upload/v1639045686/wtyrzzdhnfdftmyh0cbs.png',
                   style: {
                     background: 'url()',
                     color: '',
@@ -5039,7 +5090,7 @@ const wap_feliciano = {
               imgs: [
                 {
                   id: utilService.makeId(4),
-                  url: 'feliciano-imgs/chef-2.png',
+                  url: 'https://res.cloudinary.com/rb-mister-toy/image/upload/v1639045686/xgfgpi2znifye1faupoh.png',
                   style: {
                     background: 'url()',
                     color: '',
@@ -5104,7 +5155,7 @@ const wap_feliciano = {
               imgs: [
                 {
                   id: utilService.makeId(4),
-                  url: 'feliciano-imgs/chef-3.png',
+                  url: 'https://res.cloudinary.com/rb-mister-toy/image/upload/v1639045686/qwmjkk2qe7bq4pu0uwyb.png',
                   style: {
                     background: 'url()',
                     color: '',
@@ -5169,7 +5220,7 @@ const wap_feliciano = {
               imgs: [
                 {
                   id: utilService.makeId(4),
-                  url: 'feliciano-imgs/chef-4.png',
+                  url: 'https://res.cloudinary.com/rb-mister-toy/image/upload/v1639045686/oqlcyu8uqm7eezumvtb7.png',
                   style: {
                     background: 'url()',
                     color: '',
@@ -5217,7 +5268,7 @@ const wap_feliciano = {
           //IMAGES
         ],
       },
-      theme: 'wap-container-flex',
+      theme: 'wap-container-center container-layout',
       style: {
         background: 'url()',
         color: '',
@@ -5231,6 +5282,8 @@ const wap_feliciano = {
     {
       id: utilService.makeId(4),
       type: 'wap-text',
+      screenshotImg: 'feliciano-examples/happy-text.png',
+      category: 'Text',
       info: {
         title: [
           {
@@ -5278,6 +5331,8 @@ const wap_feliciano = {
     {
       id: utilService.makeId(4),
       type: 'wap-container',
+      screenshotImg: 'feliciano-examples/reviews.png',
+      category: 'Reviews',
       info: {
         dir: 'row',
         cmps: [
@@ -5345,7 +5400,7 @@ const wap_feliciano = {
               avatar: [
                 {
                   id: utilService.makeId(4),
-                  url: 'feliciano-imgs/yarden-review.png',
+                  url: 'https://res.cloudinary.com/rb-mister-toy/image/upload/v1639045689/xdjpu2m2cekusa9sumk9.png',
                   style: {
                     background: 'url()',
                     color: '',
@@ -5441,7 +5496,7 @@ const wap_feliciano = {
               avatar: [
                 {
                   id: utilService.makeId(4),
-                  url: 'feliciano-imgs/rotem-review.png',
+                  url: 'https://res.cloudinary.com/rb-mister-toy/image/upload/v1639045689/z6kmqgl99aj7quigxfi7.png',
                   style: {
                     background: 'url()',
                     color: '',
@@ -5537,7 +5592,7 @@ const wap_feliciano = {
               avatar: [
                 {
                   id: utilService.makeId(4),
-                  url: 'feliciano-imgs/matan-review.png',
+                  url: 'https://res.cloudinary.com/rb-mister-toy/image/upload/v1639045688/wcuewyjbvcl1ng9sexp6.png',
                   style: {
                     background: 'url()',
                     color: '',
@@ -5633,7 +5688,7 @@ const wap_feliciano = {
               avatar: [
                 {
                   id: utilService.makeId(4),
-                  url: 'feliciano-imgs/shani-review.png',
+                  url: 'https://res.cloudinary.com/rb-mister-toy/image/upload/v1639045689/ynikal9lmpvlmmmyfijm.png',
                   style: {
                     background: 'url()',
                     color: '',
@@ -5686,7 +5741,7 @@ const wap_feliciano = {
 
     //CHEF-IMGS
   ],
-};
+}
 
 //gets the data form database*****
 // storageService.post('wap_DB', wap_feliciano);
