@@ -13,7 +13,7 @@
       <div @click="openRoute('/template')">
         <i type="danger" class="el-icon-money"></i>
       </div>
-      <div>
+      <div @click="openRoute('/user')">
         <i type="danger" class="el-icon-user-solid"></i>
       </div>
 

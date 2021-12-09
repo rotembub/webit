@@ -8,7 +8,7 @@
       </div>
       <el-collapse-item
         v-for="type in types"
-        :title="getProperTxt(type)"
+        :title="type.category"
         :key="'k' + type"
         @click.native="loadThemes(type)"
       >

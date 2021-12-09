@@ -451,7 +451,7 @@ const wap_architecture = {
       id: utilService.makeId(4),
       type: 'wap-card',
       screenshotImg: 'archi-examples/card-archi.png',
-      category: 'Cards' ,
+      category: 'Cards',
       info: {
         title: [
           {
@@ -833,7 +833,7 @@ const wap_architecture = {
       id: utilService.makeId(4),
       type: 'wap-contact',
       screenshotImg: 'archi-examples/contact-archi.png',
-      category:'Contacts',
+      category: 'Contacts',
       info: {
         title: [
           {
@@ -857,7 +857,7 @@ const wap_architecture = {
         subtitle: [
           {
             id: utilService.makeId(6),
-            txt: 'We\'re always looking for new opportunities and are comfortable working internationally. Please get in touch and one of our project managers will contact you about beginning the proposal process.',
+            txt: "We're always looking for new opportunities and are comfortable working internationally. Please get in touch and one of our project managers will contact you about beginning the proposal process.",
             style: {
               background: 'url()',
               color: '',
@@ -934,7 +934,7 @@ const wap_fylo = {
       id: utilService.makeId(4),
       type: 'wap-header',
       screenshotImg: 'fylo-examples/fylo-header.png',
-      category:'Headers',
+      category: 'Headers',
       info: {
         title: '',
         subtitle: '',
@@ -1030,7 +1030,7 @@ const wap_fylo = {
       id: utilService.makeId(4),
       type: 'wap-container',
       screenshotImg: 'fylo-examples/fylo-card-v1.png',
-      category:'Landings',
+      category: 'Landings',
       info: {
         dir: 'row',
         cmps: [
@@ -1194,7 +1194,7 @@ const wap_fylo = {
       id: utilService.makeId(4),
       type: 'wap-container',
       screenshotImg: 'fylo-examples/fylo-gallery.png',
-      category:'Cards',
+      category: 'Cards',
       info: {
         dir: 'row',
         cmps: [
@@ -1527,7 +1527,7 @@ const wap_fylo = {
       id: utilService.makeId(4),
       type: 'wap-container',
       screenshotImg: 'fylo-examples/fylo-card-v2.png',
-      category:'Cards',
+      category: 'Cards',
       info: {
         dir: 'row',
         cmps: [
@@ -1666,7 +1666,7 @@ const wap_fylo = {
       id: utilService.makeId(4),
       type: 'wap-container',
       screenshotImg: 'fylo-examples/fylo-review.png',
-      category:'Reviews',
+      category: 'Reviews',
       info: {
         dir: 'row',
         cmps: [
@@ -2555,7 +2555,7 @@ const wap_sunnyside = {
       id: utilService.makeId(4),
       type: 'wap-container',
       screenshotImg: 'sunnyside-examples/orange.png',
-      category:'Cards',
+      category: 'Cards',
       info: {
         dir: 'row',
         cmps: [
@@ -4953,7 +4953,7 @@ const wap_feliciano = {
       id: utilService.makeId(4),
       type: 'wap-text',
       screenshotImg: 'feliciano-examples/chefs-text.png',
-      category:'Text',
+      category: 'Text',
       info: {
         title: [
           {

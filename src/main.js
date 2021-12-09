@@ -14,7 +14,7 @@ import { ObserveVisibility } from 'vue-observe-visibility'
 
 Vue.directive('observe-visibility', ObserveVisibility)
 Vue.use(loading, {
-  bg: '#81ecec',
+  bg: '#d2d2d2',
   icon: 'refresh',
   size: 3,
   icon_color: 'white',
