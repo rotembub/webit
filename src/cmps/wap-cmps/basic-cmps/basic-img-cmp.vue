@@ -77,7 +77,7 @@ export default {
         containerId: this.details.containerId,
       });
     },
-    dupElement() {
+    dupElement() { 
       this.$store.dispatch({
         type: "dupElement",
         cmpId: this.details.cmpId,
