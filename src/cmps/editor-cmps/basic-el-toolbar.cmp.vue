@@ -1,24 +1,28 @@
 <template>
   <section class="basic-el-toolbar" :style="getPos">
     <button title="Remove" class="tool-element" @click.stop="removeEl">
-      <!-- <img src="@/assets/element-editor/trashcan.png" /> -->
       <i class="el-icon-delete"></i>
     </button>
     <button title="Font" class="tool-element" @click.stop="openModal">
-      <!-- <img src="@/assets/element-editor/font-size.png" /> -->
       <i class="el-icon-s-operation"></i>
     </button>
-    <!-- <button title="Color" class="tool-element">
-      <img src="@/assets/element-editor/color.png" />
-    </button> -->
+    <button
+      v-if="elType !== 'imgs'"
+      title="Color"
+      class="tool-element"
+      @click.stop="openColorModal"
+    >
+      <!-- <img src="@/assets/element-editor/color.png" /> -->
+      <i class="el-icon-edit"></i>
+    </button>
     <button title="Size" class="tool-element" @click.stop="openSizeModal">
-      <!-- <img src="@/assets/element-editor/size.png" /> -->
       <i class="el-icon-rank"></i>
     </button>
     <button title="Copy" class="tool-element" @click="dupElement">
       <i class="el-icon-document-copy"></i>
     </button>
     <button
+      v-if="elType === 'imgs'"
       title="Upload"
       class="tool-element"
       @click.stop="isUpload = !isUpload"
@@ -31,6 +35,12 @@
       :cmpId="cmpId"
       :elStyle="elStyle"
     ></element-size>
+    <element-color
+      @styleChanged="styleChanged"
+      v-if="isColorModal"
+      :cmpId="cmpId"
+      :elStyle="elStyle"
+    ></element-color>
     <element-editor
       @styleChanged="styleChanged"
       v-if="openEditorModal"
@@ -45,9 +55,10 @@
 import imgUpload from "./img-upload.vue";
 import elementEditor from "./element-editor-cmp.vue";
 import elementSize from "./element-size.cmp.vue";
+import elementColor from "./element-color.cmp.vue";
 export default {
-  props: ["id", "elStyle", "cmpId", "pos"],
-  components: { elementEditor, elementSize, imgUpload },
+  props: ["id", "elStyle", "cmpId", "pos", "elType"],
+  components: { elementEditor, elementSize, imgUpload, elementColor },
   created() {
     // console.log(this.pos);
   },
@@ -55,6 +66,7 @@ export default {
     return {
       openEditorModal: false,
       isSizeModal: false,
+      isColorModal: false,
       modalPos: null,
       isUpload: false,
     };
@@ -71,19 +83,15 @@ export default {
       this.$emit("removeEl");
     },
     openModal(ev) {
-      // console.log(ev);
       const pos = {
         right: "",
         top: "",
       };
-      // if(ev.offsetY > )
       if (ev.clientX > window.innerWidth - 300) pos.right = 0;
       if (ev.clientY > window.innerHeight - 250) pos.top = -365;
-      // console.log(ev.offsetX,window.innerWidth - 300,ev.clientX);
-      // console.log(pos);
       this.$store.commit({ type: "setModalPos", modalPos: pos });
-      //  = pos;
       this.isSizeModal = false;
+      this.isColorModal = false;
       this.openEditorModal = !this.openEditorModal;
     },
     openSizeModal(ev) {
@@ -92,15 +100,25 @@ export default {
         right: "",
         top: "",
       };
-      // if(ev.offsetY > )
       if (ev.clientX > window.innerWidth - 300) pos.right = 0;
       if (ev.clientY > window.innerHeight - 250) pos.top = -350;
-      // console.log(ev.offsetX,window.innerWidth - 300,ev.clientX);
-      // console.log(pos);
       this.$store.commit({ type: "setModalPos", modalPos: pos });
-      //  = pos;
       this.openEditorModal = false;
+      this.isColorModal = false;
       this.isSizeModal = !this.isSizeModal;
+    },
+    openColorModal(ev) {
+      console.log(ev);
+      const pos = {
+        right: "",
+        top: "",
+      };
+      if (ev.clientX > window.innerWidth - 300) pos.right = 0;
+      if (ev.clientY > window.innerHeight - 250) pos.top = -350;
+      this.$store.commit({ type: "setModalPos", modalPos: pos });
+      this.openEditorModal = false;
+      this.isSizeModal = false;
+      this.isColorModal = !this.isColorModal;
     },
     dupElement() {
       this.$emit("dupElement");

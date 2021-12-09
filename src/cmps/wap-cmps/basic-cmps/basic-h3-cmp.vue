@@ -14,6 +14,7 @@
       @styleChanged="styleChanged"
       :cmpId="getCmpId"
       v-if="isEdit"
+      :elType="details.elType"
       :elStyle="details.data.style"
     ></basic-el-toolbar>
   </section>

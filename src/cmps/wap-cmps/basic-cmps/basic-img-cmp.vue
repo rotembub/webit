@@ -19,6 +19,7 @@
       @onSaveImg="saveImg"
       v-if="isEdit"
       :cmpId="getCmpId"
+      :elType="details.elType"
       :elStyle="details.data.style"
     ></basic-el-toolbar>
   </section>
@@ -141,7 +142,7 @@ export default {
       console.log("URL RECEIVED", url);
       this.isUploaded = true;
       this.details.data.url = url;
-      this.updateStyle();
+      this.updateStyle;
     },
   },
 };

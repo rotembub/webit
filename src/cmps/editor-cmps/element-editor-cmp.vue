@@ -22,7 +22,7 @@
         <input type="range" />
       </span>
     </template>
-    <span @click.stop>
+    <!-- <span @click.stop>
       Text Color :
       <el-color-picker
         @drag.stop
@@ -37,7 +37,7 @@
         v-model="editedStyle.backgroundColor"
         @change="styleChanged"
       ></el-color-picker>
-    </span>
+    </span> -->
     <span>
       Font size :
       <input

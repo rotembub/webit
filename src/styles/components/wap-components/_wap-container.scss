@@ -56,12 +56,17 @@
                 align-items: center;
                 justify-content: space-between;
                 a{
-                    margin-right: 20px;
+                    margin-right: 50px;
 
                 }
                 a:hover{
                    color: #c8a97e;
 
+                }
+            }
+            .logo{
+                h2{
+                    margin-inline-start: 50px
                 }
             }
         }
