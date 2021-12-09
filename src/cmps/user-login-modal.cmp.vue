@@ -1,5 +1,5 @@
 <template>
-  <section class="user-modal">
+  <section class="user-modal" :class="{'hide-user-modal': hide}">
     <div v-if="isLogin">
       <h3>Login</h3>
       <form @submit.prevent="login">
@@ -9,11 +9,13 @@
           placeholder="password"
           v-model="cred.password"
         />
-        <button>Login</button>
-        <button>Continue as guest</button>
-        <p>
-          Need an account? <span @click="changeIsLogin">{{ showLink }}</span>
-        </p>
+        <div class="btn-container">
+          <button>Login</button>
+          <button>Continue as guest</button>
+          <p>
+            Need an account? <span @click="changeIsLogin">{{ showLink }}</span>
+          </p>
+        </div>
       </form>
     </div>
     <div v-else>
@@ -26,11 +28,13 @@
           placeholder="password"
           v-model="cred.password"
         />
-        <button>Sign Up</button>
-        <button>Continue as guest</button>
-        <p>
-          Need an account? <span @click="changeIsLogin">{{ showLink }}</span>
-        </p>
+        <div class="btn-container">
+          <button>Sign Up</button>
+          <button>Continue as guest</button>
+          <p>
+            Need an account? <span @click="changeIsLogin">{{ showLink }}</span>
+          </p>
+        </div>
       </form>
     </div>
     <!-- <button @click="logout">Logout</button> -->
@@ -74,6 +78,9 @@
     computed: {
       showLink() {
         return this.isLogin ? 'Sign Up' : 'Login';
+      },
+      hide() {
+        return this.$store.getters.getIsHide;
       },
     },
   };

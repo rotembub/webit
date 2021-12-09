@@ -7,14 +7,12 @@
         :imgUrl="'add-new.png'"
       >
       </template-preview>
-      <template v-if="template">
-        <template-preview
-          v-for="template in templates"
-          :key="template._id"
-          :template="template"
-          :imgUrl="template.imgUrl"
-        ></template-preview>
-      </template>
+      <template-preview
+        v-for="template in templates"
+        :key="template._id"
+        :template="template"
+        :imgUrl="template.imgUrl"
+      ></template-preview>
       <!-- watchout for the imgUrls these are fake i made just for show till we gonna have proper templates -->
     </div>
   </section>

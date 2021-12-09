@@ -1,21 +1,52 @@
 .user-modal {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 100%;
-  justify-content: space-between;
+  //   display: flex;
+  //   flex-direction: column;
+  //   align-items: center;
+  text-align: center;
+  width: 25%;
+  //   justify-content: space-between;
   min-height: 26.5rem;
-  padding-bottom: 1rem;
-  position: relative;
+  //   padding-bottom: 1rem;
+  //   position: relative;
+  //   background-color: rgb(96, 118, 161);
+  z-index: 100;
+  background-color: #6b7b96;
+  position: fixed;
+  top: 35%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  border-radius: 10px;
+  max-width: 21rem;
+  min-width: 20rem;
+  -webkit-animation: opacity 0.5s;
+  animation: opacity 0.5s;
 
   form {
     display: flex;
     flex-direction: column;
+    width: 75%;
+    margin: 0 auto;
+  }
+
+  input {
+    margin: 8px;
   }
 
   span {
-    color: rgb(22, 124, 184);
+    color: rgb(87, 37, 107);
     cursor: pointer;
+  }
+
+  .btn-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    margin-top: 3rem;
+    position: absolute;
+    left: 20%;
+    bottom: 1rem;
   }
 
   button {

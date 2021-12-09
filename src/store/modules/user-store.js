@@ -3,15 +3,22 @@ import {userService} from '@/services/user.service.js';
 export default {
   state: {
     loggedinUser: null,
+    isHide: true,
   },
   getters: {
     getUser(state) {
       return state.loggedinUser;
     },
+    getIsHide(state) {
+      return state.isHide;
+    },
   },
   mutations: {
     setUser(state, {user}) {
       state.loggedinUser = user;
+    },
+    toggleModal(state) {
+      state.isHide = !state.isHide;
     },
   },
   actions: {
