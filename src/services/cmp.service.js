@@ -1,7 +1,7 @@
-import { storageService } from './async-storage.service'
-import { utilService } from './util.service'
+import {storageService} from './async-storage.service';
+import {utilService} from './util.service';
 
-const CMP_KEY = 'cmp_DB'
+const CMP_KEY = 'cmp_DB';
 
 export const cmpService = {
   // add,
@@ -9,7 +9,7 @@ export const cmpService = {
   getById,
   getCmpById,
   getThemesFor,
-}
+};
 
 // More ways to send query params:
 // return axios.get('api/wap/?id=1223&balance=13')
@@ -21,30 +21,30 @@ async function query(filterBy) {
   // return JSON_TEST1;
   // return gWap;
 
-  return storageService.query(CMP_KEY)
+  return storageService.query(CMP_KEY);
 }
 async function getById(id) {
-  return storageService.get(CMP_KEY, id)
+  return storageService.get(CMP_KEY, id);
 }
 
 async function getCmpById(id) {
-  const cmp = gCmps.find(currCmp => currCmp.id === id)
-  const copyCmp = JSON.parse(JSON.stringify(cmp))
-  copyCmp.id = utilService.makeId(4) //change id soo it will not duplicate
-  return Promise.resolve(copyCmp)
+  const cmp = gCmps.find((currCmp) => currCmp.id === id);
+  const copyCmp = JSON.parse(JSON.stringify(cmp));
+  copyCmp.id = utilService.makeId(4); //change id soo it will not duplicate
+  return Promise.resolve(copyCmp);
 }
 
 function getThemesFor(cmpType) {
-  const themes = gThemes[cmpType]
-  console.log('themes', themes)
-  return themes
+  const themes = gThemes[cmpType];
+  console.log('themes', themes);
+  return themes;
 }
 
 async function save(cmp) {
   const savedCmp = cmp._id
     ? storageService.put(CMP_KEY, cmp)
-    : storageService.post(CMP_KEY, cmp)
-  return savedCmp
+    : storageService.post(CMP_KEY, cmp);
+  return savedCmp;
 }
 
 // const gCmps = [
@@ -2239,20 +2239,2282 @@ const gCmps = [
       fontStyle: '',
     },
   },
-]
+  //new wap
+  //Hero container
+  {
+    id: utilService.makeId(4),
+    type: 'wap-container',
+    screenshotImg: 'feliciano-examples/hero.png',
+    info: {
+      dir: 'column',
+      cmps: [
+        //HEADER
+        {
+          id: utilService.makeId(4),
+          type: 'wap-header',
+          info: {
+            title: '',
+            subtitle: '',
+            logo: {
+              type: 'txt',
+              txt: 'Feliciano',
+              style: {
+                background: 'url()',
+                color: '',
+                backgroundColor: '',
+                fontSize: '20',
+                paddingRight: '',
+                paddingTop: '',
+                paddingBottom: '',
+                paddingLeft: '',
+                lineHeight: '',
+                fontFamily: 'Poppins',
+                fontStyle: '',
+              },
+            },
+            navBar: [
+              {
+                id: utilService.makeId(6),
+                txt: 'Home',
+                style: {
+                  background: 'url()',
+                  color: '',
+                  backgroundColor: '',
+                  fontSize: '',
+                  paddingRight: '',
+                  paddingTop: '',
+                  paddingBottom: '',
+                  paddingLeft: '',
+                  lineHeight: '',
+                  fontFamily: 'Poppins',
+                  fontStyle: '',
+                },
+              },
+              {
+                id: utilService.makeId(6),
+                txt: 'About',
+                style: {
+                  background: 'url()',
+                  color: '',
+                  backgroundColor: '',
+                  fontSize: '',
+                  paddingRight: '',
+                  paddingTop: '',
+                  paddingBottom: '',
+                  paddingLeft: '',
+                  lineHeight: '',
+                  fontFamily: 'Poppins',
+                  fontStyle: '',
+                },
+              },
+              {
+                id: utilService.makeId(6),
+                txt: 'Menu',
+                style: {
+                  background: 'url()',
+                  color: '',
+                  backgroundColor: '',
+                  fontSize: '',
+                  paddingRight: '',
+                  paddingTop: '',
+                  paddingBottom: '',
+                  paddingLeft: '',
+                  lineHeight: '',
+                  fontFamily: 'Poppins',
+                  fontStyle: '',
+                },
+              },
+              {
+                id: utilService.makeId(6),
+                txt: 'Stories',
+                style: {
+                  background: 'url()',
+                  color: '',
+                  backgroundColor: '',
+                  fontSize: '',
+                  paddingRight: '',
+                  paddingTop: '',
+                  paddingBottom: '',
+                  paddingLeft: '',
+                  lineHeight: '',
+                  fontFamily: 'Poppins',
+                  fontStyle: '',
+                },
+              },
+              {
+                id: utilService.makeId(6),
+                txt: 'Contact',
+                style: {
+                  background: 'url()',
+                  color: '',
+                  backgroundColor: '',
+                  fontSize: '',
+                  paddingRight: '',
+                  paddingTop: '',
+                  paddingBottom: '',
+                  paddingLeft: '',
+                  lineHeight: '',
+                  fontFamily: '',
+                  fontStyle: '',
+                },
+              },
+              {
+                id: utilService.makeId(6),
+                txt: 'Book a table',
+                style: {
+                  background: 'url()',
+                  color: 'white',
+                  backgroundColor: '#c8a97e',
+                  fontSize: '18',
+                  paddingRight: '',
+                  paddingTop: '',
+                  paddingBottom: '',
+                  paddingLeft: '',
+                  lineHeight: '',
+                  fontFamily: 'Poppins',
+                  fontStyle: '',
+                },
+              },
+            ],
+          },
+          theme: 'wap-header-feliciano',
+          style: {
+            background: 'url()',
+            color: '',
+            backgroundColor: '',
+            fontSize: '',
+            paddingRight: '',
+            paddingTop: '',
+            paddingBottom: '',
+            paddingLeft: '',
+            lineHeight: '',
+            fontFamily: '',
+            fontStyle: '',
+          },
+        },
+        //HEADER
+        //TEXT
+        {
+          id: utilService.makeId(4),
+          type: 'wap-text',
+          info: {
+            title: [
+              {
+                id: utilService.makeId(4),
+                txt: 'Feliciano',
+                style: {
+                  background: '',
+                  color: '#c8a97e',
+                  backgroundColor: '',
+                  fontSize: '',
+                  paddingRight: '',
+                  paddingTop: '',
+                  paddingBottom: '',
+                  paddingLeft: '',
+                  lineHeight: '',
+                  fontFamily: 'GreatVibes',
+                  fontStyle: '',
+                },
+              },
+              {
+                id: utilService.makeId(4),
+                txt: 'Notorious and Tasty',
+                style: {
+                  background: '',
+                  color: '',
+                  backgroundColor: '',
+                  fontSize: '',
+                  paddingRight: '',
+                  paddingTop: '',
+                  paddingBottom: '',
+                  paddingLeft: '',
+                  lineHeight: '',
+                  fontFamily: '',
+                  fontStyle: '50px',
+                },
+              },
+            ],
+          },
+          theme: 'landing-feliciano', //maybe same theme like before
+          style: {
+            background: `url()`,
+            color: '',
+            backgroundColor: '',
+            fontSize: '',
+            paddingRight: '',
+            paddingTop: '',
+            paddingBottom: '',
+            paddingLeft: '',
+            lineHeight: '',
+            fontFamily: '',
+            fontStyle: '',
+          },
+        },
+        //TEXT
+        //CARDS
+        {
+          id: utilService.makeId(4),
+          type: 'wap-card',
+          info: {
+            title: [
+              {
+                id: utilService.makeId(4),
+                txt: 'Grilled Beef with potatoes',
+                style: {
+                  background: 'url()',
+                  color: '',
+                  backgroundColor: '',
+                  fontSize: '18',
+                  paddingRight: '',
+                  paddingTop: '',
+                  paddingBottom: '',
+                  paddingLeft: '',
+                  lineHeight: '',
+                  fontFamily: 'Poppins',
+                  fontStyle: '',
+                },
+              },
+            ],
+            subtitle: [
+              {
+                id: utilService.makeId(4),
+                txt: 'Meat, Potatoes, Rice, Tomatoe',
+                style: {
+                  background: 'url()',
+                  color: '',
+                  backgroundColor: '',
+                  fontSize: '14',
+                  paddingRight: '',
+                  paddingTop: '',
+                  paddingBottom: '',
+                  paddingLeft: '',
+                  lineHeight: '',
+                  fontFamily: 'Poppins',
+                  fontStyle: '',
+                },
+              },
+            ],
+            imgs: [
+              {
+                id: utilService.makeId(4),
+                url: 'feliciano-imgs/dish-1-feliciano.png',
+                style: {
+                  background: 'url()',
+                  color: '',
+                  backgroundColor: '',
+                  fontSize: '',
+                  paddingRight: '',
+                  paddingTop: '',
+                  paddingBottom: '',
+                  paddingLeft: '',
+                  lineHeight: '',
+                  fontFamily: '',
+                  fontStyle: '',
+                },
+              },
+            ],
+          },
+          theme: 'card-dish',
+          style: {
+            background: 'url()',
+            color: '',
+            backgroundColor: '',
+            fontSize: '',
+            paddingRight: '',
+            paddingTop: '',
+            paddingBottom: '',
+            paddingLeft: '',
+            lineHeight: '',
+            fontFamily: '',
+            fontStyle: '',
+          },
+        },
+        {
+          id: utilService.makeId(4),
+          type: 'wap-card',
+          info: {
+            title: [
+              {
+                id: utilService.makeId(4),
+                txt: 'Grilled Beef with potatoes',
+                style: {
+                  background: 'url()',
+                  color: '',
+                  backgroundColor: '',
+                  fontSize: '18',
+                  paddingRight: '',
+                  paddingTop: '',
+                  paddingBottom: '',
+                  paddingLeft: '',
+                  lineHeight: '',
+                  fontFamily: 'Poppins',
+                  fontStyle: '',
+                },
+              },
+            ],
+            subtitle: [
+              {
+                id: utilService.makeId(4),
+                txt: 'Meat, Potatoes, Rice, Tomatoe',
+                style: {
+                  background: 'url()',
+                  color: '',
+                  backgroundColor: '',
+                  fontSize: '14',
+                  paddingRight: '',
+                  paddingTop: '',
+                  paddingBottom: '',
+                  paddingLeft: '',
+                  lineHeight: '',
+                  fontFamily: 'Poppins',
+                  fontStyle: '',
+                },
+              },
+            ],
+            imgs: [
+              {
+                id: utilService.makeId(4),
+                url: 'feliciano-imgs/dish-2-feliciano.png',
+                style: {
+                  background: 'url()',
+                  color: '',
+                  backgroundColor: '',
+                  fontSize: '',
+                  paddingRight: '',
+                  paddingTop: '',
+                  paddingBottom: '',
+                  paddingLeft: '',
+                  lineHeight: '',
+                  fontFamily: '',
+                  fontStyle: '',
+                },
+              },
+            ],
+          },
+          theme: 'card-dish',
+          style: {
+            background: 'url()',
+            color: '',
+            backgroundColor: '',
+            fontSize: '',
+            paddingRight: '',
+            paddingTop: '',
+            paddingBottom: '',
+            paddingLeft: '',
+            lineHeight: '',
+            fontFamily: '',
+            fontStyle: '',
+          },
+        },
+        {
+          id: utilService.makeId(4),
+          type: 'wap-card',
+          info: {
+            title: [
+              {
+                id: utilService.makeId(4),
+                txt: 'Grilled Beef with potatoes',
+                style: {
+                  background: 'url()',
+                  color: '',
+                  backgroundColor: '',
+                  fontSize: '18',
+                  paddingRight: '',
+                  paddingTop: '',
+                  paddingBottom: '',
+                  paddingLeft: '',
+                  lineHeight: '',
+                  fontFamily: 'Poppins',
+                  fontStyle: '',
+                },
+              },
+            ],
+            subtitle: [
+              {
+                id: utilService.makeId(4),
+                txt: 'Meat, Potatoes, Rice, Tomatoe',
+                style: {
+                  background: 'url()',
+                  color: '',
+                  backgroundColor: '',
+                  fontSize: '14',
+                  paddingRight: '',
+                  paddingTop: '',
+                  paddingBottom: '',
+                  paddingLeft: '',
+                  lineHeight: '',
+                  fontFamily: 'Poppins',
+                  fontStyle: '',
+                },
+              },
+            ],
+            imgs: [
+              {
+                id: utilService.makeId(4),
+                url: 'feliciano-imgs/dish-3-feliciano.png',
+                style: {
+                  background: 'url()',
+                  color: '',
+                  backgroundColor: '',
+                  fontSize: '',
+                  paddingRight: '',
+                  paddingTop: '',
+                  paddingBottom: '',
+                  paddingLeft: '',
+                  lineHeight: '',
+                  fontFamily: '',
+                  fontStyle: '',
+                },
+              },
+            ],
+          },
+          theme: 'card-dish',
+          style: {
+            background: 'url()',
+            color: '',
+            backgroundColor: '',
+            fontSize: '',
+            paddingRight: '',
+            paddingTop: '',
+            paddingBottom: '',
+            paddingLeft: '',
+            lineHeight: '',
+            fontFamily: '',
+            fontStyle: '',
+          },
+        },
+        {
+          id: utilService.makeId(4),
+          type: 'wap-card',
+          info: {
+            title: [
+              {
+                id: utilService.makeId(4),
+                txt: 'Grilled Beef with potatoes',
+                style: {
+                  background: 'url()',
+                  color: '',
+                  backgroundColor: '',
+                  fontSize: '18',
+                  paddingRight: '',
+                  paddingTop: '',
+                  paddingBottom: '',
+                  paddingLeft: '',
+                  lineHeight: '',
+                  fontFamily: 'Poppins',
+                  fontStyle: '',
+                },
+              },
+            ],
+            subtitle: [
+              {
+                id: utilService.makeId(4),
+                txt: 'Meat, Potatoes, Rice, Tomatoe',
+                style: {
+                  background: 'url()',
+                  color: '',
+                  backgroundColor: '',
+                  fontSize: '14',
+                  paddingRight: '',
+                  paddingTop: '',
+                  paddingBottom: '',
+                  paddingLeft: '',
+                  lineHeight: '',
+                  fontFamily: 'Poppins',
+                  fontStyle: '',
+                },
+              },
+            ],
+            imgs: [
+              {
+                id: utilService.makeId(4),
+                url: 'feliciano-imgs/dish-4-feliciano.png',
+                style: {
+                  background: 'url()',
+                  color: '',
+                  backgroundColor: '',
+                  fontSize: '',
+                  paddingRight: '',
+                  paddingTop: '',
+                  paddingBottom: '',
+                  paddingLeft: '',
+                  lineHeight: '',
+                  fontFamily: '',
+                  fontStyle: '',
+                },
+              },
+            ],
+          },
+          theme: 'card-dish',
+          style: {
+            background: 'url()',
+            color: '',
+            backgroundColor: '',
+            fontSize: '',
+            paddingRight: '',
+            paddingTop: '',
+            paddingBottom: '',
+            paddingLeft: '',
+            lineHeight: '',
+            fontFamily: '',
+            fontStyle: '',
+          },
+        },
+        //CARDS
+      ],
+    },
+    theme: 'feliciano-landing-page',
+    style: {
+      background: 'url(../../imgs/main-header-feliciano.jpg)',
+      color: '',
+      backgroundColor: '',
+      fontSize: '',
+      fontFamily: '',
+      height: '',
+    },
+  },
+  //Hero container
+  //Container2
+  {
+    id: utilService.makeId(4),
+    type: 'wap-container',
+    screenshotImg: 'feliciano-examples/herochefs.png',
+    info: {
+      dir: 'row',
+      cmps: [
+        //IMAGES
+        {
+          id: utilService.makeId(4),
+          type: 'wap-img',
+          info: {
+            imgs: [
+              {
+                id: utilService.makeId(4),
+                url: 'feliciano-imgs/chef-salting.jpg',
+                style: {
+                  background: 'url()',
+                  color: '',
+                  backgroundColor: '',
+                  fontSize: '',
+                  fontFamily: '',
+                  fontStyle: '',
+                },
+              },
+              {
+                id: utilService.makeId(4),
+                url: 'feliciano-imgs/chef-cleaning-salt.jpg',
+                style: {
+                  background: 'url()',
+                  color: '',
+                  backgroundColor: '',
+                  fontSize: '',
+                  fontFamily: '',
+                  fontStyle: '',
+                },
+              },
+            ],
+          },
+          theme: 'wap-img-feliciano',
+          style: {
+            background: 'url()',
+            color: '',
+            backgroundColor: '',
+            fontSize: '',
+            paddingRight: '',
+            paddingTop: '',
+            paddingBottom: '',
+            paddingLeft: '',
+            lineHeight: '',
+            fontFamily: '',
+            fontStyle: '',
+          },
+        },
+        //IMAGES
+        //CARD
+        {
+          id: utilService.makeId(4),
+          type: 'wap-card',
+          info: {
+            title: [
+              {
+                id: utilService.makeId(4),
+                txt: 'Feliciano Restaurant',
+                style: {
+                  background: 'url()',
+                  color: '',
+                  backgroundColor: '',
+                  fontSize: '',
+                  fontFamily: 'Poppins',
+                  fontStyle: '',
+                },
+              },
+            ],
+            subtitle: [
+              {
+                id: utilService.makeId(4),
+                txt: 'A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.',
+                style: {
+                  background: 'url()',
+                  color: '',
+                  backgroundColor: '',
+                  fontSize: '',
+                  fontFamily: 'Poppins',
+                  fontStyle: '',
+                },
+              },
+              {
+                id: utilService.makeId(4),
+                txt: 'Mon - Fri 8 AM - 11 PM',
+                style: {
+                  background: 'url()',
+                  color: '',
+                  backgroundColor: '',
+                  fontSize: '',
+                  fontFamily: 'Poppins',
+                  fontStyle: '',
+                },
+              },
+              {
+                id: utilService.makeId(4),
+                txt: '+ 1-978-123-4567',
+                style: {
+                  background: 'url()',
+                  color: '',
+                  backgroundColor: '',
+                  fontSize: '',
+                  fontFamily: 'Poppins',
+                  fontStyle: '',
+                },
+              },
+            ],
+          },
+          theme: 'wap-card-default',
+          style: {
+            color: '',
+            backgroundColor: '',
+            fontSize: '',
+            fontFamily: '',
+            fontStyle: '',
+          },
+        },
+        //CARD
+      ],
+    },
+
+    theme: 'wap-feliciano-detail-card wap-container-flex',
+    style: {
+      background: 'url()',
+      color: '',
+      backgroundColor: '',
+      fontSize: '',
+      fontStyle: '',
+    },
+  },
+  //Container2
+  //TEXT CMP
+  {
+    id: utilService.makeId(4),
+    type: 'wap-text',
+    screenshotImg: 'feliciano-examples/text.png',
+
+    info: {
+      title: [
+        {
+          id: utilService.makeId(4),
+          txt: 'Catering Services',
+          style: {
+            background: '',
+            color: '',
+            fontFamily: 'Poppins',
+            fontStyle: '50px',
+          },
+        },
+      ],
+      subtitle: [
+        {
+          id: utilService.makeId(4),
+          txt: 'Catering Services',
+          style: {
+            background: '',
+            color: '#c8a97e',
+            fontFamily: 'GreatVibes',
+            fontStyle: '',
+          },
+        },
+      ],
+    },
+    theme: 'wap-feliciano-catering', //maybe same theme like before
+    style: {
+      background: ``,
+      color: '',
+      backgroundColor: '',
+      fontSize: '',
+      paddingRight: '',
+      paddingTop: '',
+      paddingBottom: '',
+      paddingLeft: '',
+      lineHeight: '',
+      fontFamily: '',
+      fontStyle: '',
+    },
+  },
+  {
+    id: utilService.makeId(4),
+    type: 'wap-container',
+    screenshotImg: 'feliciano-examples/services.png',
+
+    info: {
+      dir: 'row',
+      cmps: [
+        //IMAGES
+        {
+          id: utilService.makeId(4),
+          type: 'wap-card',
+          info: {
+            title: [
+              {
+                id: utilService.makeId(4),
+                txt: 'Birthday Party',
+                style: {
+                  background: 'url()',
+                  color: '',
+                  backgroundColor: '',
+                  fontSize: '',
+                  fontFamily: 'Poppins',
+                },
+              },
+            ],
+            imgs: [
+              {
+                id: utilService.makeId(4),
+                url: 'feliciano-imgs/catering-logo-1.png',
+                style: {
+                  background: 'url()',
+                  color: '',
+                  backgroundColor: '',
+                  fontSize: '',
+                  fontFamily: 'Poppins',
+                },
+              },
+            ],
+            subtitle: [
+              {
+                id: utilService.makeId(4),
+                txt: 'Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.',
+                style: {
+                  background: 'url()',
+                  color: '',
+                  backgroundColor: '',
+                  fontSize: '',
+                  fontFamily: 'Poppins',
+                  fontStyle: '',
+                },
+              },
+            ],
+          },
+          theme: 'wap-catering-preview',
+          style: {
+            background: 'url()',
+            color: '',
+          },
+        },
+        {
+          id: utilService.makeId(4),
+          type: 'wap-card',
+          info: {
+            title: [
+              {
+                id: utilService.makeId(4),
+                txt: 'Business Meetings',
+                style: {
+                  background: 'url()',
+                  color: '',
+                  backgroundColor: '',
+                  fontSize: '',
+                  fontFamily: 'Poppins',
+                },
+              },
+            ],
+            imgs: [
+              {
+                id: utilService.makeId(4),
+                url: 'feliciano-imgs/catering-logo-2.png',
+                style: {
+                  background: 'url()',
+                  color: '',
+                  backgroundColor: '',
+                  fontSize: '',
+                  fontFamily: 'Poppins',
+                },
+              },
+            ],
+            subtitle: [
+              {
+                id: utilService.makeId(4),
+                txt: 'Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.',
+                style: {
+                  background: 'url()',
+                  color: '',
+                  backgroundColor: '',
+                  fontSize: '',
+                  fontFamily: 'Poppins',
+                  fontStyle: '',
+                },
+              },
+            ],
+          },
+          theme: 'wap-catering-preview',
+          style: {
+            background: 'url()',
+            color: '',
+          },
+        },
+        {
+          id: utilService.makeId(4),
+          type: 'wap-card',
+          info: {
+            title: [
+              {
+                id: utilService.makeId(4),
+                txt: 'Wedding Party',
+                style: {
+                  background: 'url()',
+                  color: '',
+                  backgroundColor: '',
+                  fontSize: '',
+                  fontFamily: 'Poppins',
+                },
+              },
+            ],
+            imgs: [
+              {
+                id: utilService.makeId(4),
+                url: 'feliciano-imgs/catering-logo-3.png',
+                style: {
+                  background: 'url()',
+                  color: '',
+                  backgroundColor: '',
+                  fontSize: '',
+                  fontFamily: 'Poppins',
+                },
+              },
+            ],
+            subtitle: [
+              {
+                id: utilService.makeId(4),
+                txt: 'Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.',
+                style: {
+                  background: 'url()',
+                  color: '',
+                  backgroundColor: '',
+                  fontSize: '',
+                  fontFamily: 'Poppins',
+                  fontStyle: '',
+                },
+              },
+            ],
+          },
+          theme: 'wap-catering-preview',
+          style: {
+            background: 'url()',
+            color: '',
+          },
+        },
+        //IMAGES
+      ],
+    },
+    theme: 'wap-container-flex',
+    style: {
+      background: 'url()',
+      color: '',
+      backgroundColor: '',
+      fontSize: '',
+      fontStyle: '',
+    },
+  },
+
+  //TEXT CMP
+  //MENU-CONTAINER
+  {
+    id: utilService.makeId(4),
+    type: 'wap-container',
+    screenshotImg: 'feliciano-examples/menu1.png',
+
+    info: {
+      dir: 'row',
+      cmps: [
+        {
+          //1
+          id: utilService.makeId(4),
+          type: 'wap-img',
+          info: {
+            imgs: [
+              {
+                id: utilService.makeId(4),
+                url: 'feliciano-imgs/dish-1-feliciano.png',
+                style: {
+                  background: 'url()',
+                  color: '',
+                  backgroundColor: '',
+                  fontSize: '',
+                  paddingRight: '',
+                  paddingTop: '',
+                  paddingBottom: '',
+                  paddingLeft: '',
+                  lineHeight: '',
+                  fontFamily: '',
+                  fontStyle: '',
+                },
+              },
+            ],
+          },
+          theme: 'wap-img-menu',
+          style: {
+            background: 'url()',
+            color: '',
+            backgroundColor: '',
+            fontSize: '',
+            paddingRight: '',
+            paddingTop: '',
+            paddingBottom: '',
+            paddingLeft: '',
+            lineHeight: '',
+            fontFamily: '',
+            fontStyle: '',
+          },
+        }, // 2
+        {
+          id: utilService.makeId(4),
+          type: 'wap-card',
+          info: {
+            title: [
+              {
+                id: utilService.makeId(4),
+                txt: 'Grilled Beef with potatoes',
+                style: {
+                  background: 'url()',
+                  color: '',
+                  backgroundColor: '',
+                  fontSize: '',
+                  fontFamily: 'Poppins',
+                },
+              },
+            ],
+            subtitle: [
+              {
+                id: utilService.makeId(4),
+                txt: 'Meat, Potatoes, Rice, Tomatoe',
+                style: {
+                  background: 'url()',
+                  color: '',
+                  backgroundColor: '',
+                  fontSize: '',
+                  fontFamily: 'Poppins',
+                  fontStyle: '',
+                },
+              },
+            ],
+            buttons: [
+              //see if its good
+              {
+                id: utilService.makeId(4),
+                txt: 'Order now',
+                style: {
+                  background: 'url()',
+                  color: 'white',
+                  backgroundColor: '#c8a97e',
+                  fontFamily: 'Poppins',
+                  fontStyle: '',
+                },
+              },
+            ],
+          },
+          theme: 'wap-menu-card',
+          style: {
+            background: 'url()',
+            color: '',
+          },
+        }, // 3
+        {
+          id: utilService.makeId(4),
+          type: 'wap-img',
+          info: {
+            imgs: [
+              {
+                id: utilService.makeId(4),
+                url: 'feliciano-imgs/dish-3-feliciano.png',
+                style: {
+                  background: 'url()',
+                  color: '',
+                  backgroundColor: '',
+                  fontSize: '',
+                  paddingRight: '',
+                  paddingTop: '',
+                  paddingBottom: '',
+                  paddingLeft: '',
+                  lineHeight: '',
+                  fontFamily: '',
+                  fontStyle: '',
+                },
+              },
+            ],
+          },
+          theme: 'wap-img-menu',
+          style: {
+            background: 'url()',
+            color: '',
+            backgroundColor: '',
+            fontSize: '',
+            paddingRight: '',
+            paddingTop: '',
+            paddingBottom: '',
+            paddingLeft: '',
+            lineHeight: '',
+            fontFamily: '',
+            fontStyle: '',
+          },
+        },
+        {
+          // 4
+          id: utilService.makeId(4),
+          type: 'wap-card',
+          info: {
+            title: [
+              {
+                id: utilService.makeId(4),
+                txt: 'Grilled Beef with potatoes',
+                style: {
+                  background: 'url()',
+                  color: '',
+                  backgroundColor: '',
+                  fontSize: '',
+                  fontFamily: 'Poppins',
+                },
+              },
+            ],
+            subtitle: [
+              {
+                id: utilService.makeId(4),
+                txt: 'Meat, Potatoes, Rice, Tomatoe',
+                style: {
+                  background: 'url()',
+                  color: '',
+                  backgroundColor: '',
+                  fontSize: '',
+                  fontFamily: 'Poppins',
+                  fontStyle: '',
+                },
+              },
+            ],
+            buttons: [
+              //see if its good
+              {
+                id: utilService.makeId(4),
+                txt: 'Order now',
+                style: {
+                  background: 'url()',
+                  color: 'white',
+                  backgroundColor: '#c8a97e',
+                  fontFamily: 'Poppins',
+                  fontStyle: '',
+                },
+              },
+            ],
+          },
+          theme: 'wap-menu-card',
+          style: {
+            background: 'url()',
+            color: '',
+          },
+        }, // end of the first line
+        {
+          // second line begins // 1
+          id: utilService.makeId(4),
+          type: 'wap-card',
+          info: {
+            title: [
+              {
+                id: utilService.makeId(4),
+                txt: 'Grilled Beef with potatoes',
+                style: {
+                  background: 'url()',
+                  color: '',
+                  backgroundColor: '',
+                  fontSize: '',
+                  fontFamily: 'Poppins',
+                },
+              },
+            ],
+            subtitle: [
+              {
+                id: utilService.makeId(4),
+                txt: 'Meat, Potatoes, Rice, Tomatoe',
+                style: {
+                  background: 'url()',
+                  color: '',
+                  backgroundColor: '',
+                  fontSize: '',
+                  fontFamily: 'Poppins',
+                  fontStyle: '',
+                },
+              },
+            ],
+            buttons: [
+              //see if its good
+              {
+                id: utilService.makeId(4),
+                txt: 'Order now',
+                style: {
+                  background: 'url()',
+                  color: 'white',
+                  backgroundColor: '#c8a97e',
+                  fontFamily: 'Poppins',
+                  fontStyle: '',
+                },
+              },
+            ],
+          },
+          theme: 'wap-menu-card',
+          style: {
+            background: 'url()',
+            color: '',
+          },
+        }, // 2
+        {
+          id: utilService.makeId(4),
+          type: 'wap-img',
+          info: {
+            imgs: [
+              {
+                id: utilService.makeId(4),
+                url: 'feliciano-imgs/dish-3-feliciano.png',
+                style: {
+                  background: 'url()',
+                  color: '',
+                  backgroundColor: '',
+                  fontSize: '',
+                  paddingRight: '',
+                  paddingTop: '',
+                  paddingBottom: '',
+                  paddingLeft: '',
+                  lineHeight: '',
+                  fontFamily: '',
+                  fontStyle: '',
+                },
+              },
+            ],
+          },
+          theme: 'wap-img-menu',
+          style: {
+            background: 'url()',
+            color: '',
+            backgroundColor: '',
+            fontSize: '',
+            paddingRight: '',
+            paddingTop: '',
+            paddingBottom: '',
+            paddingLeft: '',
+            lineHeight: '',
+            fontFamily: '',
+            fontStyle: '',
+          },
+        }, // 3
+        {
+          id: utilService.makeId(4),
+          type: 'wap-card',
+          info: {
+            title: [
+              {
+                id: utilService.makeId(4),
+                txt: 'Grilled Beef with potatoes',
+                style: {
+                  background: 'url()',
+                  color: '',
+                  backgroundColor: '',
+                  fontSize: '',
+                  fontFamily: 'Poppins',
+                },
+              },
+            ],
+            subtitle: [
+              {
+                id: utilService.makeId(4),
+                txt: 'Meat, Potatoes, Rice, Tomatoe',
+                style: {
+                  background: 'url()',
+                  color: '',
+                  backgroundColor: '',
+                  fontSize: '',
+                  fontFamily: 'Poppins',
+                  fontStyle: '',
+                },
+              },
+            ],
+            buttons: [
+              //see if its good
+              {
+                id: utilService.makeId(4),
+                txt: 'Order now',
+                style: {
+                  background: 'url()',
+                  color: 'white',
+                  backgroundColor: '#c8a97e',
+                  fontFamily: 'Poppins',
+                  fontStyle: '',
+                },
+              },
+            ],
+          },
+          theme: 'wap-menu-card',
+          style: {
+            background: 'url()',
+            color: '',
+          },
+        }, //4
+        {
+          id: utilService.makeId(4),
+          type: 'wap-img',
+          info: {
+            imgs: [
+              {
+                id: utilService.makeId(4),
+                url: 'feliciano-imgs/dish-4-feliciano.png',
+                style: {
+                  background: 'url()',
+                  color: '',
+                  backgroundColor: '',
+                  fontSize: '',
+                  paddingRight: '',
+                  paddingTop: '',
+                  paddingBottom: '',
+                  paddingLeft: '',
+                  lineHeight: '',
+                  fontFamily: '',
+                  fontStyle: '',
+                },
+              },
+            ],
+          },
+          theme: 'wap-img-menu',
+          style: {
+            background: 'url()',
+            color: '',
+            backgroundColor: '',
+            fontSize: '',
+            paddingRight: '',
+            paddingTop: '',
+            paddingBottom: '',
+            paddingLeft: '',
+            lineHeight: '',
+            fontFamily: '',
+            fontStyle: '',
+          },
+        }, // 3rd line begins // 1
+        {
+          id: utilService.makeId(4),
+          type: 'wap-img',
+          info: {
+            imgs: [
+              {
+                id: utilService.makeId(4),
+                url: 'feliciano-imgs/dish-4-feliciano.png',
+                style: {
+                  background: 'url()',
+                  color: '',
+                  backgroundColor: '',
+                  fontSize: '',
+                  paddingRight: '',
+                  paddingTop: '',
+                  paddingBottom: '',
+                  paddingLeft: '',
+                  lineHeight: '',
+                  fontFamily: '',
+                  fontStyle: '',
+                },
+              },
+            ],
+          },
+          theme: 'wap-img-menu',
+          style: {
+            background: 'url()',
+            color: '',
+            backgroundColor: '',
+            fontSize: '',
+            paddingRight: '',
+            paddingTop: '',
+            paddingBottom: '',
+            paddingLeft: '',
+            lineHeight: '',
+            fontFamily: '',
+            fontStyle: '',
+          },
+        },
+        {
+          // 2
+          id: utilService.makeId(4),
+          type: 'wap-card',
+          info: {
+            title: [
+              {
+                id: utilService.makeId(4),
+                txt: 'Grilled Beef with potatoes',
+                style: {
+                  background: 'url()',
+                  color: '',
+                  backgroundColor: '',
+                  fontSize: '',
+                  fontFamily: 'Poppins',
+                },
+              },
+            ],
+            subtitle: [
+              {
+                id: utilService.makeId(4),
+                txt: 'Meat, Potatoes, Rice, Tomatoe',
+                style: {
+                  background: 'url()',
+                  color: '',
+                  backgroundColor: '',
+                  fontSize: '',
+                  fontFamily: 'Poppins',
+                  fontStyle: '',
+                },
+              },
+            ],
+            buttons: [
+              //see if its good
+              {
+                id: utilService.makeId(4),
+                txt: 'Order now',
+                style: {
+                  background: 'url()',
+                  color: 'white',
+                  backgroundColor: '#c8a97e',
+                  fontFamily: 'Poppins',
+                  fontStyle: '',
+                },
+              },
+            ],
+          },
+          theme: 'wap-menu-card',
+          style: {
+            background: 'url()',
+            color: '',
+          },
+        }, //3
+        {
+          id: utilService.makeId(4),
+          type: 'wap-img',
+          info: {
+            imgs: [
+              {
+                id: utilService.makeId(4),
+                url: 'feliciano-imgs/dish-1-feliciano.png',
+                style: {
+                  background: 'url()',
+                  color: '',
+                  backgroundColor: '',
+                  fontSize: '',
+                  paddingRight: '',
+                  paddingTop: '',
+                  paddingBottom: '',
+                  paddingLeft: '',
+                  lineHeight: '',
+                  fontFamily: '',
+                  fontStyle: '',
+                },
+              },
+            ],
+          },
+          theme: 'wap-img-menu',
+          style: {
+            background: 'url()',
+            color: '',
+            backgroundColor: '',
+            fontSize: '',
+            paddingRight: '',
+            paddingTop: '',
+            paddingBottom: '',
+            paddingLeft: '',
+            lineHeight: '',
+            fontFamily: '',
+            fontStyle: '',
+          },
+        },
+        {
+          id: utilService.makeId(4),
+          type: 'wap-card',
+          info: {
+            title: [
+              {
+                id: utilService.makeId(4),
+                txt: 'Grilled Beef with potatoes',
+                style: {
+                  background: 'url()',
+                  color: '',
+                  backgroundColor: '',
+                  fontSize: '',
+                  fontFamily: 'Poppins',
+                },
+              },
+            ],
+            subtitle: [
+              {
+                id: utilService.makeId(4),
+                txt: 'Meat, Potatoes, Rice, Tomatoe',
+                style: {
+                  background: 'url()',
+                  color: '',
+                  backgroundColor: '',
+                  fontSize: '',
+                  fontFamily: 'Poppins',
+                  fontStyle: '',
+                },
+              },
+            ],
+            buttons: [
+              //see if its good
+              {
+                id: utilService.makeId(4),
+                txt: 'Order now',
+                style: {
+                  background: 'url()',
+                  color: 'white',
+                  backgroundColor: '#c8a97e',
+                  fontFamily: 'Poppins',
+                  fontStyle: '',
+                },
+              },
+            ],
+          },
+          theme: 'wap-menu-card',
+          style: {
+            background: 'url()',
+            color: '',
+          },
+        }, // 5
+      ],
+    },
+    theme: 'feliciano-menu-gallery',
+    style: {
+      background: 'url()',
+      color: '',
+      backgroundColor: '',
+      fontSize: '',
+      paddingRight: '',
+      paddingTop: '',
+      paddingBottom: '',
+      paddingLeft: '',
+      lineHeight: '',
+      fontFamily: '',
+      fontStyle: '',
+    },
+  },
+  //MENU-CONTAINER
+  {
+    id: utilService.makeId(4),
+    type: 'wap-text',
+    screenshotImg: 'feliciano-examples/chefs-text.png',
+    info: {
+      title: [
+        {
+          id: utilService.makeId(4),
+          txt: 'Our Master Chefs',
+          style: {
+            background: '',
+            color: '',
+            fontFamily: 'Poppins',
+            fontStyle: '50px',
+          },
+        },
+      ],
+      subtitle: [
+        {
+          id: utilService.makeId(4),
+          txt: 'Our Master Chefs',
+          style: {
+            background: '',
+            color: '#c8a97e',
+            fontFamily: 'GreatVibes',
+            fontStyle: '',
+          },
+        },
+      ],
+    },
+    theme: 'wap-feliciano-catering', //maybe same theme like before
+    style: {
+      background: ``,
+      color: '',
+      backgroundColor: '',
+      fontSize: '',
+      paddingRight: '',
+      paddingTop: '',
+      paddingBottom: '',
+      paddingLeft: '',
+      lineHeight: '',
+      fontFamily: '',
+      fontStyle: '',
+    },
+  },
+  //CHEF-IMGS
+  {
+    id: utilService.makeId(4),
+    type: 'wap-container',
+    screenshotImg: 'feliciano-examples/chefs-imgs.png',
+
+    info: {
+      dir: 'row',
+      cmps: [
+        //IMAGES
+        {
+          id: utilService.makeId(4),
+          type: 'wap-card',
+          info: {
+            title: [
+              {
+                id: utilService.makeId(4),
+                txt: 'John Smooth',
+                style: {
+                  background: 'url()',
+                  color: '',
+                  backgroundColor: '',
+                  fontSize: '',
+                  fontFamily: 'Poppins',
+                },
+              },
+            ],
+            imgs: [
+              {
+                id: utilService.makeId(4),
+                url: 'feliciano-imgs/chef-1.png',
+                style: {
+                  background: 'url()',
+                  color: '',
+                  backgroundColor: '',
+                  fontSize: '',
+                  fontFamily: 'Poppins',
+                },
+              },
+            ],
+            subtitle: [
+              {
+                id: utilService.makeId(4),
+                txt: 'Restaurant Owner',
+                style: {
+                  background: 'url()',
+                  color: '',
+                  backgroundColor: '',
+                  fontSize: '',
+                  fontFamily: 'Poppins',
+                  fontStyle: '',
+                },
+              },
+            ],
+            buttons: [
+              //see if its good
+              {
+                id: utilService.makeId(4),
+                txt: 'Contact the chef',
+                style: {
+                  background: 'url()',
+                  color: 'white',
+                  backgroundColor: '#c8a97e',
+                  fontFamily: 'Poppins',
+                  fontStyle: '',
+                },
+              },
+            ],
+          },
+          theme: 'wap-chef-preview',
+          style: {
+            background: 'url()',
+            color: '',
+          },
+        },
+        {
+          id: utilService.makeId(4),
+          type: 'wap-card',
+          info: {
+            title: [
+              {
+                id: utilService.makeId(4),
+                txt: 'Becky Welson',
+                style: {
+                  background: 'url()',
+                  color: '',
+                  backgroundColor: '',
+                  fontSize: '',
+                  fontFamily: 'Poppins',
+                },
+              },
+            ],
+            imgs: [
+              {
+                id: utilService.makeId(4),
+                url: 'feliciano-imgs/chef-2.png',
+                style: {
+                  background: 'url()',
+                  color: '',
+                  backgroundColor: '',
+                  fontSize: '',
+                  fontFamily: 'Poppins',
+                },
+              },
+            ],
+            subtitle: [
+              {
+                id: utilService.makeId(4),
+                txt: 'Head Chef',
+                style: {
+                  background: 'url()',
+                  color: '',
+                  backgroundColor: '',
+                  fontSize: '',
+                  fontFamily: 'Poppins',
+                  fontStyle: '',
+                },
+              },
+            ],
+            buttons: [
+              //see if its good
+              {
+                id: utilService.makeId(4),
+                txt: 'Contact the chef',
+                style: {
+                  background: 'url()',
+                  color: 'white',
+                  backgroundColor: '#c8a97e',
+                  fontFamily: 'Poppins',
+                  fontStyle: '',
+                },
+              },
+            ],
+          },
+          theme: 'wap-chef-preview',
+          style: {
+            background: 'url()',
+            color: '',
+          },
+        },
+        {
+          id: utilService.makeId(4),
+          type: 'wap-card',
+          info: {
+            title: [
+              {
+                id: utilService.makeId(4),
+                txt: 'Kharl Branyt',
+                style: {
+                  background: 'url()',
+                  color: '',
+                  backgroundColor: '',
+                  fontSize: '',
+                  fontFamily: 'Poppins',
+                },
+              },
+            ],
+            imgs: [
+              {
+                id: utilService.makeId(4),
+                url: 'feliciano-imgs/chef-3.png',
+                style: {
+                  background: 'url()',
+                  color: '',
+                  backgroundColor: '',
+                  fontSize: '',
+                  fontFamily: 'Poppins',
+                },
+              },
+            ],
+            subtitle: [
+              {
+                id: utilService.makeId(4),
+                txt: 'Chef',
+                style: {
+                  background: 'url()',
+                  color: '',
+                  backgroundColor: '',
+                  fontSize: '',
+                  fontFamily: 'Poppins',
+                  fontStyle: '',
+                },
+              },
+            ],
+            buttons: [
+              //see if its good
+              {
+                id: utilService.makeId(4),
+                txt: 'Contact the chef',
+                style: {
+                  background: 'url()',
+                  color: 'white',
+                  backgroundColor: '#c8a97e',
+                  fontFamily: 'Poppins',
+                  fontStyle: '',
+                },
+              },
+            ],
+          },
+          theme: 'wap-chef-preview',
+          style: {
+            background: 'url()',
+            color: '',
+          },
+        },
+        {
+          id: utilService.makeId(4),
+          type: 'wap-card',
+          info: {
+            title: [
+              {
+                id: utilService.makeId(4),
+                txt: 'Luke Simon',
+                style: {
+                  background: 'url()',
+                  color: '',
+                  backgroundColor: '',
+                  fontSize: '',
+                  fontFamily: 'Poppins',
+                },
+              },
+            ],
+            imgs: [
+              {
+                id: utilService.makeId(4),
+                url: 'feliciano-imgs/chef-4.png',
+                style: {
+                  background: 'url()',
+                  color: '',
+                  backgroundColor: '',
+                  fontSize: '',
+                  fontFamily: 'Poppins',
+                },
+              },
+            ],
+            subtitle: [
+              {
+                id: utilService.makeId(4),
+                txt: 'Chef',
+                style: {
+                  background: 'url()',
+                  color: '',
+                  backgroundColor: '',
+                  fontSize: '',
+                  fontFamily: 'Poppins',
+                  fontStyle: '',
+                },
+              },
+            ],
+            buttons: [
+              //see if its good
+              {
+                id: utilService.makeId(4),
+                txt: 'Contact the chef',
+                style: {
+                  background: 'url()',
+                  color: 'white',
+                  backgroundColor: '#c8a97e',
+                  fontFamily: 'Poppins',
+                  fontStyle: '',
+                },
+              },
+            ],
+          },
+          theme: 'wap-chef-preview',
+          style: {
+            background: 'url()',
+            color: '',
+          },
+        },
+        //IMAGES
+      ],
+    },
+    theme: 'wap-container-flex',
+    style: {
+      background: 'url()',
+      color: '',
+      backgroundColor: '',
+      fontSize: '',
+      fontStyle: '',
+    },
+  },
+
+  //TEXT CMP
+  {
+    id: utilService.makeId(4),
+    type: 'wap-text',
+    screenshotImg: 'feliciano-examples/happy-text.png',
+
+    info: {
+      title: [
+        {
+          id: utilService.makeId(4),
+          txt: 'Happy Customer',
+          style: {
+            background: '',
+            color: '',
+            fontFamily: 'Poppins',
+            fontStyle: '50px',
+          },
+        },
+      ],
+      subtitle: [
+        {
+          id: utilService.makeId(4),
+          txt: 'Happy Customer',
+          style: {
+            background: '',
+            color: '#c8a97e',
+            fontFamily: 'GreatVibes',
+            fontStyle: '',
+          },
+        },
+      ],
+    },
+    theme: 'wap-feliciano-catering', //maybe same theme like before
+    style: {
+      background: ``,
+      color: '',
+      backgroundColor: '',
+      fontSize: '',
+      paddingRight: '',
+      paddingTop: '',
+      paddingBottom: '',
+      paddingLeft: '',
+      lineHeight: '',
+      fontFamily: '',
+      fontStyle: '',
+    },
+  },
+
+  //TEXT CMP
+  //Reviews
+  {
+    id: utilService.makeId(4),
+    type: 'wap-container',
+    screenshotImg: 'feliciano-examples/reviews.png',
+
+    info: {
+      dir: 'row',
+      cmps: [
+        {
+          id: utilService.makeId(4),
+          type: 'wap-review',
+          info: {
+            txt: [
+              {
+                id: utilService.makeId(4),
+                txt: '"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts."',
+                style: {
+                  background: 'url()',
+                  color: '',
+                  backgroundColor: '',
+                  fontSize: '',
+                  paddingRight: '',
+                  paddingTop: '',
+                  paddingBottom: '',
+                  paddingLeft: '',
+                  lineHeight: '',
+                  fontFamily: '',
+                  fontStyle: '',
+                },
+              },
+            ],
+            name: [
+              {
+                id: utilService.makeId(4),
+                txt: 'Yarden M.',
+                style: {
+                  background: 'url()',
+                  color: '',
+                  backgroundColor: '',
+                  fontSize: '',
+                  paddingRight: '',
+                  paddingTop: '',
+                  paddingBottom: '',
+                  paddingLeft: '',
+                  lineHeight: '',
+                  fontFamily: '',
+                  fontStyle: '',
+                },
+              },
+            ],
+            title: [
+              {
+                id: utilService.makeId(4),
+                txt: 'CEO & Head of lunch',
+                style: {
+                  background: 'url()',
+                  color: '',
+                  backgroundColor: '',
+                  fontSize: '',
+                  paddingRight: '',
+                  paddingTop: '',
+                  paddingBottom: '',
+                  paddingLeft: '',
+                  lineHeight: '',
+                  fontFamily: '',
+                  fontStyle: '',
+                },
+              },
+            ],
+            avatar: [
+              {
+                id: utilService.makeId(4),
+                url: 'feliciano-imgs/yarden-review.png',
+                style: {
+                  background: 'url()',
+                  color: '',
+                  backgroundColor: '',
+                  fontSize: '',
+                  paddingRight: '',
+                  paddingTop: '',
+                  paddingBottom: '',
+                  paddingLeft: '',
+                  lineHeight: '',
+                  fontFamily: '',
+                  fontStyle: '',
+                },
+              },
+            ],
+          },
+          theme: 'feliciano-review',
+          style: {
+            background: 'url()',
+            color: '',
+            backgroundColor: '',
+            fontSize: '',
+            paddingRight: '',
+            paddingTop: '',
+            paddingBottom: '',
+            paddingLeft: '',
+            lineHeight: '',
+            fontFamily: '',
+            fontStyle: '',
+          },
+        },
+        {
+          id: utilService.makeId(4),
+          type: 'wap-review',
+          info: {
+            txt: [
+              {
+                id: utilService.makeId(4),
+                txt: '"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts."',
+                style: {
+                  background: 'url()',
+                  color: '',
+                  backgroundColor: '',
+                  fontSize: '',
+                  paddingRight: '',
+                  paddingTop: '',
+                  paddingBottom: '',
+                  paddingLeft: '',
+                  lineHeight: '',
+                  fontFamily: '',
+                  fontStyle: '',
+                },
+              },
+            ],
+            name: [
+              {
+                id: utilService.makeId(4),
+                txt: 'Rotem Bublil',
+                style: {
+                  background: 'url()',
+                  color: '',
+                  backgroundColor: '',
+                  fontSize: '',
+                  paddingRight: '',
+                  paddingTop: '',
+                  paddingBottom: '',
+                  paddingLeft: '',
+                  lineHeight: '',
+                  fontFamily: '',
+                  fontStyle: '',
+                },
+              },
+            ],
+            title: [
+              {
+                id: utilService.makeId(4),
+                txt: 'CEO & Head of lunch',
+                style: {
+                  background: 'url()',
+                  color: '',
+                  backgroundColor: '',
+                  fontSize: '',
+                  paddingRight: '',
+                  paddingTop: '',
+                  paddingBottom: '',
+                  paddingLeft: '',
+                  lineHeight: '',
+                  fontFamily: '',
+                  fontStyle: '',
+                },
+              },
+            ],
+            avatar: [
+              {
+                id: utilService.makeId(4),
+                url: 'feliciano-imgs/rotem-review.png',
+                style: {
+                  background: 'url()',
+                  color: '',
+                  backgroundColor: '',
+                  fontSize: '',
+                  paddingRight: '',
+                  paddingTop: '',
+                  paddingBottom: '',
+                  paddingLeft: '',
+                  lineHeight: '',
+                  fontFamily: '',
+                  fontStyle: '',
+                },
+              },
+            ],
+          },
+          theme: 'feliciano-review',
+          style: {
+            background: 'url()',
+            color: '',
+            backgroundColor: '',
+            fontSize: '',
+            paddingRight: '',
+            paddingTop: '',
+            paddingBottom: '',
+            paddingLeft: '',
+            lineHeight: '',
+            fontFamily: '',
+            fontStyle: '',
+          },
+        },
+        {
+          id: utilService.makeId(4),
+          type: 'wap-review',
+          info: {
+            txt: [
+              {
+                id: utilService.makeId(4),
+                txt: '"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts."',
+                style: {
+                  background: 'url()',
+                  color: '',
+                  backgroundColor: '',
+                  fontSize: '',
+                  paddingRight: '',
+                  paddingTop: '',
+                  paddingBottom: '',
+                  paddingLeft: '',
+                  lineHeight: '',
+                  fontFamily: '',
+                  fontStyle: '',
+                },
+              },
+            ],
+            name: [
+              {
+                id: utilService.makeId(4),
+                txt: 'Matan Lasry',
+                style: {
+                  background: 'url()',
+                  color: '',
+                  backgroundColor: '',
+                  fontSize: '',
+                  paddingRight: '',
+                  paddingTop: '',
+                  paddingBottom: '',
+                  paddingLeft: '',
+                  lineHeight: '',
+                  fontFamily: '',
+                  fontStyle: '',
+                },
+              },
+            ],
+            title: [
+              {
+                id: utilService.makeId(4),
+                txt: 'Chief ',
+                style: {
+                  background: 'url()',
+                  color: '',
+                  backgroundColor: '',
+                  fontSize: '',
+                  paddingRight: '',
+                  paddingTop: '',
+                  paddingBottom: '',
+                  paddingLeft: '',
+                  lineHeight: '',
+                  fontFamily: '',
+                  fontStyle: '',
+                },
+              },
+            ],
+            avatar: [
+              {
+                id: utilService.makeId(4),
+                url: 'feliciano-imgs/matan-review.png',
+                style: {
+                  background: 'url()',
+                  color: '',
+                  backgroundColor: '',
+                  fontSize: '',
+                  paddingRight: '',
+                  paddingTop: '',
+                  paddingBottom: '',
+                  paddingLeft: '',
+                  lineHeight: '',
+                  fontFamily: '',
+                  fontStyle: '',
+                },
+              },
+            ],
+          },
+          theme: 'feliciano-review',
+          style: {
+            background: 'url()',
+            color: '',
+            backgroundColor: '',
+            fontSize: '',
+            paddingRight: '',
+            paddingTop: '',
+            paddingBottom: '',
+            paddingLeft: '',
+            lineHeight: '',
+            fontFamily: '',
+            fontStyle: '',
+          },
+        },
+        {
+          id: utilService.makeId(4),
+          type: 'wap-review',
+          info: {
+            txt: [
+              {
+                id: utilService.makeId(4),
+                txt: '"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts."',
+                style: {
+                  background: 'url()',
+                  color: '',
+                  backgroundColor: '',
+                  fontSize: '',
+                  paddingRight: '',
+                  paddingTop: '',
+                  paddingBottom: '',
+                  paddingLeft: '',
+                  lineHeight: '',
+                  fontFamily: '',
+                  fontStyle: '',
+                },
+              },
+            ],
+            name: [
+              {
+                id: utilService.makeId(4),
+                txt: 'Shani Aharon',
+                style: {
+                  background: 'url()',
+                  color: '',
+                  backgroundColor: '',
+                  fontSize: '',
+                  paddingRight: '',
+                  paddingTop: '',
+                  paddingBottom: '',
+                  paddingLeft: '',
+                  lineHeight: '',
+                  fontFamily: '',
+                  fontStyle: '',
+                },
+              },
+            ],
+            title: [
+              {
+                id: utilService.makeId(4),
+                txt: 'CEO & Head of lunch',
+                style: {
+                  background: 'url()',
+                  color: '',
+                  backgroundColor: '',
+                  fontSize: '',
+                  paddingRight: '',
+                  paddingTop: '',
+                  paddingBottom: '',
+                  paddingLeft: '',
+                  lineHeight: '',
+                  fontFamily: '',
+                  fontStyle: '',
+                },
+              },
+            ],
+            avatar: [
+              {
+                id: utilService.makeId(4),
+                url: 'feliciano-imgs/shani-review.png',
+                style: {
+                  background: 'url()',
+                  color: '',
+                  backgroundColor: '',
+                  fontSize: '',
+                  paddingRight: '',
+                  paddingTop: '',
+                  paddingBottom: '',
+                  paddingLeft: '',
+                  lineHeight: '',
+                  fontFamily: '',
+                  fontStyle: '',
+                },
+              },
+            ],
+          },
+          theme: 'feliciano-review',
+          style: {
+            background: 'url()',
+            color: '',
+            backgroundColor: '',
+            fontSize: '',
+            paddingRight: '',
+            paddingTop: '',
+            paddingBottom: '',
+            paddingLeft: '',
+            lineHeight: '',
+            fontFamily: '',
+            fontStyle: '',
+          },
+        },
+      ],
+    },
+    theme: 'feliciano-review-container',
+    style: {
+      background: 'url()',
+      color: '',
+      backgroundColor: '',
+      fontSize: '',
+      paddingRight: '',
+      paddingTop: '',
+      paddingBottom: '',
+      paddingLeft: '',
+      lineHeight: '',
+      fontFamily: '',
+      fontStyle: '',
+    },
+  },
+  //Reviews
+
+  //CHEF-IMGS
+];
 
 const gThemes = gCmps.reduce((acc, cmp) => {
   if (!acc[cmp.type])
     acc[cmp.type] = [
-      { type: cmp.theme, cmpId: cmp.id, imgPath: cmp.screenshotImg },
-    ]
+      {type: cmp.theme, cmpId: cmp.id, imgPath: cmp.screenshotImg},
+    ];
   else
     acc[cmp.type].push({
       type: cmp.theme,
       cmpId: cmp.id,
       imgPath: cmp.screenshotImg,
-    })
-  return acc
-}, {})
+    });
+  return acc;
+}, {});
 
-console.log('test gThemes funccc', gThemes)
+console.log('test gThemes funccc', gThemes);
