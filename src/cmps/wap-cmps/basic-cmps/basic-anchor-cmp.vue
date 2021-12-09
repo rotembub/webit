@@ -66,80 +66,94 @@ export default {
       return this.details.cmpId;
     },
   },
-  onInput(event) {
-    // CHANGE THIS CANNOT CHANGE PROP
-    const value = event.target.innerText;
-    let updatedEl = JSON.parse(JSON.stringify(this.details.data));
-    updatedEl.txt = value;
-    this.updateEl(updatedEl);
-  },
-  async updateEl(updatedEl) {
-    this.$store.dispatch({
-      type: "updateElement",
-      cmpId: this.details.cmpId,
-      elType: this.details.elType,
-      elId: this.details.data.id,
-      containerId: this.details.containerId,
-      updatedEl,
-    });
-  },
-  setSelected(ev) {
-    console.log("event", ev);
-    console.log(
-      "Ypressed:",
-      ev.offsetY,
-      "Xpressed:",
-      ev.offsetX,
-      "targetHeight",
-      ev.target.offsetHeight,
-      "offseTtop:",
-      ev.target.offsetTop,
-      "calc:",
-      ev.target.offsetTop - ev.target.offsetHeight / 2
-    );
-    const pos = {
-      y: ev.target.offsetTop + ev.target.offsetHeight,
-      x: ev.target.offsetLeft,
-    };
-    if (ev.offsetY > ev.target.offsetHeight / 2) {
-      pos.y = ev.target.offsetTop + ev.target.offsetHeight + 5;
-    } else pos.y = ev.target.offsetTop - 30;
-    if (ev.clientX > window.innerWidth - 150) pos.x = ev.target.offsetLeft - 50;
-
-    console.log(pos);
-    if (this.isSelected) {
-      this.isSelected = false;
-      this.$store.commit({
-        type: "setSelectedElement",
-        id: null,
-        pos: null,
+  methods: {
+    removeEl() {
+      this.$store.dispatch({
+        type: "removeElFromCmp",
+        cmpId: this.details.cmpId,
+        elType: this.details.elType,
+        elId: this.details.data.id,
+        containerId: this.details.containerId,
       });
-      // this.$emit("removeEl", this.details.id, this.elType);
-    }
-  },
-  dupElement() {
-    this.$store.dispatch({
-      type: "dupElement",
-      cmpId: this.details.cmpId,
-      elType: this.details.elType,
-      elId: this.details.data.id,
-      containerId: this.details.containerId,
-    });
-  },
-  styleChanged(style) {
-    let updatedEl = JSON.parse(JSON.stringify(this.details.data));
-    updatedEl.style = style;
-    this.updateEl(updatedEl);
-  },
-  async updateElStyle(style) {
-    this.$store.dispatch({
-      type: "updateElementStyle",
-      cmpId: this.details.cmpId,
-      elType: this.details.elType,
-      elId: this.details.data.id,
-      containerId: this.details.containerId,
-      style,
-    });
+    },
+    dupElement() {
+      this.$store.dispatch({
+        type: "dupElement",
+        cmpId: this.details.cmpId,
+        elType: this.details.elType,
+        elId: this.details.data.id,
+        containerId: this.details.containerId,
+      });
+    },
+    onInput(event) {
+      // CHANGE THIS CANNOT CHANGE PROP
+      const value = event.target.innerText;
+      let updatedEl = JSON.parse(JSON.stringify(this.details.data));
+      updatedEl.txt = value;
+      this.updateEl(updatedEl);
+    },
+    async updateEl(updatedEl) {
+      this.$store.dispatch({
+        type: "updateElement",
+        cmpId: this.details.cmpId,
+        elType: this.details.elType,
+        elId: this.details.data.id,
+        containerId: this.details.containerId,
+        updatedEl,
+      });
+    },
+    setSelected(ev) {
+      const pos = {
+        y: ev.target.offsetTop,
+        x: ev.target.offsetLeft,
+      };
+      // console.log("Ypressed:", ev.offsetY, "Xpressed:", ev.offsetX,"targetHeight",ev.target.offsetHeight,"offseTtop:",ev.target.offsetTop,"calc:",ev.target.offsetTop + ev.target.offsetHeight/2);
+      if (ev.offsetY > ev.target.offsetHeight / 2) {
+        pos.y = ev.target.offsetTop + ev.target.offsetHeight + 5;
+      } else pos.y = ev.target.offsetTop - 30;
+      if (ev.clientX > window.innerWidth - 150)
+        pos.x = ev.target.offsetLeft - 50;
+      console.log(pos);
+      if (this.isSelected) {
+        this.isSelected = false;
+        this.$store.commit({
+          type: "setSelectedElement",
+          id: null,
+          pos: null,
+        });
+      } else {
+        this.isSelected = true;
+        this.$store.commit({
+          type: "setSelectedElement",
+          id: this.details.data.id,
+          pos,
+        });
+      }
+    },
+    dupElement() {
+      this.$store.dispatch({
+        type: "dupElement",
+        cmpId: this.details.cmpId,
+        elType: this.details.elType,
+        elId: this.details.data.id,
+        containerId: this.details.containerId,
+      });
+    },
+    styleChanged(style) {
+      let updatedEl = JSON.parse(JSON.stringify(this.details.data));
+      updatedEl.style = style;
+      this.updateEl(updatedEl);
+    },
+    async updateElStyle(style) {
+      this.$store.dispatch({
+        type: "updateElementStyle",
+        cmpId: this.details.cmpId,
+        elType: this.details.elType,
+        elId: this.details.data.id,
+        containerId: this.details.containerId,
+        style,
+      });
+    },
   },
 };
 </script>

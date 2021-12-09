@@ -85,9 +85,10 @@ export default {
         x: ev.target.offsetLeft,
       };
       if (ev.offsetY > ev.target.offsetHeight / 2) {
-        pos.y = ev.target.offsetTop + ev.target.offsetHeight +5;
+        pos.y = ev.target.offsetTop + ev.target.offsetHeight + 5;
       } else pos.y = ev.target.offsetTop - 30;
-      if (ev.clientX > window.innerWidth - 150) pos.x = ev.target.offsetLeft -50;
+      if (ev.clientX > window.innerWidth - 150)
+        pos.x = ev.target.offsetLeft - 50;
       console.log(pos);
       if (this.isSelected) {
         this.isSelected = false;
@@ -110,15 +111,6 @@ export default {
       updatedEl.style = style;
       this.updateEl(updatedEl);
     },
-    // async updateStyle() {
-    //   console.log("updating style of an element");
-    //   const id = this.getCmpId;
-    //   try {
-    //     this.$store.dispatch({ type: "updateWapStyle", cmpId: id });
-    //   } catch (err) {
-    //     console.log(err);
-    //   }
-    // },
     async updateElStyle(style) {
       this.$store.dispatch({
         type: "updateElementStyle",

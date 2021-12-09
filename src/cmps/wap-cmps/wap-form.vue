@@ -1,6 +1,6 @@
 <template>
   <div>
-    <form class="wap-contact-form-v2" action="">
+    <form class="wap-form" action="">
       <label
         >Name:
         <el-input placeholder="Name" type="text" />
