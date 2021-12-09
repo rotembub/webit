@@ -270,6 +270,65 @@
 }
 
 
+.feliciano-footer{
+    display: flex;
+    background-color: black;
+    justify-content: space-evenly;
+    // max-width: 80%;
+    font-family: Poppins;
+    padding: 10px 0;
+    h1{
+        font-size: 20px;
+        font-weight: 100;
+        color: white;
+    }
+    p{
+        font-size: 16px;
+    }
+    .feliciano-signup{
+        text-align:left;
+        align-items: flex-start;
+        h3{
+            font-size: 20px;
+            color: white;
+        }
+        form{
+            // height: 100%;
+            width: 100%;
+            input,button:not(.tool-element){
+                text-align: center;
+                width: 100%;
+                min-height: 40px;
+                // height: 100%;
+            }
+            button:not(.tool-element){
+                background-color: rgb(200, 169, 126);
+                color: rgba(255, 255, 255, 0.7);
+            }
+            input:not(.tool-element){
+                background-color: rgba(255, 255, 255, 0.1);
+                margin-bottom: 5px;
+            }
+        }
+
+    }
+}
+.feliciano-footer>*{
+    max-width: 20%;
+    color: rgba(255, 255, 255, 0.7);
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    flex: 1;
+    h3{
+        font-size: 16px;
+        text-align:left;
+        font-weight: 100;
+        margin-bottom: 0;
+    }
+}
+
+
 @media only screen and (max-width : 800px) {
     .wap-container-flex{
         flex-direction:column;
@@ -324,3 +383,6 @@
         line-height:1.2em;
     }
     }
+
+
+

@@ -20,7 +20,9 @@ export const wapService = {
   removeEl,
   duplicateEl,
   updateElStyle,
-  updateEl
+  updateEl,
+  queryWapTemplates,
+  createNewWap,
 }
 
 // More ways to send query params:
@@ -43,7 +45,19 @@ export const wapService = {
 //   // if (!waps || !waps.length)
 //   //   localStorage.setItem(KEY, JSON.stringify([wap_architecture]))
 // }
-
+async function createNewWap(templateId) {
+  return await httpService.post('template', { templateId })
+}
+async function queryWapTemplates() {
+  // try {
+  //   const wap = await storageService.query(KEY);
+  //   // if (!wap || !wap.length) return wap_architecture
+  //   return wap;
+  // } catch (err) {
+  //   console.log('couldnt find Waps', err);
+  // }
+  return await httpService.get('template')
+}
 async function query(filterBy) {
   // try {
   //   const wap = await storageService.query(KEY);
@@ -55,6 +69,7 @@ async function query(filterBy) {
   return await httpService.get(ENDPOINT, filterBy)
 }
 async function getById(id) {
+  console.log('ASKING FOR WAP WITH id: ', id)
   // try {
   //   const foundWap = await storageService.get(KEY, id);
   //   return foundWap;
@@ -231,8 +246,9 @@ async function removeEl(wap, cmpId, elType, elId, containerId) {
     const cmp = wap.cmps.find(cmp => cmp.id === cmpId)
     if (elType === 'logo') {
       delete cmp.info[elType]
+      const updatedCmp = JSON.parse(JSON.stringify(cmp));
       const idx = wap.cmps.findIndex(cmp => cmp.id === cmpId)
-      wap.cmps.splice(idx, 1, cmp);
+      wap.cmps.splice(idx, 1, updatedCmp);
     }
     else {
       console.log('elType:', elType)
@@ -245,7 +261,12 @@ async function removeEl(wap, cmpId, elType, elId, containerId) {
     const container = wap.cmps.find(cmp => cmp.id === containerId)
     console.log(wap, container)
     const innerCmp = container.info.cmps.find(cmp => cmp.id === cmpId)
-    if (elType === 'logo') delete innerCmp.info[elType]
+    if (elType === 'logo') { // no chance to check that yet ...
+      delete innerCmp.info[elType]
+      const updatedCmp = JSON.parse(JSON.stringify(innerCmp));
+      const idx = wap.cmps.findIndex(cmp => cmp.id === innerCmp.id)
+      wap.cmps.splice(idx, 1, updatedCmp);
+    }
     else {
       const idx = innerCmp.info[elType].findIndex(el => el.id === elId)
       innerCmp.info[elType].splice(idx, 1)
@@ -2054,7 +2075,8 @@ const wap_fylo = {
         input: [
           {
             id: utilService.makeId(4),
-            txt: '',
+            txt: 'example@email.com',
+            type: 'text',
             style: {
               background: 'url()',
               color: '',
@@ -5783,11 +5805,7 @@ const wap_feliciano = {
 
 // createWaps();
 
-
-
-
-
-const newStuff = {
+const newSignUp = {
   id: utilService.makeId(4),
   type: 'wap-contact',
   screenshotImg: '',
@@ -5796,7 +5814,7 @@ const newStuff = {
     title: [
       {
         id: utilService.makeId(6),
-        txt: "Book a table",
+        txt: 'Book a table',
         style: {
           background: 'url()',
           color: '',
@@ -5810,12 +5828,12 @@ const newStuff = {
           fontFamily: '',
           fontStyle: '',
         },
-      }
+      },
     ],
     subtitle: [
       {
         id: utilService.makeId(6),
-        txt: "Make a reservation",
+        txt: 'Make a reservation',
         style: {
           background: 'url()',
           color: '',
@@ -5833,8 +5851,105 @@ const newStuff = {
     ],
     input: [
       {
+        //1
         id: utilService.makeId(4),
-        txt: '',
+        txt: 'Your Name',
+        type: 'text',
+        style: {
+          background: 'url()',
+          color: '',
+          backgroundColor: '',
+          fontSize: '',
+          paddingRight: '',
+          paddingTop: '',
+          paddingBottom: '',
+          paddingLeft: '',
+          lineHeight: '',
+          fontFamily: '',
+          fontStyle: '',
+        },
+      },
+      {
+        //2
+        id: utilService.makeId(4),
+        txt: 'Phone',
+        type: 'text',
+        style: {
+          background: 'url()',
+          color: '',
+          backgroundColor: '',
+          fontSize: '',
+          paddingRight: '',
+          paddingTop: '',
+          paddingBottom: '',
+          paddingLeft: '',
+          lineHeight: '',
+          fontFamily: '',
+          fontStyle: '',
+        },
+      },
+      {
+        //3
+        id: utilService.makeId(4),
+        txt: 'Time',
+        type: 'time',
+        style: {
+          background: 'url()',
+          color: '',
+          backgroundColor: '',
+          fontSize: '',
+          paddingRight: '',
+          paddingTop: '',
+          paddingBottom: '',
+          paddingLeft: '',
+          lineHeight: '',
+          fontFamily: '',
+          fontStyle: '',
+        },
+      },
+      {
+        //4
+        id: utilService.makeId(4),
+        txt: 'Date',
+        type: 'date',
+        style: {
+          background: 'url()',
+          color: '',
+          backgroundColor: '',
+          fontSize: '',
+          paddingRight: '',
+          paddingTop: '',
+          paddingBottom: '',
+          paddingLeft: '',
+          lineHeight: '',
+          fontFamily: '',
+          fontStyle: '',
+        },
+      },
+      {
+        //5
+        id: utilService.makeId(4),
+        txt: 'example@email.com',
+        type: 'text',
+        style: {
+          background: 'url()',
+          color: '',
+          backgroundColor: '',
+          fontSize: '',
+          paddingRight: '',
+          paddingTop: '',
+          paddingBottom: '',
+          paddingLeft: '',
+          lineHeight: '',
+          fontFamily: '',
+          fontStyle: '',
+        },
+      },
+      {
+        //6
+        id: utilService.makeId(4),
+        txt: 'Preferences',
+        type: 'text',
         style: {
           background: 'url()',
           color: '',
@@ -5853,7 +5968,7 @@ const newStuff = {
     buttons: [
       {
         id: utilService.makeId(6),
-        txt: 'Contact Us',
+        txt: 'Make a Reservation',
         style: {
           background: 'url()',
           color: '',
@@ -5875,7 +5990,7 @@ const newStuff = {
 const newFooter = {
   id: utilService.makeId(4),
   type: 'wap-container',
-  screenshotImg: '',
+  screenshotImg: 'pexels-photo-12211.jpeg',
   category: 'Footers',
   info: {
     dir: 'row',
@@ -5962,7 +6077,8 @@ const newFooter = {
             },
           ],
           subtitle: [
-            { // 1
+            {
+              // 1
               id: utilService.makeId(4),
               txt: 'Monday 9:00 - 24:00',
               style: {
@@ -5979,7 +6095,8 @@ const newFooter = {
                 fontStyle: '',
               },
             },
-            { // 2
+            {
+              // 2
               id: utilService.makeId(4),
               txt: 'Tuesday 9:00 - 24:00',
               style: {
@@ -5996,7 +6113,8 @@ const newFooter = {
                 fontStyle: '',
               },
             },
-            { //3 
+            {
+              //3
               id: utilService.makeId(4),
               txt: 'Wednesday 9:00 - 24:00',
               style: {
@@ -6013,7 +6131,8 @@ const newFooter = {
                 fontStyle: '',
               },
             },
-            { // 4
+            {
+              // 4
               id: utilService.makeId(4),
               txt: 'Thursday 9:00 - 24:00',
               style: {
@@ -6030,7 +6149,8 @@ const newFooter = {
                 fontStyle: '',
               },
             },
-            { //5 
+            {
+              //5
               id: utilService.makeId(4),
               txt: 'Friday 9:00 - 02:00',
               style: {
@@ -6047,7 +6167,8 @@ const newFooter = {
                 fontStyle: '',
               },
             },
-            { //6
+            {
+              //6
               id: utilService.makeId(4),
               txt: 'Saturday 9:00 - 02:00',
               style: {
@@ -6064,7 +6185,8 @@ const newFooter = {
                 fontStyle: '',
               },
             },
-            { //7
+            {
+              //7
               id: utilService.makeId(4),
               txt: 'Sunday 9:00 - 02:00',
               style: {
@@ -6143,7 +6265,8 @@ const newFooter = {
           input: [
             {
               id: utilService.makeId(4),
-              txt: '',
+              txt: 'example@email.com',
+              type: 'text',
               style: {
                 background: 'url()',
                 color: '',
@@ -6194,7 +6317,7 @@ const newFooter = {
           fontStyle: '',
         },
       },
-    ]
+    ],
   },
   theme: 'feliciano-footer',
   style: {
@@ -6210,7 +6333,4 @@ const newFooter = {
     fontFamily: '',
     fontStyle: '',
   },
-
-
 }
-

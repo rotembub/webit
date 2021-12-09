@@ -25,33 +25,39 @@ export default {
   },
   async created() {
     const id = this.wapId
-    // console.log(id);
+    console.log('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ I WAS CRETEAD!!!', id)
     if (!id) await this.$store.dispatch({ type: 'getEmptyWap' })
     else await this.$store.dispatch({ type: 'setCurrWap', wapId: id })
     socketService.emit('wap id', this.$store.getters.getCurrWap._id)
-    socketService.on('wap updated', this.updateWap)
+    socketService.on('wap updated', wap => {
+      console.log('wap from socket: ', wap)
+      this.updateWap(wap, 'socket')
+    })
   },
   watch: {
     '$store.getters.getCurrWap'(wap) {
-      // console.log(
-      //   'wap watch // ----------------------------------------',
-      //   wap
-      // );
-
-      console.log('SOCKET WAP', wap)
-      socketService.emit('wap updated', wap)
+      console.log('--------------------------> EVENT TYPE', wap.updateEvent)
+      if (!wap.updateEvent) {
+        socketService.emit('wap updated', wap)
+      } else {
+        console.log('SOCKET WAP', wap)
+      }
     },
   },
   methods: {
-    updateWap(wap) {
+    updateWap(wap, eventType) {
       console.log(wap, 'WAP')
-      this.$store.commit({ type: 'setCurrWap', wap })
+      this.$store.dispatch({ type: 'updateWap', wap, eventType })
     },
     onMobile(str) {
       this.$store.dispatch({ type: 'isMobile', str })
     },
   },
   computed: {
+    oldWap() {
+      // const isFullScreen =
+      this.$store.getters.getCurrWap
+    },
     classForPicker() {
       // const isFullScreen =
       if (this.$store.getters.isFullScreen) return 'cmp-picker-fullscreen'
