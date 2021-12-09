@@ -4,7 +4,8 @@
       <i class="el-icon-delete"></i>
     </button>
     <button title="Font" class="tool-element" @click.stop="openModal">
-      <i class="el-icon-s-operation"></i>
+      <!-- <i class="el-icon-s-operation"></i> -->
+      <i class="fas fa-font"></i>
     </button>
     <button
       v-if="elType !== 'imgs'"
@@ -12,8 +13,9 @@
       class="tool-element"
       @click.stop="openColorModal"
     >
+    <i class="fas fa-palette"></i>
       <!-- <img src="@/assets/element-editor/color.png" /> -->
-      <i class="el-icon-edit"></i>
+      <!-- <i class="el-icon-edit"></i> -->
     </button>
     <button title="Size" class="tool-element" @click.stop="openSizeModal">
       <i class="el-icon-rank"></i>

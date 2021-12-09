@@ -86,7 +86,7 @@ export default {
         containerId: this.details.containerId,
       });
     },
-    onInput(event) {
+    onInput(event) { // CHANGE THIS CANNOT CHANGE PROP
       const value = event.target.innerText;
       this.details.data.txt = value;
       this.$store.dispatch({
