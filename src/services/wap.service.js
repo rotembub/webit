@@ -20,6 +20,7 @@ export const wapService = {
   removeEl,
   duplicateEl,
   updateElStyle,
+  updateEl
 }
 
 // More ways to send query params:
@@ -226,17 +227,20 @@ async function removeEl(wap, cmpId, elType, elId, containerId) {
   // if no type is sent we can delete the entire type from the cmp
   console.log(wap, cmpId, elType, elId, containerId)
   // const wap = await getById(wapId);
-
   if (!containerId) {
     const cmp = wap.cmps.find(cmp => cmp.id === cmpId)
-    if (elType === 'logo') delete cmp.info[elType]
+    if (elType === 'logo') {
+      delete cmp.info[elType]
+      const idx = wap.cmps.findIndex(cmp => cmp.id === cmpId)
+      wap.cmps.splice(idx, 1, cmp);
+    }
     else {
       console.log('elType:', elType)
       const idx = cmp.info[elType].findIndex(el => el.id === elId)
       cmp.info[elType].splice(idx, 1)
     }
     // return await save(wap);
-    return wap
+    return Promise.resolve(wap)
   } else {
     const container = wap.cmps.find(cmp => cmp.id === containerId)
     console.log(wap, container)
@@ -247,7 +251,7 @@ async function removeEl(wap, cmpId, elType, elId, containerId) {
       innerCmp.info[elType].splice(idx, 1)
     }
     // return await save(wap);
-    return wap
+    return Promise.resolve(wap)
   }
 }
 
@@ -272,6 +276,34 @@ async function updateElStyle(wap, cmpId, elType, elId, containerId, style) {
     else {
       const element = innerCmp.info[elType].find(el => el.id === elId)
       element.style = style
+      // innerCmp.info[elType].splice(idx, 1)
+    }
+  }
+  return wap
+  // return await save(wap)
+}
+
+async function updateEl(wap, cmpId, elType, elId, containerId, updatedEl) {
+  // if no type is sent we can delete the entire type from the cmp
+  console.log(wap, cmpId, elType, elId, containerId, updatedEl)
+  // const wap = await getById(wapId)
+
+  if (!containerId) {
+    const cmp = wap.cmps.find(cmp => cmp.id === cmpId)
+    if (elType === 'logo') cmp.info[elType] = updatedEl
+    else {
+      console.log('elType:', elType)
+      const idx = cmp.info[elType].findIndex(el => el.id === elId)
+      cmp.info[elType].splice(idx, 1, updatedEl)
+    }
+  } else {
+    const container = wap.cmps.find(cmp => cmp.id === containerId)
+    console.log(wap, container)
+    const innerCmp = container.info.cmps.find(cmp => cmp.id === cmpId)
+    if (elType === 'logo') innerCmp.info[elType] = updatedEl
+    else {
+      const idx = innerCmp.info[elType].findIndex(el => el.id === elId)
+      innerCmp.info[elType].splice(idx, 1, updatedEl)
       // innerCmp.info[elType].splice(idx, 1)
     }
   }
@@ -5750,3 +5782,435 @@ const wap_feliciano = {
 // storageService.post('wap_DB', wap_architecture);
 
 // createWaps();
+
+
+
+
+
+const newStuff = {
+  id: utilService.makeId(4),
+  type: 'wap-contact',
+  screenshotImg: '',
+  category: 'Contacts',
+  info: {
+    title: [
+      {
+        id: utilService.makeId(6),
+        txt: "Book a table",
+        style: {
+          background: 'url()',
+          color: '',
+          backgroundColor: '',
+          fontSize: '',
+          paddingRight: '',
+          paddingTop: '',
+          paddingBottom: '',
+          paddingLeft: '',
+          lineHeight: '',
+          fontFamily: '',
+          fontStyle: '',
+        },
+      }
+    ],
+    subtitle: [
+      {
+        id: utilService.makeId(6),
+        txt: "Make a reservation",
+        style: {
+          background: 'url()',
+          color: '',
+          backgroundColor: '',
+          fontSize: '',
+          paddingRight: '',
+          paddingTop: '',
+          paddingBottom: '',
+          paddingLeft: '',
+          lineHeight: '',
+          fontFamily: '',
+          fontStyle: '',
+        },
+      },
+    ],
+    input: [
+      {
+        id: utilService.makeId(4),
+        txt: '',
+        style: {
+          background: 'url()',
+          color: '',
+          backgroundColor: '',
+          fontSize: '',
+          paddingRight: '',
+          paddingTop: '',
+          paddingBottom: '',
+          paddingLeft: '',
+          lineHeight: '',
+          fontFamily: '',
+          fontStyle: '',
+        },
+      },
+    ],
+    buttons: [
+      {
+        id: utilService.makeId(6),
+        txt: 'Contact Us',
+        style: {
+          background: 'url()',
+          color: '',
+          backgroundColor: '',
+          fontSize: '',
+          paddingRight: '',
+          paddingTop: '',
+          paddingBottom: '',
+          paddingLeft: '',
+          lineHeight: '',
+          fontFamily: '',
+          fontStyle: '',
+        },
+      },
+    ],
+  },
+}
+
+const newFooter = {
+  id: utilService.makeId(4),
+  type: 'wap-container',
+  screenshotImg: '',
+  category: 'Footers',
+  info: {
+    dir: 'row',
+    cmps: [
+      {
+        id: utilService.makeId(4),
+        type: 'wap-text',
+        info: {
+          title: [
+            {
+              id: utilService.makeId(4),
+              txt: 'Feliciano',
+              style: {
+                background: 'url()',
+                color: '',
+                backgroundColor: '',
+                fontSize: '',
+                paddingRight: '',
+                paddingTop: '',
+                paddingBottom: '',
+                paddingLeft: '',
+                lineHeight: '',
+                fontFamily: '',
+                fontStyle: '',
+              },
+            },
+          ],
+          subtitle: [
+            {
+              id: utilService.makeId(4),
+              txt: 'Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.',
+              style: {
+                background: 'url()',
+                color: '',
+                backgroundColor: '',
+                fontSize: '',
+                paddingRight: '',
+                paddingTop: '',
+                paddingBottom: '',
+                paddingLeft: '',
+                lineHeight: '',
+                fontFamily: '',
+                fontStyle: '',
+              },
+            },
+          ],
+        },
+        theme: 'feliciano-footer-text',
+        style: {
+          background: 'url()',
+          color: '',
+          backgroundColor: '',
+          fontSize: '',
+          paddingRight: '',
+          paddingTop: '',
+          paddingBottom: '',
+          paddingLeft: '',
+          lineHeight: '',
+          fontFamily: '',
+          fontStyle: '',
+        },
+      },
+      {
+        id: utilService.makeId(4),
+        type: 'wap-text',
+        info: {
+          title: [
+            {
+              id: utilService.makeId(4),
+              txt: 'Open Hours',
+              style: {
+                background: 'url()',
+                color: '',
+                backgroundColor: '',
+                fontSize: '',
+                paddingRight: '',
+                paddingTop: '',
+                paddingBottom: '',
+                paddingLeft: '',
+                lineHeight: '',
+                fontFamily: '',
+                fontStyle: '',
+              },
+            },
+          ],
+          subtitle: [
+            { // 1
+              id: utilService.makeId(4),
+              txt: 'Monday 9:00 - 24:00',
+              style: {
+                background: 'url()',
+                color: '',
+                backgroundColor: '',
+                fontSize: '',
+                paddingRight: '',
+                paddingTop: '',
+                paddingBottom: '',
+                paddingLeft: '',
+                lineHeight: '',
+                fontFamily: '',
+                fontStyle: '',
+              },
+            },
+            { // 2
+              id: utilService.makeId(4),
+              txt: 'Tuesday 9:00 - 24:00',
+              style: {
+                background: 'url()',
+                color: '',
+                backgroundColor: '',
+                fontSize: '',
+                paddingRight: '',
+                paddingTop: '',
+                paddingBottom: '',
+                paddingLeft: '',
+                lineHeight: '',
+                fontFamily: '',
+                fontStyle: '',
+              },
+            },
+            { //3 
+              id: utilService.makeId(4),
+              txt: 'Wednesday 9:00 - 24:00',
+              style: {
+                background: 'url()',
+                color: '',
+                backgroundColor: '',
+                fontSize: '',
+                paddingRight: '',
+                paddingTop: '',
+                paddingBottom: '',
+                paddingLeft: '',
+                lineHeight: '',
+                fontFamily: '',
+                fontStyle: '',
+              },
+            },
+            { // 4
+              id: utilService.makeId(4),
+              txt: 'Thursday 9:00 - 24:00',
+              style: {
+                background: 'url()',
+                color: '',
+                backgroundColor: '',
+                fontSize: '',
+                paddingRight: '',
+                paddingTop: '',
+                paddingBottom: '',
+                paddingLeft: '',
+                lineHeight: '',
+                fontFamily: '',
+                fontStyle: '',
+              },
+            },
+            { //5 
+              id: utilService.makeId(4),
+              txt: 'Friday 9:00 - 02:00',
+              style: {
+                background: 'url()',
+                color: '',
+                backgroundColor: '',
+                fontSize: '',
+                paddingRight: '',
+                paddingTop: '',
+                paddingBottom: '',
+                paddingLeft: '',
+                lineHeight: '',
+                fontFamily: '',
+                fontStyle: '',
+              },
+            },
+            { //6
+              id: utilService.makeId(4),
+              txt: 'Saturday 9:00 - 02:00',
+              style: {
+                background: 'url()',
+                color: '',
+                backgroundColor: '',
+                fontSize: '',
+                paddingRight: '',
+                paddingTop: '',
+                paddingBottom: '',
+                paddingLeft: '',
+                lineHeight: '',
+                fontFamily: '',
+                fontStyle: '',
+              },
+            },
+            { //7
+              id: utilService.makeId(4),
+              txt: 'Sunday 9:00 - 02:00',
+              style: {
+                background: 'url()',
+                color: '',
+                backgroundColor: '',
+                fontSize: '',
+                paddingRight: '',
+                paddingTop: '',
+                paddingBottom: '',
+                paddingLeft: '',
+                lineHeight: '',
+                fontFamily: '',
+                fontStyle: '',
+              },
+            },
+          ],
+        },
+        theme: 'feliciano-footer-hours',
+        style: {
+          background: 'url()',
+          color: '',
+          backgroundColor: '',
+          fontSize: '',
+          paddingRight: '',
+          paddingTop: '',
+          paddingBottom: '',
+          paddingLeft: '',
+          lineHeight: '',
+          fontFamily: '',
+          fontStyle: '',
+        },
+      },
+      {
+        id: utilService.makeId(4),
+        type: 'wap-signup',
+        info: {
+          title: [
+            {
+              id: utilService.makeId(4),
+              txt: 'Newsletter',
+              style: {
+                background: 'url()',
+                color: '',
+                backgroundColor: '',
+                fontSize: '',
+                paddingRight: '',
+                paddingTop: '',
+                paddingBottom: '',
+                paddingLeft: '',
+                lineHeight: '',
+                fontFamily: '',
+                fontStyle: '',
+              },
+            },
+          ],
+          subtitle: [
+            {
+              id: utilService.makeId(4),
+              txt: 'Far far away, behind the word mountains, far from the countries.',
+              style: {
+                background: 'url()',
+                color: '',
+                backgroundColor: '',
+                fontSize: '',
+                paddingRight: '',
+                paddingTop: '',
+                paddingBottom: '',
+                paddingLeft: '',
+                lineHeight: '',
+                fontFamily: '',
+                fontStyle: '',
+              },
+            },
+          ],
+          input: [
+            {
+              id: utilService.makeId(4),
+              txt: '',
+              style: {
+                background: 'url()',
+                color: '',
+                backgroundColor: '',
+                fontSize: '',
+                paddingRight: '',
+                paddingTop: '',
+                paddingBottom: '',
+                paddingLeft: '',
+                lineHeight: '',
+                fontFamily: '',
+                fontStyle: '',
+              },
+            },
+          ],
+          buttons: [
+            {
+              id: utilService.makeId(4),
+              txt: 'Subscribe',
+              style: {
+                background: 'url()',
+                color: '',
+                backgroundColor: '',
+                fontSize: '',
+                paddingRight: '',
+                paddingTop: '',
+                paddingBottom: '',
+                paddingLeft: '',
+                lineHeight: '',
+                fontFamily: '',
+                fontStyle: '',
+              },
+            },
+          ],
+        },
+        theme: 'feliciano-signup',
+        style: {
+          background: 'url()',
+          color: '',
+          backgroundColor: '',
+          fontSize: '',
+          paddingRight: '',
+          paddingTop: '',
+          paddingBottom: '',
+          paddingLeft: '',
+          lineHeight: '',
+          fontFamily: '',
+          fontStyle: '',
+        },
+      },
+    ]
+  },
+  theme: 'feliciano-footer',
+  style: {
+    background: 'url()',
+    color: '',
+    backgroundColor: '',
+    fontSize: '',
+    paddingRight: '',
+    paddingTop: '',
+    paddingBottom: '',
+    paddingLeft: '',
+    lineHeight: '',
+    fontFamily: '',
+    fontStyle: '',
+  },
+
+
+}
+

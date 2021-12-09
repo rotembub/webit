@@ -31,6 +31,7 @@
     background-position: 50% 0;
     background-color: rgb(136, 136, 136);
     height: 100vh;
+
 }
 
 .feliciano-landing-page{
@@ -45,6 +46,7 @@
         background-blend-mode:darken;
         background-position: 50% 0;
         height: 100vh;
+        background-attachment: fixed;
 
         .wap-header-feliciano{
       
@@ -81,7 +83,6 @@
             align-items: center;
             grid-row: 2 / 5;
             grid-column: 1 / span 4;
-            border-bottom: 2px rgba(255, 255, 255, 0.534) solid;
             h1{
                 font-size:3em;
                 font-family: arial,sans-serif;
@@ -136,9 +137,7 @@
         grid-row: span 1;
         grid-column: span 1;
     }
-    .wap-img-menu{
-
-    }
+ 
     .text-block{
         display: flex;
         justify-content:center;
@@ -286,10 +285,42 @@
         }
        
     }
+    .wap-chef-preview {
+        align-items: center;
+        img{
+            width: 100%
+        }
+        .text-block{
+            h1{
+                margin: 0;
+            }
+            p{
+                margin: 0;
+            }
+        }
+    }
     .wap-catering-preview{
         width: 100%;
     }
     .wap-card-default{
         width: 100%!important;
+    }
+    .feliciano-menu-gallery {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(6, 1fr);
+        row-gap: 15px;
+    }
+    .text-block{
+            h1{
+                font-size:12px!important;
+            }
+            p{
+                font-size:10px;
+
+            }
+    }
+    .wap-feliciano-catering{
+        line-height:1.2em;
     }
     }

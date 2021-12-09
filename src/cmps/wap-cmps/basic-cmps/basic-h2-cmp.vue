@@ -117,20 +117,26 @@ export default {
         });
       }
     },
-    onInput(event) { // CHANGE THIS CANNOT CHANGE PROP
+    onInput(event) {
       const value = event.target.innerText;
-      this.details.data.txt = value;
+      let updatedEl = JSON.parse(JSON.stringify(this.details.data));
+      updatedEl.txt = value;
+      this.updateEl(updatedEl);
+    },
+    async updateEl(updatedEl) {
       this.$store.dispatch({
-        type: "updateWapStyle",
-        currWap: this.currWap,
+        type: "updateElement",
         cmpId: this.details.cmpId,
+        elType: this.details.elType,
+        elId: this.details.data.id,
+        containerId: this.details.containerId,
+        updatedEl,
       });
     },
     styleChanged(style) {
-      console.log(style);
-      // this.details.data.style = style;
-      this.updateElStyle(style);
-      // this.updateStyle();
+      let updatedEl = JSON.parse(JSON.stringify(this.details.data));
+      updatedEl.style = style;
+      this.updateEl(updatedEl);
     },
     // async updateStyle() {
     //   console.log("updating style of an element");
