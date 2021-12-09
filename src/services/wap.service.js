@@ -20,6 +20,7 @@ export const wapService = {
   removeEl,
   duplicateEl,
   updateElStyle,
+  updateEl
 }
 
 // More ways to send query params:
@@ -226,17 +227,20 @@ async function removeEl(wap, cmpId, elType, elId, containerId) {
   // if no type is sent we can delete the entire type from the cmp
   console.log(wap, cmpId, elType, elId, containerId)
   // const wap = await getById(wapId);
-
   if (!containerId) {
     const cmp = wap.cmps.find(cmp => cmp.id === cmpId)
-    if (elType === 'logo') delete cmp.info[elType]
+    if (elType === 'logo') {
+      delete cmp.info[elType]
+      const idx = wap.cmps.findIndex(cmp => cmp.id === cmpId)
+      wap.cmps.splice(idx, 1, cmp);
+    }
     else {
       console.log('elType:', elType)
       const idx = cmp.info[elType].findIndex(el => el.id === elId)
       cmp.info[elType].splice(idx, 1)
     }
     // return await save(wap);
-    return wap
+    return Promise.resolve(wap)
   } else {
     const container = wap.cmps.find(cmp => cmp.id === containerId)
     console.log(wap, container)
@@ -247,7 +251,7 @@ async function removeEl(wap, cmpId, elType, elId, containerId) {
       innerCmp.info[elType].splice(idx, 1)
     }
     // return await save(wap);
-    return wap
+    return Promise.resolve(wap)
   }
 }
 
@@ -272,6 +276,34 @@ async function updateElStyle(wap, cmpId, elType, elId, containerId, style) {
     else {
       const element = innerCmp.info[elType].find(el => el.id === elId)
       element.style = style
+      // innerCmp.info[elType].splice(idx, 1)
+    }
+  }
+  return wap
+  // return await save(wap)
+}
+
+async function updateEl(wap, cmpId, elType, elId, containerId, updatedEl) {
+  // if no type is sent we can delete the entire type from the cmp
+  console.log(wap, cmpId, elType, elId, containerId, updatedEl)
+  // const wap = await getById(wapId)
+
+  if (!containerId) {
+    const cmp = wap.cmps.find(cmp => cmp.id === cmpId)
+    if (elType === 'logo') cmp.info[elType] = updatedEl
+    else {
+      console.log('elType:', elType)
+      const idx = cmp.info[elType].findIndex(el => el.id === elId)
+      cmp.info[elType].splice(idx, 1, updatedEl)
+    }
+  } else {
+    const container = wap.cmps.find(cmp => cmp.id === containerId)
+    console.log(wap, container)
+    const innerCmp = container.info.cmps.find(cmp => cmp.id === cmpId)
+    if (elType === 'logo') innerCmp.info[elType] = updatedEl
+    else {
+      const idx = innerCmp.info[elType].findIndex(el => el.id === elId)
+      innerCmp.info[elType].splice(idx, 1, updatedEl)
       // innerCmp.info[elType].splice(idx, 1)
     }
   }
@@ -451,7 +483,7 @@ const wap_architecture = {
       id: utilService.makeId(4),
       type: 'wap-card',
       screenshotImg: 'archi-examples/card-archi.png',
-      category: 'Cards' ,
+      category: 'Cards',
       info: {
         title: [
           {
@@ -833,7 +865,7 @@ const wap_architecture = {
       id: utilService.makeId(4),
       type: 'wap-contact',
       screenshotImg: 'archi-examples/contact-archi.png',
-      category:'Contacts',
+      category: 'Contacts',
       info: {
         title: [
           {
@@ -934,7 +966,7 @@ const wap_fylo = {
       id: utilService.makeId(4),
       type: 'wap-header',
       screenshotImg: 'fylo-examples/fylo-header.png',
-      category:'Headers',
+      category: 'Headers',
       info: {
         title: '',
         subtitle: '',
@@ -1030,7 +1062,7 @@ const wap_fylo = {
       id: utilService.makeId(4),
       type: 'wap-container',
       screenshotImg: 'fylo-examples/fylo-card-v1.png',
-      category:'Landings',
+      category: 'Landings',
       info: {
         dir: 'row',
         cmps: [
@@ -1194,7 +1226,7 @@ const wap_fylo = {
       id: utilService.makeId(4),
       type: 'wap-container',
       screenshotImg: 'fylo-examples/fylo-gallery.png',
-      category:'Cards',
+      category: 'Cards',
       info: {
         dir: 'row',
         cmps: [
@@ -1527,7 +1559,7 @@ const wap_fylo = {
       id: utilService.makeId(4),
       type: 'wap-container',
       screenshotImg: 'fylo-examples/fylo-card-v2.png',
-      category:'Cards',
+      category: 'Cards',
       info: {
         dir: 'row',
         cmps: [
@@ -1666,7 +1698,7 @@ const wap_fylo = {
       id: utilService.makeId(4),
       type: 'wap-container',
       screenshotImg: 'fylo-examples/fylo-review.png',
-      category:'Reviews',
+      category: 'Reviews',
       info: {
         dir: 'row',
         cmps: [
@@ -2555,7 +2587,7 @@ const wap_sunnyside = {
       id: utilService.makeId(4),
       type: 'wap-container',
       screenshotImg: 'sunnyside-examples/orange.png',
-      category:'Cards',
+      category: 'Cards',
       info: {
         dir: 'row',
         cmps: [
@@ -4953,7 +4985,7 @@ const wap_feliciano = {
       id: utilService.makeId(4),
       type: 'wap-text',
       screenshotImg: 'feliciano-examples/chefs-text.png',
-      category:'Text',
+      category: 'Text',
       info: {
         title: [
           {

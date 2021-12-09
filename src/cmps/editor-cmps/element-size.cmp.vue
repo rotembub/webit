@@ -22,6 +22,30 @@
         <input type="range" />
       </span>
     </template>
+    <span v-if="elType === 'imgs'">
+      Height :
+      <input
+        @mousemove.stop=""
+        @mouseup="styleChanged"
+        v-model="editedStyle.maxHeight"
+        type="range"
+        min="0"
+        max="100"
+        step="0.5"
+      />
+    </span>
+    <span v-if="elType === 'imgs'">
+      Width :
+      <input
+        @mousemove.stop=""
+        @mouseup="styleChanged"
+        v-model="editedStyle.maxWidth"
+        type="range"
+        min="0"
+        max="100"
+        step="0.5"
+      />
+    </span>
     <span>
       Top Spacing :
       <input
@@ -72,7 +96,7 @@
 
 <script>
 export default {
-  props: ["id", "elStyle", "cmpId"],
+  props: ["id", "elStyle", "cmpId", "elType"],
   data() {
     return {
       isText: false,
@@ -82,7 +106,15 @@ export default {
   },
   created() {
     // console.log("at the el size modal");
-    this.editedStyle = { ...this.elStyle , marginTop: '',marginRight:'',marginBottom:'',marginLeft:'' };
+    this.editedStyle = {
+      ...this.elStyle,
+      marginTop: "",
+      marginRight: "",
+      marginBottom: "",
+      marginLeft: "",
+      maxHeight: "",
+      maxWidth: "",
+    };
   },
   methods: {
     styleChanged() {

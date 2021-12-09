@@ -24,14 +24,16 @@ let gThemes = {};
 
 async function query(filterBy) {
   gCmps = await httpService.get(ENDPOINT, filterBy);
+  console.log(gCmps[1]);
   gThemes = gCmps.reduce((acc, cmp) => {
-    if (!acc[cmp.type])
-      acc[cmp.type] = [
-        {type: cmp.theme, cmpId: cmp.id, imgPath: cmp.screenshotImg}, //**change to category in the json
+    
+    if (!acc[cmp.category])
+      acc[cmp.category] = [
+        {type: cmp.category, cmpId: cmp.id, imgPath: cmp.screenshotImg}, //**change to category in the json
       ];
     else
-      acc[cmp.type].push({
-        type: cmp.theme,
+      acc[cmp.category].push({
+        type: cmp.category,
         cmpId: cmp.id,
         imgPath: cmp.screenshotImg,
       });
@@ -55,8 +57,8 @@ async function getCmpById(id) {
   return Promise.resolve(copyCmp);
 }
 
-function getThemesFor(cmpType) {
-  const themes = gThemes[cmpType];
+function getThemesFor(cmpCat) {
+  const themes = gThemes[cmpCat];
   console.log('themes', themes);
   return themes;
 }

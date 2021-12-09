@@ -3,8 +3,12 @@
     <button title="Remove" class="tool-element" @click.stop="removeEl">
       <i class="el-icon-delete"></i>
     </button>
-    <button title="Font" class="tool-element" @click.stop="openModal">
-      <!-- <i class="el-icon-s-operation"></i> -->
+    <button
+      v-if="elType !== 'imgs'"
+      title="Font"
+      class="tool-element"
+      @click.stop="openModal"
+    >
       <i class="fas fa-font"></i>
     </button>
     <button
@@ -13,9 +17,7 @@
       class="tool-element"
       @click.stop="openColorModal"
     >
-    <i class="fas fa-palette"></i>
-      <!-- <img src="@/assets/element-editor/color.png" /> -->
-      <!-- <i class="el-icon-edit"></i> -->
+      <i class="fas fa-palette"></i>
     </button>
     <button title="Size" class="tool-element" @click.stop="openSizeModal">
       <i class="el-icon-rank"></i>
@@ -36,6 +38,7 @@
       v-if="isSizeModal"
       :cmpId="cmpId"
       :elStyle="elStyle"
+      :elType="elType"
     ></element-size>
     <element-color
       @styleChanged="styleChanged"

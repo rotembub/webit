@@ -62,43 +62,60 @@
 </template>
 
 <script>
-  import {ColorPicker} from 'element-ui';
-  export default {
-    props: ['id'],
-    data() {
-      return {
-        isText: false,
-        isImg: false,
-        currWap: null,
-        currCmpIdx: null,
-        maxSize: '',
-      };
-    },
-    created() {
-      this.currWap = this.$store.getters.getCurrWap;
-      // console.log(this.currWap, 'created');
-      this.currCmpIdx = this.currWap.cmps.findIndex(
-        (cmp) => cmp.id === this.id
-      );
-      this.maxSize =
-        parseInt(this.currWap.cmps[this.currCmpIdx].style.height) + 50 + '';
-      // console.log(this.maxSize, 'maxSize');
-    },
-    methods: {
-      async updateCmp() {
-        try {
-          const updatedWap = await this.$store.dispatch({
-            type: 'updateWapStyle',
-            currWap: this.currWap,
-            cmpId: this.id, // WATCHOUT
-          });
-        } catch (err) {
-          console.log(err);
-        }
+import { ColorPicker } from "element-ui";
+export default {
+  props: ["id"],
+  data() {
+    return {
+      isText: false,
+      isImg: false,
+      currWap: null,
+      currCmpIdx: null,
+      maxSize: "",
+      cmpStyle: {
+        background: "url()",
+        color: "",
+        backgroundColor: "",
+        fontSize: "",
+        paddingRight: "",
+        paddingTop: "",
+        paddingBottom: "",
+        paddingLeft: "",
+        lineHeight: "",
+        fontFamily: "",
+        fontStyle: "",
+        marginTop: "",
+        marginRight: "",
+        marginBottom: "",
+        marginLeft: "",
+        maxHeight: "",
+        maxWidth: "",
       },
+    };
+  },
+  created() {
+    this.currWap = this.$store.getters.getCurrWap;
+    // console.log(this.currWap, 'created');
+    this.currCmpIdx = this.currWap.cmps.findIndex((cmp) => cmp.id === this.id);
+    this.maxSize =
+      parseInt(this.currWap.cmps[this.currCmpIdx].style.height) + 50 + "";
+    // console.log(this.maxSize, 'maxSize');
+  },
+  methods: {
+    async updateCmp() {
+      try {
+        const updatedWap = await this.$store.dispatch({
+          type: "updateWapStyle",
+          currWap: this.currWap,
+          cmpId: this.id, // WATCHOUT
+        });
+      } catch (err) {
+        console.log(err);
+      }
     },
-    computed: {},
-  };
+  },
+  computed: {},
+};
 </script>
 
 <style></style>

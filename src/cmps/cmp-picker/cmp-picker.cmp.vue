@@ -8,7 +8,7 @@
       </div>
       <el-collapse-item
         v-for="type in types"
-        :title="type.category"
+        :title="type"
         :key="'k' + type"
         @click.native="loadThemes(type)"
       >
@@ -121,14 +121,14 @@ export default {
     return {
       themes: null,
       types: [
-        'wap-header',
-        // 'wap-gallery',
-        'wap-text',
-        'wap-contact',
-        'wap-card',
-        // 'wap-review',
-        'wap-signup',
-        'wap-container',
+        'Headers',
+        'Galleries',
+        'Text',
+        'Contacts',
+        'Cards',
+        'Reviews',
+        'Landings',
+        'Footers',
       ],
       wapToPublish: null,
     }
@@ -162,8 +162,8 @@ export default {
         console.log(err)
       }
     },
-    loadThemes(cmpType) {
-      const allThemes = cmpService.getThemesFor(cmpType)
+    loadThemes(cmpCat) {
+      const allThemes = cmpService.getThemesFor(cmpCat)
       this.themes = allThemes
       // console.log(this.themes);
     },
