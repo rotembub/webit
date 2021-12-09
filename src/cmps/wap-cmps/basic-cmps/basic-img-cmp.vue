@@ -19,6 +19,7 @@
       @onSaveImg="saveImg"
       v-if="isEdit"
       :cmpId="getCmpId"
+      :elType="details.elType"
       :elStyle="details.data.style"
     ></basic-el-toolbar>
   </section>
