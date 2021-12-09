@@ -79,6 +79,16 @@ export default {
         containerId: this.details.containerId,
       });
     },
+    async updateEl(updatedEl) {
+      this.$store.dispatch({
+        type: "updateElement",
+        cmpId: this.details.cmpId,
+        elType: this.details.elType,
+        elId: this.details.data.id,
+        containerId: this.details.containerId,
+        updatedEl,
+      });
+    },
     setSelected(ev) {
       const pos = {
         y: ev.target.offsetTop,

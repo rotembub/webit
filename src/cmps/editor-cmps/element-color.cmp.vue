@@ -33,10 +33,10 @@ export default {
     // console.log("at the el size modal");
     this.editedStyle = {
       ...this.elStyle,
-      marginTop: "",
-      marginRight: "",
-      marginBottom: "",
-      marginLeft: "",
+      // marginTop: "",
+      // marginRight: "",
+      // marginBottom: "",
+      // marginLeft: "",
     };
   },
   methods: {
