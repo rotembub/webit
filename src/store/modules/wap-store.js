@@ -269,5 +269,24 @@ export default {
         console.log(err);
       }
     },
+    async updateElement(
+      {commit, state},
+      {cmpId, elType, elId, containerId, updatedEl}
+    ) {
+      try {
+        const wap = state.currWap;
+        const updatedWap = await wapService.updateEl(
+          wap,
+          cmpId,
+          elType,
+          elId,
+          containerId,
+          updatedEl
+        );
+        commit({type: 'setCurrWap', wap: updatedWap});
+      } catch (err) {
+        console.log(err);
+      }
+    },
   },
 };
