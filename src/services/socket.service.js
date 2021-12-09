@@ -1,34 +1,35 @@
-import io from 'socket.io-client';
+import io from 'socket.io-client'
 
-const baseUrl = process.env.NODE_ENV === 'production' ? '' : '//localhost:3000';
+const baseUrl = process.env.NODE_ENV === 'production' ? '' : '//localhost:3000'
 // export const socketService = createSocketService()
-export const socketService = createSocketService();
+export const socketService = createSocketService()
 
-window.socketService = socketService;
+window.socketService = socketService
 
 // var socketIsReady = false;
-socketService.setup();
+socketService.setup()
 
 function createSocketService() {
-  var socket = null;
+  var socket = null
   const socketService = {
     async setup() {
-      socket = io(baseUrl);
+      socket = io(baseUrl)
     },
     on(eventName, cb) {
-      socket.on(eventName, cb);
+      socket.on(eventName, cb)
     },
     off(eventName, cb = null) {
-      if (!socket) return;
-      if (!cb) socket.removeAllListeners(eventName);
-      else socket.off(eventName, cb);
+      if (!socket) return
+      if (!cb) socket.removeAllListeners(eventName)
+      else socket.off(eventName, cb)
     },
     emit(eventName, data) {
-      socket.emit(eventName, data);
+      console.log('\n\nEmitting Socket Event', eventName)
+      socket.emit(eventName, data)
     },
     terminate() {
-      socket = null;
+      socket = null
     },
-  };
-  return socketService;
+  }
+  return socketService
 }

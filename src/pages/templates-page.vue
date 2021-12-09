@@ -6,7 +6,7 @@
         <h1>Just pick one of our best templates</h1>
         <p>Or you can start from scratch</p>
       </div>
-      <template-list v-if="waps" :waps="waps"></template-list>
+      <template-list v-if="templates" :templates="templates"></template-list>
     </section>
   </div>
 </template>
@@ -20,15 +20,15 @@ export default {
     return {}
   },
   created() {
-    this.$store.dispatch({ type: 'loadWaps' })
+    this.$store.dispatch({ type: 'loadTemplates' })
   },
   computed: {
-    waps() {
+    templates() {
       console.log(
         'getting waps for you in templates PAGE',
-        this.$store.getters.getWaps
+        this.$store.getters.getTemplates
       )
-      return this.$store.getters.getWaps
+      return this.$store.getters.getTemplates
     },
   },
   components: {

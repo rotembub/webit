@@ -20,7 +20,9 @@ export const wapService = {
   removeEl,
   duplicateEl,
   updateElStyle,
-  updateEl
+  updateEl,
+  queryWapTemplates,
+  createNewWap,
 }
 
 // More ways to send query params:
@@ -43,7 +45,19 @@ export const wapService = {
 //   // if (!waps || !waps.length)
 //   //   localStorage.setItem(KEY, JSON.stringify([wap_architecture]))
 // }
-
+async function createNewWap(templateId) {
+  return await httpService.post('template', { templateId })
+}
+async function queryWapTemplates() {
+  // try {
+  //   const wap = await storageService.query(KEY);
+  //   // if (!wap || !wap.length) return wap_architecture
+  //   return wap;
+  // } catch (err) {
+  //   console.log('couldnt find Waps', err);
+  // }
+  return await httpService.get('template')
+}
 async function query(filterBy) {
   // try {
   //   const wap = await storageService.query(KEY);
@@ -55,6 +69,7 @@ async function query(filterBy) {
   return await httpService.get(ENDPOINT, filterBy)
 }
 async function getById(id) {
+  console.log('ASKING FOR WAP WITH id: ', id)
   // try {
   //   const foundWap = await storageService.get(KEY, id);
   //   return foundWap;
@@ -5790,10 +5805,6 @@ const wap_feliciano = {
 
 // createWaps();
 
-
-
-
-
 const newSignUp = {
   id: utilService.makeId(4),
   type: 'wap-contact',
@@ -5803,7 +5814,7 @@ const newSignUp = {
     title: [
       {
         id: utilService.makeId(6),
-        txt: "Book a table",
+        txt: 'Book a table',
         style: {
           background: 'url()',
           color: '',
@@ -5817,12 +5828,12 @@ const newSignUp = {
           fontFamily: '',
           fontStyle: '',
         },
-      }
+      },
     ],
     subtitle: [
       {
         id: utilService.makeId(6),
-        txt: "Make a reservation",
+        txt: 'Make a reservation',
         style: {
           background: 'url()',
           color: '',
@@ -5839,7 +5850,8 @@ const newSignUp = {
       },
     ],
     input: [
-      { //1
+      {
+        //1
         id: utilService.makeId(4),
         txt: 'Your Name',
         type: 'text',
@@ -5857,7 +5869,8 @@ const newSignUp = {
           fontStyle: '',
         },
       },
-      {//2
+      {
+        //2
         id: utilService.makeId(4),
         txt: 'Phone',
         type: 'text',
@@ -5875,7 +5888,8 @@ const newSignUp = {
           fontStyle: '',
         },
       },
-      {//3
+      {
+        //3
         id: utilService.makeId(4),
         txt: 'Time',
         type: 'time',
@@ -5893,7 +5907,8 @@ const newSignUp = {
           fontStyle: '',
         },
       },
-      { //4
+      {
+        //4
         id: utilService.makeId(4),
         txt: 'Date',
         type: 'date',
@@ -5911,7 +5926,8 @@ const newSignUp = {
           fontStyle: '',
         },
       },
-      {//5
+      {
+        //5
         id: utilService.makeId(4),
         txt: 'example@email.com',
         type: 'text',
@@ -5929,7 +5945,8 @@ const newSignUp = {
           fontStyle: '',
         },
       },
-      { //6
+      {
+        //6
         id: utilService.makeId(4),
         txt: 'Preferences',
         type: 'text',
@@ -6060,7 +6077,8 @@ const newFooter = {
             },
           ],
           subtitle: [
-            { // 1
+            {
+              // 1
               id: utilService.makeId(4),
               txt: 'Monday 9:00 - 24:00',
               style: {
@@ -6077,7 +6095,8 @@ const newFooter = {
                 fontStyle: '',
               },
             },
-            { // 2
+            {
+              // 2
               id: utilService.makeId(4),
               txt: 'Tuesday 9:00 - 24:00',
               style: {
@@ -6094,7 +6113,8 @@ const newFooter = {
                 fontStyle: '',
               },
             },
-            { //3 
+            {
+              //3
               id: utilService.makeId(4),
               txt: 'Wednesday 9:00 - 24:00',
               style: {
@@ -6111,7 +6131,8 @@ const newFooter = {
                 fontStyle: '',
               },
             },
-            { // 4
+            {
+              // 4
               id: utilService.makeId(4),
               txt: 'Thursday 9:00 - 24:00',
               style: {
@@ -6128,7 +6149,8 @@ const newFooter = {
                 fontStyle: '',
               },
             },
-            { //5 
+            {
+              //5
               id: utilService.makeId(4),
               txt: 'Friday 9:00 - 02:00',
               style: {
@@ -6145,7 +6167,8 @@ const newFooter = {
                 fontStyle: '',
               },
             },
-            { //6
+            {
+              //6
               id: utilService.makeId(4),
               txt: 'Saturday 9:00 - 02:00',
               style: {
@@ -6162,7 +6185,8 @@ const newFooter = {
                 fontStyle: '',
               },
             },
-            { //7
+            {
+              //7
               id: utilService.makeId(4),
               txt: 'Sunday 9:00 - 02:00',
               style: {
@@ -6293,7 +6317,7 @@ const newFooter = {
           fontStyle: '',
         },
       },
-    ]
+    ],
   },
   theme: 'feliciano-footer',
   style: {
@@ -6309,7 +6333,4 @@ const newFooter = {
     fontFamily: '',
     fontStyle: '',
   },
-
-
 }
-
