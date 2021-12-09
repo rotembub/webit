@@ -2054,7 +2054,8 @@ const wap_fylo = {
         input: [
           {
             id: utilService.makeId(4),
-            txt: '',
+            txt: 'example@email.com',
+            type: 'text',
             style: {
               background: 'url()',
               color: '',
@@ -5787,7 +5788,7 @@ const wap_feliciano = {
 
 
 
-const newStuff = {
+const newSignUp = {
   id: utilService.makeId(4),
   type: 'wap-contact',
   screenshotImg: '',
@@ -5832,9 +5833,100 @@ const newStuff = {
       },
     ],
     input: [
-      {
+      { //1
         id: utilService.makeId(4),
-        txt: '',
+        txt: 'Your Name',
+        type: 'text',
+        style: {
+          background: 'url()',
+          color: '',
+          backgroundColor: '',
+          fontSize: '',
+          paddingRight: '',
+          paddingTop: '',
+          paddingBottom: '',
+          paddingLeft: '',
+          lineHeight: '',
+          fontFamily: '',
+          fontStyle: '',
+        },
+      },
+      {//2
+        id: utilService.makeId(4),
+        txt: 'Phone',
+        type: 'text',
+        style: {
+          background: 'url()',
+          color: '',
+          backgroundColor: '',
+          fontSize: '',
+          paddingRight: '',
+          paddingTop: '',
+          paddingBottom: '',
+          paddingLeft: '',
+          lineHeight: '',
+          fontFamily: '',
+          fontStyle: '',
+        },
+      },
+      {//3
+        id: utilService.makeId(4),
+        txt: 'Time',
+        type: 'time',
+        style: {
+          background: 'url()',
+          color: '',
+          backgroundColor: '',
+          fontSize: '',
+          paddingRight: '',
+          paddingTop: '',
+          paddingBottom: '',
+          paddingLeft: '',
+          lineHeight: '',
+          fontFamily: '',
+          fontStyle: '',
+        },
+      },
+      { //4
+        id: utilService.makeId(4),
+        txt: 'Date',
+        type: 'date',
+        style: {
+          background: 'url()',
+          color: '',
+          backgroundColor: '',
+          fontSize: '',
+          paddingRight: '',
+          paddingTop: '',
+          paddingBottom: '',
+          paddingLeft: '',
+          lineHeight: '',
+          fontFamily: '',
+          fontStyle: '',
+        },
+      },
+      {//5
+        id: utilService.makeId(4),
+        txt: 'example@email.com',
+        type: 'text',
+        style: {
+          background: 'url()',
+          color: '',
+          backgroundColor: '',
+          fontSize: '',
+          paddingRight: '',
+          paddingTop: '',
+          paddingBottom: '',
+          paddingLeft: '',
+          lineHeight: '',
+          fontFamily: '',
+          fontStyle: '',
+        },
+      },
+      { //6
+        id: utilService.makeId(4),
+        txt: 'Preferences',
+        type: 'text',
         style: {
           background: 'url()',
           color: '',
@@ -5853,7 +5945,7 @@ const newStuff = {
     buttons: [
       {
         id: utilService.makeId(6),
-        txt: 'Contact Us',
+        txt: 'Make a Reservation',
         style: {
           background: 'url()',
           color: '',
@@ -6143,7 +6235,8 @@ const newFooter = {
           input: [
             {
               id: utilService.makeId(4),
-              txt: '',
+              txt: 'example@email.com',
+              type: 'text',
               style: {
                 background: 'url()',
                 color: '',
