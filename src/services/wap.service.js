@@ -231,8 +231,9 @@ async function removeEl(wap, cmpId, elType, elId, containerId) {
     const cmp = wap.cmps.find(cmp => cmp.id === cmpId)
     if (elType === 'logo') {
       delete cmp.info[elType]
+      const updatedCmp = JSON.parse(JSON.stringify(cmp));
       const idx = wap.cmps.findIndex(cmp => cmp.id === cmpId)
-      wap.cmps.splice(idx, 1, cmp);
+      wap.cmps.splice(idx, 1, updatedCmp);
     }
     else {
       console.log('elType:', elType)
@@ -245,7 +246,12 @@ async function removeEl(wap, cmpId, elType, elId, containerId) {
     const container = wap.cmps.find(cmp => cmp.id === containerId)
     console.log(wap, container)
     const innerCmp = container.info.cmps.find(cmp => cmp.id === cmpId)
-    if (elType === 'logo') delete innerCmp.info[elType]
+    if (elType === 'logo') { // no chance to check that yet ...
+      delete innerCmp.info[elType]
+      const updatedCmp = JSON.parse(JSON.stringify(innerCmp));
+      const idx = wap.cmps.findIndex(cmp => cmp.id === innerCmp.id)
+      wap.cmps.splice(idx, 1, updatedCmp);
+    }
     else {
       const idx = innerCmp.info[elType].findIndex(el => el.id === elId)
       innerCmp.info[elType].splice(idx, 1)

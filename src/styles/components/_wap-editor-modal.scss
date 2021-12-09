@@ -23,4 +23,16 @@
 .element-editor{
   position: absolute;
   top: 25px;
+  width: 310px;
 }
+ // testing do not panic!
+ // once you put width and height on container of an image u can control its size  
+ 
+// .basic-img{
+//   img{
+//       object-fit: cover !important;
+//       width: 100% !important;
+//       height: 100% !important;
+//       max-width: none !important;
+//   }
+// }

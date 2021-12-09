@@ -3,12 +3,22 @@
     <div :style="getCurrStyle" class="logo">
       <basic-h2
         v-if="cmp.info.logo && cmp.info.logo.type === 'txt'"
-        :details="{ data: cmp.info.logo, cmpId: cmp.id, containerId, elType: 'logo' }"
+        :details="{
+          data: cmp.info.logo,
+          cmpId: cmp.id,
+          containerId,
+          elType: 'logo',
+        }"
         :elType="'logo'"
       ></basic-h2>
       <basic-img
         v-if="cmp.info.logo && cmp.info.logo.type === 'img'"
-        :details="{ data: cmp.info.logo, cmpId: cmp.id, containerId, elType: 'logo' }"
+        :details="{
+          data: cmp.info.logo,
+          cmpId: cmp.id,
+          containerId,
+          elType: 'logo',
+        }"
         :elType="'logo'"
       ></basic-img>
     </div>
@@ -58,10 +68,10 @@ export default {
         backgroundColor: this.cmp.style.backgroundColor,
         //new size style
         height: this.cmp.style.height + "vh",
-          paddingTop: this.cmp.style.paddingTop + '%',
-          paddingBottom: this.cmp.style.paddingBottom + '%',
-          paddingLeft: this.cmp.style.paddingLeft + '%',
-          paddingRight: this.cmp.style.paddingRight + '%',
+        paddingTop: this.cmp.style.paddingTop + "%",
+        paddingBottom: this.cmp.style.paddingBottom + "%",
+        paddingLeft: this.cmp.style.paddingLeft + "%",
+        paddingRight: this.cmp.style.paddingRight + "%",
       };
       return style;
     },
@@ -70,7 +80,9 @@ export default {
     setType(type) {
       this.elType = type;
     },
-    removeEl(elId, elType) { // odd, need to double check this
+    removeEl(elId, elType) {
+      // odd, need to double check this
+      console.log("I MADE IT HERE AT HEADER TRYING TO REMOVE");
       this.$store.dispatch({
         type: "removeElFromCmp",
         cmpId: this.cmp.id,

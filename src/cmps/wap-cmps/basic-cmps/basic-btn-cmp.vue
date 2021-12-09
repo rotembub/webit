@@ -42,6 +42,7 @@ export default {
     getStyle() {
       return {
         color: this.details.data.style.color,
+        // backgroundColor: this.details.style.backgroundColor,
         fontSize: this.details.data.style.fontSize + "px",
         lineHeight: this.details.data.style.lineHeight + "px",
         paddingTop: this.details.data.style.paddingTop + "rem",

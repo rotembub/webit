@@ -30,7 +30,7 @@
         v-model="editedStyle.maxHeight"
         type="range"
         min="0"
-        max="100"
+        max="50"
         step="0.5"
       />
     </span>
@@ -42,7 +42,7 @@
         v-model="editedStyle.maxWidth"
         type="range"
         min="0"
-        max="100"
+        max="50"
         step="0.5"
       />
     </span>
@@ -54,7 +54,7 @@
         v-model="editedStyle.marginTop"
         type="range"
         min="0"
-        max="100"
+        max="50"
         step="0.5"
       />
     </span>
@@ -66,7 +66,7 @@
         v-model="editedStyle.marginBottom"
         type="range"
         min="0"
-        max="100"
+        max="50"
       />
     </span>
     <span>
@@ -77,7 +77,7 @@
         v-model="editedStyle.marginRight"
         type="range"
         min="0"
-        max="100"
+        max="50"
       />
     </span>
     <span>
@@ -88,7 +88,7 @@
         v-model="editedStyle.marginLeft"
         type="range"
         min="0"
-        max="100"
+        max="50"
       />
     </span>
   </div>
@@ -108,10 +108,10 @@ export default {
     // console.log("at the el size modal");
     this.editedStyle = {
       ...this.elStyle,
-      marginTop: "",
-      marginRight: "",
-      marginBottom: "",
-      marginLeft: "",
+      marginTop: 0,
+      marginRight: 0,
+      marginBottom: 0,
+      marginLeft: 0,
       maxHeight: "",
       maxWidth: "",
     };
