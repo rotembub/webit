@@ -89,13 +89,31 @@ export default {
         containerId: this.details.containerId,
       });
     },
-    onInput(event) { // CHANGE THIS CANNOT CHANGE PROP
+    // onInput(event) {
+    //   // CHANGE THIS CANNOT CHANGE PROP
+    //   const value = event.target.innerText;
+    //   this.details.data.txt = value;
+    //   this.$store.dispatch({
+    //     type: "updateWapStyle",
+    //     currWap: this.currWap,
+    //     cmpId: this.details.cmpId,
+    //   });
+    // },
+    onInput(event) {
+      // CHANGE THIS CANNOT CHANGE PROP
       const value = event.target.innerText;
-      this.details.data.txt = value;
+      let updatedEl = JSON.parse(JSON.stringify(this.details.data));
+      updatedEl.txt = value;
+      this.updateEl(updatedEl);
+    },
+    async updateEl(updatedEl) {
       this.$store.dispatch({
-        type: "updateWapStyle",
-        currWap: this.currWap,
+        type: "updateElement",
         cmpId: this.details.cmpId,
+        elType: this.details.elType,
+        elId: this.details.data.id,
+        containerId: this.details.containerId,
+        updatedEl,
       });
     },
     setSelected(ev) {
@@ -104,9 +122,10 @@ export default {
         x: ev.target.offsetLeft,
       };
       if (ev.offsetY > ev.target.offsetHeight / 2) {
-        pos.y = ev.target.offsetTop + ev.target.offsetHeight +5;
-      } else pos.y = ev.target.offsetTop  -30;
-      if (ev.clientX > window.innerWidth - 150) pos.x = ev.target.offsetLeft -50;
+        pos.y = ev.target.offsetTop + ev.target.offsetHeight + 5;
+      } else pos.y = ev.target.offsetTop - 30;
+      if (ev.clientX > window.innerWidth - 150)
+        pos.x = ev.target.offsetLeft - 50;
       console.log(pos);
       if (this.isSelected) {
         this.isSelected = false;
@@ -125,10 +144,9 @@ export default {
       }
     },
     styleChanged(style) {
-      console.log(style);
-      // this.details.data.style = style;
-      this.updateElStyle(style);
-      // this.updateStyle();
+      let updatedEl = JSON.parse(JSON.stringify(this.details.data));
+      updatedEl.style = style;
+      this.updateEl(updatedEl);
     },
     // async updateStyle() {
     //   console.log("updating style of an element");

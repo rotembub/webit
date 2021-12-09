@@ -106,10 +106,9 @@ export default {
       }
     },
     styleChanged(style) {
-      console.log(style);
-      // this.details.data.style = style;
-      this.updateElStyle(style);
-      // this.updateStyle();
+      let updatedEl = JSON.parse(JSON.stringify(this.details.data));
+      updatedEl.style = style;
+      this.updateEl(updatedEl);
     },
     // async updateStyle() {
     //   console.log("updating style of an element");

@@ -22,6 +22,30 @@
         <input type="range" />
       </span>
     </template>
+    <span v-if="elType === 'imgs'">
+      Height :
+      <input
+        @mousemove.stop=""
+        @mouseup="styleChanged"
+        v-model="editedStyle.maxHeight"
+        type="range"
+        min="0"
+        max="100"
+        step="0.5"
+      />
+    </span>
+    <span v-if="elType === 'imgs'">
+      Width :
+      <input
+        @mousemove.stop=""
+        @mouseup="styleChanged"
+        v-model="editedStyle.maxWidth"
+        type="range"
+        min="0"
+        max="100"
+        step="0.5"
+      />
+    </span>
     <span>
       Top Spacing :
       <input
@@ -71,39 +95,41 @@
 </template>
 
 <script>
-  export default {
-    props: ['id', 'elStyle', 'cmpId'],
-    data() {
-      return {
-        isText: false,
-        isImg: false,
-        editedStyle: {},
-      };
+export default {
+  props: ["id", "elStyle", "cmpId", "elType"],
+  data() {
+    return {
+      isText: false,
+      isImg: false,
+      editedStyle: {},
+    };
+  },
+  created() {
+    // console.log("at the el size modal");
+    this.editedStyle = {
+      ...this.elStyle,
+      marginTop: "",
+      marginRight: "",
+      marginBottom: "",
+      marginLeft: "",
+      maxHeight: "",
+      maxWidth: "",
+    };
+  },
+  methods: {
+    styleChanged() {
+      this.$emit("styleChanged", this.editedStyle);
     },
-    created() {
-      // console.log("at the el size modal");
-      this.editedStyle = {
-        ...this.elStyle,
-        marginTop: '',
-        marginRight: '',
-        marginBottom: '',
-        marginLeft: '',
-      };
+  },
+  computed: {
+    getPos() {
+      // console.log(this.$store.getters.getModalPos);
+      const pos = this.$store.getters.getModalPos;
+      // console.log(pos);
+      return { right: pos.right + "px", top: pos.top + "px" };
     },
-    methods: {
-      styleChanged() {
-        this.$emit('styleChanged', this.editedStyle);
-      },
-    },
-    computed: {
-      getPos() {
-        // console.log(this.$store.getters.getModalPos);
-        const pos = this.$store.getters.getModalPos;
-        // console.log(pos);
-        return {right: pos.right + 'px', top: pos.top + 'px'};
-      },
-    },
-  };
+  },
+};
 </script>
 
 <style></style>

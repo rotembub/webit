@@ -6,7 +6,12 @@
       :src="require('@/assets/wap-imgs/' + details.data.url)"
       alt=""
     /> -->
-    <img @click.stop="setSelected" :src="details.data.url" alt="" />
+    <img
+      :style="getImgSize"
+      @click.stop="setSelected"
+      :src="details.data.url"
+      alt=""
+    />
     <basic-el-toolbar
       @removeEl="removeEl"
       @dupElement="dupElement"
@@ -14,7 +19,7 @@
       @onSaveImg="saveImg"
       v-if="isEdit"
       :cmpId="getCmpId"
-      :elType="details.elType"
+      :elType="'imgs'"
       :elStyle="details.data.style"
     ></basic-el-toolbar>
   </section>
@@ -41,9 +46,6 @@ export default {
     },
     getStyle() {
       return {
-        color: this.details.data.style.color,
-        fontSize: this.details.data.style.fontSize + "px",
-        lineHeight: this.details.data.style.lineHeight + "px",
         paddingTop: this.details.data.style.paddingTop + "rem",
         paddingBottom: this.details.data.style.paddingBottom + "rem",
         paddingRight: this.details.data.style.paddingRight + "rem",
@@ -55,6 +57,12 @@ export default {
         marginBottom: this.details.data.style.marginBottom + "rem",
         marginRight: this.details.data.style.marginRight + "rem",
         marginLeft: this.details.data.style.marginLeft + "rem",
+      };
+    },
+    getImgSize() {
+      return {
+        maxHeight: this.details.data.style.maxHeight + "rem",
+        maxWidth: this.details.data.style.maxWidth + "rem",
       };
     },
     getCmpId() {
@@ -111,19 +119,11 @@ export default {
     },
     styleChanged(style) {
       console.log(style);
-      // this.details.data.style = style;
-      this.updateElStyle(style);
-      // this.updateStyle();
+      let updatedEl = JSON.parse(JSON.stringify(this.details.data));
+      updatedEl.style = style;
+      // this.updateElStyle(style);
+      this.updateEl(updatedEl);
     },
-    // async updateStyle() {
-    //   console.log("updating style of an element");
-    //   const id = this.getCmpId;
-    //   try {
-    //     this.$store.dispatch({ type: "updateWapStyle", cmpId: id });
-    //   } catch (err) {
-    //     console.log(err);
-    //   }
-    // },
     async updateElStyle(style) {
       this.$store.dispatch({
         type: "updateElementStyle",
@@ -134,11 +134,24 @@ export default {
         style,
       });
     },
+    async updateEl(updatedEl) {
+      this.$store.dispatch({
+        type: "updateElement",
+        cmpId: this.details.cmpId,
+        elType: this.details.elType,
+        elId: this.details.data.id,
+        containerId: this.details.containerId,
+        updatedEl,
+      });
+    },
     saveImg(url) {
       console.log("URL RECEIVED", url);
-      this.isUploaded = true;
-      this.details.data.url = url;
-      this.updateStyle;
+      // this.isUploaded = true;
+      let updatedEl = JSON.parse(JSON.stringify(this.details.data));
+      updatedEl.url = url;
+      this.updateEl(updatedEl);
+      // this.details.data.url = url;
+      // this.updateStyle;
     },
   },
 };
