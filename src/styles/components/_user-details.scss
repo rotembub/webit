@@ -1,0 +1,23 @@
+.user-details{
+    display: flex;
+    height: 100vh;
+   
+    
+    .user-detail-bar{
+        min-width: 250px;
+        background-color: #2f3542;
+
+        .user-details-title{
+            height:5vh;
+        background-color: #464d5cec;
+
+        }
+        .user-profile{
+            height: 95vh;
+        }
+    }
+    .user-main-container{
+        width: 100%;
+        background-color: rgb(255, 255, 255);
+    }
+}

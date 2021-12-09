@@ -889,7 +889,7 @@ const wap_architecture = {
         subtitle: [
           {
             id: utilService.makeId(6),
-            txt: 'We\'re always looking for new opportunities and are comfortable working internationally. Please get in touch and one of our project managers will contact you about beginning the proposal process.',
+            txt: "We're always looking for new opportunities and are comfortable working internationally. Please get in touch and one of our project managers will contact you about beginning the proposal process.",
             style: {
               background: 'url()',
               color: '',

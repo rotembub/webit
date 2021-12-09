@@ -57,86 +57,86 @@
 </template>
 
 <script>
-import imgUpload from "./img-upload.vue";
-import elementEditor from "./element-editor-cmp.vue";
-import elementSize from "./element-size.cmp.vue";
-import elementColor from "./element-color.cmp.vue";
-export default {
-  props: ["id", "elStyle", "cmpId", "pos", "elType"],
-  components: { elementEditor, elementSize, imgUpload, elementColor },
-  created() {
-    // console.log(this.pos);
-  },
-  data() {
-    return {
-      openEditorModal: false,
-      isSizeModal: false,
-      isColorModal: false,
-      modalPos: null,
-      isUpload: false,
-    };
-  },
-  computed: {
-    getPos() {
-      const pos = this.$store.getters.getElSelectedPos;
-      return { top: pos.y + "px", left: pos.x + "px" };
+  import imgUpload from './img-upload.vue';
+  import elementEditor from './element-editor-cmp.vue';
+  import elementSize from './element-size.cmp.vue';
+  import elementColor from './element-color.cmp.vue';
+  export default {
+    props: ['id', 'elStyle', 'cmpId', 'pos', 'elType'],
+    components: {elementEditor, elementSize, imgUpload, elementColor},
+    created() {
+      // console.log(this.pos);
     },
-  },
-  methods: {
-    removeEl() {
-      // console.log("emiting for removal");
-      this.$emit("removeEl");
-    },
-    openModal(ev) {
-      const pos = {
-        right: "",
-        top: "",
+    data() {
+      return {
+        openEditorModal: false,
+        isSizeModal: false,
+        isColorModal: false,
+        modalPos: null,
+        isUpload: false,
       };
-      if (ev.clientX > window.innerWidth - 300) pos.right = 0;
-      if (ev.clientY > window.innerHeight - 250) pos.top = -365;
-      this.$store.commit({ type: "setModalPos", modalPos: pos });
-      this.isSizeModal = false;
-      this.isColorModal = false;
-      this.openEditorModal = !this.openEditorModal;
     },
-    openSizeModal(ev) {
-      console.log(ev);
-      const pos = {
-        right: "",
-        top: "",
-      };
-      if (ev.clientX > window.innerWidth - 300) pos.right = 0;
-      if (ev.clientY > window.innerHeight - 250) pos.top = -350;
-      this.$store.commit({ type: "setModalPos", modalPos: pos });
-      this.openEditorModal = false;
-      this.isColorModal = false;
-      this.isSizeModal = !this.isSizeModal;
+    computed: {
+      getPos() {
+        const pos = this.$store.getters.getElSelectedPos;
+        return {top: pos.y + 'px', left: pos.x + 'px'};
+      },
     },
-    openColorModal(ev) {
-      console.log(ev);
-      const pos = {
-        right: "",
-        top: "",
-      };
-      if (ev.clientX > window.innerWidth - 300) pos.right = 0;
-      if (ev.clientY > window.innerHeight - 250) pos.top = -350;
-      this.$store.commit({ type: "setModalPos", modalPos: pos });
-      this.openEditorModal = false;
-      this.isSizeModal = false;
-      this.isColorModal = !this.isColorModal;
+    methods: {
+      removeEl() {
+        // console.log("emiting for removal");
+        this.$emit('removeEl');
+      },
+      openModal(ev) {
+        const pos = {
+          right: '',
+          top: '',
+        };
+        if (ev.clientX > window.innerWidth - 300) pos.right = 0;
+        if (ev.clientY > window.innerHeight - 250) pos.top = -365;
+        this.$store.commit({type: 'setModalPos', modalPos: pos});
+        this.isSizeModal = false;
+        this.isColorModal = false;
+        this.openEditorModal = !this.openEditorModal;
+      },
+      openSizeModal(ev) {
+        // console.log(ev);
+        const pos = {
+          right: '',
+          top: '',
+        };
+        if (ev.clientX > window.innerWidth - 300) pos.right = 0;
+        if (ev.clientY > window.innerHeight - 250) pos.top = -350;
+        this.$store.commit({type: 'setModalPos', modalPos: pos});
+        this.openEditorModal = false;
+        this.isColorModal = false;
+        this.isSizeModal = !this.isSizeModal;
+      },
+      openColorModal(ev) {
+        // console.log(ev);
+        const pos = {
+          right: '',
+          top: '',
+        };
+        if (ev.clientX > window.innerWidth - 300) pos.right = 0;
+        if (ev.clientY > window.innerHeight - 250) pos.top = -350;
+        this.$store.commit({type: 'setModalPos', modalPos: pos});
+        this.openEditorModal = false;
+        this.isSizeModal = false;
+        this.isColorModal = !this.isColorModal;
+      },
+      dupElement() {
+        this.$emit('dupElement');
+      },
+      styleChanged(style) {
+        this.$emit('styleChanged', style);
+      },
+      onSaveImg(url) {
+        // console.log("url at toolbar", url);
+        this.$emit('onSaveImg', url);
+      },
     },
-    dupElement() {
-      this.$emit("dupElement");
-    },
-    styleChanged(style) {
-      this.$emit("styleChanged", style);
-    },
-    onSaveImg(url) {
-      // console.log("url at toolbar", url);
-      this.$emit("onSaveImg", url);
-    },
-  },
-};
+  };
 </script>
 
 <style></style>

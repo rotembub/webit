@@ -120,13 +120,13 @@ export default {
     styleChanged() {
       this.$emit("styleChanged", this.editedStyle);
     },
-  },
-  computed: {
-    getPos() {
-      console.log(this.$store.getters.getModalPos);
-      const pos = this.$store.getters.getModalPos;
-      // console.log(pos);
-      return { right: pos.right + "px", top: pos.top + "px" };
+    computed: {
+      getPos() {
+        // console.log(this.$store.getters.getModalPos);
+        const pos = this.$store.getters.getModalPos;
+        // console.log(pos);
+        return { right: pos.right + "px", top: pos.top + "px" };
+      },
     },
   },
 };
