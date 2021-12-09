@@ -2067,6 +2067,7 @@ const wap_sunnyside = {
     {
       id: utilService.makeId(4),
       type: 'wap-container',
+      screenshotImg: 'sunnyside-examples/hero.png',
       info: {
         dir: 'column',
         cmps: [
@@ -2240,6 +2241,7 @@ const wap_sunnyside = {
     {
       id: utilService.makeId(4),
       type: 'wap-container',
+      screenshotImg: 'sunnyside-examples/egg.png',
       info: {
         dir: 'row',
         cmps: [
@@ -2380,6 +2382,7 @@ const wap_sunnyside = {
     {
       id: utilService.makeId(4),
       type: 'wap-container',
+      screenshotImg: 'sunnyside-examples/pink.png',
       info: {
         dir: 'row',
         cmps: [
@@ -2520,6 +2523,7 @@ const wap_sunnyside = {
     {
       id: utilService.makeId(4),
       type: 'wap-container',
+      screenshotImg: 'sunnyside-examples/orange.png',
       info: {
         dir: 'row',
         cmps: [
@@ -2661,6 +2665,7 @@ const wap_sunnyside = {
     {
       id: utilService.makeId(4),
       type: 'wap-container',
+      screenshotImg: 'sunnyside-examples/reviews.png',
       info: {
         dir: 'row',
         cmps: [
@@ -3012,6 +3017,7 @@ const wap_sunnyside = {
     {
       id: utilService.makeId(4),
       type: 'wap-container',
+      screenshotImg: 'sunnyside-examples/imgs.png',
       info: {
         dir: 'row',
         cmps: [
@@ -3191,6 +3197,7 @@ const wap_sunnyside = {
     {
       id: utilService.makeId(4),
       type: 'wap-container',
+      screenshotImg: 'sunnyside-examples/footer.png',
       info: {
         dir: 'row',
         cmps: [
