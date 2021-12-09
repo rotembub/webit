@@ -8,7 +8,7 @@
     <basic-paragraph v-for="item in cmp.info.subtitle" :key="item.id" :details="{ data: item, cmpId: cmp.id, containerId, elType: 'subtitle' }"></basic-paragraph>
     </template>
     <!-- <p v-if="cmp.info.subtitle">{{ cmp.info.subtitle.txt }}</p> -->
-    <form class="sign-up-form">
+    <form class="sign-up-form" @submit.stop.prevent="">
       <template v-if="cmp.info.input">
       <basic-input v-for="item in cmp.info.input" :key="item.id" :details="{data: item,cmpId: cmp.id, containerId, elType: 'input' }"></basic-input>
       <!-- <input type="email" placeholder="email@example.com" class="email" /> -->
