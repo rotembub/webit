@@ -5200,7 +5200,7 @@ const wap_feliciano = {
           //IMAGES
         ],
       },
-      theme: 'wap-container-flex',
+      theme: 'wap-container-center',
       style: {
         background: 'url()',
         color: '',
