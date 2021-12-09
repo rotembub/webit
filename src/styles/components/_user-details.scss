@@ -1,23 +1,22 @@
-.user-details{
-    display: flex;
-    height: 100vh;
-   
-    
-    .user-detail-bar{
-        min-width: 250px;
-        background-color: #2f3542;
+.user-details {
+  display: flex;
+  height: 100vh;
 
-        .user-details-title{
-            height:5vh;
-        background-color: #464d5cec;
+  .user-detail-bar {
+    min-width: 250px;
+    background-color: #2f3542;
 
-        }
-        .user-profile{
-            height: 95vh;
-        }
+    .user-details-title {
+      height: 5vh;
+      background-color: #464d5cec;
     }
-    .user-main-container{
-        width: 100%;
-        background-color: rgb(255, 255, 255);
+    .user-profile {
+      height: 95vh;
+      color: aliceblue;
     }
+  }
+  .user-main-container {
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+  }
 }
