@@ -1,20 +1,20 @@
 <template>
-  <section v-if="waps" class="template-list">
+  <section v-if="templates" class="template-list">
     <div class="template-preview-container">
       <template-preview
         class="add-new-image"
-        :wap="{ _id: '' }"
+        :template="{ _id: '' }"
         :imgUrl="'add-new.png'"
       >
       </template-preview>
-
-      <template-preview
-        v-for="(wap, idx) in waps"
-        :key="wap._id"
-        :wap="wap"
-        :imgUrl="urls[idx]"
-        v-if="wap.isPublic"
-      ></template-preview>
+      <template v-if="template.isPublic">
+        <template-preview
+          v-for="template in templates"
+          :key="template._id"
+          :template="template"
+          :imgUrl="template.imgUrl"
+        ></template-preview>
+      </template>
       <!-- watchout for the imgUrls these are fake i made just for show till we gonna have proper templates -->
     </div>
   </section>
@@ -24,7 +24,7 @@
 import templatePreview from './template-preview.cmp.vue'
 
 export default {
-  props: ['waps'],
+  props: ['templates'],
   components: {
     templatePreview,
   },

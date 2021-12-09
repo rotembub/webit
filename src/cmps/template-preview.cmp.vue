@@ -9,13 +9,13 @@
     <img :src="require('@/assets/tempImgs/' + imgUrl)" alt="" />
 
   </section> -->
-  <section @click.stop.prevent="toTheEditor" v-if="wap && imgUrl">
+  <section @click.stop.prevent="toTheEditor" v-if="template && imgUrl">
     <el-row>
       <el-col :span="25">
         <el-card :body-style="{ padding: '0px' }">
           <img :src="require('@/assets/tempImgs/' + imgUrl)" class="image" />
           <div style="padding: 10px">
-            <span>{{ wap.name || 'New Template' }}</span>
+            <span>{{ template.name || 'New Template' }}</span>
             <div class="bottom clearfix"></div>
           </div>
         </el-card>
@@ -26,13 +26,17 @@
 
 <script>
 export default {
-  props: ['wap', 'imgUrl'],
+  props: ['template', 'imgUrl'],
   created() {
     // console.log('created preview')
   },
   methods: {
     toTheEditor() {
-      this.$router.push('/editor/' + this.wap._id)
+      this.$store.dispatch({
+        type: 'createNewWap',
+        templateId: this.template._id,
+      })
+      this.$router.push('/editor/' + this.template._id)
     },
   },
 }
