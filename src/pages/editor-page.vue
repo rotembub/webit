@@ -37,7 +37,6 @@ export default {
       //   'wap watch // ----------------------------------------',
       //   wap
       // );
-
       console.log('SOCKET WAP', wap)
       socketService.emit('wap updated', wap)
     },
