@@ -4,6 +4,7 @@ import homePage from '../pages/home-page.vue'
 import editorPage from '../pages/editor-page.vue'
 import templatesPage from '../pages/templates-page.vue'
 import wapPublish from '../pages/publish-wap-page.vue'
+import userPage from '../pages/user-page.vue'
 
 Vue.use(VueRouter)
 
@@ -27,6 +28,11 @@ const routes = [
     path: '/publish/:wapId',
     name: 'publish',
     component: wapPublish,
+  },
+  {
+    path: '/user',
+    name: 'user-page',
+    component: userPage,
   },
 ]
 

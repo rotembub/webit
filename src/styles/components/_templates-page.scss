@@ -2,7 +2,7 @@
     padding-top: 5em;
     background-color:#f1f2f6;
     font-family: poppins;
-    height:90vh;
+    height:100vh;
     margin: 0;
    
     }
@@ -44,11 +44,13 @@
     }
 
 }
+
 .templates-page-title{
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
     line-height:16px;
+    padding-top: 50px;
     font-family: Montserrat;
 }
