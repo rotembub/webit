@@ -19,10 +19,10 @@
 </template>
 
 <script>
-import templatePreview from './template-preview.cmp.vue'
+import templatePreview from "./template-preview.cmp.vue";
 
 export default {
-  props: ['templates'],
+  props: ["templates"],
   components: {
     templatePreview,
   },
@@ -32,27 +32,27 @@ export default {
   data() {
     return {
       urls: [
-        'utica-template.png',
-        'fylo-template.png',
-        'sunnyside-template.png',
-        'feliciano-template.png',
-        '5.jpg',
-        '6.jpg',
-        '7.png',
-        '8.png',
-        '9.jpg',
-        '10.jpg',
-        '11.png',
-        '12.png',
+        "utica-template.png",
+        "fylo-template.png",
+        "sunnyside-template.png",
+        "feliciano-template.png",
+        "5.jpg",
+        "6.jpg",
+        "7.png",
+        "8.png",
+        "9.jpg",
+        "10.jpg",
+        "11.png",
+        "12.png",
       ],
-    }
+    };
   },
   computed: {
     // getWaps() {
     //   return this.waps;
     // },
   },
-}
+};
 </script>
 
 <style></style>
