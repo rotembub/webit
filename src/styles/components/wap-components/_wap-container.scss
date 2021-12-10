@@ -329,7 +329,7 @@
 }
 
 
-@media only screen and (max-width : 800px) {
+@media (max-width : 800px) {
     .wap-container-flex{
         flex-direction:column;
         align-items: center;
