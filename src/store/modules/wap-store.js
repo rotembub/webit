@@ -43,7 +43,7 @@ export default {
   },
   mutations: {
     setCurrWap(state, { wap }) {
-      state.currWap = wap
+      state.currWap = { ...wap }
     },
     publishWap(state, { wapToPublish }) {
       state.wapToPublish = wapToPublish
@@ -77,7 +77,7 @@ export default {
         // return
       }
       //Amazing Function that updates wap!
-      console.log('IM UPDATING THE WAP@', wap)
+      console.log('IM UPDATING THE eventType', eventType)
       // socketService.emit('wap updated', wap)
       wap.updateEvent = eventType ? eventType : false
       commit({ type: 'setCurrWap', wap })
@@ -121,6 +121,7 @@ export default {
         console.log(err)
       }
     },
+
     async setCurrWap({ dispatch }, { wapId }) {
       try {
         const currWap = await wapService.getById(wapId)
@@ -231,6 +232,7 @@ export default {
       { cmpId, elType, elId, containerId }
     ) {
       try {
+        console.log('REMOVE EL FROM CMP')
         const wap = state.currWap
         const updatedWap = await wapService.removeEl(
           wap,

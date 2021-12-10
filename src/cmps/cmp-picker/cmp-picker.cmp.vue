@@ -3,7 +3,7 @@
     <div>
       <editor-header></editor-header>
       <div class="cmp-picker-title">
-        <h5>Undo <i class="el-icon-refresh-left"></i></h5>
+        <h5 @click="undo">Undo <i class="el-icon-refresh-left"></i></h5>
         <h4>Drag from here</h4>
       </div>
       <el-collapse-item
@@ -106,6 +106,7 @@ import wapHeader from '../wap-cmps/wap-header.cmp.vue'
 import { cmpService } from '../../services/cmp.service.js'
 import { Container, Draggable } from 'vue-smooth-dnd'
 import editorHeader from '../editor-header.cmp.vue'
+import { socketService } from '../../services/socket.service'
 
 export default {
   name: 'cmpPicker',
@@ -134,6 +135,9 @@ export default {
     }
   },
   methods: {
+    undo() {
+      socketService.emit('wap undo', this.$store.getters.getCurrWap)
+    },
     onMobileState(state) {
       // console.log('HERE')
       this.$emit('onMobileState', state)

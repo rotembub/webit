@@ -1,9 +1,17 @@
 <template>
   <section>
     <!-- <editor-header></editor-header> -->
-    <section class="editor-page flex">
+    <section @mousemove="moveMouse($event)" class="editor-page flex">
       <cmp-picker @onMobileState="onMobile" :class="classForPicker" />
       <wap-builder :class="classForBuilder" />
+
+      <div
+        v-if="client"
+        :style="{ top: client.y + 'px', left: client.x + 'px' }"
+        class="cursor"
+      >
+        <i class="fas fa-mouse-pointer"></i>
+      </div>
     </section>
   </section>
 </template>
@@ -21,7 +29,9 @@ export default {
     // editorHeader,
   },
   data() {
-    return {}
+    return {
+      client: null,
+    }
   },
   async created() {
     const id = this.wapId
@@ -32,6 +42,10 @@ export default {
     socketService.on('wap updated', wap => {
       console.log('wap from socket: ', wap)
       this.updateWap(wap, 'socket')
+    })
+    socketService.on('mousemove', clientXY => {
+      console.log('wap from socket: ', clientXY)
+      this.client = clientXY
     })
   },
   watch: {
@@ -45,6 +59,14 @@ export default {
     },
   },
   methods: {
+    moveMouse(ev) {
+      console.log(ev)
+      let clientXY = {
+        x: ev.clientX,
+        y: ev.clientY,
+      }
+      socketService.emit('mousemove', clientXY)
+    },
     updateWap(wap, eventType) {
       console.log(wap, 'WAP')
       this.$store.dispatch({ type: 'updateWap', wap, eventType })
