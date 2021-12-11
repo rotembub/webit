@@ -11,7 +11,7 @@
         />
         <div class="btn-container">
           <button>Login</button>
-          <button>Continue as guest</button>
+          <button @click="isGuest = true">Continue as guest</button>
           <p>
             Need an account? <span @click="changeIsLogin">{{ showLink }}</span>
           </p>
@@ -45,8 +45,8 @@
   export default {
     data() {
       return {
-        // userToEdit: null,
         isLogin: true,
+        isGuest: false,
         cred: {
           fullname: '',
           username: '',
@@ -54,14 +54,19 @@
         },
       };
     },
-    created() {
-      // this.userToEdit = userService.getEmptyUser();
-      // console.log(this.userToEdit);
-    },
+    created() {},
     methods: {
       async login() {
         try {
+          if (this.isGuest) {
+            this.cred = {
+              fullname: 'guest', //change to Guest
+              username: 'guest',
+              password: 'guest',
+            };
+          }
           await this.$store.dispatch({type: 'login', cred: this.cred});
+          this.$store.commit({type: 'setIsHide'});
           this.$router.push('/');
         } catch (err) {
           console.log('invalid username or password');
@@ -69,6 +74,7 @@
       },
       async signup() {
         await this.$store.dispatch({type: 'signup', cred: this.cred});
+        this.$store.commit({type: 'setIsHide'});
         this.$router.push('/');
       },
       changeIsLogin() {

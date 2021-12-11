@@ -7,7 +7,7 @@
 
       <div
         v-if="client"
-        :style="{ top: client.y + 'px', left: client.x + 'px' }"
+        :style="{top: client.y + 'px', left: client.x + 'px'}"
         class="cursor"
       >
         <i class="fas fa-mouse-pointer"></i>
@@ -17,91 +17,91 @@
 </template>
 
 <script>
-import wapBuilder from '../cmps/wap-builder.cmp.vue'
-import cmpPicker from '../cmps/cmp-picker/cmp-picker.cmp.vue'
-import { socketService } from '../services/socket.service.js'
-// import editorHeader from '../cmps/editor-header.cmp.vue'
+  import wapBuilder from '../cmps/wap-builder.cmp.vue';
+  import cmpPicker from '../cmps/cmp-picker/cmp-picker.cmp.vue';
+  import {socketService} from '../services/socket.service.js';
+  // import editorHeader from '../cmps/editor-header.cmp.vue'
 
-export default {
-  components: {
-    wapBuilder,
-    cmpPicker,
-    // editorHeader,
-  },
-  data() {
-    return {
-      client: null,
-    }
-  },
-  async created() {
-    const id = this.wapId
-    console.log('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ I WAS CRETEAD!!!', id)
-    if (!id) await this.$store.dispatch({ type: 'getEmptyWap' })
-    else await this.$store.dispatch({ type: 'setCurrWap', wapId: id })
-    socketService.emit('wap id', this.$store.getters.getCurrWap._id)
-    socketService.on('wap updated', wap => {
-      console.log('wap from socket: ', wap)
-      this.updateWap(wap, 'socket')
-    })
-    socketService.on('mousemove', clientXY => {
-      console.log('wap from socket: ', clientXY)
-      this.client = clientXY
-    })
-  },
-  watch: {
-    '$store.getters.getCurrWap'(wap) {
-      console.log('--------------------------> EVENT TYPE', wap.updateEvent)
-      if (!wap.updateEvent) {
-        socketService.emit('wap updated', wap)
-      } else {
-        console.log('SOCKET WAP', wap)
-      }
+  export default {
+    components: {
+      wapBuilder,
+      cmpPicker,
+      // editorHeader,
     },
-  },
-  methods: {
-    moveMouse(ev) {
-      console.log(ev)
-      let clientXY = {
-        x: ev.clientX,
-        y: ev.clientY,
-      }
-      socketService.emit('mousemove', clientXY)
+    data() {
+      return {
+        client: null,
+      };
     },
-    updateWap(wap, eventType) {
-      console.log(wap, 'WAP')
-      this.$store.dispatch({ type: 'updateWap', wap, eventType })
+    async created() {
+      const id = this.wapId;
+      console.log('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ I WAS CRETEAD!!!', id);
+      if (!id) await this.$store.dispatch({type: 'getEmptyWap'});
+      else await this.$store.dispatch({type: 'setCurrWap', wapId: id});
+      socketService.emit('wap id', this.$store.getters.getCurrWap._id);
+      socketService.on('wap updated', (wap) => {
+        console.log('wap from socket: ', wap);
+        this.updateWap(wap, 'socket');
+      });
+      socketService.on('mousemove', (clientXY) => {
+        // console.log('wap from socket: ', clientXY);
+        this.client = clientXY;
+      });
     },
-    onMobile(str) {
-      this.$store.dispatch({ type: 'isMobile', str })
+    watch: {
+      '$store.getters.getCurrWap'(wap) {
+        console.log('--------------------------> EVENT TYPE', wap.updateEvent);
+        if (!wap.updateEvent) {
+          socketService.emit('wap updated', wap);
+        } else {
+          console.log('SOCKET WAP', wap);
+        }
+      },
     },
-  },
-  computed: {
-    oldWap() {
-      // const isFullScreen =
-      this.$store.getters.getCurrWap
+    methods: {
+      moveMouse(ev) {
+        // console.log(ev)
+        let clientXY = {
+          x: ev.clientX,
+          y: ev.clientY,
+        };
+        socketService.emit('mousemove', clientXY);
+      },
+      updateWap(wap, eventType) {
+        console.log(wap, 'WAP');
+        this.$store.dispatch({type: 'updateWap', wap, eventType});
+      },
+      onMobile(str) {
+        this.$store.dispatch({type: 'isMobile', str});
+      },
     },
-    classForPicker() {
-      // const isFullScreen =
-      if (this.$store.getters.isFullScreen) return 'cmp-picker-fullscreen'
-      else return 'cmp-picker'
-    },
-    classForBuilder() {
-      const isFullScreen = this.$store.getters.isFullScreen
-      const isMobile = this.$store.getters.isMobile
-      console.log(isMobile)
+    computed: {
+      oldWap() {
+        // const isFullScreen =
+        this.$store.getters.getCurrWap;
+      },
+      classForPicker() {
+        // const isFullScreen =
+        if (this.$store.getters.isFullScreen) return 'cmp-picker-fullscreen';
+        else return 'cmp-picker';
+      },
+      classForBuilder() {
+        const isFullScreen = this.$store.getters.isFullScreen;
+        const isMobile = this.$store.getters.isMobile;
+        console.log(isMobile);
 
-      let classForBuilder = ''
+        let classForBuilder = '';
 
-      if (isFullScreen) classForBuilder = 'wap-builder-fullscreen'
-      if (isMobile) classForBuilder = 'wap-builder-mobile'
-      else classForBuilder = 'wap-builder'
-      return classForBuilder
+        if (isFullScreen) classForBuilder = 'wap-builder-fullscreen';
+        if (isMobile) classForBuilder = 'wap-builder-mobile';
+        else classForBuilder = 'wap-builder';
+        return classForBuilder;
+      },
+      wapId() {
+        return this.$route.params.wapId;
+      },
     },
-    wapId() {
-      return this.$route.params.wapId
-    },
-  },
-}
+  };
 </script>
 
 <style></style>

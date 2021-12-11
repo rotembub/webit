@@ -38,6 +38,12 @@
       </el-collapse-item>
     </div>
     <div class="wap-publish">
+      <el-button
+        class="save-btn"
+        @click="dialogFormVisible = true"
+        type="primary"
+        ><span></span><i class="fas fa-save"></i
+      ></el-button>
       <div class="publish-icons">
         <i @click="onMobileState('mobile')" class="el-icon-mobile"></i>
         <i @click="onMobileState('desktop')" class="el-icon-monitor"></i>
@@ -46,139 +52,129 @@
         ><span>Publish</span><i class="el-icon-upload el-icon-right"></i
       ></el-button>
     </div>
+    <el-dialog
+      title="Pick a name for your site"
+      :visible.sync="dialogFormVisible"
+    >
+      <el-form :model="form">
+        <el-form-item label="Site name" :label-width="formLabelWidth">
+          <el-input v-model="form.name" autocomplete="off"></el-input>
+        </el-form-item>
+      </el-form>
+      <span slot="footer" class="dialog-footer">
+        <el-button @click="dialogFormVisible = false">Cancel</el-button>
+        <el-button type="primary" @click="saveWap">Confirm</el-button>
+      </span>
+    </el-dialog>
   </el-collapse>
-
-  <!-- <el-collapse-item title="Headers" @click.native="loadThemes('wap-header')">
-      <div
-        v-if="themes"
-        v-for="theme in themes"
-        :key="theme.type"
-        @click.self.stop="add(theme.cmpId)"
-      > -->
-  <!-- <img
-          :src="require('@/assets/cmp-picker-preview/' + theme.type + '.png')"
-        /> -->
-  <!-- {{ theme.type }}
-      </div>
-    </el-collapse-item>
-    <el-collapse-item
-      title="Galleries"
-      @click.native="loadThemes('wap-gallery')"
-    >
-      <div
-        v-if="themes"
-        v-for="theme in themes"
-        @click.self.stop="add(theme.cmpId)"
-        :key="theme.type"
-      >
-        {{ theme.type }}
-      </div>
-    </el-collapse-item>
-    <el-collapse-item title="Text" @click.native="loadThemes('wap-text')">
-      <div
-        v-if="themes"
-        v-for="theme in themes"
-        @click.self.stop="add(theme.cmpId)"
-        :key="theme.type"
-      >
-        {{ theme.type }}
-      </div>
-    </el-collapse-item>
-    <el-collapse-item
-      title="Contacts"
-      @click.native="loadThemes('wap-contact')"
-    >
-      <div
-        v-if="themes"
-        v-for="theme in themes"
-        @click.self.stop="add(theme.cmpId)"
-        :key="theme.type"
-      >
-        {{ theme.type }}
-      </div>
-    </el-collapse-item> -->
-  <!-- </el-collapse> -->
 </template>
 
 <script>
-import { Collapse, CollapseItem } from 'element-ui'
-import wapHeader from '../wap-cmps/wap-header.cmp.vue'
-import { cmpService } from '../../services/cmp.service.js'
-import { Container, Draggable } from 'vue-smooth-dnd'
-import editorHeader from '../editor-header.cmp.vue'
-import { socketService } from '../../services/socket.service'
+  import {Collapse, CollapseItem} from 'element-ui';
+  import wapHeader from '../wap-cmps/wap-header.cmp.vue';
+  import {cmpService} from '../../services/cmp.service.js';
+  import {Container, Draggable} from 'vue-smooth-dnd';
+  import editorHeader from '../editor-header.cmp.vue';
+  import {socketService} from '../../services/socket.service';
 
-export default {
-  name: 'cmpPicker',
-  components: {
-    wapHeader,
-    Collapse,
-    CollapseItem,
-    Container,
-    Draggable,
-    editorHeader,
-  },
-  data() {
-    return {
-      themes: null,
-      types: [
-        'Headers',
-        'Galleries',
-        'Text',
-        'Contacts',
-        'Cards',
-        'Reviews',
-        'Landings',
-        'Footers',
-      ],
-      wapToPublish: null,
-    }
-  },
-  methods: {
-    undo() {
-      socketService.emit('wap undo', this.$store.getters.getCurrWap)
+  export default {
+    name: 'cmpPicker',
+    components: {
+      wapHeader,
+      Collapse,
+      CollapseItem,
+      Container,
+      Draggable,
+      editorHeader,
     },
-    onMobileState(state) {
-      // console.log('HERE')
-      this.$emit('onMobileState', state)
+    data() {
+      return {
+        themes: null,
+        types: [
+          'Headers',
+          'Galleries',
+          'Text',
+          'Contacts',
+          'Cards',
+          'Reviews',
+          'Landings',
+          'Footers',
+        ],
+        wapToPublish: null,
+        dialogFormVisible: false,
+        form: {
+          name: '',
+        },
+        formLabelWidth: '100px',
+      };
     },
-    getChildPayload1(index) {
-      return this.themes[index]
+    methods: {
+      undo() {
+        socketService.emit('wap undo', this.$store.getters.getCurrWap);
+      },
+      onMobileState(state) {
+        // console.log('HERE')
+        this.$emit('onMobileState', state);
+      },
+      getChildPayload1(index) {
+        return this.themes[index];
+      },
+      publishWap() {
+        this.wapToPublish = this.$store.getters.getCurrWap;
+        this.$store.dispatch({
+          type: 'publishWap',
+          wapToPublish: this.wapToPublish,
+        });
+        this.$store.dispatch({
+          type: 'saveWapOnPublish',
+          wap: this.wapToPublish,
+        });
+        // console.log('ID', this.wapToPublish._id)
+        this.$router.push(`/publish/${this.wapToPublish._id}`);
+        // console.log('wapToPublish', wapToPublish)
+      },
+      saveWap() {
+        //need to save to database the user  waps
+        this.dialogFormVisible = false;
+        const wapId = this.$store.getters.getCurrWap._id;
+        const wapToSave = {
+          wapId,
+          siteName: this.form.name,
+        };
+        this.form.name = '';
+        const user = this.$store.getters.getUser;
+        if (!user) this.$store.commit({type: 'saveGuestWap', wapId: wapToSave});
+        //change it save in db guest waps
+        else {
+          user.waps.push(wapToSave);
+          this.$store.dispatch({type: 'updateUser', user}); //user.waps.push(wapToSaveId);
+        }
+        console.log('saved', user);
+      },
+      async add(cmpId) {
+        // console.log(cmpId);
+        try {
+          const cmp = await this.$store.dispatch({
+            type: 'addCmp',
+            id: cmpId,
+          });
+        } catch (err) {
+          console.log(err);
+        }
+      },
+      loadThemes(cmpCat) {
+        const allThemes = cmpService.getThemesFor(cmpCat);
+        this.themes = allThemes;
+        // console.log(this.themes);
+      },
+      getProperTxt(type) {
+        // console.log(type);
+        const textToShow = type.substring(4);
+        return textToShow.charAt(0).toUpperCase() + textToShow.slice(1);
+      },
     },
-    publishWap() {
-      this.wapToPublish = this.$store.getters.getCurrWap
-      this.$store.dispatch({
-        type: 'publishWap',
-        wapToPublish: this.wapToPublish,
-      })
-      // console.log('ID', this.wapToPublish._id)
-      this.$router.push(`/publish/${this.wapToPublish._id}`)
-      // console.log('wapToPublish', wapToPublish)
-    },
-    async add(cmpId) {
-      // console.log(cmpId);
-      try {
-        const cmp = await this.$store.dispatch({
-          type: 'addCmp',
-          id: cmpId,
-        })
-      } catch (err) {
-        console.log(err)
-      }
-    },
-    loadThemes(cmpCat) {
-      const allThemes = cmpService.getThemesFor(cmpCat)
-      this.themes = allThemes
-      // console.log(this.themes);
-    },
-    getProperTxt(type) {
-      // console.log(type);
-      const textToShow = type.substring(4)
-      return textToShow.charAt(0).toUpperCase() + textToShow.slice(1)
-    },
-  },
-  computed: {},
-}
+    computed: {},
+  };
 </script>
 
 <style></style>
