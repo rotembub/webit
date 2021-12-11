@@ -1,5 +1,5 @@
-import { wapService } from '../../services/wap.service.js'
-import { cmpService } from '../../services/cmp.service.js'
+import {wapService} from '../../services/wap.service.js';
+import {cmpService} from '../../services/cmp.service.js';
 export default {
   state: {
     currWap: null,
@@ -13,170 +13,168 @@ export default {
   },
   getters: {
     isMobile(state) {
-      return state.isMobile
+      return state.isMobile;
     },
     isFullScreen(state) {
-      return state.isFullScreen
+      return state.isFullScreen;
     },
     getCurrWap(state) {
-      return state.currWap
+      return state.currWap;
     },
     publishedWap(state) {
-      return state.wapToPublish
+      return state.wapToPublish;
     },
     getTemplates(state) {
-      return state.templates
+      return state.templates;
     },
     getWapId(state) {
-      console.log('Wap id getters', state.currWap)
-      return state.currWap._id
+      console.log('Wap id getters', state.currWap);
+      return state.currWap._id;
     },
     getElSelectedId(state) {
-      return state.elSelectedId
+      return state.elSelectedId;
     },
     getElSelectedPos(state) {
-      return state.elSelectedPos
+      return state.elSelectedPos;
     },
     getModalPos(state) {
-      return state.modalPos
+      return state.modalPos;
     },
   },
   mutations: {
-    setCurrWap(state, { wap }) {
-      console.log('MIUTETING WAP : ', wap)
-      state.currWap = { ...wap }
+    setCurrWap(state, {wap}) {
+      console.log('MIUTETING WAP : ', wap);
+      state.currWap = {...wap};
     },
-    publishWap(state, { wapToPublish }) {
+    publishWap(state, {wapToPublish}) {
       console.log(
         '🚀 ~ file: wap-store.js ~ line 50 ~ publishWap ~ wapToPublish',
         wapToPublish
-      )
-      state.wapToPublish = wapToPublish
+      );
+      state.wapToPublish = wapToPublish;
     },
 
     // UI mutations
     toggleWapFullScreen(state) {
-      state.isFullScreen = !state.isFullScreen
+      state.isFullScreen = !state.isFullScreen;
     },
-    setSelectedElement(state, { id, pos }) {
-      state.elSelectedId = id
-      state.elSelectedPos = pos
+    setSelectedElement(state, {id, pos}) {
+      state.elSelectedId = id;
+      state.elSelectedPos = pos;
     },
-    setModalPos(state, { modalPos }) {
-      state.modalPos = modalPos
+    setModalPos(state, {modalPos}) {
+      state.modalPos = modalPos;
     },
     isMobile(state) {
-      state.isMobile = !state.isMobile
+      state.isMobile = !state.isMobile;
     },
     // Templates ----->
-    setTemplates(state, { templates }) {
-      state.templates = templates
+    setTemplates(state, {templates}) {
+      state.templates = templates;
     },
   },
   actions: {
     //General Functions
-    async updateWap({ commit }, { wap, eventType }) {
+    async updateWap({commit}, {wap, eventType}) {
       //Amazing Function that updates wap!
       if (!wap) {
-        console.log('NO WAP')
+        console.log('NO WAP');
       } else {
-        console.log('IM UPDATING THE eventType', eventType)
-        wap.updateEvent = eventType ? eventType : false
-        commit({ type: 'setCurrWap', wap })
+        console.log('IM UPDATING THE eventType', eventType);
+        wap.updateEvent = eventType ? eventType : false;
+        commit({type: 'setCurrWap', wap});
       }
     },
 
     //UI Actions
-    isMobile({ commit }) {
-      commit({ type: 'isMobile' })
+    isMobile({commit}) {
+      commit({type: 'isMobile'});
     },
-    toggleWapFullScreen({ commit }) {
-      commit({ type: 'toggleWapFullScreen' })
+    toggleWapFullScreen({commit}) {
+      commit({type: 'toggleWapFullScreen'});
     },
-    async publishWap({ commit }, { wapId }) {
-      let wap = await wapService.getById(wapId)
-      commit({ type: 'publishWap', wapToPublish: wap })
+    async publishWap({commit}, {wapId}) {
+      let wap = await wapService.getById(wapId);
+      commit({type: 'publishWap', wapToPublish: wap});
     },
 
     //Wap Actions
-    async updateWapComponents({ dispatch }, { wap }) {
-      console.log('updateWapComponents ~ wap', wap)
+    async updateWapComponents({dispatch}, {wap}) {
+      console.log('updateWapComponents ~ wap', wap);
       try {
         // const updatedWap = await wapService.save(wap);//dont change the database
-        await dispatch('updateWap', { wap })
+        await dispatch('updateWap', {wap});
       } catch (err) {
-        console.log(err)
+        console.log(err);
       }
     },
-    async updateWapStyle({ dispatch, state }, { cmpId }) {
-      const editedWap = state.currWap
+    async updateWapStyle({dispatch, state}, {cmpId}) {
+      const editedWap = state.currWap;
       // console.log('updateWapStyle', currWap);
       try {
         // const updatedWap = await wapService.save(currWap);
-        const newCmp = editedWap.cmps.find(cmp => cmp.id === cmpId)
-        const updatedWap = await wapService.updateCmp(editedWap, newCmp)
+        const newCmp = editedWap.cmps.find((cmp) => cmp.id === cmpId);
+        const updatedWap = await wapService.updateCmp(editedWap, newCmp);
 
-        await dispatch('updateWap', { wap: updatedWap })
-        return updatedWap
+        await dispatch('updateWap', {wap: updatedWap});
+        return updatedWap;
       } catch (err) {
-        console.log(err)
+        console.log(err);
       }
     },
 
-    async setCurrWap({ dispatch }, { wapId }) {
+    async setCurrWap({dispatch}, {wapId}) {
       try {
-        let currWap = await wapService.getById(wapId)
-        await dispatch('updateWap', { wap: currWap, eventType: true })
-        return currWap
+        let currWap = await wapService.getById(wapId);
+        await dispatch('updateWap', {wap: currWap, eventType: true});
+        return currWap;
       } catch (err) {
-        console.log('setCurrWap', err)
+        console.log('setCurrWap', err);
       }
     },
-    async addCmp({ dispatch, state }, { id, idx }) {
+    async addCmp({dispatch, state}, {id, idx}) {
       try {
-        const cmp = await cmpService.getCmpById(id)
-        const wap = state.currWap
-        const updatedWap = await wapService.addCmp(wap, cmp, idx)
-        await dispatch('updateWap', { wap: updatedWap })
+        const cmp = await cmpService.getCmpById(id);
+        console.log(cmp, 'The cmp That add****');
+        const wap = state.currWap;
+        const updatedWap = await wapService.addCmp(wap, cmp, idx);
+        await dispatch('updateWap', {wap: updatedWap});
       } catch (err) {
-        console.log('Store reports: failed to add cmp', err)
+        console.log('Store reports: failed to add cmp', err);
       }
     },
-    async copyCmpFromWap({ dispatch, state }, { cmpId, cmpIdx }) {
+    async copyCmpFromWap({dispatch, state}, {cmpId, cmpIdx}) {
       try {
-        const wap = state.currWap
-        const cmpCopy = await wapService.copyCmp(wap, cmpId)
-        const updatedWap = await wapService.addCmp(wap, cmpCopy, cmpIdx + 1)
-        await dispatch('updateWap', { wap: updatedWap })
+        const wap = state.currWap;
+        const cmpCopy = await wapService.copyCmp(wap, cmpId);
+        const updatedWap = await wapService.addCmp(wap, cmpCopy, cmpIdx + 1);
+        await dispatch('updateWap', {wap: updatedWap});
       } catch (err) {
-        console.log('Store reports: failed to copy cmp', err)
+        console.log('Store reports: failed to copy cmp', err);
       }
     },
-    async dupElement(
-      { dispatch, state },
-      { cmpId, elType, elId, containerId }
-    ) {
+    async dupElement({dispatch, state}, {cmpId, elType, elId, containerId}) {
       try {
-        const wap = state.currWap
+        const wap = state.currWap;
         const updatedWap = await wapService.duplicateEl(
           wap,
           cmpId,
           elType,
           elId,
           containerId
-        )
+        );
 
-        await dispatch('updateWap', { wap: updatedWap })
+        await dispatch('updateWap', {wap: updatedWap});
       } catch (err) {
-        console.log('failed to remove element from cmp', err)
+        console.log('failed to remove element from cmp', err);
       }
     },
     async updateElementStyle(
-      { dispatch, state },
-      { cmpId, elType, elId, containerId, style }
+      {dispatch, state},
+      {cmpId, elType, elId, containerId, style}
     ) {
       try {
-        const wap = state.currWap
+        const wap = state.currWap;
         const updatedWap = await wapService.updateElStyle(
           wap,
           cmpId,
@@ -184,18 +182,18 @@ export default {
           elId,
           containerId,
           style
-        )
-        await dispatch('updateWap', { wap: updatedWap })
+        );
+        await dispatch('updateWap', {wap: updatedWap});
       } catch (err) {
-        console.log(err)
+        console.log(err);
       }
     },
     async updateElement(
-      { dispatch, state },
-      { cmpId, elType, elId, containerId, updatedEl }
+      {dispatch, state},
+      {cmpId, elType, elId, containerId, updatedEl}
     ) {
       try {
-        const wap = state.currWap
+        const wap = state.currWap;
         const updatedWap = await wapService.updateEl(
           wap,
           cmpId,
@@ -203,83 +201,83 @@ export default {
           elId,
           containerId,
           updatedEl
-        )
-        await dispatch('updateWap', { wap: updatedWap })
+        );
+        await dispatch('updateWap', {wap: updatedWap});
       } catch (err) {
-        console.log(err)
+        console.log(err);
       }
     },
-    async getEmptyWap({ dispatch }) {
-      console.log('getting a new one')
+    async getEmptyWap({dispatch}) {
+      console.log('getting a new one');
       try {
-        const wap = await wapService.getEmptyWap()
+        const wap = await wapService.getEmptyWap();
         console.log(
           '🚀 ~ file: wap-store.js ~ line 215 ~ getEmptyWap ~ wap',
           wap
-        )
-        await dispatch('updateWap', { wap, eventType: false })
-        return wap
+        );
+        await dispatch('updateWap', {wap, eventType: false});
+        return wap;
       } catch (err) {
-        console.log('failed to get empty way', wap)
+        console.log('failed to get empty way', wap);
       }
     },
-    async removeCmpFromWap({ dispatch, state }, { cmpId }) {
+    async removeCmpFromWap({dispatch, state}, {cmpId}) {
       try {
-        const wap = state.currWap
-        const updatedWap = await wapService.removeCmp(wap, cmpId)
-        await dispatch('updateWap', { wap: updatedWap })
+        const wap = state.currWap;
+        const updatedWap = await wapService.removeCmp(wap, cmpId);
+        await dispatch('updateWap', {wap: updatedWap});
       } catch (err) {
-        console.log('failed to remove CMP fron WAP', err)
+        console.log('failed to remove CMP fron WAP', err);
       }
     },
     async removeElFromCmp(
-      { dispatch, state },
-      { cmpId, elType, elId, containerId }
+      {dispatch, state},
+      {cmpId, elType, elId, containerId}
     ) {
       try {
-        console.log('REMOVE EL FROM CMP')
-        const wap = state.currWap
+        console.log('REMOVE EL FROM CMP');
+        const wap = state.currWap;
         const updatedWap = await wapService.removeEl(
           wap,
           cmpId,
           elType,
           elId,
           containerId
-        )
-        await dispatch('updateWap', { wap: updatedWap })
+        );
+        await dispatch('updateWap', {wap: updatedWap});
       } catch (err) {
-        console.log('failed to remove element from cmp', err)
+        console.log('failed to remove element from cmp', err);
       }
     },
     //Picker
-    async loadCmps({ commit }) {
+    async loadCmps({commit}) {
       try {
-        const cmps = await cmpService.query()
+        const cmps = await cmpService.query();
         // commit({type: 'setCmps', cmps});
-        console.log(cmps)
+        console.log(cmps);
       } catch (err) {
-        console.log('Store reports failed to Load Cmps')
+        console.log('Store reports failed to Load Cmps');
       }
     },
 
     //Temapltes
-    async loadTemplates({ commit }) {
+    async loadTemplates({commit}) {
       try {
-        const templates = await wapService.queryWapTemplates()
-        commit({ type: 'setTemplates', templates })
+        const templates = await wapService.queryWapTemplates();
+        commit({type: 'setTemplates', templates});
       } catch (err) {
-        console.log('Store reports failed to Load Waps')
+        console.log('Store reports failed to Load Waps');
       }
     },
     //Creates a wap from a template
-    async createNewWap({ dispatch }, { templateId, newWapData }) {
+    async createNewWap({dispatch}, {templateId, newWapData}) {
       try {
-        const currWap = await wapService.createNewWap(templateId, newWapData)
-        await dispatch('updateWap', { wap: currWap })
+        const currWap = await wapService.createNewWap(templateId, newWapData);
+        await dispatch('updateWap', {wap: currWap});
 
-        return currWap
+        return currWap;
       } catch (err) {
-        console.log('Ahalan', err)
+        console.log('Ahalan', err);
       }
     },
 
@@ -320,4 +318,4 @@ export default {
     //   }
     // },
   },
-}
+};

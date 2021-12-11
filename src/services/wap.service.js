@@ -112,6 +112,30 @@ async function addCmp(wap, cmp, idx) {
   return Promise.resolve(wap);
 }
 
+function nestedLoop(obj) {
+  const res = {};
+  function recurse(obj, current) {
+    for (const key in obj) {
+      let value = obj[key];
+      if (value != undefined) {
+        if (Array.isArray(value)) {
+          console.log(value, 'value array');
+          value.map((item) => {
+            item.id = utilService.makeId();
+          });
+        } else if (value && typeof value === 'object') {
+          recurse(value, key);
+        } else {
+          // Do your stuff here to var value
+          res[key] = value;
+        }
+      }
+    }
+  }
+  recurse(obj);
+  return res;
+}
+
 async function copyCmp(wap, cmpId) {
   // var wap = await getById(wapId);
   // const cmp = wap.cmps.find((cmp) => cmp.id === cmpId);
@@ -121,6 +145,9 @@ async function copyCmp(wap, cmpId) {
   const cmp = wap.cmps.find((cmp) => cmp.id === cmpId);
   const newCopyCmp = JSON.parse(JSON.stringify(cmp));
   newCopyCmp.id = utilService.makeId(); //change id soo it will not duplicate
+  const res = nestedLoop(newCopyCmp);
+  console.log(res, 'the res');
+  console.log(copyCmp, 'after change copy cmp');
   return newCopyCmp;
 }
 
