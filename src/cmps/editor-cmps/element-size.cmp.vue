@@ -114,6 +114,8 @@ export default {
       marginLeft: 0,
       maxHeight: "",
       maxWidth: "",
+      // height:'',
+      // width: '',
     };
   },
   methods: {
