@@ -8,10 +8,12 @@ import 'element-ui/lib/theme-chalk/index.css'
 import locale from 'element-ui/lib/locale/lang/en'
 import '../src/styles/styles.scss'
 import loading from 'vuejs-loading-screen'
-
-Vue.use(ElementUI, { locale })
+import Notifications from 'vue-notification'
 import { ObserveVisibility } from 'vue-observe-visibility'
-
+import vmodal from 'vue-js-modal'
+Vue.use(Notifications)
+Vue.use(ElementUI, { locale })
+Vue.use(vmodal, { adaptive: true })
 Vue.directive('observe-visibility', ObserveVisibility)
 Vue.use(loading, {
   bg: '#d2d2d2',

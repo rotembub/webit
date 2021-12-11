@@ -43,9 +43,14 @@ export default {
   },
   mutations: {
     setCurrWap(state, { wap }) {
+      console.log('MIUTETING WAP : ', wap)
       state.currWap = { ...wap }
     },
     publishWap(state, { wapToPublish }) {
+      console.log(
+        '🚀 ~ file: wap-store.js ~ line 50 ~ publishWap ~ wapToPublish',
+        wapToPublish
+      )
       state.wapToPublish = wapToPublish
     },
 
@@ -71,35 +76,31 @@ export default {
   actions: {
     //General Functions
     async updateWap({ commit }, { wap, eventType }) {
-      if (!wap) {
-        // MIGHT CUASE A PROBLEM WITH DND UPDATES --- > TEST AFTER DB CONNECTED
-        console.log('NO WAP')
-        // return
-      }
       //Amazing Function that updates wap!
-      console.log('IM UPDATING THE eventType', eventType)
-      // socketService.emit('wap updated', wap)
-      wap.updateEvent = eventType ? eventType : false
-      commit({ type: 'setCurrWap', wap })
+      if (!wap) {
+        console.log('NO WAP')
+      } else {
+        console.log('IM UPDATING THE eventType', eventType)
+        wap.updateEvent = eventType ? eventType : false
+        commit({ type: 'setCurrWap', wap })
+      }
     },
 
     //UI Actions
     isMobile({ commit }) {
-      commit({ type: 'isMobile' }) // is there a need for an action here? why not just commit - Yaron Biton
+      commit({ type: 'isMobile' })
     },
     toggleWapFullScreen({ commit }) {
-      commit({ type: 'toggleWapFullScreen' }) // is there a need for an action here? why not just commit - Yaron Biton
+      commit({ type: 'toggleWapFullScreen' })
     },
-    publishWap({ commit }, { wapToPublish }) {
-      commit({ type: 'publishWap', wapToPublish }) // is there a need for an action here? why not just commit - Yaron Biton
+    async publishWap({ commit }, { wapId }) {
+      let wap = await wapService.getById(wapId)
+      commit({ type: 'publishWap', wapToPublish: wap })
     },
 
     //Wap Actions
     async updateWapComponents({ dispatch }, { wap }) {
-      console.log(
-        '🚀 ~ file: wap-store.js ~ line 121 ~ updateWapComponents ~ wap',
-        wap
-      )
+      console.log('updateWapComponents ~ wap', wap)
       try {
         // const updatedWap = await wapService.save(wap);//dont change the database
         await dispatch('updateWap', { wap })
@@ -124,12 +125,11 @@ export default {
 
     async setCurrWap({ dispatch }, { wapId }) {
       try {
-        const currWap = await wapService.getById(wapId)
-        await dispatch('updateWap', { wap: currWap })
-
+        let currWap = await wapService.getById(wapId)
+        await dispatch('updateWap', { wap: currWap, eventType: true })
         return currWap
       } catch (err) {
-        console.log('Ahalan', err)
+        console.log('setCurrWap', err)
       }
     },
     async addCmp({ dispatch, state }, { id, idx }) {
@@ -213,7 +213,12 @@ export default {
       console.log('getting a new one')
       try {
         const wap = await wapService.getEmptyWap()
-        await dispatch('updateWap', { wap, eventType: true })
+        console.log(
+          '🚀 ~ file: wap-store.js ~ line 215 ~ getEmptyWap ~ wap',
+          wap
+        )
+        await dispatch('updateWap', { wap, eventType: false })
+        return wap
       } catch (err) {
         console.log('failed to get empty way', wap)
       }
@@ -267,9 +272,9 @@ export default {
       }
     },
     //Creates a wap from a template
-    async createNewWap({ dispatch }, { templateId }) {
+    async createNewWap({ dispatch }, { templateId, newWapData }) {
       try {
-        const currWap = await wapService.createNewWap(templateId)
+        const currWap = await wapService.createNewWap(templateId, newWapData)
         await dispatch('updateWap', { wap: currWap })
 
         return currWap

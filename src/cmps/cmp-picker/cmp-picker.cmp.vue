@@ -132,7 +132,13 @@ export default {
         'Footers',
       ],
       wapToPublish: null,
+      isMobile: false,
     }
+  },
+  watch: {
+    '$store.getters.isMobile'(isMobile) {
+      this.isMobile = isMobile
+    },
   },
   methods: {
     undo() {
@@ -146,14 +152,15 @@ export default {
       return this.themes[index]
     },
     publishWap() {
-      this.wapToPublish = this.$store.getters.getCurrWap
-      this.$store.dispatch({
-        type: 'publishWap',
-        wapToPublish: this.wapToPublish,
+      console.log('wapToPublish ID: ')
+      this.$notify({
+        group: 'foo',
+        title: 'Your website is now online!',
+        type: 'success',
+        text: 'Hello user! This is a notification!',
       })
-      // console.log('ID', this.wapToPublish._id)
-      this.$router.push(`/publish/${this.wapToPublish._id}`)
-      // console.log('wapToPublish', wapToPublish)
+
+      window.open(`/publish/${this.$store.getters.getCurrWap._id}`, '_blank')
     },
     async add(cmpId) {
       // console.log(cmpId);
@@ -177,7 +184,11 @@ export default {
       return textToShow.charAt(0).toUpperCase() + textToShow.slice(1)
     },
   },
-  computed: {},
+  computed: {
+    // wapId() {
+    //   return this.$route.params.wapId
+    // },
+  },
 }
 </script>
 

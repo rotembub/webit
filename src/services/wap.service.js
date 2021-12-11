@@ -45,8 +45,8 @@ export const wapService = {
 //   // if (!waps || !waps.length)
 //   //   localStorage.setItem(KEY, JSON.stringify([wap_architecture]))
 // }
-async function createNewWap(templateId) {
-  return await httpService.post('template', { templateId })
+async function createNewWap(templateId, newWapData) {
+  return await httpService.post('template', { templateId, newWapData })
 }
 async function queryWapTemplates() {
   // try {
@@ -70,12 +70,7 @@ async function query(filterBy) {
 }
 async function getById(id) {
   console.log('ASKING FOR WAP WITH id: ', id)
-  // try {
-  //   const foundWap = await storageService.get(KEY, id);
-  //   return foundWap;
-  // } catch (err) {
-  //   console.log('couldnt get wap by ID', err);
-  // }
+
   return await httpService.get(`${ENDPOINT}/${id}`)
 }
 
@@ -87,6 +82,7 @@ async function updateCmp(wap, newCmp) {
   // wap.cmps.splice(idx, 1, newCmp);
   // console.log(wap);
   // return await save(wap);
+
   const idx = wap.cmps.findIndex(cmp => cmp.id === newCmp.id)
   wap.cmps.splice(idx, 1, newCmp)
   return Promise.resolve(wap)

@@ -6,7 +6,6 @@
     width:18%;
     min-width: 150px;
     height:100vh;
-    
     transition: 0.6s;
     // overflow: scroll;
     overflow-y: scroll;
@@ -102,7 +101,7 @@
     height:100vh;
     z-index: 1;
     background-color: #fff;
-    transform:translateX(-90%);
+    transform:translateX(-100%);
     transition: 0.4s;
 
     .cmp-picker-title{
@@ -172,7 +171,20 @@
     }
 }
 
-
+.picker-hover {
+    position:fixed !important;
+    z-index: 99999999;
+    left: 0px !important;
+    height: 10%;
+    color: white;
+    top:45%;
+    background-color:#2f3542; 
+}
+.picker-hover:hover ~ .cmp-picker-fullscreen {
+    transform:translateX(0%);
+    transition: 0.8s;
+ 
+}
 
 .back-to-edit-btn{
     position: fixed;

@@ -1,4 +1,4 @@
-import {userService} from '@/services/user.service.js';
+import { userService } from '@/services/user.service.js'
 
 export default {
   state: {
@@ -7,44 +7,52 @@ export default {
   },
   getters: {
     getUser(state) {
-      return state.loggedinUser;
+      return state.loggedinUser
     },
     getIsHide(state) {
-      return state.isHide;
+      return state.isHide
     },
   },
   mutations: {
-    setUser(state, {user}) {
-      state.loggedinUser = user;
+    setUser(state, { user }) {
+      state.loggedinUser = user
     },
     toggleModal(state) {
-      state.isHide = !state.isHide;
+      state.isHide = !state.isHide
     },
   },
   actions: {
-    async login({commit}, {cred}) {
+    async getUsers({ searchStr }) {
       try {
-        const user = await userService.login(cred);
-        commit({type: 'setUser', user});
+        const users = await userService.getUsers(searchStr)
+        return users
       } catch (err) {
-        console.log(err);
+        console.log(err)
       }
     },
-    async signup({commit}, {cred}) {
+    async login({ commit }, { cred }) {
       try {
-        const user = await userService.signup(cred);
-        commit({type: 'setUser', user});
+        const user = await userService.login(cred)
+        commit({ type: 'setUser', user })
       } catch (err) {
-        console.log(err);
+        console.log(err)
       }
     },
-    async logout({commit}) {
+    async signup({ commit }, { cred }) {
       try {
-        await userService.logout();
-        commit({type: 'setUser', user: null});
+        const user = await userService.signup(cred)
+        commit({ type: 'setUser', user })
       } catch (err) {
-        console.log(err);
+        console.log(err)
+      }
+    },
+    async logout({ commit }) {
+      try {
+        await userService.logout()
+        commit({ type: 'setUser', user: null })
+      } catch (err) {
+        console.log(err)
       }
     },
   },
-};
+}
