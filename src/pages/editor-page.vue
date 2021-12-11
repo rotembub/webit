@@ -2,7 +2,7 @@
   <section>
     <!-- <editor-header></editor-header> -->
     <section @mousemove="moveMouse($event)" class="editor-page flex">
-      <cmp-picker @onMobileState="onMobile" :class="classForPicker" />
+      <cmp-picker @onMobileState="onMobile" />
       <wap-builder :class="classForBuilder" />
 
       <div
@@ -18,9 +18,9 @@
 </template>
 
 <script>
-import wapBuilder from "../cmps/wap-builder.cmp.vue";
-import cmpPicker from "../cmps/cmp-picker/cmp-picker.cmp.vue";
-import { socketService } from "../services/socket.service.js";
+import wapBuilder from '../cmps/wap-builder.cmp.vue'
+import cmpPicker from '../cmps/cmp-picker/cmp-picker.cmp.vue'
+import { socketService } from '../services/socket.service.js'
 // import editorHeader from '../cmps/editor-header.cmp.vue'
 
 export default {
@@ -32,16 +32,16 @@ export default {
   data() {
     return {
       client: null,
-    };
+    }
   },
   async created() {
-    const id = this.wapId;
+    const id = this.wapId
     if (!id) {
-      this.$router.push("/template");
+      this.$router.push('/template')
     } else {
-      let wap = await this.$store.dispatch({ type: "setCurrWap", wapId: id });
+      let wap = await this.$store.dispatch({ type: 'setCurrWap', wapId: id })
 
-      this.$router.push("/editor/" + wap._id).catch((err) => {});
+      this.$router.push('/editor/' + wap._id).catch(err => {})
     }
 
     //  if (!id) {
@@ -52,27 +52,27 @@ export default {
     //   if (!res) this.$router.push('/editor/new')
     // }
 
-    socketService.emit("wap id", this.$store.getters.getCurrWap._id);
-    socketService.on("wap updated", (wap) => {
+    socketService.emit('wap id', this.$store.getters.getCurrWap._id)
+    socketService.on('wap updated', wap => {
       // console.log('wap from socket: ', wap)
-      this.updateWap(wap, "socket");
-    });
-    socketService.on("wap updated undo", (wap) => {
-      console.log("---> wap updated undo: ", wap);
-      this.$store.dispatch({ type: "updateWap", wap });
-    });
-    socketService.on("mousemove", (clientXY) => {
+      this.updateWap(wap, 'socket')
+    })
+    socketService.on('wap updated undo', wap => {
+      console.log('---> wap updated undo: ', wap)
+      this.$store.dispatch({ type: 'updateWap', wap })
+    })
+    socketService.on('mousemove', clientXY => {
       // console.log('wap from socket: ', clientXY)
-      this.client = clientXY;
-    });
+      this.client = clientXY
+    })
   },
   watch: {
-    "$store.getters.getCurrWap"(wap) {
-      console.log("--------------------------> EVENT TYPE", wap.updateEvent);
+    '$store.getters.getCurrWap'(wap) {
+      console.log('--------------------------> EVENT TYPE', wap.updateEvent)
       if (!wap.updateEvent) {
-        socketService.emit("wap updated", wap);
+        socketService.emit('wap updated', wap)
       } else {
-        console.log("SOCKET WAP", wap);
+        console.log('SOCKET WAP', wap)
       }
     },
   },
@@ -82,45 +82,41 @@ export default {
       let clientXY = {
         x: ev.clientX,
         y: ev.clientY,
-        byUser: this.$store.getters.getUser || { username: "guest" },
-      };
-      socketService.emit("mousemove", clientXY);
+        byUser: this.$store.getters.getUser || { username: 'guest' },
+      }
+      socketService.emit('mousemove', clientXY)
     },
     onMobile(str) {
-      this.$store.dispatch({ type: "isMobile", str });
+      this.$store.dispatch({ type: 'isMobile', str })
     },
+
     updateWap(wap, eventType) {
       // console.log(wap, 'WAP')
-      this.$store.dispatch({ type: "updateWap", wap, eventType });
+      this.$store.dispatch({ type: 'updateWap', wap, eventType })
     },
   },
   computed: {
     oldWap() {
       // const isFullScreen =
-      this.$store.getters.getCurrWap;
+      this.$store.getters.getCurrWap
     },
-    classForPicker() {
-      // const isFullScreen =
-      if (this.$store.getters.isFullScreen) return "cmp-picker-fullscreen";
-      else return "cmp-picker";
-    },
+
     classForBuilder() {
-      const isFullScreen = this.$store.getters.isFullScreen;
-      const isMobile = this.$store.getters.isMobile;
-      console.log(isMobile);
+      const isFullScreen = this.$store.getters.isFullScreen
+      const isMobile = this.$store.getters.isMobile
+      console.log(isMobile)
 
-      let classForBuilder = "";
-
-      if (isFullScreen) classForBuilder = "wap-builder-fullscreen";
-      if (isMobile) classForBuilder = "wap-builder-mobile";
-      else classForBuilder = "wap-builder";
-      return classForBuilder;
+      let classForBuilder = ''
+      if (isFullScreen) classForBuilder = 'wap-builder-fullscreen'
+      if (isMobile) classForBuilder = 'wap-builder-mobile'
+      else classForBuilder = 'wap-builder'
+      return classForBuilder
     },
     wapId() {
-      return this.$route.params.wapId;
+      return this.$route.params.wapId
     },
   },
-};
+}
 </script>
 
 <style></style>

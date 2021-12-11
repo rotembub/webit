@@ -1,6 +1,5 @@
 <template>
   <section class="scrollbar style-2" v-if="wap" :style="getMobileStyle">
-    <!-- <div class="picker-hover">HOVER ME</div> -->
     <!-- <component v-for="cmp in wap.cmps" :cmp="cmp" :is="cmp.type" :key="cmp.id">
     </component> -->
 
