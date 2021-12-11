@@ -93,31 +93,31 @@
         // console.log(wap, 'WAP')
         this.$store.dispatch({type: 'updateWap', wap, eventType});
       },
-      computed: {
-        oldWap() {
-          // const isFullScreen =
-          this.$store.getters.getCurrWap;
-        },
-        classForPicker() {
-          // const isFullScreen =
-          if (this.$store.getters.isFullScreen) return 'cmp-picker-fullscreen';
-          else return 'cmp-picker';
-        },
-        classForBuilder() {
-          const isFullScreen = this.$store.getters.isFullScreen;
-          const isMobile = this.$store.getters.isMobile;
-          console.log(isMobile);
+    },
+    computed: {
+      oldWap() {
+        // const isFullScreen =
+        this.$store.getters.getCurrWap;
+      },
+      classForPicker() {
+        // const isFullScreen =
+        if (this.$store.getters.isFullScreen) return 'cmp-picker-fullscreen';
+        else return 'cmp-picker';
+      },
+      classForBuilder() {
+        const isFullScreen = this.$store.getters.isFullScreen;
+        const isMobile = this.$store.getters.isMobile;
+        console.log(isMobile);
 
-          let classForBuilder = '';
+        let classForBuilder = '';
 
-          if (isFullScreen) classForBuilder = 'wap-builder-fullscreen';
-          if (isMobile) classForBuilder = 'wap-builder-mobile';
-          else classForBuilder = 'wap-builder';
-          return classForBuilder;
-        },
-        wapId() {
-          return this.$route.params.wapId;
-        },
+        if (isFullScreen) classForBuilder = 'wap-builder-fullscreen';
+        if (isMobile) classForBuilder = 'wap-builder-mobile';
+        else classForBuilder = 'wap-builder';
+        return classForBuilder;
+      },
+      wapId() {
+        return this.$route.params.wapId;
       },
     },
   };
