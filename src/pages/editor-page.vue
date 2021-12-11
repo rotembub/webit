@@ -7,9 +7,10 @@
 
       <div
         v-if="client"
-        :style="{top: client.y + 'px', left: client.x + 'px'}"
+        :style="{top: client.y + 'px', left: client.x + 'px', color: 'green'}"
         class="cursor"
       >
+        {{ client.byUser.username }}
         <i class="fas fa-mouse-pointer"></i>
       </div>
     </section>
@@ -35,16 +36,33 @@
     },
     async created() {
       const id = this.wapId;
-      console.log('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ I WAS CRETEAD!!!', id);
-      if (!id) await this.$store.dispatch({type: 'getEmptyWap'});
-      else await this.$store.dispatch({type: 'setCurrWap', wapId: id});
+      if (!id) {
+        this.$router.push('/template');
+      } else {
+        let wap = await this.$store.dispatch({type: 'setCurrWap', wapId: id});
+
+        this.$router.push('/editor/' + wap._id).catch((err) => {});
+      }
+
+      //  if (!id) {
+      //   let newWap = await this.$store.dispatch({ type: 'getEmptyWap' })
+      //   this.$router.push('/editor/' + newWap._id)
+      // } else {
+      //   let res = await this.$store.dispatch({ type: 'setCurrWap', wapId: id })
+      //   if (!res) this.$router.push('/editor/new')
+      // }
+
       socketService.emit('wap id', this.$store.getters.getCurrWap._id);
       socketService.on('wap updated', (wap) => {
-        console.log('wap from socket: ', wap);
+        // console.log('wap from socket: ', wap)
         this.updateWap(wap, 'socket');
       });
+      socketService.on('wap updated undo', (wap) => {
+        console.log('---> wap updated undo: ', wap);
+        this.$store.dispatch({type: 'updateWap', wap});
+      });
       socketService.on('mousemove', (clientXY) => {
-        // console.log('wap from socket: ', clientXY);
+        // console.log('wap from socket: ', clientXY)
         this.client = clientXY;
       });
     },
@@ -64,41 +82,42 @@
         let clientXY = {
           x: ev.clientX,
           y: ev.clientY,
+          byUser: this.$store.getters.getUser || {username: 'guest'},
         };
         socketService.emit('mousemove', clientXY);
-      },
-      updateWap(wap, eventType) {
-        console.log(wap, 'WAP');
-        this.$store.dispatch({type: 'updateWap', wap, eventType});
       },
       onMobile(str) {
         this.$store.dispatch({type: 'isMobile', str});
       },
-    },
-    computed: {
-      oldWap() {
-        // const isFullScreen =
-        this.$store.getters.getCurrWap;
+      updateWap(wap, eventType) {
+        // console.log(wap, 'WAP')
+        this.$store.dispatch({type: 'updateWap', wap, eventType});
       },
-      classForPicker() {
-        // const isFullScreen =
-        if (this.$store.getters.isFullScreen) return 'cmp-picker-fullscreen';
-        else return 'cmp-picker';
-      },
-      classForBuilder() {
-        const isFullScreen = this.$store.getters.isFullScreen;
-        const isMobile = this.$store.getters.isMobile;
-        console.log(isMobile);
+      computed: {
+        oldWap() {
+          // const isFullScreen =
+          this.$store.getters.getCurrWap;
+        },
+        classForPicker() {
+          // const isFullScreen =
+          if (this.$store.getters.isFullScreen) return 'cmp-picker-fullscreen';
+          else return 'cmp-picker';
+        },
+        classForBuilder() {
+          const isFullScreen = this.$store.getters.isFullScreen;
+          const isMobile = this.$store.getters.isMobile;
+          console.log(isMobile);
 
-        let classForBuilder = '';
+          let classForBuilder = '';
 
-        if (isFullScreen) classForBuilder = 'wap-builder-fullscreen';
-        if (isMobile) classForBuilder = 'wap-builder-mobile';
-        else classForBuilder = 'wap-builder';
-        return classForBuilder;
-      },
-      wapId() {
-        return this.$route.params.wapId;
+          if (isFullScreen) classForBuilder = 'wap-builder-fullscreen';
+          if (isMobile) classForBuilder = 'wap-builder-mobile';
+          else classForBuilder = 'wap-builder';
+          return classForBuilder;
+        },
+        wapId() {
+          return this.$route.params.wapId;
+        },
       },
     },
   };

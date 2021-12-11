@@ -101,12 +101,18 @@
           'Footers',
         ],
         wapToPublish: null,
+        isMobile: false,
         dialogFormVisible: false,
         form: {
           name: '',
         },
         formLabelWidth: '100px',
       };
+    },
+    watch: {
+      '$store.getters.isMobile'(isMobile) {
+        this.isMobile = isMobile;
+      },
     },
     methods: {
       undo() {
@@ -120,18 +126,15 @@
         return this.themes[index];
       },
       publishWap() {
-        this.wapToPublish = this.$store.getters.getCurrWap;
-        this.$store.dispatch({
-          type: 'publishWap',
-          wapToPublish: this.wapToPublish,
+        console.log('wapToPublish ID: ');
+        this.$notify({
+          group: 'foo',
+          title: 'Your website is now online!',
+          type: 'success',
+          text: 'Hello user! This is a notification!',
         });
-        this.$store.dispatch({
-          type: 'saveWapOnPublish',
-          wap: this.wapToPublish,
-        });
-        // console.log('ID', this.wapToPublish._id)
-        this.$router.push(`/publish/${this.wapToPublish._id}`);
-        // console.log('wapToPublish', wapToPublish)
+
+        window.open(`/publish/${this.$store.getters.getCurrWap._id}`, '_blank');
       },
       saveWap() {
         //need to save to database the user  waps

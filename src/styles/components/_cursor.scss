@@ -1,6 +1,13 @@
 .cursor{
     position: fixed;
-    // font-size: 2em;
+    font-size: 12px;
     z-index: 99999999999999;
-    color: white !important;
+    color: white;
+    display: flex;
+    flex-direction: column;
+
+    i{
+    font-size: 20px;
+
+    }
 }

@@ -30,6 +30,14 @@ export default {
     },
   },
   actions: {
+    async getUsers({searchStr}) {
+      try {
+        const users = await userService.getUsers(searchStr);
+        return users;
+      } catch (err) {
+        console.log(err);
+      }
+    },
     async login({commit}, {cred}) {
       try {
         const user = await userService.login(cred);

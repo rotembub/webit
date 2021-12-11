@@ -1,5 +1,6 @@
 <template>
-  <section class="scrollbar style-2" v-if="wap">
+  <section class="scrollbar style-2" v-if="wap" :style="getMobileStyle">
+    <!-- <div class="picker-hover">HOVER ME</div> -->
     <!-- <component v-for="cmp in wap.cmps" :cmp="cmp" :is="cmp.type" :key="cmp.id">
     </component> -->
 
@@ -41,10 +42,17 @@ import wapDynamic from '../cmps/wap-cmps/wap-dynamic.cmp.vue'
 import cmpsToolBar from '../cmps/editor-cmps/cmps-tool-bar.cmp.vue'
 export default {
   data() {
-    return {}
+    return {
+      isFullScreen: false,
+    }
   },
   created() {
     this.$store.dispatch({ type: 'loadCmps' }) //test
+  },
+  watch: {
+    '$store.getters.isFullScreen'(isFullScreen) {
+      this.isFullScreen = isFullScreen
+    },
   },
   methods: {
     getChildPayload1(index) {
@@ -87,7 +95,9 @@ export default {
       if (isFullScreen) return 'el-icon-right'
       return 'el-icon-rank'
     },
-
+    getMobileStyle() {
+      if (this.isFullScreen) return { paddingTop: '0px', paddingLeft: '0px' }
+    },
     wap() {
       // console.log(this.$store.getters.getCurrWap);
       // console.log('wapBuilder computed', this.$store.getters.getCurrWap)

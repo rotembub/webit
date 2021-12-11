@@ -29,7 +29,7 @@
     border-top: 1px solid rgba(196, 195, 195, 0.336);
     background-color: #e9e9e963;
     overflow: auto;
-    transition: 1s;
+    transition: 1s; 
 }
 
 
@@ -57,4 +57,238 @@
 
     }
  
+}
+
+// SUPER MESSY but couldnt figure out a better way.
+
+.wap-builder-mobile{
+    
+    .wap-container-flex{
+        flex-direction:column;
+        align-items: center;
+    }
+    .wap-container-center{
+        display: flex;
+        flex-direction:column;
+        align-items: center;
+        justify-content: center;
+        img{
+            width: 70%;
+        }
+       
+    }
+    .feliciano-menu-gallery{
+        flex-direction:column;
+        align-items: center;
+        .text-block{
+            p{
+                font-size: 17px;
+            }
+            h1{
+                font-size: 24px;
+            }
+        }
+    }
+    .wap-chef-preview {
+        align-items: center;
+        img{
+            width: 100%
+        }
+        .text-block{
+            h1{
+                margin: 0;
+            }
+            p{
+                margin: 0;
+            }
+        }
+    }
+    .wap-catering-preview{
+        width: 100%;
+    }
+    .wap-card-default{
+        width: 100%!important;
+    }
+    .feliciano-menu-gallery {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(6, 1fr);
+        row-gap: 15px;
+    }
+    .text-block{
+            h1{
+                // font-size:12px!important;
+            }
+            p{
+                font-size:10px;
+
+            }
+    }
+    .wap-feliciano-catering{
+        line-height:1.2em;
+    }
+    .feliciano-footer{
+        h1,h2,h3,p{
+            font-size: smaller !important;
+            line-height: 15px;
+        }  
+    }
+    .wap-header-feliciano{
+        .logo{
+            margin-top: 1rem;
+        }
+        .burger-btn{
+            margin-inline-end: 40px;
+            display: inline;
+        }
+        .nav-bar {
+            justify-content: space-around !important;
+            position: fixed;
+            top: 0;
+            right: 0;
+            height: 100vh;
+            flex-direction: column;
+            background-color: #292929;
+            width: 200px;
+            transform: translateX(100%);
+            border-inline-start: 1px solid #292929;
+            transition: transform .6s, box-shadow .6s;
+        }
+    }
+    header{
+    
+        padding: 3em;
+    
+        .logo{
+            width: 10em;
+        }
+    
+        ul{
+            gap: 3.5em;
+            font-size: 1rem;
+        }
+    }
+    .theme-gallery-fylo-single{
+        background-image: url(~@/assets/wap-imgs/fylo-imgs/bg-curvy-desktop.svg);
+        img{
+            margin-top: 5em;
+        }
+    }
+    .fylo-text{
+    
+        h1{
+            font-size: 2rem;
+        }
+        button{
+            padding: 1em 7em;
+        }
+        p{
+            font-size: 1rem
+        }
+    }
+    .theme-container-fylo-v2{
+        display: flex;
+        flex-direction:column;
+        gap: 4em;
+    }
+    .theme-footer-fylo{
+        padding: 13em 5em 5em 5em;
+    }
+    .footer-content{
+        flex-direction: row;
+        justify-content: space-evenly;
+    
+        .footer-content-block{
+            img{
+                height: 1.2em;
+            }
+        }
+        .localisation{
+            width: 30%;  
+        }
+        ul{
+            margin-top: 0;
+        }
+    
+        .social-icons a{
+            text-decoration: none;
+            color: $White;
+            padding: 0.4em;
+    
+            &:hover{
+                color: $Cyan;
+            }
+        }
+    }
+    .fylo-two{
+        display: flex;
+        flex-direction: row;
+        gap: 4em;
+        .illutration-fylo-two{
+            width: 50%;
+        }
+    }
+    .theme-gallery-fylo{
+        grid-template-columns: 1fr 1fr;
+    
+    }
+    header{
+    
+        padding: 3em;
+    
+        .logo{
+            width: 10em;
+        }
+    
+        ul{
+            gap: 3.5em;
+            font-size: 1rem;
+        }
+    }
+    .theme-signup-fylo{
+        // top: 7rem;
+
+        h3{
+            font-size: 1.5rem;
+        }
+    
+        form{
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+
+            .mail-error{
+                top: 103%;
+            }
+
+
+            .email-submit-btn{
+                width: 30%;
+            }
+        }
+    }
+    .theme-card-fylo{
+        grid-template-columns: 1fr 1fr;
+    
+    }
+    .theme-gallery-fylo-single{
+        background-image: url(~@/assets/wap-imgs/fylo-imgs/bg-curvy-desktop.svg);
+        img{
+            margin-top: 5em;
+        }
+    }
+    .fylo-text{
+    
+        h1{
+            font-size: 2rem;
+        }
+        button{
+            padding: 1em 7em;
+        }
+        p{
+            font-size: 1rem
+        }
+    }
+
+
 }

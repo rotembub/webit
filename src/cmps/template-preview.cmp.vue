@@ -9,13 +9,21 @@
     <img :src="require('@/assets/tempImgs/' + imgUrl)" alt="" />
 
   </section> -->
+
   <section @click.stop.prevent="toTheEditor" v-if="template && imgUrl">
     <el-row>
       <el-col :span="25">
-        <el-card :body-style="{ padding: '0px' }">
-          <img :src="require('@/assets/tempImgs/' + imgUrl)" class="image" />
-          <div style="padding: 10px">
-            <span>{{ template.name || 'New Template' }}</span>
+        <el-card
+          :body-style="{ padding: '0px' }"
+          :class="!template.name && 'color-change-2x add-new'"
+        >
+          <img
+            v-if="template.name"
+            :src="require('@/assets/tempImgs/' + imgUrl)"
+            class="image"
+          />
+          <div style="padding: 10px" :class="!template.name && 'add-new-text'">
+            <span>{{ template.name || 'Start from Scratch' }}</span>
             <div class="bottom clearfix"></div>
           </div>
         </el-card>
@@ -31,12 +39,8 @@ export default {
     // console.log('created preview')
   },
   methods: {
-    toTheEditor() {
-      this.$store.dispatch({
-        type: 'createNewWap',
-        templateId: this.template._id,
-      })
-      this.$router.push('/editor/' + this.template._id)
+    async toTheEditor() {
+      this.$emit('onCreateWap', this.template._id)
     },
   },
 }
