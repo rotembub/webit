@@ -35,16 +35,16 @@ export default {
   },
   async created() {
     const id = this.wapId
-    console.log('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ I WAS CRETEAD!!!', id)
+    // console.log('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ I WAS CRETEAD!!!', id)
     if (!id) await this.$store.dispatch({ type: 'getEmptyWap' })
     else await this.$store.dispatch({ type: 'setCurrWap', wapId: id })
     socketService.emit('wap id', this.$store.getters.getCurrWap._id)
     socketService.on('wap updated', wap => {
-      console.log('wap from socket: ', wap)
+      // console.log('wap from socket: ', wap)
       this.updateWap(wap, 'socket')
     })
     socketService.on('mousemove', clientXY => {
-      console.log('wap from socket: ', clientXY)
+      // console.log('wap from socket: ', clientXY)
       this.client = clientXY
     })
   },
@@ -60,7 +60,7 @@ export default {
   },
   methods: {
     moveMouse(ev) {
-      console.log(ev)
+      // console.log(ev)
       let clientXY = {
         x: ev.clientX,
         y: ev.clientY,
@@ -68,7 +68,7 @@ export default {
       socketService.emit('mousemove', clientXY)
     },
     updateWap(wap, eventType) {
-      console.log(wap, 'WAP')
+      // console.log(wap, 'WAP')
       this.$store.dispatch({ type: 'updateWap', wap, eventType })
     },
     onMobile(str) {

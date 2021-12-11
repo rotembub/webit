@@ -1,10 +1,11 @@
 .wap-container-flex{
-    display: flex;
+    display: flex !important;
     // padding: 4em 0px;
+    justify-content: center;
    
 }
 .wap-container-center{
-    display: flex;
+    display: flex !important;
     justify-content: center;
    
 }
@@ -21,7 +22,9 @@
     display: flex;
     width: 100%;
 }
-
+.burger-btn{
+    display: none;
+}
 
 .wap-container-fullscreen{
     padding-top: 20px;
@@ -36,9 +39,9 @@
 
 .feliciano-landing-page{
 
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        grid-template-rows: repeat(5, 1fr);
+        // display: grid;
+        // grid-template-columns: repeat(4, 1fr);
+        // grid-template-rows: repeat(5, 1fr);
         // grid-column-gap: 0px;
         // grid-row-gap: 0px;
         background-size: cover !important;
@@ -55,13 +58,14 @@
             justify-content: space-between;
             padding-left: 10px;
             color: white;
-            grid-row: 1;
-            grid-column: 1 / span 4;
+            // grid-row: 1;
+            // grid-column: 1 / span 4;
             // background-color: coral;
             .nav-bar{
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
+                margin-top: 1rem;
                 a{
                     margin-right: 50px;
 
@@ -73,16 +77,19 @@
             }
             .logo{
                 h2{
-                    margin-inline-start: 50px
+                    margin-inline-start: 50px;
+                    margin-top: 1rem;
+                    margin-bottom: 0;
                 }
             }
         }
         .landing-feliciano{
+            margin-top: 50px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            grid-row: 2 / 5;
-            grid-column: 1 / span 4;
+            // grid-row: 2 / 5;
+            // grid-column: 1 / span 4;
             h1{
                 font-size:3em;
                 font-family: arial,sans-serif;
@@ -95,7 +102,7 @@
             flex-direction: column-reverse;
             align-items: center;
             text-align: center;
-            grid-row: 5 / -1;
+            // grid-row: 5 / -1;
             color: rgba(255, 255, 255, 0.733);
             padding-top: 15px;
             .text-block{
@@ -126,17 +133,19 @@
 
 
 .feliciano-menu-gallery{
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(3, 1fr);
+    display: flex !important;
+    justify-content: center;
+    // display: grid;
+    // grid-template-columns: repeat(4, 1fr);
+    // grid-template-rows: repeat(3, 1fr);
     img{
         
         vertical-align: middle;
     }
-    .feliciano-menu-gallery>*{
-        grid-row: span 1;
-        grid-column: span 1;
-    }
+    // .feliciano-menu-gallery>*{
+    //     grid-row: span 1;
+    //     grid-column: span 1;
+    // }
  
     .text-block{
         display: flex;
@@ -195,7 +204,7 @@
     justify-content: center;
     align-items: center;
     background-color: rgba(255, 255, 255, 0.226);
-    width:33%;
+    // width:33%;
     padding: 10px;
     
     .basic-img{
@@ -222,7 +231,7 @@
 }
 
 .feliciano-review-container{
-        display: grid;
+        display: grid !important;
         align-items: center;
         justify-content: center;
         gap: 20px;
@@ -231,7 +240,7 @@
         width: 100%;
         .feliciano-review{
             position: relative;
-            padding: 2em;
+            // padding: 2em;
             color: rgba(61, 61, 61, 0.685);
             border-radius: 0.3em;
             max-width: 360px;
@@ -271,7 +280,7 @@
 
 
 .feliciano-footer{
-    display: flex;
+    display: flex !important;
     background-color: black;
     justify-content: space-evenly;
     // max-width: 80%;
@@ -344,6 +353,18 @@
         }
        
     }
+    .feliciano-menu-gallery{
+        flex-direction:column;
+        align-items: center;
+        .text-block{
+            p{
+                font-size: 17px;
+            }
+            h1{
+                font-size: 24px;
+            }
+        }
+    }
     .wap-chef-preview {
         align-items: center;
         img{
@@ -372,17 +393,52 @@
     }
     .text-block{
             h1{
-                font-size:12px!important;
+                // font-size:12px!important;
             }
             p{
                 font-size:10px;
 
             }
     }
+    .wap-feliciano-detail-card .text-block {
+        margin: 0px 40px !important;
+    }
+    .wap-card-default .text-block{
+        padding: 0 !important;
+    }
     .wap-feliciano-catering{
         line-height:1.2em;
     }
+    .feliciano-footer{
+        h1,h2,h3,p{
+            font-size: smaller !important;
+            line-height: 15px;
+        }  
     }
+    .wap-header-feliciano{
+        .logo{
+            margin-top: 1rem;
+        }
+        .burger-btn{
+            margin-inline-end: 40px;
+            display: inline;
+            margin-top: 2rem;
+        }
+        .nav-bar {
+            justify-content: space-around !important;
+            position: fixed;
+            top: 0;
+            right: 0;
+            height: 100vh;
+            flex-direction: column;
+            background-color: #292929;
+            width: 200px;
+            transform: translateX(100%);
+            border-inline-start: 1px solid #292929;
+            transition: transform .6s, box-shadow .6s;
+        }
+    }
+}
 
 
 
