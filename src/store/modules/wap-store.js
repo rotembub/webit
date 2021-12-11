@@ -99,8 +99,9 @@ export default {
     },
 
     //Wap Actions
-    async updateWapComponents({dispatch}, {wap}) {
+    async updateWapComponents({dispatch, state}, {wap}) {
       console.log('updateWapComponents ~ wap', wap);
+      if (!wap) wap = state.currWap;
       try {
         // const updatedWap = await wapService.save(wap);//dont change the database
         await dispatch('updateWap', {wap});
