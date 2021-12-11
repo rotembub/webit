@@ -60,9 +60,13 @@ export default {
       };
     },
     getImgSize() {
+      // return {
+      //   maxHeight: this.details.data.style.maxHeight + "rem",
+      //   maxWidth: this.details.data.style.maxWidth + "rem",
+      // };
       return {
-        maxHeight: this.details.data.style.maxHeight + "rem",
-        maxWidth: this.details.data.style.maxWidth + "rem",
+        height: this.details.data.style.maxHeight + "rem",
+        width: this.details.data.style.maxWidth + "rem",
       };
     },
     getCmpId() {

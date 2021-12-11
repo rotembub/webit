@@ -11,3 +11,10 @@
 .smooth-dnd-draggable-wrapper{
         overflow: visible !important;
 }
+
+.wap-dynamic, .wap-dynamic-publish{
+        // &>*:not(.wap-container){
+        padding-left: 40px;
+        padding-right: 40px;
+        // }
+}
