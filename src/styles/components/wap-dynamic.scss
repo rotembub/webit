@@ -13,8 +13,8 @@
 }
 
 .wap-dynamic, .wap-dynamic-publish{
-        // &>*:not(.wap-container){
+        &>*:not(.wap-container){
         padding-left: 40px;
         padding-right: 40px;
-        // }
+        }
 }

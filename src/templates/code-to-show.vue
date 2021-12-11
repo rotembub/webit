@@ -1,0 +1,78 @@
+Dynamic component
+<template>
+  <section class="wap-dynamic" @click="setSelected">
+    <slot v-if="isEdit"></slot>
+    <component
+      :cmp="cmp"
+      :is="cmp.type"
+      :key="cmp.id"
+      :name="cmp.id"
+    ></component>
+  </section>
+</template>
+
+< Container exmaple 
+<template>
+  <section v-if="cmp" class="wap-container">
+    <Container
+      :style="getCurrStyle"
+      :orientation="getDirection"
+      :class="cmp.theme"
+      :auto-scroll-enabled="true"
+      group-name="4"
+      :get-child-payload="getChildPayload1"
+      @drop="onDrop('4', $event)"
+    >
+      <Draggable
+        v-for="innerCmp in cmp.info.cmps"
+        :key="innerCmp.id"
+        :class="innerCmp.theme">
+        <component
+          :cmp="innerCmp"
+          :is="innerCmp.type"
+          :name="innerCmp.id"
+          :containerId="cmp.id">
+        </component>
+      </Draggable>
+    </Container>
+  </section>
+</template>
+
+Card example
+<template>
+  <section class="wap-card" :style="getCurrStyle" :class="cmp.theme">
+    <div class="text-block">
+      <template v-if="cmp.info.title">
+        <basic-h1
+          v-for="item in cmp.info.title"
+          :key="item.id"
+          :details="{data: item, cmpId: cmp.id, containerId, elType}"
+        ></basic-h1>
+      </template>
+      <template v-if="cmp.info.subtitle">
+        <basic-paragraph
+          v-for="item in cmp.info.subtitle"
+          :key="item.id"
+          :details="{data: item, cmpId: cmp.id, containerId, elType}"
+        ></basic-paragraph>
+      </template>
+      <template v-if="cmp.info.buttons">
+        <basic-btn
+          v-for="item in cmp.info.buttons"
+          :key="item.id"
+          :details="{data: item, cmpId: cmp.id , containerId, elType}"
+        ></basic-btn>
+      </template>
+    </div>
+    <template v-if="cmp.info.imgs">
+      <basic-img v-for="img in cmp.info.imgs" :key="img.id"
+        :details="{
+          data: img,
+          cmpId: cmp.id,
+          containerId,
+          elType
+        }"
+      ></basic-img>
+    </template>
+  </section>
+</template>
