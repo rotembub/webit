@@ -66,6 +66,7 @@
     computed: {
       getCurrStyle() {
         const style = {
+          backgroundImage: this.cmp.style.background,
           color: this.cmp.style.color, // text color not change only in theme-gallery-fylo
           fontSize: this.cmp.style.fontSize + 'px',
           backgroundColor: this.cmp.style.backgroundColor,

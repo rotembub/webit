@@ -37,6 +37,7 @@
     computed: {
       getCurrStyle() {
         const style = {
+          backgroundImage: this.cmp.style.background,
           color: this.cmp.style.color,
           fontSize: this.cmp.style.fontSize + 'px', //fix fontSize not change
           backgroundColor: this.cmp.style.backgroundColor,

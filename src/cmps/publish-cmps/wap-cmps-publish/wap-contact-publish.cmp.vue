@@ -36,6 +36,7 @@
         // console.log('IM HERE Gallery', this.cmp.style);
         // console.log('color', this.cmp.style.color);
         const style = {
+          backgroundImage: this.cmp.style.background,
           color: this.cmp.style.color,
           fontSize: this.cmp.style.fontSize + 'px', //fix fontSize not change
           backgroundColor: this.cmp.style.backgroundColor,
