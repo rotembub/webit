@@ -69,10 +69,10 @@ export default {
       const wap = this.$store.getters.getCurrWap;
       const cmp = wap.cmps.find((cmp) => cmp.id === this.id);
       cmp.style.background = `url(${url})`;
-      this.updateCmp;
+      this.updateStyle(wap);
     },
-    updateStyle() {
-      this.$store.dispatch({ type: "updateWapComponents", wap: null });
+    updateStyle(wap) {
+      this.$store.dispatch({ type: "updateWapProperties",wap });
     },
     // async updateCmp() {
     //   try {
