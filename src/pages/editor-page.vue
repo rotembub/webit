@@ -76,6 +76,7 @@ export default {
       }
     },
   },
+
   methods: {
     moveMouse(ev) {
       // console.log(ev)
