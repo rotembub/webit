@@ -99,7 +99,6 @@ export default {
       // const isFullScreen =
       this.$store.getters.getCurrWap;
     },
-
     classForPicker() {
       // const isFullScreen =
       if (this.$store.getters.isFullScreen) return "cmp-picker-fullscreen";

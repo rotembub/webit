@@ -1,6 +1,6 @@
-import { storageService } from './async-storage.service';
-import { utilService } from './util.service';
-import { httpService } from './http.service.js';
+import {storageService} from './async-storage.service';
+import {utilService} from './util.service';
+import {httpService} from './http.service.js';
 
 const CMP_KEY = 'cmp_DB';
 const ENDPOINT = 'cmp';
@@ -24,12 +24,10 @@ let gThemes = {};
 
 async function query(filterBy) {
   gCmps = await httpService.get(ENDPOINT, filterBy);
-  console.log(gCmps[1]);
   gThemes = gCmps.reduce((acc, cmp) => {
-
     if (!acc[cmp.category])
       acc[cmp.category] = [
-        { type: cmp.category, cmpId: cmp.id, imgPath: cmp.screenshotImg }, //**change to category in the json
+        {type: cmp.category, cmpId: cmp.id, imgPath: cmp.screenshotImg}, //**change to category in the json
       ];
     else
       acc[cmp.category].push({
