@@ -300,6 +300,16 @@ export default {
         console.log('Ahalan', err)
       }
     },
+    async updateWapProperties({ dispatch, state }, { wap }) {
+      try {
+        const updatedWap = await wapService.save(wap)
+        await dispatch({ type: "updateWap", wap: updatedWap });
+        console.log('sent for update REFRESH YOUR PAGE', updatedWap.cmps);
+      } catch (err) {
+        console.log(err)
+      }
+
+    }
 
     // async removeCmp({ commit, state }, { id }) {copyCmpFromWap  ---> USELESS
     //   commit({ type: 'removeCmp', id });
