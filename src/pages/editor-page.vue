@@ -54,7 +54,7 @@ export default {
 
     socketService.emit('wap id', this.$store.getters.getCurrWap._id)
     socketService.on('wap updated', wap => {
-      console.log('wap from socket: ', wap)
+      // console.log('wap from socket: ', wap)
       this.updateWap(wap, 'socket')
     })
     socketService.on('wap updated undo', wap => {
@@ -78,6 +78,7 @@ export default {
   },
   methods: {
     moveMouse(ev) {
+      // console.log(ev)
       let clientXY = {
         x: ev.clientX,
         y: ev.clientY,
@@ -86,7 +87,7 @@ export default {
       socketService.emit('mousemove', clientXY)
     },
     updateWap(wap, eventType) {
-      console.log(wap, 'WAP')
+      // console.log(wap, 'WAP')
       this.$store.dispatch({ type: 'updateWap', wap, eventType })
     },
     onMobile(str) {
