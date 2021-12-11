@@ -1,9 +1,9 @@
-      <Container
-        :auto-scroll-enabled="true"
-        group-name="1"
-        :get-child-payload="getChildPayload1"
-        @drop="onDrop('items1', $event)"
-      >
+<Container
+  :auto-scroll-enabled="true"
+  group-name="1"
+  :get-child-payload="getChildPayload1"
+  @drop="onDrop('items1', $event)"
+>
         <Draggable v-for="cmp in wap.cmps" :key="cmp.id">
           <wap-dynamic :cmp="cmp">
             <slot>
@@ -50,19 +50,20 @@
 </template>
 
 <script>
-import { Container, Draggable } from "vue-smooth-dnd";
-import wapDynamic from "./wap-dynamic.cmp.vue";
+import { Container, Draggable } from 'vue-smooth-dnd'
+import wapDynamic from './wap-dynamic.cmp.vue'
 
-import wapHeader from "./wap-header.cmp.vue";
-import wapFooter from "./wap-footer.cmp.vue";
-import wapGallery from "./wap-gallery.cmp.vue";
-import wapSocial from "./wap-social.cmp.vue";
-import wapSignup from "./wap-signup.cmp.vue";
-import wapContact from "./wap-contact.cmp.vue";
-import wapText from "./wap-text.cmp.vue";
-import wapCard from "./wap-card.cmp.vue";
-import wapReview from "./wap-review.cmp.vue";
-import wapImg from "./wap-img.cmp.vue";
+import wapHeader from './wap-header.cmp.vue'
+import wapFooter from './wap-footer.cmp.vue'
+import wapGallery from './wap-gallery.cmp.vue'
+import wapSocial from './wap-social.cmp.vue'
+import wapSignup from './wap-signup.cmp.vue'
+import wapContact from './wap-contact.cmp.vue'
+import wapText from './wap-text.cmp.vue'
+import wapCard from './wap-card.cmp.vue'
+import wapReview from './wap-review.cmp.vue'
+import wapImg from './wap-img.cmp.vue'
+import utilService from '../../services/util.service'
 export default {
   components: {
     wapDynamic,
@@ -79,37 +80,38 @@ export default {
     Container,
     Draggable,
   },
-  props: ["cmp"],
+  props: ['cmp'],
   data() {
     return {
       mediaWidth: window.innerWidth,
-    };
+    }
   },
+  created() {},
   computed: {
     getCurrStyle() {
       const style = {
         backgroundImage: this.cmp.style.background,
         color: this.cmp.style.color,
-        fontSize: this.cmp.style.fontSize + "px", //fix fontSize not change
+        fontSize: this.cmp.style.fontSize + 'px', //fix fontSize not change
         backgroundColor: this.cmp.style.backgroundColor,
         //new size style
-        height: this.cmp.style.height + "vh", // **problem range too small
-        paddingTop: this.cmp.style.paddingTop + "%",
-        paddingBottom: this.cmp.style.paddingBottom + "%",
-        paddingLeft: this.cmp.style.paddingLeft + "%",
-        paddingRight: this.cmp.style.paddingRight + "%",
-      };
-      return style;
+        height: this.cmp.style.height + 'vh', // **problem range too small
+        paddingTop: this.cmp.style.paddingTop + '%',
+        paddingBottom: this.cmp.style.paddingBottom + '%',
+        paddingLeft: this.cmp.style.paddingLeft + '%',
+        paddingRight: this.cmp.style.paddingRight + '%',
+      }
+      return style
     },
     getDirection() {
       // console.log(this.mediaWidth);
       if (this.cmp.info.toggle && this.mediaWidth <= 800) {
-        console.log("switching to vertical");
-        return "vertical";
+        console.log('switching to vertical')
+        return 'vertical'
       }
-      console.log(window.innerWidth);
-      console.log("giving default");
-      return this.cmp.info.dir;
+      console.log(window.innerWidth)
+      console.log('giving default')
+      return this.cmp.info.dir
     },
   },
   mounted() {
@@ -119,11 +121,11 @@ export default {
     //   this.mediaWidth = window.innerWidth;
     // };
     this.$nextTick(() => {
-      window.addEventListener("resize", this.onResize);
-    });
+      window.addEventListener('resize', this.onResize)
+    })
   },
   beforeDestroy() {
-    window.removeEventListener("resize", this.onResize);
+    window.removeEventListener('resize', this.onResize)
   },
   // watch: {
   //   "window.innerWidth": {
@@ -136,40 +138,53 @@ export default {
   // },
   methods: {
     getChildPayload1(index) {
-      return this.cmp.info.cmps[index];
+      return this.cmp.info.cmps[index]
     },
     onDrop(groupName, dropResult) {
-      if (dropResult.removedIndex === dropResult.addedIndex) return;
+      if (dropResult.removedIndex === dropResult.addedIndex) return
       if (dropResult.removedIndex === null && dropResult.addedIndex >= 0) {
-        console.log("groupName", groupName, "dropResult", dropResult);
+        console.log('groupName', groupName, 'dropResult', dropResult)
         // this.$store.dispatch({
         //   type: "addCmp",
         //   id: dropResult.payload.cmpId,
         //   idx: dropResult.addedIndex,
         // });
       } else {
-        const removed = this.cmp.info.cmps.splice(dropResult.removedIndex, 1);
-        this.cmp.info.cmps.splice(dropResult.addedIndex, 0, removed[0]);
+        const removed = this.cmp.info.cmps.splice(dropResult.removedIndex, 1)
+        this.cmp.info.cmps.splice(dropResult.addedIndex, 0, removed[0])
         this.$store.dispatch({
-          type: "updateWapComponents",
+          type: 'updateWapComponents',
           wap: null,
-        });
+        })
       }
     },
     onResize() {
-      this.mediaWidth = window.innerWidth;
+      this.mediaWidth = window.innerWidth
+      this.onResizeScreen()
+    },
+    onResizeScreen() {
+      this.mediaWidth = window.innerWidth
+      clearTimeout(this.debounceScreen)
+      this.debounceScreen = setTimeout(() => {
+        if (this.mediaWidth < 500) {
+          this.$store.dispatch('isMobile', { isMobile: true })
+          console.log('Setting Mobile')
+        } else {
+          this.$store.dispatch('isMobile', { isMobile: false })
+          console.log('Setting Desktop')
+        }
+      }, 500)
     },
   },
-};
+}
 </script>
 
-
-        <component
-          v-for="innerCmp in cmp.info.cmps"
-          :cmp="innerCmp"
-          :is="innerCmp.type"
-          :key="innerCmp.id"
-          :name="innerCmp.id"
-          :containerId="cmp.id"
-        >
+<component
+  v-for="innerCmp in cmp.info.cmps"
+  :cmp="innerCmp"
+  :is="innerCmp.type"
+  :key="innerCmp.id"
+  :name="innerCmp.id"
+  :containerId="cmp.id"
+>
         </component>

@@ -24,6 +24,7 @@
     </div>
 
     <el-button
+      v-if="!isMobile"
       @click="toggleFullScreen"
       class="is-full-wap-btn"
       type="info"
@@ -43,14 +44,22 @@ export default {
   data() {
     return {
       isFullScreen: false,
+      isMobile: false,
     }
   },
   created() {
     this.$store.dispatch({ type: 'loadCmps' }) //test
+    this.isMobile = this.$store.getters.isMobile
+    if (this.isMobile) {
+      this.$store.dispatch({ type: 'toggleEditorFullScreen' })
+    }
   },
   watch: {
     '$store.getters.isFullScreen'(isFullScreen) {
       this.isFullScreen = isFullScreen
+    },
+    '$store.getters.isMobile'(isMobile) {
+      this.isMobile = isMobile
     },
   },
   methods: {
@@ -81,7 +90,7 @@ export default {
       }
     },
     toggleFullScreen() {
-      this.$store.dispatch({ type: 'toggleWapFullScreen' })
+      this.$store.dispatch({ type: 'toggleEditorFullScreen' })
     },
     updateWap(updatedWap) {
       // console.log(updatedWap, 'got to wapBuilder')

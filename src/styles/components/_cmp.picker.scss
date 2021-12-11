@@ -1,6 +1,6 @@
 
   .cmp-picker-container{
-    width: 150px;
+    width: 15vw;
     transition: 1s;
 
   }
@@ -8,7 +8,14 @@
     width: 0vw;
   }
 
+@media (max-width: 500px){
+  .cmp-picker-fullscreen {
+  position: fixed!important;
+  z-index:9999999999!important;
+  width: 50vw!important;
+  }
 
+}
 .cmp-picker {
   position: relative;
   display: flex;
@@ -153,7 +160,7 @@ justify-content: space-between;
 }
 .picker-hover {
   position: fixed !important;
-  z-index: 99999999;
+  z-index: 1;
   left: 0px !important;
   height: 20%;
   color: white;

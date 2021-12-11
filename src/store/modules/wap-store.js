@@ -59,7 +59,7 @@ export default {
     },
 
     // UI mutations
-    toggleWapFullScreen(state) {
+    toggleEditorFullScreen(state) {
       state.isFullScreen = !state.isFullScreen
     },
     setSelectedElement(state, { id, pos }) {
@@ -69,10 +69,14 @@ export default {
     setModalPos(state, { modalPos }) {
       state.modalPos = modalPos
     },
-    isMobile(state) {
-      state.isMobile = !state.isMobile
+    isMobile(state, { isMobile }) {
+      console.log(
+        '🚀 ~ file: wap-store.js ~ line 99 ~ isMobile ~ isMobile',
+        isMobile
+      )
+      state.isMobile = isMobile
     },
-    setScreenState(state, str) {
+    setScreenState(state, { str }) {
       console.log(str)
       state.wapScreenState = str
     },
@@ -95,16 +99,15 @@ export default {
     },
 
     //UI Actions
-    isMobile({ commit }) {
-      commit({ type: 'isMobile' })
+    isMobile({ commit }, { isMobile }) {
+      commit({ type: 'isMobile', isMobile })
+      commit({ type: 'isMobile', isMobile })
     },
-    setScreenState({ commit }, str) {
-      if (str === 'mobile') {
-        commit({ type: 'setScreenState', str })
-      }
+    setScreenState({ commit }, { str }) {
+      commit({ type: 'setScreenState', str })
     },
-    toggleWapFullScreen({ commit }) {
-      commit({ type: 'toggleWapFullScreen' })
+    toggleEditorFullScreen({ commit }) {
+      commit({ type: 'toggleEditorFullScreen' })
     },
     async publishWap({ commit }, { wapId }) {
       let wap = await wapService.getById(wapId)

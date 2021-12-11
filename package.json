@@ -5,7 +5,7 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "start": "vue-cli-service serve",
-    "build": "vue-cli-service build"
+    "build": "vue-cli-service build --dest ../webit-backend/webit-backend/public"
   },
   "dependencies": {
     "axios": "^0.24.0",

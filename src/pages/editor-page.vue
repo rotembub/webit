@@ -103,12 +103,11 @@ export default {
 
     classForBuilder() {
       const isFullScreen = this.$store.getters.isFullScreen
-      const isMobile = this.$store.getters.isMobile
-      console.log(isMobile)
+      const screenState = this.$store.getters.wapScreenState
 
       let classForBuilder = ''
       if (isFullScreen) classForBuilder = 'wap-builder-fullscreen'
-      if (isMobile) classForBuilder = 'wap-builder-mobile'
+      if (screenState === 'mobile') classForBuilder = 'wap-builder-mobile'
       else classForBuilder = 'wap-builder'
       return classForBuilder
     },

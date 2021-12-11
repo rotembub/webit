@@ -134,9 +134,9 @@ export default {
     undo() {
       socketService.emit('wap undo', this.$store.getters.getCurrWap)
     },
-    onMobileState(state) {
+    onMobileState(str) {
       // console.log('HERE')
-      this.$emit('onMobileState', state)
+      this.$store.dispatch({ type: 'setScreenState', str })
     },
     getChildPayload1(index) {
       return this.themes[index]
