@@ -5,12 +5,79 @@
   flex-direction: column;
   color: rgb(240, 240, 240);
   background-color: #353b48;
+
   padding: 1em;
   border-radius: 5%;
   font-size: 1rem !important;
   // height: 150px;
   font-family: poppins;
   // z-index: 10;
+
+ >div{
+   display: flex;
+   justify-content:space-between;
+   align-items:center;
+   >span{
+     width: 50%;
+   }
+  .el-select{
+    width: 130px;
+  }
+   .el-input__inner{
+     display: flex;
+     align-items:center;
+     justify-content:center;
+     height: 25px;
+     width: 100%;
+     padding: 5px !important;
+
+     .el-input__suffix{
+      display: flex;
+      justify-content: flex-end!important;
+      top: 7px!important;
+      right: -17px!important;
+     width: 130px;
+
+     }
+
+     .el-input__prefix .el-input__suffix {
+      top: 7px!important;
+      right: -17px!important;
+     }
+     .el-input__suffix{
+       display: flex;
+       justify-content: flex-end!important;
+     }
+
+
+     
+   }
+
+
+  }
+
+
+
+
+  .font-box{
+    i{
+      padding: 5px;
+      border: 1px rgba(75, 75, 75, 0.815) solid;
+    }
+    i:hover{
+      background-color: #565c69;
+    }
+
+    .font-box-inner{
+      display: flex;
+      justify-content:center;
+      gap: 10px;
+      width: 130px;
+    }
+  }
+
+
+
   input[type='range'] {
     // outline: none;
     -webkit-appearance: none;

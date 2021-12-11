@@ -38,8 +38,8 @@
         @change="styleChanged"
       ></el-color-picker>
     </span> -->
-    <span>
-      Font size :
+    <div>
+      <span>Font size</span>
       <input
         @mousemove.stop=""
         @mouseup="styleChanged"
@@ -49,9 +49,9 @@
         max="50"
         step="1"
       />
-    </span>
-    <span>
-      Line Height :
+    </div>
+    <div>
+      <span> Line height</span>
       <input
         @mousemove.stop=""
         @mouseup="styleChanged"
@@ -61,23 +61,43 @@
         max="100"
         step="0.5"
       />
-    </span>
-    <span>
-      Style :
-      <button @click="makeFontStyle('italic')">I</button>
-      <button @click="makeFontStyle('normal')">N</button>
-      <button @click="boldFont('bold')">B</button>
-    </span>
-    <span>
-      Font :
-      <select @change="styleChanged" v-model="editedStyle.fontFamily">
+    </div>
+    <div class="font-box">
+      <span>Style</span>
+      <!-- <button >I</button> -->
+
+      <div class="font-box-inner">
+        <i @click="makeFontStyle('italic')" class="fas fa-italic"></i>
+        <!-- <button >N</button> -->
+        <i @click="makeFontStyle('normal')" class="fas fa-font"></i>
+        <i @click="boldFont('bold')" class="fas fa-bold"></i>
+        <!-- <button >B</button> -->
+      </div>
+    </div>
+    <div>
+      <span>Font </span>
+      <el-select
+        @change="styleChanged"
+        v-model="editedStyle.fontFamily"
+        placeholder="Select"
+      >
+        <el-option
+          v-for="item in options"
+          :key="item.value"
+          :label="item.label"
+          :value="item.value"
+        >
+        </el-option>
+      </el-select>
+
+      <!-- <select>
         <option value="Poppins">Poppins</option>
         <option value="Opensans">Opensans</option>
         <option value="Helvetica">Helvetica</option>
         <option value="Montserrat">Montserrat</option>
         <option value="Fantasy">Fantasy</option>
-      </select>
-    </span>
+      </select> -->
+    </div>
   </div>
 </template>
 
@@ -90,6 +110,28 @@ export default {
       isImg: false,
       boldToggle: false,
       editedStyle: {},
+      options: [
+        {
+          value: 'Poppins',
+          label: 'Poppins',
+        },
+        {
+          value: 'Opensans',
+          label: 'Opensans',
+        },
+        {
+          value: 'Helvetica',
+          label: 'Helvetica',
+        },
+        {
+          value: 'Montserrat',
+          label: 'Montserrat',
+        },
+        {
+          value: 'Fantasy',
+          label: 'Fantasy',
+        },
+      ],
     }
   },
   created() {

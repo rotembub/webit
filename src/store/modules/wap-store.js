@@ -10,8 +10,12 @@ export default {
     elSelectedId: null,
     elSelectedPos: null,
     modalPos: null,
+    wapScreenState: 'desktop',
   },
   getters: {
+    wapScreenState(state) {
+      return state.wapScreenState
+    },
     isMobile(state) {
       return state.isMobile
     },
@@ -68,6 +72,10 @@ export default {
     isMobile(state) {
       state.isMobile = !state.isMobile
     },
+    setScreenState(state, str) {
+      console.log(str)
+      state.wapScreenState = str
+    },
     // Templates ----->
     setTemplates(state, { templates }) {
       state.templates = templates
@@ -89,6 +97,11 @@ export default {
     //UI Actions
     isMobile({ commit }) {
       commit({ type: 'isMobile' })
+    },
+    setScreenState({ commit }, str) {
+      if (str === 'mobile') {
+        commit({ type: 'setScreenState', str })
+      }
     },
     toggleWapFullScreen({ commit }) {
       commit({ type: 'toggleWapFullScreen' })
