@@ -6,12 +6,20 @@
         <p class="user-name">{{ showUser }}</p>
 
         <button v-if="user" @click="logout">logOut</button>
-
-        <button class="modal-btn" @click="toggleModal">open Modal</button>
+        <div class="usefull-btns">
+          <button class="modal-btn" @click="toggleModal">
+            <i class="fas fa-user-circle"></i>
+            <!-- <i class="fas fa-sign-in-alt"></i> -->
+          </button>
+          <button class="back-btn" @click="goHome">
+            <i class="fas fa-home"></i>
+          </button>
+        </div>
       </div>
     </div>
     <div class="user-main-container">
-      <h3>Your Sites</h3>
+      <h3 class="title">Your Sites</h3>
+
       <template v-if="user">
         <user-list :waps="waps"></user-list>
         <!-- <div v-for="wap in waps" :key="wap._id">
@@ -52,6 +60,9 @@
       },
       toggleModal() {
         this.$store.commit('toggleModal');
+      },
+      goHome() {
+        this.$router.push('/');
       },
     },
     computed: {
