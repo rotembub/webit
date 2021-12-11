@@ -112,8 +112,9 @@ export default {
     },
 
     //Wap Actions
-    async updateWapComponents({ dispatch }, { wap }) {
+    async updateWapComponents({ dispatch, state }, { wap }) {
       console.log('updateWapComponents ~ wap', wap)
+      if (!wap) wap = state.currWap
       try {
         // const updatedWap = await wapService.save(wap);//dont change the database
         await dispatch('updateWap', { wap })
@@ -148,6 +149,7 @@ export default {
     async addCmp({ dispatch, state }, { id, idx }) {
       try {
         const cmp = await cmpService.getCmpById(id)
+        console.log(cmp, 'The cmp That add****')
         const wap = state.currWap
         const updatedWap = await wapService.addCmp(wap, cmp, idx)
         await dispatch('updateWap', { wap: updatedWap })

@@ -150,10 +150,10 @@ export default {
       } else {
         const removed = this.cmp.info.cmps.splice(dropResult.removedIndex, 1);
         this.cmp.info.cmps.splice(dropResult.addedIndex, 0, removed[0]);
-        // this.$store.dispatch({
-        //   type: "updateWapComponents",
-        //   wap: currWapToEdit,
-        // });
+        this.$store.dispatch({
+          type: "updateWapComponents",
+          wap: null,
+        });
       }
     },
     onResize() {

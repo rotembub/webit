@@ -17,6 +17,7 @@
         :details="{ data: item }"
       ></basic-anchor>
     </div>
+    <span class="burger-btn"><i class="fas fa-bars"></i></span>
   </section>
 </template>
 
@@ -44,6 +45,7 @@ export default {
     getCurrStyle() {
       // console.log("IM HERE cmpStyle", this.cmp.style);
       const style = {
+        backgroundImage: this.cmp.style.background,
         color: this.cmp.style.color,
         fontSize: this.cmp.style.fontSize + "px",
         backgroundColor: this.cmp.style.backgroundColor,

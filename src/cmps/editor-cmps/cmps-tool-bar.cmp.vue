@@ -12,6 +12,14 @@
     <button title="Copy" class="tool-element" @click="copyCmp">
       <i class="el-icon-document-copy"></i>
     </button>
+    <button
+      title="Upload"
+      class="tool-element"
+      @click.stop="isUpload = !isUpload"
+    >
+      <i class="el-icon-upload"></i>
+    </button>
+    <img-upload v-if="isUpload" @onSaveImg="onSaveImg"></img-upload>
     <color-modal :id="id" v-if="openColorModal" />
     <size-modal :id="id" v-if="openSizeModal" />
   </section>
@@ -19,44 +27,65 @@
 
 <script>
 // import editorModal from './wap-editor-modal.cmp.vue';
-import colorModal from '../editor-cmps/cmps-color-modal.cmp.vue'
-import sizeModal from '../editor-cmps/cmps-size-modal.cmp.vue'
+import colorModal from "../editor-cmps/cmps-color-modal.cmp.vue";
+import sizeModal from "../editor-cmps/cmps-size-modal.cmp.vue";
+import imgUpload from "./img-upload.vue";
 export default {
-  props: ['id'],
-  components: { colorModal, sizeModal }, // there is a conflict with the inline edit
+  props: ["id"],
+  components: { colorModal, sizeModal, imgUpload }, // there is a conflict with the inline edit
   data() {
     return {
+      isUpload: false,
       openColorModal: false,
       openSizeModal: false,
-    }
+    };
   },
   methods: {
     removeCmp() {
       // this.$store.dispatch({ type: "removeCmp", id: this.id });
-      this.$store.dispatch({ type: 'removeCmpFromWap', cmpId: this.id })
+      this.$store.dispatch({ type: "removeCmpFromWap", cmpId: this.id });
     },
     copyCmp() {
-      const currWap = this.$store.getters.getCurrWap
-      const currCmpIdx = currWap.cmps.findIndex(cmp => cmp.id === this.id)
+      const currWap = this.$store.getters.getCurrWap;
+      const currCmpIdx = currWap.cmps.findIndex((cmp) => cmp.id === this.id);
       this.$store.dispatch({
-        type: 'copyCmpFromWap',
+        type: "copyCmpFromWap",
         cmpId: this.id,
         cmpIdx: currCmpIdx,
-      })
+      });
       // console.log('copy')
     },
     openModal(type) {
-      if (type === 'color') {
-        this.openColorModal = !this.openColorModal
-        this.openSizeModal = false
+      if (type === "color") {
+        this.openColorModal = !this.openColorModal;
+        this.openSizeModal = false;
       }
-      if (type === 'size') {
-        this.openSizeModal = !this.openSizeModal
-        this.openColorModal = false
+      if (type === "size") {
+        this.openSizeModal = !this.openSizeModal;
+        this.openColorModal = false;
       }
     },
+    onSaveImg(url) {
+      const wap = this.$store.getters.getCurrWap;
+      const cmp = wap.cmps.find((cmp) => cmp.id === this.id);
+      cmp.style.background = `url(${url})`;
+      this.updateCmp;
+    },
+    updateStyle() {
+      this.$store.dispatch({ type: "updateWapComponents", wap: null });
+    },
+    // async updateCmp() {
+    //   try {
+    //     this.$store.dispatch({
+    //       type: "updateWapStyle",
+    //       cmpId: this.id, // WATCHOUT
+    //     });
+    //   } catch (err) {
+    //     console.log(err);
+    //   }
+    // },
   },
-}
+};
 </script>
 
 <style></style>

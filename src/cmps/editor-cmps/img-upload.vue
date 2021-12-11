@@ -1,10 +1,25 @@
 <template>
-  <section  class="img-upload element-editor">
-    <label class="clickable" v-if="!isLoading">
-      <!-- <img :src="require('../assets/uploadimg.png')" alt="" /> -->
-      <span @click.stop="">click here</span>
-      <input type="file" id="uploadImg" @click.stop="" @change="onUploadImg" hidden />
-    </label>
+  <section class="img-upload element-editor">
+    <div v-if="!isLoading" @click.stop="">
+      <label class="clickable">
+        <!-- <img :src="require('../assets/uploadimg.png')" alt="" /> -->
+        Upload
+        <span @click.stop=""><i class="fas fa-file-upload"></i></span>
+        <input
+          type="file"
+          id="uploadImg"
+          @click.stop=""
+          @change="onUploadImg"
+          hidden
+        />
+      </label>
+      <!-- <el-input
+        @click.stop.prevent=""
+        v-model="link"
+        placeholder="Link"
+      ></el-input>
+      <button @click.stop="linkImg">Link</button> -->
+    </div>
     <img
       v-else
       :src="require('../../assets/element-editor/loading.gif')"
@@ -20,6 +35,7 @@ export default {
   data() {
     return {
       isLoading: false,
+      link: "",
     };
   },
   methods: {
@@ -34,6 +50,7 @@ export default {
         console.log(err);
       }
     },
+    linkImg() {},
   },
 };
 </script>

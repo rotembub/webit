@@ -1,6 +1,6 @@
-import { storageService } from './async-storage.service';
-import { utilService } from './util.service';
-import { httpService } from './http.service.js';
+import {storageService} from './async-storage.service';
+import {utilService} from './util.service';
+import {httpService} from './http.service.js';
 
 const CMP_KEY = 'cmp_DB';
 const ENDPOINT = 'cmp';
@@ -24,12 +24,10 @@ let gThemes = {};
 
 async function query(filterBy) {
   gCmps = await httpService.get(ENDPOINT, filterBy);
-  console.log(gCmps[1]);
   gThemes = gCmps.reduce((acc, cmp) => {
-
     if (!acc[cmp.category])
       acc[cmp.category] = [
-        { type: cmp.category, cmpId: cmp.id, imgPath: cmp.screenshotImg }, //**change to category in the json
+        {type: cmp.category, cmpId: cmp.id, imgPath: cmp.screenshotImg}, //**change to category in the json
       ];
     else
       acc[cmp.category].push({
@@ -50,10 +48,39 @@ async function getById(id) {
   // return storageService.get(CMP_KEY, id);
 }
 
+function nestedLoop(obj) {
+  const res = {};
+  function recurse(obj, current) {
+    for (const key in obj) {
+      let value = obj[key];
+      if (value != undefined) {
+        if (Array.isArray(value)) {
+          console.log(value, 'value array');
+          value.map((item) => {
+            item.id = utilService.makeId();
+          });
+        } else if (value && typeof value === 'object') {
+          recurse(value, key);
+        } else {
+          // Do your stuff here to var value
+          res[key] = value;
+        }
+      }
+    }
+  }
+  recurse(obj);
+  return res;
+}
+
 async function getCmpById(id) {
   const cmp = gCmps.find((currCmp) => currCmp.id === id);
   const copyCmp = JSON.parse(JSON.stringify(cmp));
   copyCmp.id = utilService.makeId(); //change id soo it will not duplicate
+  const res = nestedLoop(copyCmp);
+  console.log(res, 'the res');
+  console.log(copyCmp, 'after change copy cmp');
+  // go over all the ids indie the cmp and change them, try to use rcurse
+  // copyCmp.info.navBar[0].id = utilService.makeId(); // the id inside the info elements is the same
   return Promise.resolve(copyCmp);
 }
 
