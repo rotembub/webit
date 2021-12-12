@@ -135,6 +135,12 @@ export default {
     copyUrl() {
       const url = window.location.href
       navigator.clipboard.writeText(url)
+      this.$notify({
+        group: 'foo',
+        title: 'URL Copied to Clipboard',
+        type: 'success',
+        text: 'Hello user! This is a notification!',
+      })
       console.log(url)
     },
     undo() {

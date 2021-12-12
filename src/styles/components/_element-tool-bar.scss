@@ -39,9 +39,11 @@
         flex-direction: column;
     }
     button{
-    background-color: cornsilk;
+    // background-color: cornsilk;
     border: none;
     margin-top: 5px;
+    padding: 7px!important;
+    width:70px;
     font-family: 'Poppins';
     }
 }

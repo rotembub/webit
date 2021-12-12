@@ -18,7 +18,8 @@
         v-model="link"
         placeholder="Link"
       ></el-input>
-      <button @click.stop="linkImg">Link</button>
+      <el-button @click.stop="linkImg">Link</el-button>
+      <!-- <button>Link</button> -->
     </div>
     <img
       v-else
@@ -29,30 +30,30 @@
 </template>
 
 <script>
-import { uploadImg } from "../../services/img-upload.service.js";
+import { uploadImg } from '../../services/img-upload.service.js'
 
 export default {
   data() {
     return {
       isLoading: false,
-      link: "",
-    };
+      link: '',
+    }
   },
   methods: {
     async onUploadImg(ev) {
       try {
-        this.isLoading = true;
-        let res = await uploadImg(ev);
+        this.isLoading = true
+        let res = await uploadImg(ev)
         // console.log(res);
-        this.$emit("onSaveImg", res.url);
-        this.isLoading = false;
+        this.$emit('onSaveImg', res.url)
+        this.isLoading = false
       } catch (err) {
-        console.log(err);
+        console.log(err)
       }
     },
     linkImg() {
-      this.$emit("onSaveImg", this.link);
+      this.$emit('onSaveImg', this.link)
     },
   },
-};
+}
 </script>
