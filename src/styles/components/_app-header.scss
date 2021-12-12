@@ -1,13 +1,13 @@
 .app-header {
     position: fixed;
     width: 100%;
-    background-color: rgb(255, 255, 255);
-    height: 11vh;
+   background-color: #ffffff;
+    height: 10vh;
     display: flex;
     z-index: 1;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 3px 2px -2px rgba(128, 128, 128, 0.397);
+    box-shadow: 0 2px 2px -2px rgba(128, 128, 128, 0.397);
     .nav-bar{
         a{
             text-decoration: none;
