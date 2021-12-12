@@ -1,12 +1,7 @@
 <template>
   <div>
     <app-header></app-header>
-    <modal
-      name="startWapModal"
-      :maxWidth="500"
-      :height="'90%'"
-      :adaptive="true"
-    >
+    <modal name="startWapModal" :maxWidth="500" :adaptive="true">
       <el-form
         class="create-wap-modal"
         ref="form"
@@ -22,7 +17,7 @@
             <el-input placeholder="Project name" v-model="form.name"></el-input>
           </div>
 
-          <el-divider></el-divider>
+          <!-- <el-divider></el-divider>
           <h3>Invite your team</h3>
           <div class="invite-box">
             <el-autocomplete
@@ -44,7 +39,7 @@
                 {{ user.username }}
               </div>
             </el-card>
-          </div>
+          </div> -->
         </div>
         <el-form-item>
           <el-button @click="toTheEditor" type="primary">Create</el-button>
