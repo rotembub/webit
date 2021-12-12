@@ -77,14 +77,16 @@
             in one place.
           </p>
         </div>
-        <lottie-player
-          src="https://assets1.lottiefiles.com/packages/lf20_fkukudqu.json"
-          background="transparent"
-          speed="1"
-          style="width: 500px; height: 400px"
-          loop
-          autoplay
-        ></lottie-player>
+        <div>
+          <lottie-player
+            src="https://assets1.lottiefiles.com/packages/lf20_fkukudqu.json"
+            background="transparent"
+            speed="1"
+            style="width: 500px; height: 400px"
+            loop
+            autoplay
+          ></lottie-player>
+        </div>
       </div>
       <div class="homepage-third-card">
         <div

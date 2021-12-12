@@ -115,3 +115,13 @@
     }
   }
   
+
+  @media (max-width: 768px) {
+      .templates-page-title{
+          text-align: center;
+          h1{
+              line-height:50px
+
+          }
+      }
+  }
