@@ -47,3 +47,10 @@
     font-family: 'Poppins';
     }
 }
+
+
+@media (max-width: 800px) {
+    .element-editor{
+        right: unset !important;
+    }
+}
