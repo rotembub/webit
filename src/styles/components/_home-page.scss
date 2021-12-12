@@ -262,3 +262,35 @@
   font-family: poppins;
   background-color: #2ecc71;
 }
+
+
+@media (max-width:700px){
+  .video-background-container{
+    display: none;
+  }
+
+  .homepage-first-card{
+    margin-top: 6em;
+    height: 90vh;
+    .homepage-first-card-inner{
+      flex-direction:column;
+      gap: 10px;
+    }
+  }
+  .homepage-second-card{
+    height: 90vh;
+      flex-direction:column;
+      gap: 10px;
+  }
+
+  .homepage-third-card{
+    height: 90vh;
+    .homepage-second-card-inner{
+      flex-direction:column;
+      gap: 10px;
+    }
+  }
+
+
+
+}
