@@ -1,6 +1,6 @@
 <template>
   <section class="img-upload element-editor">
-    <div v-if="!isLoading" @click.stop="">
+    <div class="linkable" v-if="!isLoading" @click.stop="">
       <label class="clickable">
         <!-- <img :src="require('../assets/uploadimg.png')" alt="" /> -->
         Upload
@@ -13,12 +13,12 @@
           hidden
         />
       </label>
-      <!-- <el-input
+      <el-input
         @click.stop.prevent=""
         v-model="link"
         placeholder="Link"
       ></el-input>
-      <button @click.stop="linkImg">Link</button> -->
+      <button @click.stop="linkImg">Link</button>
     </div>
     <img
       v-else
@@ -50,7 +50,9 @@ export default {
         console.log(err);
       }
     },
-    linkImg() {},
+    linkImg() {
+      this.$emit("onSaveImg", this.link);
+    },
   },
 };
 </script>
