@@ -12,9 +12,33 @@
         overflow: visible !important;
 }
 
-.wap-dynamic, .wap-dynamic-publish{
+.wap-dynamic{
+        
         &>*:not(.wap-container){
-        padding-left: 40px;
-        padding-right: 40px;
+                padding: 70px 50px;
+        }
+        .wap-container>*{
+                padding: 50px 50px;
+                width: 100%;
+                &>*{
+                        width: 100%;
+                        padding: 20px;
+                }
+        }
+}
+
+
+.wap-dynamic-publish{
+
+        &>*{
+                padding: 50px 50px;
+        }
+        .wap-container>*{
+                padding: 20px 20px;
+                width: 100%;
+                // &>*{
+                //         width: 100%;
+                //         padding: 20px;
+                // }
         }
 }
