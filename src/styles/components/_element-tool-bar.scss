@@ -24,7 +24,9 @@
     }
        
 }
-
+.element-tool-bar{
+    padding: 0 !important;
+}
 .img-upload.element-editor {
     position: absolute;
     top: 25px;
@@ -52,5 +54,6 @@
 @media (max-width: 800px) {
     .element-editor{
         right: unset !important;
+        width: 224px !important;
     }
 }
