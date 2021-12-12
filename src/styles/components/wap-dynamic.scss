@@ -24,7 +24,7 @@
                         width: 100%;
                         padding: 20px;
                 }
-        }
+        }                   
 }
 
 
@@ -42,3 +42,37 @@
                 // }
         }
 }
+
+@media (max-width : 800px) {
+        .wap-dynamic{
+        
+                &>*:not(.wap-container){
+                        padding: 20px 15px;
+                }
+                .wap-container>*{
+                        padding: 20px 15px;
+                        width: 100%;
+                        &>*{
+                                width: 100%;
+                                padding: 20px;
+                        }
+                }                   
+        }
+        .wap-dynamic-publish{
+
+                &>*{
+                        padding: 20px 15px;
+                }
+                .wap-container>*{
+                        padding: 20px 15px;
+                        width: 100%;
+                        // &>*{
+                        //         width: 100%;
+                        //         padding: 20px;
+                        // }
+                }
+        }
+}
+
+         
+        

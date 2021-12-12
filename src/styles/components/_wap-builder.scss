@@ -54,6 +54,9 @@
 // SUPER MESSY but couldnt figure out a better way.
 
 .wap-builder-mobile{
+    .wap-gallery-feli{
+        flex-direction: column;
+    }
     
     .wap-container-flex{
         flex-direction:column;
@@ -131,7 +134,7 @@
             // margin-top: 1rem;
         }
         .burger-btn{
-            margin-inline-end: 40px;
+            // margin-inline-end: 40px;
             display: inline;
             // margin-top: 2rem;
         }

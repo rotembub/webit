@@ -6479,7 +6479,7 @@ const wap_architecture = {
 const newGallery = {
   id: utilService.makeId(4),
   type: 'wap-container',
-  screenshotImg: 'sunnyside-examples/imgs.png',
+  screenshotImg: 'feliciano-examples/feliciano-gallery.png',
   category: 'Galleries',
   info: {
     dir: 'horizontal',
