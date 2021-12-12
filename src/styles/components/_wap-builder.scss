@@ -101,12 +101,12 @@
     .wap-card-default{
         width: 100%!important;
     }
-    .feliciano-menu-gallery {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: repeat(6, 1fr);
-        row-gap: 15px;
-    }
+    // .feliciano-menu-gallery {
+    //     display: grid;
+    //     grid-template-columns: repeat(2, 1fr);
+    //     grid-template-rows: repeat(6, 1fr);
+    //     row-gap: 15px;
+    // }
     .text-block{
             h1{
                 // font-size:12px!important;
@@ -126,13 +126,14 @@
         }  
     }
     .wap-header-feliciano{
+        padding-top: 0;
         .logo{
-            margin-top: 1rem;
+            // margin-top: 1rem;
         }
         .burger-btn{
             margin-inline-end: 40px;
             display: inline;
-            margin-top: 2rem;
+            // margin-top: 2rem;
         }
         .nav-bar {
             justify-content: space-around !important;
