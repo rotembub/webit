@@ -17,7 +17,7 @@ function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min) + min) //The maximum is exclusive and the minimum is inclusive
 }
 
-function debounce(func, timeout = 3000) {
+function debounce(func, timeout = 700) {
   let timer
   return (...args) => {
     clearTimeout(timer)
