@@ -28,10 +28,20 @@
 .img-upload.element-editor {
     position: absolute;
     top: 25px;
-    width: 84px;
+    width:fit-content;
     right: 0;
     text-align: center;
     img{
         height: 25px;
+    }
+    .linkable{
+        display: flex;
+        flex-direction: column;
+    }
+    button{
+    background-color: cornsilk;
+    border: none;
+    margin-top: 5px;
+    font-family: 'Poppins';
     }
 }

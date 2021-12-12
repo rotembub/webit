@@ -75,6 +75,13 @@ export default {
   },
   methods: {
     removeEl() {
+      console.log(
+        "removing:",
+        this.details.cmpId,
+        this.details.elType,
+        this.details.data.id,
+        this.details.containerId
+      );
       this.$store.dispatch({
         type: "removeElFromCmp",
         cmpId: this.details.cmpId,
@@ -98,9 +105,10 @@ export default {
         x: ev.target.offsetLeft,
       };
       if (ev.offsetY > ev.target.offsetHeight / 2) {
-        pos.y = ev.target.offsetTop + ev.target.offsetHeight +5;
+        pos.y = ev.target.offsetTop + ev.target.offsetHeight + 5;
       } else pos.y = ev.target.offsetTop - 30;
-      if (ev.clientX > window.innerWidth - 150) pos.x = ev.target.offsetLeft -50;
+      if (ev.clientX > window.innerWidth - 150)
+        pos.x = ev.target.offsetLeft - 50;
       console.log(pos);
       if (this.isSelected) {
         this.isSelected = false;

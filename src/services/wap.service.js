@@ -1,6 +1,6 @@
-import {storageService} from './async-storage.service';
-import {utilService} from './util.service';
-import {httpService} from './http.service.js';
+import { storageService } from './async-storage.service';
+import { utilService } from './util.service';
+import { httpService } from './http.service.js';
 
 const KEY = 'wap_DB';
 const CMP_KEY = 'cmp_DB';
@@ -46,7 +46,7 @@ export const wapService = {
 //   //   localStorage.setItem(KEY, JSON.stringify([wap_architecture]))
 // }
 async function createNewWap(templateId, newWapData) {
-  return await httpService.post('template', {templateId, newWapData});
+  return await httpService.post('template', { templateId, newWapData });
 }
 async function queryWapTemplates() {
   // try {
@@ -203,8 +203,8 @@ async function getEmptyWap() {
       username: '',
     },
     usersData: {
-      contacts: [{email: '', msg: '', at: null}],
-      signups: [{email: '', at: null}],
+      contacts: [{ email: '', msg: '', at: null }],
+      signups: [{ email: '', at: null }],
     },
     cmps: [],
   };
@@ -284,11 +284,12 @@ async function removeEl(wap, cmpId, elType, elId, containerId) {
     console.log(wap, container);
     const innerCmp = container.info.cmps.find((cmp) => cmp.id === cmpId);
     if (elType === 'logo') {
-      // no chance to check that yet ...
+      console.log('check this out:', innerCmp.info, innerCmp.info[elType])
       delete innerCmp.info[elType];
       const updatedCmp = JSON.parse(JSON.stringify(innerCmp));
-      const idx = wap.cmps.findIndex((cmp) => cmp.id === innerCmp.id);
-      wap.cmps.splice(idx, 1, updatedCmp);
+      const idx = container.info.cmps.findIndex((cmp) => cmp.id === innerCmp.id);
+      container.info.cmps.splice(idx, 1, updatedCmp);
+      // wap.cmps.splice(idx, 1, updatedCmp);
     } else {
       const idx = innerCmp.info[elType].findIndex((el) => el.id === elId);
       innerCmp.info[elType].splice(idx, 1);
@@ -387,8 +388,8 @@ const wap_architecture = {
     username: 'Hekro Special',
   },
   usersData: {
-    contacts: [{email: 'user@user.com', msg: 'Please send me stuff', at: 123}],
-    signups: [{email: 'user@user.com', at: 123}],
+    contacts: [{ email: 'user@user.com', msg: 'Please send me stuff', at: 123 }],
+    signups: [{ email: 'user@user.com', at: 123 }],
   },
 
   cmps: [
@@ -995,8 +996,8 @@ const wap_fylo = {
     username: '',
   },
   usersData: {
-    contacts: [{email: 'user@user.com', msg: 'Please send me stuff', at: 123}],
-    signups: [{email: 'user@user.com', at: 123}],
+    contacts: [{ email: 'user@user.com', msg: 'Please send me stuff', at: 123 }],
+    signups: [{ email: 'user@user.com', at: 123 }],
   },
   theme: 'fylo-main',
 
@@ -2157,8 +2158,8 @@ const wap_sunnyside = {
     username: '',
   },
   usersData: {
-    contacts: [{email: 'user@user.com', msg: 'Please send me stuff', at: 123}],
-    signups: [{email: 'user@user.com', at: 123}],
+    contacts: [{ email: 'user@user.com', msg: 'Please send me stuff', at: 123 }],
+    signups: [{ email: 'user@user.com', at: 123 }],
   },
   theme: 'sunnyside-main',
   cmps: [
@@ -3539,8 +3540,8 @@ const wap_feliciano = {
     username: '',
   },
   usersData: {
-    contacts: [{email: 'user@user.com', msg: 'Please send me stuff', at: 123}],
-    signups: [{email: 'user@user.com', at: 123}],
+    contacts: [{ email: 'user@user.com', msg: 'Please send me stuff', at: 123 }],
+    signups: [{ email: 'user@user.com', at: 123 }],
   },
   theme: 'feliciano-main',
   cmps: [

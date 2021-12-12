@@ -30,7 +30,6 @@
         :details="{ data: item, cmpId: cmp.id, containerId, elType: 'navBar' }"
         :elType="'navBar'"
       ></basic-anchor>
-      
     </div>
     <span class="burger-btn"><i class="fas fa-bars"></i></span>
   </section>
@@ -89,7 +88,7 @@ export default {
       this.$store.dispatch({
         type: "removeElFromCmp",
         cmpId: this.cmp.id,
-        elType: "navBar",
+        elType,
         elId,
       });
       this.open2();
