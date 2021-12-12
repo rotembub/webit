@@ -54,6 +54,7 @@
         type="primary"
         ><span></span><i class="fas fa-save"></i
       ></el-button> -->
+          <a @click="copyUrl">Work together</a>
           <div class="publish-icons">
             <i @click="onMobileState('mobile')" class="el-icon-mobile"></i>
             <i @click="onMobileState('desktop')" class="el-icon-monitor"></i>
@@ -131,6 +132,11 @@ export default {
     },
   },
   methods: {
+    copyUrl() {
+      const url = window.location.href
+      navigator.clipboard.writeText(url)
+      console.log(url)
+    },
     undo() {
       socketService.emit('wap undo', this.$store.getters.getCurrWap)
     },
