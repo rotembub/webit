@@ -256,6 +256,9 @@
     // max-width: 80%;
     font-family: Poppins;
     padding: 10px 0;
+    .wap-text{
+        text-align:start;
+    }
     h1{
         font-size: 20px;
         font-weight: 100;
@@ -293,7 +296,7 @@
     }
 }
 .feliciano-footer>*{
-    max-width: 20%;
+    // max-width: 20%;
     color: rgba(255, 255, 255, 0.7);
     display: flex;
     align-items: flex-start;
