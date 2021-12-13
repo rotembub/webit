@@ -77,7 +77,7 @@ export default {
     }
   },
   created() {
-    this.$store.dispatch({ type: 'loadTemplates' })
+    // this.$store.dispatch({ type: 'loadTemplates' })
   },
   computed: {
     templates() {
@@ -122,6 +122,8 @@ export default {
       this.$modal.show('startWapModal')
     },
     async toTheEditor() {
+      this.$isLoading(true)
+      setTimeout(() => this.$isLoading(false), 1500)
       const wap = await this.$store.dispatch({
         type: 'createNewWap',
         templateId: this.templateId,

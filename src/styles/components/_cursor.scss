@@ -5,9 +5,14 @@
     color: white;
     display: flex;
     flex-direction: column;
-
+    
+    
     i{
-    font-size: 20px;
-
+        font-size: 20px;
+        
+    }
+    span:first-letter{
+        text-transform: uppercase;
+    
     }
 }

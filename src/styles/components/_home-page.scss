@@ -87,14 +87,13 @@
     
         .home-page-span a{
             background:  #B7DBFF;
-            background:#ff7c01;
-            color: rgba(14, 14, 14, 0.788);
+            background:#f66136;
             font-size: 1.25rem;
             border: 0;
             font-family: Montserrat;
             font-weight: bold;
             cursor: pointer;
-            margin-top: 15px;
+            margin-top: 28px;
             padding:5px;
             display: block;
             border-radius: 50px;
@@ -103,6 +102,8 @@
             box-shadow: 2px 2px 3px rgb(0 0 0 / 30%);
             text-decoration: none;
             transition: 0.3s;
+      color: white;
+
     }
     .home-page-span a:hover{
       background:  #abcef1;
@@ -118,7 +119,7 @@
     width: 100%;
     display:flex ;
     padding: 0px 10vw;
-    background-color:#B7DBFF;
+    background-color:#ebebeb;
     justify-content: space-between;
     align-items: center;
     margin-top: 17em;
@@ -190,7 +191,7 @@
     width: 100%;
     display:flex ;
     padding: 0px 10vw;
-    background-color:#B7DBFF;
+    background-color:#ebebeb;
     justify-content: space-between;
     align-items: center;
     margin-top: 7em;

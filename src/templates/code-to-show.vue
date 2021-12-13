@@ -1,7 +1,7 @@
 Dynamic component
 <template>
   <div>
-    <!--Dynamic compona -->
+    <!--Dynamic component -->
     <section class="wap-dynamic" @click="setSelected">
       <slot v-if="isEdit"></slot>
       <component
@@ -12,7 +12,7 @@ Dynamic component
       ></component>
     </section>
 
-    <!--container example template-->
+    <!--Container example -->
     <section v-if="cmp" class="wap-container">
       <Container
         :style="getCurrStyle"
@@ -68,12 +68,7 @@ Dynamic component
         <basic-img
           v-for="img in cmp.info.imgs"
           :key="img.id"
-          :details="{
-            data: img,
-            cmpId: cmp.id,
-            containerId,
-            elType,
-          }"
+          :details="{ data: img, cmpId: cmp.id, containerId, elType }"
         ></basic-img>
       </template>
     </section>
@@ -86,9 +81,7 @@ Dynamic component
 
 <script>
 
-
-
-const newGallery = {
+const exampleJSON = {
   id: utilService.makeId(4),
   type: 'wap-container',
   screenshotImg: 'feliciano-examples/feliciano-gallery.png',
@@ -135,7 +128,53 @@ const newGallery = {
           fontFamily: '',
           fontStyle: '',
         },
-      }
+      },
+      {
+      id: utilService.makeId(4),
+      type: 'wap-text',
+      screenshotImg: 'feliciano-examples/chefs-text.png',
+      category: 'Text',
+      info: {
+        title: [
+          {
+            id: utilService.makeId(4),
+            txt: 'Our Master Chefs',
+            style: {
+              background: '',
+              color: '',
+              fontFamily: 'Poppins',
+              fontStyle: '50px',
+            },
+          },
+        ],
+        subtitle: [
+          {
+            id: utilService.makeId(4),
+            txt: 'And their specialties...',
+            style: {
+              background: '',
+              color: '#c8a97e',
+              fontFamily: 'GreatVibes',
+              fontStyle: '',
+            },
+          },
+        ],
+      },
+      theme: 'wap-feliciano-catering',
+      style: {
+        background: ``,
+        color: '',
+        backgroundColor: '',
+        fontSize: '',
+        paddingRight: '',
+        paddingTop: '',
+        paddingBottom: '',
+        paddingLeft: '',
+        lineHeight: '',
+        fontFamily: '',
+        fontStyle: '',
+      },
+    },
     ],
   },
   theme: 'wap-gallery-feli',

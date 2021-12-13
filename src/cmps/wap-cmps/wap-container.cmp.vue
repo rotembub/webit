@@ -37,7 +37,7 @@
         :key="innerCmp.id"
         :class="innerCmp.theme"
       >
-      <!-- <slot><cmps-tool-bar :id="innerCmp.id"></cmps-tool-bar></slot> -->
+        <!-- <slot><cmps-tool-bar :id="innerCmp.id"></cmps-tool-bar></slot> -->
         <component
           :cmp="innerCmp"
           :is="innerCmp.type"
@@ -111,7 +111,6 @@ export default {
         return 'vertical'
       }
       console.log(window.innerWidth)
-      console.log('giving default')
       return this.cmp.info.dir
     },
   },
@@ -160,23 +159,22 @@ export default {
       }
     },
     onResize() {
-      console.log('Window size changed');
       this.mediaWidth = window.innerWidth
-      this.onResizeScreen()
+      // this.onResizeScreen()
     },
-    onResizeScreen() {
-      this.mediaWidth = window.innerWidth
-      clearTimeout(this.debounceScreen)
-      this.debounceScreen = setTimeout(() => {
-        if (this.mediaWidth < 500) {
-          this.$store.dispatch('isMobile', { isMobile: true })
-          console.log('Setting Mobile')
-        } else {
-          this.$store.dispatch('isMobile', { isMobile: false })
-          console.log('Setting Desktop')
-        }
-      }, 500)
-    },
+    // onResizeScreen() {
+    //   this.mediaWidth = window.innerWidth
+    //   clearTimeout(this.debounceScreen)
+    //   this.debounceScreen = setTimeout(() => {
+    //     if (this.mediaWidth < 500) {
+    //       this.$store.dispatch('isMobile', { isMobile: true })
+    //       console.log('Setting Mobile')
+    //     } else {
+    //       this.$store.dispatch('isMobile', { isMobile: false })
+    //       console.log('Setting Desktop')
+    //     }
+    //   }, 500)
+    // },
   },
 }
 </script>

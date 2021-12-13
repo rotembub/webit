@@ -60,7 +60,15 @@ export default {
 
     // UI mutations
     toggleEditorFullScreen(state) {
+      console.log('TOGLEDDDDDDDDDDDDDDDDD')
       state.isFullScreen = !state.isFullScreen
+    },
+    setEditorScreenState(state, { isFull }) {
+      console.log(
+        '🚀 ~ file: wap-store.js ~ line 66 ~ setEditorScreenState ~ isFull',
+        isFull
+      )
+      state.isFullScreen = isFull
     },
     setSelectedElement(state, { id, pos }) {
       state.elSelectedId = id
@@ -70,10 +78,6 @@ export default {
       state.modalPos = modalPos
     },
     isMobile(state, { isMobile }) {
-      console.log(
-        '🚀 ~ file: wap-store.js ~ line 99 ~ isMobile ~ isMobile',
-        isMobile
-      )
       state.isMobile = isMobile
     },
     setScreenState(state, { str }) {
@@ -100,7 +104,11 @@ export default {
 
     //UI Actions
     isMobile({ commit }, { isMobile }) {
-      commit({ type: 'isMobile', isMobile })
+      console.log(
+        '🚀 ~ file: wap-store.js ~ line 106 ~ isMobile ~ isMobile',
+        isMobile
+      )
+      if (isMobile) commit({ type: 'setEditorScreenState', isFull: true })
       commit({ type: 'isMobile', isMobile })
     },
     setScreenState({ commit }, { str }) {
@@ -303,13 +311,12 @@ export default {
     async updateWapProperties({ dispatch, state }, { wap }) {
       try {
         const updatedWap = await wapService.save(wap)
-        await dispatch({ type: "updateWap", wap: updatedWap });
-        console.log('sent for update REFRESH YOUR PAGE', updatedWap.cmps);
+        await dispatch({ type: 'updateWap', wap: updatedWap })
+        console.log('sent for update REFRESH YOUR PAGE', updatedWap.cmps)
       } catch (err) {
         console.log(err)
       }
-
-    }
+    },
 
     // async removeCmp({ commit, state }, { id }) {copyCmpFromWap  ---> USELESS
     //   commit({ type: 'removeCmp', id });

@@ -7,10 +7,16 @@
 
       <div
         v-if="client"
-        :style="{ top: client.y + 'px', left: client.x + 'px', color: 'green' }"
+        :style="{
+          top: client.y - 30 + 'px',
+          left: client.x + 'px',
+          color: '#3498db',
+        }"
         class="cursor"
       >
-        {{ client.byUser.username }}
+        <span>
+          {{ client.byUser.username }}
+        </span>
         <i class="fas fa-mouse-pointer"></i>
       </div>
     </section>
