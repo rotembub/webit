@@ -50,9 +50,9 @@ export default {
   created() {
     this.$store.dispatch({ type: 'loadCmps' }) //test
     this.isMobile = this.$store.getters.isMobile
-    if (this.isMobile) {
-      this.$store.dispatch({ type: 'toggleEditorFullScreen' })
-    }
+    // if (this.isMobile) {
+    //   this.$store.dispatch({ type: 'toggleEditorFullScreen' })
+    // }
   },
   watch: {
     '$store.getters.isFullScreen'(isFullScreen) {

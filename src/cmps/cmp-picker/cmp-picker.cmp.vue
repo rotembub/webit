@@ -120,7 +120,7 @@ export default {
         name: '',
       },
       formLabelWidth: '100px',
-      isFullScreen: false,
+      isFullScreen: true,
     }
   },
   watch: {
@@ -130,6 +130,9 @@ export default {
     '$store.getters.isFullScreen'(isFullScreen) {
       this.isFullScreen = isFullScreen
     },
+  },
+  created() {
+    this.isFullScreen = this.$store.getters.isFullScreen
   },
   methods: {
     copyUrl() {

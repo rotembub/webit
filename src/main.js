@@ -16,15 +16,17 @@ Vue.use(ElementUI, { locale })
 Vue.use(vmodal, { adaptive: true })
 Vue.directive('observe-visibility', ObserveVisibility)
 Vue.use(loading, {
-  bg: '#d2d2d2',
+  bg: '#ecf0f1',
   icon: 'refresh',
   size: 3,
   icon_color: 'white',
   slot: `
-  <div class="">
-    <h1 class="text-3xl text-white"><i class="fas fa-spinner fa-spin"></i> 
-     Getting your site ready....
+  <div class="loader-container" >
+
+    <h1 class="text-3xl text-white">
+     WEBIT
     </h1>
+    <div class="loader"></div>
   </div>
 `,
 })
