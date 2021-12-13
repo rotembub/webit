@@ -83,147 +83,148 @@
 </template>
 
 <script>
-  import {Collapse, CollapseItem} from 'element-ui';
-  import wapHeader from '../wap-cmps/wap-header.cmp.vue';
-  import {cmpService} from '../../services/cmp.service.js';
-  import {Container, Draggable} from 'vue-smooth-dnd';
-  import editorHeader from '../editor-header.cmp.vue';
-  import {socketService} from '../../services/socket.service';
+import { Collapse, CollapseItem } from 'element-ui'
+import wapHeader from '../wap-cmps/wap-header.cmp.vue'
+import { cmpService } from '../../services/cmp.service.js'
+import { Container, Draggable } from 'vue-smooth-dnd'
+import editorHeader from '../editor-header.cmp.vue'
+import { socketService } from '../../services/socket.service'
 
-  export default {
-    name: 'cmpPicker',
-    components: {
-      wapHeader,
-      Collapse,
-      CollapseItem,
-      Container,
-      Draggable,
-      editorHeader,
+export default {
+  name: 'cmpPicker',
+  components: {
+    wapHeader,
+    Collapse,
+    CollapseItem,
+    Container,
+    Draggable,
+    editorHeader,
+  },
+  data() {
+    return {
+      themes: null,
+      types: [
+        'Headers',
+        'Galleries',
+        'Text',
+        'Contacts',
+        'Cards',
+        'Reviews',
+        'Landings',
+        'Footers',
+      ],
+      wapToPublish: null,
+      isMobile: false,
+      dialogFormVisible: false,
+      form: {
+        name: '',
+      },
+      formLabelWidth: '100px',
+      isFullScreen: false,
+    }
+  },
+  watch: {
+    '$store.getters.isMobile'(isMobile) {
+      this.isMobile = isMobile
     },
-    data() {
-      return {
-        themes: null,
-        types: [
-          'Headers',
-          'Galleries',
-          'Text',
-          'Contacts',
-          'Cards',
-          'Reviews',
-          'Landings',
-          'Footers',
-        ],
-        wapToPublish: null,
-        isMobile: false,
-        dialogFormVisible: false,
-        form: {
-          name: '',
-        },
-        formLabelWidth: '100px',
-        isFullScreen: false,
-      };
+    '$store.getters.isFullScreen'(isFullScreen) {
+      this.isFullScreen = isFullScreen
     },
-    watch: {
-      '$store.getters.isMobile'(isMobile) {
-        this.isMobile = isMobile;
-      },
-      '$store.getters.isFullScreen'(isFullScreen) {
-        this.isFullScreen = isFullScreen;
-      },
+  },
+  methods: {
+    copyUrl() {
+      const url = window.location.href
+      navigator.clipboard.writeText(url)
+      this.$notify({
+        group: 'foo',
+        title: 'URL Copied to Clipboard',
+        type: 'success',
+        text: 'Hello user! This is a notification!',
+      })
+      console.log(url)
     },
-    methods: {
-      copyUrl() {
-        const url = window.location.href;
-        navigator.clipboard.writeText(url);
-        this.$notify({
-          group: 'foo',
-          title: 'URL Copied to Clipboard',
-          type: 'success',
-          text: 'Hello user! This is a notification!',
-        });
-        console.log(url);
-      },
-      undo() {
-        socketService.emit('wap undo', this.$store.getters.getCurrWap);
-      },
-      onMobileState(str) {
-        // console.log('HERE')
-        this.$store.dispatch({type: 'setScreenState', str});
-      },
-      getChildPayload1(index) {
-        return this.themes[index];
-      },
-      publishWap() {
-        console.log('wapToPublish ID: ');
-        this.$notify({
-          group: 'foo',
-          title: 'Your website is now online!',
-          type: 'success',
-          text: 'Hello user! This is a notification!',
-        });
-        // const wapCopy = JSON.parse( // copy the json for creating new templates/sites
-        //   JSON.stringify(this.$store.getters.getCurrWap)
-        // );
-        // delete wapCopy._id;
-        // const JsonText = JSON.stringify(wapCopy);
-        // navigator.clipboard.writeText(JsonText);
-        // console.log('copy to clip', JsonText);
-        window.open(`/publish/${this.$store.getters.getCurrWap._id}`, '_blank');
-      },
-      saveWap() {
-        //need to save to database the user  waps
-        this.dialogFormVisible = false;
-        const wapId = this.$store.getters.getCurrWap._id;
-        const wapToSave = {
-          wapId,
-          siteName: this.form.name,
-        };
-        this.form.name = '';
-        const user = this.$store.getters.getUser;
-        if (!user) this.$store.commit({type: 'saveGuestWap', wapId: wapToSave});
-        //change it save in db guest waps
-        else {
-          user.waps.push(wapToSave);
-          this.$store.dispatch({type: 'updateUser', user}); //user.waps.push(wapToSaveId);
-        }
-        console.log('saved', user);
-      },
-      async add(cmpId) {
-        // console.log(cmpId);
-        try {
-          const cmp = await this.$store.dispatch({
-            type: 'addCmp',
-            id: cmpId,
-          });
-        } catch (err) {
-          console.log(err);
-        }
-      },
-      loadThemes(cmpCat) {
-        const allThemes = cmpService.getThemesFor(cmpCat);
-        this.themes = allThemes;
-        // console.log(this.themes);
-      },
-      getProperTxt(type) {
-        // console.log(type);
-        const textToShow = type.substring(4);
-        return textToShow.charAt(0).toUpperCase() + textToShow.slice(1);
-      },
+    undo() {
+      socketService.emit('wap undo', this.$store.getters.getCurrWap)
     },
-    computed: {
-      classForPicker() {
-        // const isFullScreen =
-        if (this.$store.getters.isFullScreen)
-          return 'cmp-picker-collapse scrollbar style-2 cmp-picker-fullscreen';
-        else return 'cmp-picker-collapse scrollbar style-2 cmp-picker';
-      },
-      classForContainer() {
-        if (this.$store.getters.isFullScreen)
-          return 'cmp-picker-container-fullscreen';
-        return 'cmp-picker-container';
-      },
+    onMobileState(str) {
+      // console.log('HERE')
+      this.$store.dispatch({ type: 'setScreenState', str })
     },
-  };
+    getChildPayload1(index) {
+      return this.themes[index]
+    },
+    publishWap() {
+      console.log('wapToPublish ID: ')
+      this.$notify({
+        group: 'foo',
+        title: 'Your website is now online!',
+        type: 'success',
+        text: 'Hello user! This is a notification!',
+      })
+      const wapCopy = JSON.parse(
+        // copy the json for creating new templates/sites
+        JSON.stringify(this.$store.getters.getCurrWap)
+      )
+      delete wapCopy._id
+      const JsonText = JSON.stringify(wapCopy)
+      // navigator.clipboard.writeText(JsonText);
+      console.log('copy to clip', JsonText)
+      window.open(`/publish/${this.$store.getters.getCurrWap._id}`, '_blank')
+    },
+    saveWap() {
+      //need to save to database the user  waps
+      this.dialogFormVisible = false
+      const wapId = this.$store.getters.getCurrWap._id
+      const wapToSave = {
+        wapId,
+        siteName: this.form.name,
+      }
+      this.form.name = ''
+      const user = this.$store.getters.getUser
+      if (!user) this.$store.commit({ type: 'saveGuestWap', wapId: wapToSave })
+      //change it save in db guest waps
+      else {
+        user.waps.push(wapToSave)
+        this.$store.dispatch({ type: 'updateUser', user }) //user.waps.push(wapToSaveId);
+      }
+      console.log('saved', user)
+    },
+    async add(cmpId) {
+      // console.log(cmpId);
+      try {
+        const cmp = await this.$store.dispatch({
+          type: 'addCmp',
+          id: cmpId,
+        })
+      } catch (err) {
+        console.log(err)
+      }
+    },
+    loadThemes(cmpCat) {
+      const allThemes = cmpService.getThemesFor(cmpCat)
+      this.themes = allThemes
+      // console.log(this.themes);
+    },
+    getProperTxt(type) {
+      // console.log(type);
+      const textToShow = type.substring(4)
+      return textToShow.charAt(0).toUpperCase() + textToShow.slice(1)
+    },
+  },
+  computed: {
+    classForPicker() {
+      // const isFullScreen =
+      if (this.$store.getters.isFullScreen)
+        return 'cmp-picker-collapse scrollbar style-2 cmp-picker-fullscreen'
+      else return 'cmp-picker-collapse scrollbar style-2 cmp-picker'
+    },
+    classForContainer() {
+      if (this.$store.getters.isFullScreen)
+        return 'cmp-picker-container-fullscreen'
+      return 'cmp-picker-container'
+    },
+  },
+}
 </script>
 
 <style></style>
