@@ -7,7 +7,7 @@
       <router-link to="/">Home</router-link>
       <router-link to="/template">Templates</router-link>
       <!-- <router-link to="/editor">Editor</router-link> -->
-      <router-link to="/user">Profile</router-link>
+      <!-- <router-link to="/user">Profile</router-link> -->
 
       <!-- <router-link :to="'/editor/' + wapId">Editor</router-link> -->
     </div>
@@ -15,13 +15,13 @@
 </template>
 
 <script>
-  export default {
-    computed: {
-      wapId() {
-        return this.$store.getters.getWapId;
-      },
+export default {
+  computed: {
+    wapId() {
+      return this.$store.getters.getWapId
     },
-  };
+  },
+}
 </script>
 
 <style></style>

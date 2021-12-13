@@ -82,7 +82,8 @@
             src="https://assets1.lottiefiles.com/packages/lf20_fkukudqu.json"
             background="transparent"
             speed="1"
-            style="width: 500px; height: 400px"
+            class="lotti-animation"
+            style=""
             loop
             autoplay
           ></lottie-player>

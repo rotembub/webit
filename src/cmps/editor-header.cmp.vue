@@ -13,9 +13,9 @@
       <div @click="openRoute('/template')">
         <i type="danger" class="el-icon-money"></i>
       </div>
-      <div @click="openRoute('/user')">
+      <!-- <div @click="openRoute('/user')">
         <i type="danger" class="el-icon-user-solid"></i>
-      </div>
+      </div> -->
 
       <!-- <div class="div5">
         <i type="danger" class="el-icon-delete"></i>
