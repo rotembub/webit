@@ -1,5 +1,5 @@
 .theme-gallery-fylo{
-    display: grid;
+    display: flex !important;
     align-items: center;
     justify-content: center;
     justify-items: center;
@@ -30,9 +30,10 @@
 }
 }
 
-@media only screen and (min-width : 768px) {
+@media  (max-width : 800px) {
     .theme-gallery-fylo{
-        grid-template-columns: 1fr 1fr;
+        flex-direction: column;
+        // grid-template-columns: 1fr 1fr;
     
     }
 }

@@ -294,5 +294,28 @@
     .feliciano-chefs-container{
         flex-direction: column;
     }
+    .theme-hero-sunnyside{
+        .theme-header-sunnyside{
+            .nav-bar{
+                display: none;
+            }
+            .burger-btn{
+        // margin-inline-end: 40px;
+             display: inline;
+        // margin-top: 2rem;
+         }
+        }
+    }
+    .theme-container-fylo-v2{
+        display: flex;
+        flex-direction:column;
+        gap: 4em;
+
+    }
+    .theme-gallery-fylo{
+        flex-direction: column;
+        // grid-template-columns: 1fr 1fr;
+    
+    }
 
 }
