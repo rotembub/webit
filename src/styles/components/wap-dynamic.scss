@@ -10,6 +10,7 @@
         }
 }
 .smooth-dnd-draggable-wrapper{
+        // width: unset; /////////////////
         overflow: visible !important;
 }
 
@@ -22,7 +23,7 @@
                 padding: 50px 50px;
                 width: 100%;
                 &>*{
-                        width: 100%;
+                        // width: 100%;
                         padding: 20px;
                 }
         }                   
@@ -36,9 +37,9 @@
         }
         .wap-container>*{
                 padding: 20px 20px;
-                width: 100%;
+                // width: 100%;
                 // &>*{
-                //         width: 100%;
+                        // width: 100%;
                 //         padding: 20px;
                 // }
         }
@@ -66,7 +67,7 @@
                 }
                 .wap-container>*{
                         padding: 20px 15px;
-                        width: 100%;
+                        // width: 100%;
                         // &>*{
                         //         width: 100%;
                         //         padding: 20px;
