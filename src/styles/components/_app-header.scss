@@ -26,18 +26,27 @@
         }
     }
     .logo{
-        font-size:2.5em;
+        font-size:2em;
         color:#f66136 ;
         border: 2px #f66036bd solid;
         margin: 0;
         padding:5px;
-        line-height:45px;
+        line-height:30px;
     }
     @media (max-width:550px){
     .logo{
-        font-size: 1.5em;
+        font-size: 1em;
         padding:2px;
         line-height:25px;
+      
+    }
+    }
+    @media (max-width:1200px){
+    .logo{
+        font-size: 1.5em;
+        padding:5px;
+
+        line-height:153px;
       
     }
     }
