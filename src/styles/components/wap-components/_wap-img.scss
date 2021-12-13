@@ -1,0 +1,20 @@
+.wap-img-gallery-feli, .wap-catering-preview, .wap-chef-preview{
+    width: 100%;
+}
+.wap-feliciano-detail-card{
+    justify-content: space-between;
+
+}
+.feliciano-chefs-container{
+    display: flex !important;
+    justify-content: space-between;
+}
+// .feliciano-chefs-container>*{
+//     width: 100%;
+// }
+
+@media (max-width: 800px){
+    .feliciano-chefs-container{
+        flex-direction: column;
+    }
+}
