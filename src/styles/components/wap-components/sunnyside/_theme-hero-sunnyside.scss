@@ -50,3 +50,18 @@
         }
     }
 }
+
+@media (max-width: 800px){
+    .theme-hero-sunnyside{
+        .theme-header-sunnyside{
+            .nav-bar{
+                display: none;
+            }
+            .burger-btn{
+        // margin-inline-end: 40px;
+             display: inline;
+        // margin-top: 2rem;
+         }
+        }
+    }
+}

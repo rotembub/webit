@@ -160,6 +160,7 @@ export default {
       }
     },
     onResize() {
+      console.log('Window size changed');
       this.mediaWidth = window.innerWidth
       this.onResizeScreen()
     },

@@ -1,5 +1,5 @@
 .theme-container-fylo-v2{
-    display: flex;
+    display: flex !important;
     align-items: center;
     gap: 4em;
     color: $White;
@@ -52,13 +52,12 @@
 }
 }
 
-@media only screen and (max-width : 700px) {
+@media (max-width : 800px) {
     .theme-container-fylo-v2{
         display: flex;
         flex-direction:column;
         gap: 4em;
-        .img{
-        }
+
     }
 
 }
