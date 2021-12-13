@@ -7,7 +7,11 @@
 
       <div
         v-if="client"
-        :style="{ top: client.y + 'px', left: client.x + 'px', color: 'green' }"
+        :style="{
+          top: client.y + 30 + 'px',
+          left: client.x + 'px',
+          color: 'green',
+        }"
         class="cursor"
       >
         {{ client.byUser.username }}
