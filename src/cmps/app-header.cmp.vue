@@ -1,7 +1,8 @@
 <template>
   <section class="app-header">
     <div class="main-logo">
-      <img src="@/assets/Logo.png" alt="" />
+      <!-- <img src="@/assets/Logo.png" alt="" /> -->
+      <h2 class="logo">WEBIT</h2>
     </div>
     <div class="nav-bar">
       <router-link to="/">Home</router-link>

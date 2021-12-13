@@ -11,7 +11,7 @@
         <i type="danger" class="el-icon-s-home"></i>
       </div>
       <div @click="openRoute('/template')">
-        <i type="danger" class="el-icon-money"></i>
+        <i class="far fa-images"></i>
       </div>
       <!-- <div @click="openRoute('/user')">
         <i type="danger" class="el-icon-user-solid"></i>
