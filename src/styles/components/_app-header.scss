@@ -1,5 +1,5 @@
 .app-header {
-    position: fixed;
+    // position: fixed;
     width: 100%;
    background-color: #ffffff;
     height: 7vh;
@@ -55,6 +55,9 @@
                 }
             }
 
+    }
+    .animation{
+        max-width:400px;
     }
 
 }

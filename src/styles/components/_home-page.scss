@@ -33,6 +33,9 @@
     flex-direction: column;
     align-items: center;
     }
+    .lotti-animation{
+      width: 500px; height: 400px
+    }
 
     
 
@@ -278,7 +281,7 @@
     }
   }
   .homepage-second-card{
-    height: 90vh;
+    height: 70vh;
       flex-direction:column;
       gap: 10px;
   }
@@ -289,6 +292,11 @@
       flex-direction:column;
       gap: 10px;
     }
+  }
+
+  .lotti-animation{
+    width: 300px!important; 
+    height: 200px!important;
   }
 
 
