@@ -1,6 +1,7 @@
 
 <template>
   <section class="wap-card" :style="getCurrStyle" :class="cmp.theme">
+    <!-- <slot></slot> -->
     <div class="text-block">
       <template v-if="cmp.info.title">
         <basic-h1

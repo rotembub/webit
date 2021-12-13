@@ -37,6 +37,7 @@
         :key="innerCmp.id"
         :class="innerCmp.theme"
       >
+      <!-- <slot><cmps-tool-bar :id="innerCmp.id"></cmps-tool-bar></slot> -->
         <component
           :cmp="innerCmp"
           :is="innerCmp.type"
@@ -52,7 +53,7 @@
 <script>
 import { Container, Draggable } from 'vue-smooth-dnd'
 import wapDynamic from './wap-dynamic.cmp.vue'
-
+// import cmpsToolBar from '../editor-cmps/cmps-tool-bar.cmp.vue'
 import wapHeader from './wap-header.cmp.vue'
 import wapFooter from './wap-footer.cmp.vue'
 import wapGallery from './wap-gallery.cmp.vue'
