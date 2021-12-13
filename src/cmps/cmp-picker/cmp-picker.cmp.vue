@@ -205,6 +205,7 @@ export default {
       this.themes = allThemes
       // console.log(this.themes);
     },
+
     getProperTxt(type) {
       // console.log(type);
       const textToShow = type.substring(4)
