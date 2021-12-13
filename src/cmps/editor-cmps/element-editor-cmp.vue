@@ -46,7 +46,7 @@
         v-model="editedStyle.fontSize"
         type="range"
         min="10"
-        max="50"
+        max="120"
         step="1"
       />
     </div>
