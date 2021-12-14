@@ -113,6 +113,10 @@
           </div>
         </div>
       </div>
+
+      <div class="footer">
+        <p>&copy; 2021 All rights reserved to Webit</p>
+      </div>
     </div>
   </div>
 </template>
