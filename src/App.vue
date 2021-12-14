@@ -47,8 +47,8 @@ export default {
       clearTimeout(this.debounceScreen)
       this.debounceScreen = setTimeout(() => {
         if (this.mediaWidth < 500) {
-          this.$isLoading(true)
-          setTimeout(() => this.$isLoading(false), 1000)
+          // this.$isLoading(true)
+          // setTimeout(() => this.$isLoading(false), 1000)
           this.$store.dispatch({ type: 'isMobile', isMobile: true })
           console.log('Setting Mobile')
         } else {
