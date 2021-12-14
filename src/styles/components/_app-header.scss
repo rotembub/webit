@@ -33,6 +33,16 @@
         padding:5px;
         line-height:30px;
     }
+    @media (max-width:1000px){
+        .logo{
+            font-size: 1.5em;
+            padding:5px;
+            
+            line-height:153px;
+            
+        }
+    }
+    
     @media (max-width:550px){
     .logo{
         font-size: 1em;
@@ -41,16 +51,6 @@
       
     }
     }
-    @media (max-width:1200px){
-    .logo{
-        font-size: 1.5em;
-        padding:5px;
-
-        line-height:153px;
-      
-    }
-    }
-    
   
     .main-logo{
         display: flex;
