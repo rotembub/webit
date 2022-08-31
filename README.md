@@ -1,3 +1,6 @@
+Site editor project built with Vue.js
+
+
 # webit
 
 ## Project setup
